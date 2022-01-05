@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+      http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!-- 어노테이션을 위한 bean 스캔하는 설정 -->
+	<context:component-scan base-package="com.haoshop"></context:component-scan>
+	
+	<!-- 파일등록을 위한 beab 등록 설정 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="100000000" />
+	</beans:bean>
+	
+	<!--  Spring MVC가 @Controller에 요청을 보내기 위해 필요한 HandlerMapping과 HandlerAdapter를 bean으로 등록(@RequesetMapping, @ExceptionHandler 등 사용 가능) -->
+	<annotation-driven></annotation-driven>
+	
+	<!-- 이미지들 저장하거난 css 등 만드는? 잘은 모르겠음 -->
+	<resources mapping="/resources/**" location="/resources/" />
+	
+	<!-- 스프링에서 지원하는 ViewResolver bean 등록 -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+
+</beans:beans>

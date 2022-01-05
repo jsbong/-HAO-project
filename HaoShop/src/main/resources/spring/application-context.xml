@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+      http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context 
+      http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	<context:component-scan base-package="com.mrshop.model"></context:component-scan>
+	<!-- ContextLoaderListener의 로딩파일!(서블릿 컨테이너 구동시 함께 구동) -->
+	<!-- DataSource 설정 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="haoshop" />
+		<property name="password" value="12345" />
+	</bean>
+
+	<!-- Spring JDBC설정 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- Spring과 Mybatis 설정 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:sql-map-config.xml"></property>
+		<!-- sql-map-config 안에 sql mapper와 alias 설정 정보가 들어있음 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- DB 연동을 위해 데이터소스 불러오기 -->
+	</bean>
+	
+	<!-- SqlSessionTemplate bean 등록하여 sqlSession 생성자 주입 -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"></constructor-arg>
+	</bean>
+</beans>

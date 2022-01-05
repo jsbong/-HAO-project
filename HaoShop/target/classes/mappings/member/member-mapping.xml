@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberDAO">
+	<resultMap id="member" type="member">
+		<id property="m_id" column="M_ID" />
+		<result property="m_email" column="M_EMAIL" />
+		<result property="m_name" column="M_NAME" />
+		<result property="m_pwd" column="M_PWD" />
+		<result property="m_year" column="M_YEAR" />
+		<result property="m_date" column="M_DATE" />
+
+		<result property="m_phone" column="M_PHONE" />
+		<result property="m_zipcode" column="M_ZIPCODE" />
+		<result property="m_faddr" column="M_FADDR" />
+		<result property="m_laddr" column="M_LADDR" />
+	</resultMap>
+
+	<insert id="insertMember">
+		<![CDATA[
+		INSERT INTO MEMBER (
+			M_ID,
+			M_EMAIL, 
+			M_PWD, 
+			M_NAME, 
+			M_DATE, 
+			M_PHONE, 
+			M_ZIPCODE,
+			M_FADDR,
+			M_LADDR
+			M_REGDATE
+		) VALUES(
+			(select nvl(m_id, 0) + 1 from member), 
+			#{m_email}, 
+			#{m_pwd}, 
+			#{m_name}, 
+			TO_DATE(#{m_date}, 'yyyy-mm-dd'), 
+			#{m_phone},
+			#{m_zipcode},
+			#{m_faddr},
+			#{m_laddr},
+			sysdate
+		)
+		]]>
+	</insert>
+
+</mapper>
