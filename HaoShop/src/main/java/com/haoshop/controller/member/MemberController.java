@@ -21,67 +21,61 @@ import com.haoshop.model.member.MemberVO;
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
-	
-	// 메인페이지로 이동
+
 	@RequestMapping("/main")
 	public String main() { return "main"; }
 
-	// 가입 전 이용양관 동의 페이지로 이동
 	@RequestMapping("/term")
 	public String term(MemberVO vo) { return "member/term"; }
 
-	// 가입 페이지로 이동
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public String signUpView(MemberVO vo) { 
-		return "member/signup"; 
-	}
+	public String signUpView(MemberVO vo) { return "member/signup"; }
 
-	// 로그인페이지에서 Forgot Password 클릭시
 	@RequestMapping("/forgotPW")
 	public String forgotPWView(MemberVO vo) { return "member/forgotPW"; }
 
 	// 회원 주문내역
-	@ResponseBody
-	/*@RequestMapping("/mypL")
-	public String mypage1(MemberVO vo, HttpSession session, Model model, @RequestParam(defaultValue = "1") int myp) {
-		// 주문 테이블 갯수 계산
-		int count = memberService.getCountOrder(vo);
-
-		session.setAttribute("myp", myp);
-		session.setAttribute("member_id", vo.getM_id());
-
-		// 페이지 관련 설정
-		Pager pager = new Pager(count, myp);
-		int start = pager.getPageBegin();
-		int end = pager.getPageEnd();
-
-		List<PaymentVO> list = memberService.getOrderList(vo, start, end);
-
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("mypL", list); // map에 자료 저장
-		map.put("count", count);
-		map.put("pager", pager); // 페이지 네버게이션을 위한 변수
-		session.setAttribute("map", map);
-		return "member/mypage";
-	}*/
+//	@ResponseBody
+//	@RequestMapping("/mypL")
+//	public String mypage1(MemberVO vo, HttpSession session, Model model, @RequestParam(defaultValue = "1") int myp) {
+//		// 주문 테이블 갯수 계산
+//		int count = memberService.getCountOrder(vo);
+//
+//		session.setAttribute("myp", myp);
+//		session.setAttribute("member_id", vo.getMember_id());
+//
+//		// 페이지 관련 설정
+//		Pager pager = new Pager(count, myp);
+//		int start = pager.getPageBegin();
+//		int end = pager.getPageEnd();
+//
+//		List<PaymentVO> list = memberService.getOrderList(vo, start, end);
+//
+//		HashMap<String, Object> map = new HashMap<String, Object>();
+//		map.put("mypL", list); // map에 자료 저장
+//		map.put("count", count);
+//		map.put("pager", pager); // 페이지 네버게이션을 위한 변수
+//		session.setAttribute("map", map);
+//		return "member/mypage";
+//	}
 
 	// 회원 주문내역 뷰 (페이징 처리)
-	/*@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String mypageView(MemberVO vo, HttpSession session, Model model, @RequestParam(defaultValue = "1") int myp) {
-		int count = memberService.getCountOrder(vo);
-		Pager pager = new Pager(count, myp);
-		int start = pager.getPageBegin();
-		int end = pager.getPageEnd();
-
-		List<PaymentVO> list = memberService.getOrderList(vo, start, end);
-
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("mypL", list); // map에 자료 저장
-		map.put("count", count);
-		map.put("pager", pager); // 페이지 네버게이션을 위한 변수
-		session.setAttribute("map", map);
-		return "member/mypage";
-	}*/
+//	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+//	public String mypageView(MemberVO vo, HttpSession session, Model model, @RequestParam(defaultValue = "1") int myp) {
+//		int count = memberService.getCountOrder(vo);
+//		Pager pager = new Pager(count, myp);
+//		int start = pager.getPageBegin();
+//		int end = pager.getPageEnd();
+//
+//		List<PaymentVO> list = memberService.getOrderList(vo, start, end);
+//
+//		HashMap<String, Object> map = new HashMap<String, Object>();
+//		map.put("mypL", list); // map에 자료 저장
+//		map.put("count", count);
+//		map.put("pager", pager); // 페이지 네버게이션을 위한 변수
+//		session.setAttribute("map", map);
+//		return "member/mypage";
+//	}
 
 	// 마이페이지-비밀번호 view
 	@RequestMapping(value = "/mypage2", method = RequestMethod.GET)
@@ -144,11 +138,10 @@ public class MemberController {
 		memberService.insertMember(vo);
 		return "main";
 	}
-	
-	// 로그인 아이콘 눌렀을 때
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginView(MemberVO vo) {
-		return "member/login"; // /WEB-INF/views/member/login.jsp 로 이동하겠
+		return "member/login";
 	}
 
 	// 로그인

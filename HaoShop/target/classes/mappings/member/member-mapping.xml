@@ -4,45 +4,97 @@
 
 <mapper namespace="MemberDAO">
 	<resultMap id="member" type="member">
-		<id property="m_id" column="M_ID" />
-		<result property="m_email" column="M_EMAIL" />
-		<result property="m_name" column="M_NAME" />
+		<id property="m_no" column="M_NO" />
+		<result property="m_id" column="M_ID" />
 		<result property="m_pwd" column="M_PWD" />
-		<result property="m_year" column="M_YEAR" />
-		<result property="m_date" column="M_DATE" />
-
+		<result property="m_name" column="M_NAME" />
+		<result property="m_email" column="M_EMAIL" />
+		<result property="m_birth" column="M_BIRTH" />
 		<result property="m_phone" column="M_PHONE" />
-		<result property="m_zipcode" column="M_ZIPCODE" />
-		<result property="m_faddr" column="M_FADDR" />
-		<result property="m_laddr" column="M_LADDR" />
+		<result property="m_addr" column="M_ADDR" />
+		<result property="m_regdate" column="M_REGDATE" />
 	</resultMap>
 
+	<select id="checkID" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE M_ID=#{m_id}
+	</select>
+	
+	<!-- 회원 존재 유무 확인 -->
+	<select id="checkMember" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE M_ID=#{m_id} AND M_PWD=#{m_pwd}
+	</select>
+	
+	<!-- 회원가입하는 sql -->
 	<insert id="insertMember">
 		<![CDATA[
 		INSERT INTO MEMBER (
-			M_ID,
-			M_EMAIL, 
+			M_NO,
+			M_ID, 
 			M_PWD, 
 			M_NAME, 
-			M_DATE, 
+			M_EMAIL, 
+			M_BIRTH, 
 			M_PHONE, 
-			M_ZIPCODE,
-			M_FADDR,
-			M_LADDR
-			M_REGDATE
+			M_ADDR
 		) VALUES(
-			(select nvl(m_id, 0) + 1 from member), 
-			#{m_email}, 
+			MEMBER_SEQ.NEXTVAL, 
+			#{m_id}, 
 			#{m_pwd}, 
-			#{m_name}, 
-			TO_DATE(#{m_date}, 'yyyy-mm-dd'), 
+			#{m_name},
+			#{m_email}, 
+			TO_DATE(#{m_birth}, 'yyyy-mm-dd'), 
 			#{m_phone},
-			#{m_zipcode},
-			#{m_faddr},
-			#{m_laddr},
-			sysdate
+			#{m_addr}
 		)
 		]]>
 	</insert>
+	
+	<!-- 회원 수정 -->
+	<update id="updateMember">
+		UPDATE MEMBER
+		SET
+		M_PWD = #{m_pwd},
+		M_NAME = #{m_name},
+		M_EMAIL = #{m_email},
+		M_PHONE = #{m_phone},
+		M_ADDR = #{m_addr},
+		WHERE
+		M_ID = #{m_id}
+	</update>
+	
+	<!-- 로그인 -->
+	<select id="login" resultMap="member">
+		<![CDATA[
+			SELECT * FROM MEMBER
+			WHERE M_ID=#{m_id} AND M_PWD=#{m_pwd}
+		]]>
+	</select>
 
+	<!-- 회원 목록 -->
+	<select id="getAll" resultMap="member">
+		SELECT * FROM MEMBER
+	</select>
+
+	<!-- 회원 탈퇴 및 삭제-->
+	<delete id="deleteMember">
+		DELETE FROM MEMBER WHERE
+		M_ID = #{m_id}
+	</delete>
+	
+	<!-- 비밀번호 찾기 시 회원 확인 -->
+	<select id="forgotPWChkMember" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM MEMBER WHERE M_ID=#{m_id} AND M_NAME=#{m_name}
+	</select>
+	
+	<!-- 회원 확인 후 비밀번호 업데이트 -->
+	<update id="forgotPWUpdate">
+		UPDATE MEMBER SET M_PWD=#{m_pwd} WHERE M_ID=#{m_id} AND M_NAME=#{m_name}
+	</update>
+	
+	<!-- 마이페이지 상세내역 기준(3개월) -->
+	<sql id="myp">
+		AND PAYMENT_DATE BETWEEN ADD_MONTHS(SYSDATE, -3) AND SYSDATE
+	</sql>
 </mapper>

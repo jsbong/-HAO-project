@@ -63,12 +63,10 @@ function doSignup() {
 	var m_id = $("#m_id").val();
 	var m_pwd = $("#m_pwd").val();
 	var m_name = $("#m_name").val();
-	var m_year = $("#birth_year").val() + "-" + $("#birth_month").val() + "-" + $("#birth_day").val();
+	var m_birth = $("#birth_year").val() + "-" + $("#birth_month").val() + "-" + $("#birth_day").val();
 	var m_email = $("#email_id").val() + "@" + $("#email_addr").val(); 
 	var m_phone = $("#NUMst").val() + "-" + $("#NUMnd").val() + "-" + $("#NUMrd").val();
-	var m_zipcode = $("#m_zipcode").val();
-	var m_faddr = $("#m_faddr").val();
-	var m_laddr = $("#m_laddr").val();
+	var m_addr = $("#m_faddr").val() + $("#m_laddr").val() + "___" + $("#m_zipcode").val();
 	if (checkID == false) { console.log("아이디 중복검사 안함"); }
 	if (checkPWD == false) { console.log("비밀번호 다름"); }
 	if (checkNAME == false) { console.log("이름이 비어있음"); }
@@ -76,6 +74,7 @@ function doSignup() {
 	if (checkID == false || checkPWD == false || checkNAME == false || checkYEAR == false) {
 		swal("", "필수항목이 비어있습니다. 입력해주세요.", "warning");
 	} else {
+		swal("", "필수sss항목이 비어있습니다. 입력해주세요.", "warning");
 		$.ajax({
 			type : "POST",
 			url : "join",
@@ -83,12 +82,10 @@ function doSignup() {
 				"m_id" : m_id,
 				"m_pwd" : m_pwd,
 				"m_name" : m_name,
-				"m_year" : m_year,
 				"m_email" : m_email,
+				"m_birth" : m_birth,
 				"m_phone" : m_phone,
-				"m_zipcode" : m_zipcode,
-				"m_faddr" : m_faddr,
-				"m_laddr" : m_laddr
+				"m_addr" : m_addr,
 			},
 			success : function(data) {
 				window.location.href="main";

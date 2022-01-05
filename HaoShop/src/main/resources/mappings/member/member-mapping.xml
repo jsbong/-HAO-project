@@ -5,7 +5,7 @@
 <mapper namespace="MemberDAO">
 	<resultMap id="member" type="member">
 		<id property="m_no" column="M_NO" />
-		<id property="m_id" column="M_ID" />
+		<result property="m_id" column="M_ID" />
 		<result property="m_pwd" column="M_PWD" />
 		<result property="m_name" column="M_NAME" />
 		<result property="m_email" column="M_EMAIL" />
@@ -15,7 +15,6 @@
 		<result property="m_regdate" column="M_REGDATE" />
 	</resultMap>
 
-	<!-- 입력한 id에 대해 데이터베이스 줄 개수 리턴 -->
 	<select id="checkID" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM MEMBER
 		WHERE M_ID=#{m_id}
@@ -38,8 +37,7 @@
 			M_EMAIL, 
 			M_BIRTH, 
 			M_PHONE, 
-			M_ADDR,
-			M_REGDATE,
+			M_ADDR
 		) VALUES(
 			MEMBER_SEQ.NEXTVAL, 
 			#{m_id}, 
@@ -48,8 +46,7 @@
 			#{m_email}, 
 			TO_DATE(#{m_birth}, 'yyyy-mm-dd'), 
 			#{m_phone},
-			#{m_addr},
-			#{m_regdate}
+			#{m_addr}
 		)
 		]]>
 	</insert>
@@ -100,5 +97,4 @@
 	<sql id="myp">
 		AND PAYMENT_DATE BETWEEN ADD_MONTHS(SYSDATE, -3) AND SYSDATE
 	</sql>
-
 </mapper>
