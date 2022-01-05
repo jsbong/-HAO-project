@@ -17,7 +17,6 @@ public class MemberDAO {
 
 	// 아이디 중복검사
 	public int checkID(MemberVO vo) {
-		// selectOne("namespace.id", 입력값) : 입력한 id에 대해 데이터베이스 줄 개수 리턴
 		return mybatis.selectOne("MemberDAO.checkID", vo);
 	}
 
@@ -52,9 +51,9 @@ public class MemberDAO {
 	}*/
 
 	// 회원 주문내역 갯수
-	public int getCountOrder(MemberVO vo) {
+	/*public int getCountOrder(MemberVO vo) {
 		return mybatis.selectOne("MemberDAO.orderCount", vo);
-	}
+	}*/
 	
 	public int forgotPWChkMember(MemberVO vo) {
 		return mybatis.selectOne("MemberDAO.forgotPWChkMember", vo);

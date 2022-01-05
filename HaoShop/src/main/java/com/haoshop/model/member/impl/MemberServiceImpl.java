@@ -73,9 +73,9 @@ public class MemberServiceImpl implements MemberService {
 	}*/
 
 	// 회원 주문내역 갯수
-	public int getCountOrder(MemberVO vo) {
+	/*public int getCountOrder(MemberVO vo) {
 		return memberDAO.getCountOrder(vo);
-	}
+	}*/
 	
 	// 임시비밀번호
 	public int forgotPWChkMember(MemberVO vo) {

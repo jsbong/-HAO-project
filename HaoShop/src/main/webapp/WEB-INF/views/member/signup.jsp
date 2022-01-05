@@ -21,22 +21,22 @@
 				<table align="center">
 					<tr><th>아이디</th></tr>
 					<tr><td>
-						<input type="text" id="member_id" class="input" onFocus="" />
+						<input type="text" id="m_id" class="input" onFocus="" />
 						<input type="button" onClick="idChk()" style="cursor: pointer" value="중복확인" /><br>
 						<label id="idchk"></label>
 					</td></tr>
 					<tr><th>비밀번호</th></tr>
 					<tr><td>
-						<input type="password" id="member_pwd" class="input" maxlength="20" />
+						<input type="password" id="m_pwd" class="input" maxlength="20" />
 					</td></tr>
 					<tr><th>비밀번호 확인</th></tr>
 					<tr><td>
-						<input type="password" id="chk_member_pwd" class="input" maxlength="20" />
+						<input type="password" id="chk_m_pwd" class="input" maxlength="20" />
 						<label id="checkPasswd"></label>
 					</td></tr>
 					<tr><th>이름</th></tr>
 					<tr><td>
-						<input type="text" id="member_name" class="input"><br>
+						<input type="text" id="m_name" class="input"><br>
 						<label id="chkname"></label>
 					</td></tr>
 					<tr><th>생년월일</th></tr>
@@ -84,13 +84,13 @@
 					</td></tr>
 					<tr><th>주소</th></tr>
 					<tr><td>
-						<input type="text" name="member_zipcode" id="member_zipcode" class="input" readonly size="10">
+						<input type="text" name="m_zipcode" id="m_zipcode" class="input" readonly size="10">
 						<input type="button" onclick="searchPost()" style="cursor: pointer" value="우편번호 찾기"><br><br>
-						<input type="text" name="member_faddr" id="member_faddr" class="input" size="60" readonly>
+						<input type="text" name="m_faddr" id="m_faddr" class="input" size="60" readonly>
 					</td></tr>
 					<tr><th>상세주소</th></tr>
 					<tr><td>
-						<input type="text" name="member_laddr" id="member_laddr" class="input" size="60">
+						<input type="text" name="m_laddr" id="m_laddr" class="input" size="60">
 					</td></tr>
 					<tr><td>
 						<input type="button" onclick="doSignup()" style="cursor: pointer" value="회원가입" />

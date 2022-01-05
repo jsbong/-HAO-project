@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProductDAO">
+	<resultMap id="product" type="product">
+		<result property="p_no" column="P_NO" />
+		<result property="cate_no" column="CATE_NO" />
+		<result property="p_name" column="P_NAME" />
+		<result property="p_price" column="P_PRICE" />
+		<result property="p_discount" column="P_DISCOUNT" />
+		<result property="p_color" column="P_COLOR" />
+		<result property="p_size" column="P_SIZE" />
+		<result property="p_amount" column="P_AMOUNT" />
+		<result property="p_regdate" column="P_REGDATE" />
+		<result property="p_img" column="P_IMG" />
+		<result property="p_explain" column="P_EXPLAIN" />
+	</resultMap>
+
+	<select id="prdCheckID" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM
+		PRODUCT
+		WHERE P_NO=#{p_no}
+	</select>
+	
+	<select id="listSearchPrd" resultMap="product">
+		SELECT * FROM (
+			SELECT ROWNUM AS RN, A.* FROM (
+				SELECT * FROM PRODUCT
+				WHERE UPPER(P_NAME) LIKE UPPER('%'||#{sPrd}||'%') OR LOWER(PRD_NAME) LIKE LOWER('%'||#{sPrd}||'%')
+			) A
+		) WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="countSearchPrd" resultType="java.lang.Integer">
+		SELECT COUNT(*) 
+		FROM PRODUCT 
+		WHERE UPPER(PRD_NAME) LIKE UPPER('%'||#{sPrd}||'%') 
+		OR LOWER(PRD_NAME) LIKE LOWER('%'||#{sPrd}||'%')
+	</select>
+
+	<insert id="insertProduct">
+		<![CDATA[
+			INSERT INTO PRODUCT (
+				P_NO,
+				CATE_NO,
+				P_NAME,
+				P_PRICE,
+				P_DISCOUNT,
+				P_COLOR,
+				P_SIZE,
+				P_AMOUNT,
+				P_REGDATE,
+				P_IMG,
+				P_EXPLAIN
+			) VALUES (
+				#{p_no},
+				#{cate_no},
+				#{p_name},
+				#{p_price},
+				#{p_discount},
+				#{p_color},
+				#{p_size},
+				#{p_amount},
+				#{p_regdate},
+				#{p_img},
+				#{p_explain}
+			)
+		]]>
+	</insert>
+
+	<select id="productDetail" resultMap="product">
+		<![CDATA[
+			SELECT * FROM PRODUCT WHERE P_NO=#{p_no}
+		]]>
+	</select>
+
+	<select id="getProductList" resultMap="product">
+		<![CDATA[
+			SELECT * FROM (
+				SELECT ROWNUM AS RN, A.* FROM (
+					SELECT * FROM PRODUCT WHERE CATE_NO=#{product.cate_no} ORDER BY P_NO DESC
+				) A
+			) WHERE RN BETWEEN #{start} AND #{end}
+		]]>
+	</select>
+	
+	<select id="getAdminProductList" resultMap="product">
+		<![CDATA[
+			SELECT CATE_NO, nvl(p_img, 'resource/img/product/') AS P_IMG, P_NAME, P_NO, P_PRICE FROM (
+				SELECT ROWNUM AS RN, A.* FROM (
+					SELECT * FROM PRODUCT ORDER BY P_NO DESC
+				) A
+			) WHERE RN BETWEEN #{start} AND #{end}
+		]]>
+	</select>
+	
+	<select id="getCountProduct" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM PRODUCT WHERE CATE_NO=#{cate_no}
+		]]>
+	</select>
+	
+	<select id="getAdminCountProduct" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM PRODUCT
+		]]>
+	</select>
+</mapper>

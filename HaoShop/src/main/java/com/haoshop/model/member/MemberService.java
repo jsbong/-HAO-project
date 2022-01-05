@@ -17,7 +17,7 @@ public interface MemberService {
 	// 회원 주문내역
 	/*List<PaymentVO> getOrderList(MemberVO vo, int start, int end);*/
 	// 회원 주문내역 갯수
-	int getCountOrder(MemberVO vo);
+	/*int getCountOrder(MemberVO vo);*/
 	// 회원정보 수정
 	void updateMember(MemberVO vo);
 	

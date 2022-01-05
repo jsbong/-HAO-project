@@ -4,17 +4,17 @@ var checkYEAR = false;
 var checkNAME = false;
 
 $(document).ready(function() {
-	$("#member_pwd").keyup(function() {
+	$("#m_pwd").keyup(function() {
 		$("#checkPasswd").text("");
 	});
 	
-	$("#chk_member_pwd").keyup(function() {
+	$("#chk_m_pwd").keyup(function() {
 		var checkText = $("#checkPasswd");
-		if ($("#member_pwd").val() == "" || $("#chk_member_pwd").val() == "") {
+		if ($("#m_pwd").val() == "" || $("#chk_m_pwd").val() == "") {
 			checkText.css("color", "red");
 			checkText.text("필수정보입니다.");
 			checkPWD = false;
-		} else if ($("#member_pwd").val() != $("#chk_member_pwd").val()) {
+		} else if ($("#m_pwd").val() != $("#chk_m_pwd").val()) {
 			checkPWD = false;
 			checkText.text("패스워드가 동일하지 않습니다.");
 			checkText.css("color", "red");
@@ -54,21 +54,21 @@ $(document).ready(function() {
 		checkBirth();
 	});
 	
-	$("#member_name").blur(function() {
+	$("#m_name").blur(function() {
 		checkName();
 	});
 })
 
 function doSignup() {
-	var member_id = $("#member_id").val();
-	var member_pwd = $("#member_pwd").val();
-	var member_name = $("#member_name").val();
-	var member_year = $("#birth_year").val() + "-" + $("#birth_month").val() + "-" + $("#birth_day").val();
-	var member_email = $("#email_id").val() + "@" + $("#email_addr").val(); 
-	var member_phone = $("#NUMst").val() + "-" + $("#NUMnd").val() + "-" + $("#NUMrd").val();
-	var member_zipcode = $("#member_zipcode").val();
-	var member_faddr = $("#member_faddr").val();
-	var member_laddr = $("#member_laddr").val();
+	var m_id = $("#m_id").val();
+	var m_pwd = $("#m_pwd").val();
+	var m_name = $("#m_name").val();
+	var m_year = $("#birth_year").val() + "-" + $("#birth_month").val() + "-" + $("#birth_day").val();
+	var m_email = $("#email_id").val() + "@" + $("#email_addr").val(); 
+	var m_phone = $("#NUMst").val() + "-" + $("#NUMnd").val() + "-" + $("#NUMrd").val();
+	var m_zipcode = $("#m_zipcode").val();
+	var m_faddr = $("#m_faddr").val();
+	var m_laddr = $("#m_laddr").val();
 	if (checkID == false) { console.log("아이디 중복검사 안함"); }
 	if (checkPWD == false) { console.log("비밀번호 다름"); }
 	if (checkNAME == false) { console.log("이름이 비어있음"); }
@@ -80,15 +80,15 @@ function doSignup() {
 			type : "POST",
 			url : "join",
 			data : {
-				"member_id" : member_id,
-				"member_pwd" : member_pwd,
-				"member_name" : member_name,
-				"member_year" : member_year,
-				"member_email" : member_email,
-				"member_phone" : member_phone,
-				"member_zipcode" : member_zipcode,
-				"member_faddr" : member_faddr,
-				"member_laddr" : member_laddr
+				"m_id" : m_id,
+				"m_pwd" : m_pwd,
+				"m_name" : m_name,
+				"m_year" : m_year,
+				"m_email" : m_email,
+				"m_phone" : m_phone,
+				"m_zipcode" : m_zipcode,
+				"m_faddr" : m_faddr,
+				"m_laddr" : m_laddr
 			},
 			success : function(data) {
 				window.location.href="main";
@@ -98,20 +98,20 @@ function doSignup() {
 }
 
 function idChk() {
-	var member_id = $("#member_id").val();
+	var m_id = $("#m_id").val();
 	var oMsg = $("#idchk");
-	if (!member_id) {
+	if (!m_id) {
 		swal("", "아이디를 입력해주세요.", "error");
 	} else {
 		$.ajax({
 			type : "POST",
 			url : "checkID",
 			data : {
-				"member_id" : member_id
+				"m_id" : m_id
 			},
 			success : function(data) {
 				if (data == 0) {
-					$("#member_id").attr("disabled", true);
+					$("#m_id").attr("disabled", true);
 					oMsg.css("color", "green");
 					oMsg.text("사용 가능한 아이디입니다.");
 					checkID = true;
@@ -120,7 +120,7 @@ function idChk() {
 					$("#idchk").text("이미 존재하는 아이디입니다.");
 					checkID = false;
 				} else { console.log('ERROR'); }
-			}, error : function(error) { swal("", member_id, "error"); }
+			}, error : function(error) { swal("", m_id, "error"); }
 		});
 	}
 }
@@ -262,7 +262,7 @@ function checkName() {
 	var oMsg = $("#chkname");
 	var nonchar = /[^가-힣a-zA-Z0-9]/gi;
 	
-	var name = $("#member_name").val();
+	var name = $("#m_name").val();
 	if (name == "") {
 		oMsg.css("color", "red");
 		oMsg.text("필수정보입니다.");
@@ -300,9 +300,9 @@ function searchPost() {
 				}
 				fullAddr += (extraAddr !== '' ? '(' + extraAddr + ')' : '');
 			}
-			document.getElementById('member_zipcode').value = data.zonecode;
-			document.getElementById('member_faddr').value = fullAddr;
-			document.getElementById('member_laddr').focus();
+			document.getElementById('m_zipcode').value = data.zonecode;
+			document.getElementById('m_faddr').value = fullAddr;
+			document.getElementById('m_laddr').focus();
 		}
 	}).open();
 }

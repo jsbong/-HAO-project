@@ -5,7 +5,7 @@
 <mapper namespace="MemberDAO">
 	<resultMap id="member" type="member">
 		<id property="m_no" column="M_NO" />
-		<result property="m_id" column="M_ID" />
+		<id property="m_id" column="M_ID" />
 		<result property="m_pwd" column="M_PWD" />
 		<result property="m_name" column="M_NAME" />
 		<result property="m_email" column="M_EMAIL" />
@@ -24,7 +24,7 @@
 	<!-- 회원 존재 유무 확인 -->
 	<select id="checkMember" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM MEMBER
-		WHERE M_ID=#{member_id} AND M_PWD=#{member_pwd}
+		WHERE M_ID=#{m_id} AND M_PWD=#{m_pwd}
 	</select>
 	
 	<!-- 회원가입하는 sql -->
