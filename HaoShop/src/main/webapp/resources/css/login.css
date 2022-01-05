@@ -1,0 +1,144 @@
+@CHARSET "UTF-8";
+
+::-ms-input-placeholder {
+	color: #a8a8a8;
+}
+
+::-webkit-input-placeholder {
+	color: #a8a8a8;
+}
+
+::-moz-placeholder {
+	color: #a8a8a8;
+}
+
+body {
+	font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial,
+		sans-serif;
+	font-size: 13px;
+	padding: 0;
+	margin: 0;
+	padding: 20px;
+	background: #fff;
+}
+
+h1 {
+	width: 100%;
+	margin: 0px auto;
+	text-align: center;
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+}
+
+/* ---------- LOGIN-FORM ---------- */
+#login-form {
+	background: #eaeaea;
+	color: #999;
+	font: 100%/1.5em sans-serif;
+	margin: 50px auto;
+	width: 300px;
+}
+
+#login-form input {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	margin: 0;
+	outline: none;
+	-webkit-appearance: none;
+}
+
+#login-form .login_title {
+	background-color: #66A5FA;
+	border-radius: 5px 5px 0 0;
+	color: #fff;
+	font-size: 14px;
+	margin: 0;
+	padding: 20px 0px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#login-form fieldset {
+	position: relative;
+	background: #B1D0FA;
+	border: none;
+	border-radius: 0 0 5px 5px;
+	margin: 0;
+	padding: 20px;
+}
+
+#login-form fieldset:before {
+	background-color: #B1D0FA;
+	content: "";
+	height: 8px;
+	left: 50%;
+	margin: -4px 0 0 -4px;
+	position: absolute;
+	top: 0;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	width: 8px;
+}
+
+#login-form input[type="text"], #login-form input[type="password"] {
+	border: 1px solid #dcdcdc;
+	padding: 12px 10px;
+	width: 238px;
+}
+
+#login-form input[type="text"] {
+	border-radius: 3px 3px 0 0;
+}
+
+#login-form input[type="password"] {
+	border-top: none;
+	border-radius: 0px 0px 3px 3px;
+}
+
+#login-form input[type="button"] {
+	background: #7FB3FA;
+	border-radius: 3px;
+	color: #fff;
+	float: right;
+	font-weight: bold;
+	margin-top: 20px;
+	padding: 12px 20px;
+	cursor: pointer;
+}
+
+#login-form input[type="button"]:hover {
+	background: #9CCEFF;
+}
+
+.clearfix {
+	*zoom: 1;
+	font-size: 12px;
+	margin-top: 16px;
+}
+
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.info {
+	background: #e5e5e5;
+	border-radius: 50%;
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	margin: 0 10px 0 0;
+	text-align: center;
+	width: 20px;
+}
