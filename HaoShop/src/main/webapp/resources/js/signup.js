@@ -66,7 +66,7 @@ function doSignup() {
 	var m_birth = $("#birth_year").val() + "-" + $("#birth_month").val() + "-" + $("#birth_day").val();
 	var m_email = $("#email_id").val() + "@" + $("#email_addr").val(); 
 	var m_phone = $("#NUMst").val() + "-" + $("#NUMnd").val() + "-" + $("#NUMrd").val();
-	var m_addr = $("#m_faddr").val() + $("#m_laddr").val() + "___" + $("#m_zipcode").val();
+	var m_addr = $("#m_zipcode").val() + "*" + $("#m_faddr").val() + "*" + $("#m_laddr").val();
 	if (checkID == false) { console.log("아이디 중복검사 안함"); }
 	if (checkPWD == false) { console.log("비밀번호 다름"); }
 	if (checkNAME == false) { console.log("이름이 비어있음"); }

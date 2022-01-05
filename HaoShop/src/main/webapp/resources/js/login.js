@@ -2,25 +2,25 @@
  * 로그인
  */
 function memberCheck() {
-	var member_id=$("#member_id").val();
-	var member_pwd=$("#member_pwd").val();
-	if (!member_id || !member_pwd) {
+	var m_id=$("#m_id").val();
+	var m_pwd=$("#m_pwd").val();
+	if (!m_id || !m_pwd) {
 		swal("", "아이디 혹은 패스워드를 입력해주세요.", "error");
 	} else {
 		$.ajax({
 			type : "POST",
 			url : "checkMember",
 			data : {
-				"member_id" : member_id,
-				"member_pwd" : member_pwd
+				"m_id" : m_id,
+				"m_pwd" : m_pwd
 			}, success : function(data) {
 				if (data != 0) {
 					$.ajax({
 						type : "POST",
 						url : "login",
 						data : {
-							"member_id" : member_id,
-							"member_pwd" : member_pwd
+							"m_id" : m_id,
+							"m_pwd" : m_pwd
 						}, success : function() {
 							window.location.href = "main";
 						}
@@ -36,7 +36,7 @@ function memberCheck() {
 }
 
 function productCart() {
-	var member_id=$("#member_id").val();
+	var m_id=$("#m_id").val();
 	document.frm.method="POST";
 	document.frm.action="productCart";
 	document.frm.submit();
@@ -49,22 +49,22 @@ function forgotPWView() {
 }
 
 function forgotPW() {
-	var member_id=$("#member_id").val();
+	var m_id=$("#m_id").val();
 	var member_name=$("#member_name").val();
 	$.ajax({
 		type : "POST",
 		url : "forgotPWChkm",
 		data : {
-			"member_id" : member_id,
-			"member_name" : member_name
+			"m_id" : m_id,
+			"m_name" : member_name
 		}, success : function(data) {
 			if (data != 0) {
 				$.ajax({
 					type : "POST",
 					url : "forgotPW",
 					data : {
-						"member_id" : member_id,
-						"member_name" : member_name
+						"m_id" : m_id,
+						"m_name" : member_name
 					}, success : function() {
 						window.location.href = "main";
 					}

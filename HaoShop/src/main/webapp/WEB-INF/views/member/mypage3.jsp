@@ -30,34 +30,34 @@
 						<tr>
 							<th>아이디</th>
 							<td>
-								<label id="member_id" class="input" onFocus="">${member.member_id}</label><br>
+								<label id="m_id" class="input" onFocus="">${member.m_id}</label><br>
 								<label id="idchk"></label>
 							</td>
 						</tr>
 						<tr>
 							<th>변경할 비밀번호</th>
-							<td><input type="password" id="member_pwd" class="input" maxlength="20" /></td>
+							<td><input type="password" id="m_pwd" class="input" maxlength="20" /></td>
 						</tr>
 						<tr>
 							<th>비밀번호 확인</th>
 							<td>
-								<input type="password" id="chk_member_pwd" class="input" maxlength="20" />
+								<input type="password" id="chk_m_pwd" class="input" maxlength="20" />
 								<label id="checkPasswd"></label>
 							</td>
 						</tr>
 						<tr>
 							<th>이름</th>
 							<td>
-								<label id="member_name" class="input">${member.member_name}</label><br>
+								<label id="m_name" class="input">${member.m_name}</label><br>
 								<label id="chkname"></label>
 							</td>
 						</tr>
 						<tr>
 							<th>생년월일</th>
 							<td>
-								<fmt:parseDate value="${member.member_year}" pattern="yyyy-MM-ddHH:mm:ss" var="m_birth" />
+								<fmt:parseDate value="${member.m_birth}" pattern="yyyy-MM-ddHH:mm:ss" var="m_birth" />
 								<fmt:formatDate value="${m_birth}" pattern="yyyy-MM-dd" var="mbirth" />
-								<label id="member_year" class="input">${mbirth}</label><br>
+								<label id="m_year" class="input">${mbirth}</label><br>
 							</td>
 						</tr>
 						<tr>
@@ -65,7 +65,7 @@
 							<td>
 								<!-- email split해서 값 넣어주기 -->
 								<!-- c:set 셋팅 -->
-								<c:set var="m_email" value="${member.member_email}" />
+								<c:set var="m_email" value="${member.m_email}" />
 								<c:set var="memail" value="${fn:split(m_email, '@') }" />
 								<!-- 배열 인덱스로 불러옴 -->
 								<input type="text" size="15" id="email_id" class="input" value="${memail[0] }"> @ 
@@ -85,7 +85,7 @@
 							<td>
 								<!-- phone split해서 값 넣어주기 -->
 								<!-- c:set 셋팅 -->
-								<c:set var="m_phone" value="${member.member_phone}" />
+								<c:set var="m_phone" value="${member.m_phone}" />
 								<c:set var="mphone" value="${fn:split(m_phone, '-') }" />
 								<!-- 배열 인덱스로 불러옴 -->
 								<select id="NUMst">
@@ -103,12 +103,12 @@
 							<td>
 								<input type="text" name="member_zipcode" id="member_zipcode" class="input" readonly size="10" value="${member.member_zipcode}">
 								<input type="button" onclick="searchPost()" style="cursor: pointer" value="우편번호 찾기"><br><br>
-								<input type="text" name="member_faddr" id="member_faddr" class="input" size="60" value="${member.member_faddr}" readonly>
+								<input type="text" name="m_faddr" id="m_faddr" class="input" size="60" value="${member.m_faddr}" readonly>
 							</td>
 						</tr>
 						<tr>
 							<th id="a">상세주소</th>
-							<td id="a"><input type="text" name="member_laddr" id="member_laddr" class="input" value="${member.member_laddr}"></td>
+							<td id="a"><input type="text" name="m_laddr" id="m_laddr" class="input" value="${member.m_laddr}"></td>
 						</tr>
 					</table>
 					</form>

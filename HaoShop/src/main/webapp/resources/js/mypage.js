@@ -1,16 +1,16 @@
 var checkPWD = false;
 $(document).ready(function() {
-	$("#member_pwd").keyup(function() {
+	$("#m_pwd").keyup(function() {
 		$("#checkPasswd").text("");
 	});
 	
-	$("#chk_member_pwd").keyup(function() {
+	$("#chk_m_pwd").keyup(function() {
 		var checkText = $("#checkPasswd");
-		if ($("#member_pwd").val() == "" || $("#chk_member_pwd").val() == "") {
+		if ($("#m_pwd").val() == "" || $("#chk_m_pwd").val() == "") {
 			checkText.css("color", "red");
 			checkText.text("필수정보입니다.");
 			checkPWD = false;
-		} else if ($("#member_pwd").val() != $("#chk_member_pwd").val()) {
+		} else if ($("#m_pwd").val() != $("#chk_m_pwd").val()) {
 			checkPWD = false;
 			checkText.text("패스워드가 동일하지 않습니다.");
 			checkText.css("color", "red");
@@ -58,22 +58,22 @@ function searchPost() {
 				fullAddr += (extraAddr !== '' ? '(' + extraAddr + ')' : '');
 			}
 			document.getElementById('member_zipcode').value = data.zonecode;
-			document.getElementById('member_faddr').value = fullAddr;
-			document.getElementById('member_laddr').value = '';
+			document.getElementById('m_addr').value = fullAddr;
+			document.getElementById('m_laddr').value = '';
 		}
 	}).open();
 }
 
 // 회원정보 수정
 function myinfoUp() {
-	var member_id = $("#member_id").val();
-	var member_pwd = $("#member_pwd").val();
-	var member_email = $("#email_id").val() + "@" + $("#email_addr").val();
-	var member_phone = $("#NUMst").val() + "-" + $("#NUMnd").val() + "-"
+	var m_id = $("#m_id").val();
+	var m_pwd = $("#m_pwd").val();
+	var m_email = $("#email_id").val() + "@" + $("#email_addr").val();
+	var m_phone = $("#NUMst").val() + "-" + $("#NUMnd").val() + "-"
 			+ $("#NUMrd").val();
 	var member_zipcode = $("#member_zipcode").val();
-	var member_faddr = $("#member_faddr").val();
-	var member_laddr = $("#member_laddr").val();
+	var m_addr = $("#m_addr").val();
+	var m_laddr = $("#m_laddr").val();
 	var myp = $("#myp").val();
 	if (checkPWD == false) {
 		console.log("비밀번호 다름");
@@ -94,22 +94,22 @@ function myinfoUp() {
 						type : "POST",
 						url : "mypage3",
 						data : {
-							"member_id" : member_id,
-							"member_pwd" : member_pwd,
-							"member_email" : member_email,
-							"member_phone" : member_phone,
+							"m_id" : m_id,
+							"m_pwd" : m_pwd,
+							"m_email" : m_email,
+							"m_phone" : m_phone,
 							"member_zipcode" : member_zipcode,
-							"member_faddr" : member_faddr,
-							"member_laddr" : member_laddr,
+							"m_addr" : m_addr,
+							"m_laddr" : m_laddr,
 							"myp" : myp
 						},
 						success : function(data) {
-							console.log(member_id);
+							console.log(m_id);
 							console.log(myp);
-							window.location.href = "mypage?member_id=" + member_id + "&myp=" + myp;
+							window.location.href = "mypage?m_id=" + m_id + "&myp=" + myp;
 						},
 						error : function(data) {
-							console.log(member_id);
+							console.log(m_id);
 							console.log(myp);
 						}
 					});

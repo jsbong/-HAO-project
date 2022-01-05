@@ -13,28 +13,28 @@
 		<script>
 			// 마이페이지2 비밀번호 확인
 			function mypg2() {
-				var member_id = $("#member_id").val();
-				var member_pwd = $("#member_pwd").val();
+				var m_id = $("#m_id").val();
+				var m_pwd = $("#m_pwd").val();
 				
-				var mypPwd = $("#member_pwd").val();
+				var mypPwd = $("#m_pwd").val();
 				
-				if (!member_id || !mypPwd) {
+				if (!m_id || !mypPwd) {
 					swal("", "패스워드를 입력해주세요.", "error");
 				} else {
 					$.ajax({
 						type : "POST",
 						url : "checkMember",
 						data : {
-							"member_id" : member_id,
-							"member_pwd" : member_pwd
+							"m_id" : m_id,
+							"m_pwd" : m_pwd
 						}, success : function(data) {
 							if (data != 0) {
 								$.ajax({
 									type : "POST",
 									url : "mypage2",
 									data : {
-										"member_id" : member_id,
-										"member_pwd" : member_pwd
+										"m_id" : m_id,
+										"m_pwd" : m_pwd
 									}, success : function() { window.location.href = "mypage3"; }
 								});
 							} else {
@@ -57,11 +57,11 @@
 			</tr>
 			<tr>
 				<td width="100" bgcolor="#7FB3FA">회원 아이디</td>
-				<td width="250">${member.member_id}</td>
+				<td width="250">${member.m_id}</td>
 			</tr>
 			<tr>
 				<td bgcolor="#7FB3FA">비밀번호</td>
-				<td><input type="password" size="35" id="member_pwd" placeholder="비밀번호 확인" /></td>
+				<td><input type="password" size="35" id="m_pwd" placeholder="비밀번호 확인" /></td>
 			</tr>
 		</table>
 		<div class="checkbtn" align="center">

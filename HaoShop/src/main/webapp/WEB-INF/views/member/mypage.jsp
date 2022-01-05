@@ -22,9 +22,9 @@
 			<table class="list">
 			<tr>
 			<td width="300">
-			<b style="color: purple;">${member.member_name}</b>님의 주문내역입니다.(최근 3개월기준)
+			<b style="color: purple;">${member.m_name}</b>님의 주문내역입니다.(최근 3개월기준)
 			</td>
-			<td width="200" align="left">회원 가입일: ${member.member_date}</td>
+			<td width="200" align="left">회원 가입일: ${member.m_birth}</td>
 			<td width="400">
 			총 주문 물품개수:<b style="color: green;">${map.count}</b>
 			</td>
@@ -72,10 +72,10 @@
 			<!-- 페이지 네비게이션 출력 -->
 			<div align="center">
 				<c:if test="${map.pager.curBlock > 1}">
-					<a href="mypL?myp=1&member_id=${member_id}">[처음]</a>
+					<a href="mypL?myp=1&m_id=${m_id}">[처음]</a>
 				</c:if>
 				<c:if test="${map.pager.curBlock > 1}">
-					<a href="mypL?myp=${map.pager.prevPage}&member_id=${member_id}">[이전]</a>
+					<a href="mypL?myp=${map.pager.prevPage}&m_id=${m_id}">[이전]</a>
 				</c:if>
 				<c:forEach var="num" begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}">
 					<c:choose>
@@ -84,15 +84,15 @@
 							<span style="color: red;">${num}</span>
 						</c:when>
 						<c:otherwise>
-							<a href="mypage?member_id=${member_id}&myp=${num}">${num}</a>
+							<a href="mypage?m_id=${m_id}&myp=${num}">${num}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${map.pager.curBlock < map.pager.totBlock}">
-					<a href="mypL?myp=${map.pager.nextPage}&member_id=${member_id}">[다음]</a>
+					<a href="mypL?myp=${map.pager.nextPage}&m_id=${m_id}">[다음]</a>
 				</c:if>
 				<c:if test="${(map.pager.totPage > 5) && (map.pager.totPage != map.pager.curPage)}">
-					<a href="mypL?myp=${map.pager.totPage}&member_id=${member_id}">[끝]</a>
+					<a href="mypL?myp=${map.pager.totPage}&m_id=${m_id}">[끝]</a>
 				</c:if>
 			</div>
 		</div>

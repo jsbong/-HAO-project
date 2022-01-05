@@ -20,9 +20,9 @@
 					<div id="login-form">
 						<h1 class="login_title">Login</h1>
 						<fieldset>
-								<input type="text" name="member_id" id="member_id" placeholder="ID">
+								<input type="text" name="m_id" id="m_id" placeholder="ID">
 								<!-- onBlur="if(this.value=='')this.value='Email'" onFocus="if(this.value=='Email')this.value='' " -->
-								<input type="password" name="member_pwd" id="member_pwd" placeholder="Password" >
+								<input type="password" name="m_pwd" id="m_pwd" placeholder="Password" >
 								<!-- onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' " -->
 								<input type="button" value="Login" onclick="memberCheck()"/>
 								<footer class="clearfix">

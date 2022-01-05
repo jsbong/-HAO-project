@@ -8,16 +8,16 @@
 <script>
 	// 마이페이지 클릭 이벤트
 	function mypBtn() {
-		var member_id = $("#member_id").val();
+		var m_id = $("#m_id").val();
 		var myp = $("#myp").val();
 		$.ajax({
 			type : "GET",
 			url : "mypL",
 			data : {
-				"member_id" : member_id,
+				"m_id" : m_id,
 				"myp" : myp
 			}, success : function(data) {
-				window.location.href = "mypage?member_id=" + member_id + "&myp=" + myp;
+				window.location.href = "mypage?m_id=" + m_id + "&myp=" + myp;
 			}
 		});
 	}
@@ -27,7 +27,7 @@
 <form name="frm" id="frm">
 	<input type="hidden" id="myp" value="${myp}" />
 		<c:choose>
-			<c:when test="${member.member_id eq 'Administrator'}">
+			<c:when test="${member.m_id eq 'Administrator'}">
 				<i class="fa fa-user-plus fa-2x" onclick="location.href='prdinsert'"
 					style="cursor: pointer"></i>
 				<i class="fa fa-user  fa-2x" onclick="location.href='productList'"
@@ -35,15 +35,15 @@
 				<i class="fa fa-user-times  fa-2x" onclick="location.href='logout'"
 					style="cursor: pointer"></i>
 			</c:when>
-			<c:when test="${member.member_id == null}">
+			<c:when test="${member.m_id == null}">
 				<i class="fa fa-user-plus fa-2x" onclick="location.href='term'"
 					style="cursor: pointer"></i>
 				<i class="fa fa-user  fa-2x" onclick="location.href='login'"
 					style="cursor: pointer"></i>
 			</c:when>
 			<c:otherwise>
-				<input type="hidden" id="member_id" name="member_id"
-					value="${member.member_id}" />
+				<input type="hidden" id="m_id" name="m_id"
+					value="${member.m_id}" />
 				<i class="fa fa-user-times  fa-2x" onclick="location.href='logout'"
 					style="cursor: pointer"></i>
 				<i class="fa fa-shopping-cart fa-2x" onclick="productCart()"
