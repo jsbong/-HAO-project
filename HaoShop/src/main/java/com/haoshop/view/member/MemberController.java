@@ -1,4 +1,4 @@
-package com.haohop.view.member;
+package com.haoshop.view.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

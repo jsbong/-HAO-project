@@ -1,4 +1,4 @@
-package com.haohop.model.member.impl;
+package com.haoshop.model.member.impl;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
