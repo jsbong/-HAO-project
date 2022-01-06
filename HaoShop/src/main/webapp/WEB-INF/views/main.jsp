@@ -19,7 +19,7 @@
 					<div class="banner">
 						<script>
 							$(document).ready(function() {
-								// 사용할 배너
+								// 사용할 배너 sssssss
 								var $banner = $(".banner").find("ul");
 								// 배너 이미지의 폭
 								var $bannerWidth = $banner.children().outerWidth();
