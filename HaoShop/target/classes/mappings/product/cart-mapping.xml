@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CartDAO">
+	<resultMap id="productcart" type="productcart">
+		<result property="m_no" column="M_NO" />
+		<result property="p_no" column="P_NO" />
+		<result property="pay_quantity" column="PAY_QUANTITY" />
+		<result property="p_name" column="P_NAME" />
+		<result property="p_price" column="P_PRICE" />
+		<result property="p_img" column="P_IMG" />
+		<result property="p_color" column="P_COLOR" />
+		<result property="p_size" column="P_SIZE" />
+		<result property="p_sum" column="P_SUM" />
+	</resultMap>
+	
+	<insert id="insertProductCart">
+		<![CDATA[
+			MERGE INTO CART
+			USING DUAL ON (M_NO=#{m_no} AND P_NO=#{p_no} AND P_COLOR=#{p_color} AND P_SIZE=#{p_size})
+			WHEN MATCHED THEN
+			UPDATE SET PAY_QUANTITY = PAY_QUANTITY + #{pay_quantity}
+			WHEN NOT MATCHED THEN
+			INSERT (M_NO, P_NO, PAY_QUANTITY) VALUES (#{m_no}, #{p_no}, #{pay_quantity})
+		]]>
+	</insert>
+	
+	<delete id="deleteProductCart">
+		<![CDATA[
+			DELETE CART WHERE M_NO=#{m_no}
+		]]>
+	</delete>
+	
+	<delete id="deleteCart">
+		<![CDATA[
+			DELETE CART WHERE M_NO=#{m_no} AND P_NO=#{p_no}
+		]]>
+	</delete>
+	
+	<select id="productCart" resultMap="productcart">
+		<![CDATA[
+			SELECT 
+				P_NAME, P_NO, P_PRICE, 
+				P_IMG, P_DISCOUNT,
+				PAY_QUANTITY, (P_PRICE * PAY_QUANTITY) AS P_SUM
+			FROM CART NATURAL JOIN PRODUCT
+			WHERE M_NO=#{m_no} ORDER BY P_NO
+		]]>
+	</select>
+</mapper>

@@ -34,7 +34,6 @@ function memberCheck() {
 		});
 	}
 }
-
 function productCart() {
 	var m_id=$("#m_id").val();
 	document.frm.method="POST";

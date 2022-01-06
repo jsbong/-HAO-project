@@ -34,10 +34,10 @@
 				<tr align="center">
 					<!--체크박스-->
 					<td>
-						<input type="checkbox" name="chk" onclick="calCart()" value="${cartprd.prd_id}" checked />
+						<input type="checkbox" name="chk" onclick="calCart()" value="${cartprd.p_no}" checked />
 						<input type="hidden" name="prd_delivery" value="${cartprd.prd_delivery}" />
-						<input type="hidden" name="prd_sum" value="${cartprd.prd_sum}" />
-						<input type="hidden" id="member_id" value="${member.member_id}"/>
+						<input type="hidden" name="p_sum" value="${cartprd.p_sum}" />
+						<input type="hidden" id="m_no" value="${member.m_no}"/>
 					</td>
 					<td><img src="${cartprd.prd_img}" width="75" height="75"></td><!-- 이미지 -->
 					<td>${cartprd.prd_name}</td><!-- 상품명 -->
@@ -45,13 +45,13 @@
 					<td><fmt:formatNumber value="${cartprd.prd_price}" pattern="#,###"/></td><!-- 판매가 -->
 					<td><fmt:formatNumber value="${cartprd.buy_quantity}" pattern="#,###"/></td><!-- 수량 -->
 					<td><fmt:formatNumber value="${cartprd.prd_delivery}" pattern="#,###"/></td><!-- 배송비 -->
-					<td><fmt:formatNumber value="${cartprd.prd_sum}" pattern="#,###"/></td><!-- 합계 -->
+					<td><fmt:formatNumber value="${cartprd.p_sum}" pattern="#,###"/></td><!-- 합계 -->
 					<td>
-						<input type="button" id="delCart" onClick="delCart('${cartprd.prd_id}', '${member.member_id}')" value="삭제" />
-						<input type="hidden" id="prd_id" value="${cartprd.prd_id}" />
+						<input type="button" id="delCart" onClick="delCart('${cartprd.p_no}', '${member.m_no}')" value="삭제" />
+						<input type="hidden" id="p_no" value="${cartprd.p_no}" />
 					</td>
 				</tr>
-				<c:set var="priceSum" value="${priceSum + cartprd.prd_sum}" />
+				<c:set var="priceSum" value="${priceSum + cartprd.p_sum}" />
 				<c:set var="deliverySum" value="${deliverySum + cartprd.prd_delivery}" />
 			</c:forEach>
 			<tr align="center">
@@ -70,7 +70,7 @@
 				<th>총 합계</th>
 			</tr>
 			<tr align="center">
-				<td colspan="2"><h2 id="prd_sum"><fmt:formatNumber value="${priceSum}" pattern="#,###" /></h2></td>
+				<td colspan="2"><h2 id="p_sum"><fmt:formatNumber value="${priceSum}" pattern="#,###" /></h2></td>
 				<td><h2>+</h2></td>
 				<td colspan="2"><h2 id="prd_delivery"><fmt:formatNumber value="${deliverySum}" pattern="#,###" /></h2></td>
 				<td><h2>=</h2></td>
@@ -103,7 +103,7 @@
 			})
 			
 			function payCart() {
-				var member_id = $("#member_id").val();
+				var m_no = $("#m_no").val();
 				var hiddenbtn = $("#hiddenbtn").val();
 				if ($("input[name=chk]:checkbox:checked").length == 0) {
 					swal("", "결제할 상품을 선택해주세요.", "warning");
@@ -112,7 +112,7 @@
 						type : "POST",
 						url : "payment",
 						data : {
-							"member_id" : member_id,
+							"m_no" : m_no,
 							"hiddenbtn" : hiddenbtn
 						}, success : function(data) {
 							console.log(data);

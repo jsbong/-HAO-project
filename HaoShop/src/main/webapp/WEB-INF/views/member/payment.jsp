@@ -32,25 +32,25 @@
 			<c:choose>
 				<c:when test="${map.hidden eq 'cartpage'}">
 					<c:forEach items="${map.list}" var="pay">
-						<input type="hidden" id="prd_id" value="${pay.prd_id}"/>
-						<input type="hidden" id="buy_quantity" value="${pay.buy_quantity}"/>
-						<input type="hidden" id="prd_opt" value="${pay.prd_opt}" />
-						<input type="hidden" id="member_id" value="${member.member_id}" />
+						<input type="hidden" id="p_no" value="${pay.p_no}"/>
+						<input type="hidden" id="pay_quantity" value="${pay.pay_quantity}"/>
+						<input type="hidden" id="p_size" value="${pay.p_size}" />
+						<input type="hidden" id="m_id" value="${member.m_id}" />
 						<tr>
 							<td>
-								<img src="${pay.prd_img}" width="100px" height="100px">
+								<img src="${pay.p_img}" width="100px" height="100px">
 								<input type="hidden" name="chkbox">
 							</td>
-							<td class="tdright">${pay.prd_id}</td>
-							<td class="tdleft">${pay.prd_name}</td>
-							<td>${pay.prd_opt}</td>
-							<td><fmt:formatNumber value="${pay.prd_price}" pattern="#,###"/></td>
-							<td>${pay.buy_quantity}</td>
+							<td class="tdright">${pay.p_no}</td>
+							<td class="tdleft">${pay.p_name}</td>
+							<td>${pay.p_size}</td>
+							<td><fmt:formatNumber value="${pay.p_price}" pattern="#,###"/></td>
+							<td>${pay.pay_quantity}</td>
 							<td><fmt:formatNumber value="${pay.prd_delivery}" pattern="#,###"/></td>
-							<c:set var="paySum" value="${pay.prd_price * pay.buy_quantity}"/>
+							<c:set var="paySum" value="${pay.p_price * pay.pay_quantity}"/>
 							<td><fmt:formatNumber value="${paySum}" pattern="#,###"/></td>
 						</tr>
-						<c:set var="discountSum" value="${discountSum + (pay.prd_discount * pay.buy_quantity)}" />
+						<c:set var="discountSum" value="${discountSum + (pay.p_discount * pay.pay_quantity)}" />
 						<c:set var="priceSum" value="${priceSum + paySum}" />
 						<c:set var="deliverySum" value="${deliverySum + pay.prd_delivery}" />
 						<c:set var="total" value="${priceSum + deliverySum}" />
@@ -58,24 +58,24 @@
 				</c:when>
 				<c:when test="${map.hidden eq 'prdpage'}">
 					<c:forEach items="${map.list}" var="pay">
-						<input type="hidden" id="prd_id" value="${pay.prd_id}"/>
-						<input type="hidden" id="buy_quantity" value="${map.buy_quantity}"/>
-						<input type="hidden" id="prd_opt" value="${map.prd_opt}" />
+						<input type="hidden" id="p_no" value="${pay.p_no}"/>
+						<input type="hidden" id="pay_quantity" value="${map.pay_quantity}"/>
+						<input type="hidden" id="p_size" value="${map.p_size}" />
 						<tr id="tr">
 							<td>
-								<img src="${pay.prd_img}" width="100px" height="100px">
+								<img src="${pay.p_img}" width="100px" height="100px">
 								<input type="hidden" name="chkbox">
 							</td>
-							<td class="tdright">${pay.prd_id}</td>
-							<td class="tdleft">${pay.prd_name}</td>
-							<td>${map.prd_opt}</td>
-							<td><fmt:formatNumber value="${pay.prd_price}" pattern="#,###"/></td>
-							<td>${map.buy_quantity}</td>
+							<td class="tdright">${pay.p_no}</td>
+							<td class="tdleft">${pay.p_name}</td>
+							<td>${map.p_size}</td>
+							<td><fmt:formatNumber value="${pay.p_price}" pattern="#,###"/></td>
+							<td>${map.pay_quantity}</td>
 							<td><fmt:formatNumber value="${pay.prd_delivery}" pattern="#,###"/></td>
-							<c:set var="paySum" value="${pay.prd_price * map.buy_quantity}"/>
+							<c:set var="paySum" value="${pay.p_price * map.pay_quantity}"/>
 							<td><fmt:formatNumber value="${paySum}" pattern="#,###"/></td>
 						</tr>
-						<c:set var="discountSum" value="${discountSum + (pay.prd_discount * map.buy_quantity)}" />
+						<c:set var="discountSum" value="${discountSum + (pay.p_discount * map.pay_quantity)}" />
 						<c:set var="priceSum" value="${priceSum + paySum}" />
 						<c:set var="deliverySum" value="${deliverySum + pay.prd_delivery}" />
 						<c:set var="total" value="${priceSum + deliverySum}" />
@@ -93,8 +93,8 @@
 			<tr>
 				<th width="150" height="50">주문자 명</th>
 				<td>
-					<label id="member_name" class="input" size="20">${member.member_name}</label>
-					<input type="hidden" id="hidden_member_name" value="${member.member_name}">
+					<label id="m_name" class="input" size="20">${member.m_name}</label>
+					<input type="hidden" id="hidden_m_name" value="${member.m_name}">
 				</td>
 			</tr>
 			<tr>
@@ -115,15 +115,15 @@
 			<tr>
 				<th height="50" bgcolor="#CCE1FF">핸드폰 번호</th>
 				<td>
-					<label id="member_phone" class="input" size="16">${member.member_phone}</label>
-					<input type="hidden" id="hidden_member_phone" value="${member.member_phone}">
+					<label id="m_phone" class="input" size="16">${member.m_phone}</label>
+					<input type="hidden" id="hidden_m_phone" value="${member.m_phone}">
 				</td>
 			</tr>
 			<tr>
 				<th height="50" bgcolor="#CCE1FF">이메일</th>
 				<td>
-					<label id="member_email" class="input" size="30">${member.member_email}</label>
-					<input type="hidden" id="hidden_member_email" value="${member.member_email}">
+					<label id="m_email" class="input" size="30">${member.m_email}</label>
+					<input type="hidden" id="hidden_m_email" value="${member.m_email}">
 				</td>
 			</tr>
 		</table><br><br><br>
@@ -139,7 +139,7 @@
 			<tr>
 				<th height="50" bgcolor="#CCE1FF">받으시는 분</th>
 				<td>
-					<input type="text" name="sn_member_name" class="input" size="20" placeholder="받는사람" value="${member.member_name}" readonly />
+					<input type="text" name="sn_m_name" class="input" size="20" placeholder="받는사람" value="${member.m_name}" readonly />
 				</td>
 			</tr>
 			<tr>
@@ -155,7 +155,7 @@
 			</tr>
 			<tr>
 				<th height="50" bgcolor="#CCE1FF">핸드폰 번호</th>
-				<td><input type="text" name="sn_member_phone" class="input" size="16" placeholder="전화번호" value="${member.member_phone}" readonly/></td>
+				<td><input type="text" name="sn_m_phone" class="input" size="16" placeholder="전화번호" value="${member.m_phone}" readonly/></td>
 			</tr>
 			<tr>
 				<th height="70" bgcolor="#CCE1FF">배송 메세지</th>
@@ -485,28 +485,28 @@
 				
 				$("input[type=radio][name=choice]").change(function() {
 					if(this.value == "sameaddr") {
-						$("input[name=sn_member_name]").val($("#hidden_member_name").val());
-						$("input[name=sn_member_name]").attr("readonly", true);
+						$("input[name=sn_m_name]").val($("#hidden_m_name").val());
+						$("input[name=sn_m_name]").attr("readonly", true);
 						$("input[name=sn_member_zipcode]").val($("#hidden_member_zipcode").val());
 						$("input[name=sn_member_zipcode]").attr("readonly", true);
 						$("input[name=sn_member_faddr]").val($("#hidden_member_faddr").val());
 						$("input[name=sn_member_faddr]").attr("readonly", true);
 						$("input[name=sn_member_laddr]").val($("#hidden_member_laddr").val());
 						$("input[name=sn_member_laddr]").attr("readonly", true);
-						$("input[name=sn_member_phone]").val($("#hidden_member_phone").val());
-						$("input[name=sn_member_phone]").attr("readonly", true);
+						$("input[name=sn_m_phone]").val($("#hidden_m_phone").val());
+						$("input[name=sn_m_phone]").attr("readonly", true);
 						$("input[name=nn_searchPost]").css("visibility", "hidden");
 					} else if (this.value == "newaddr") {
-						$("input[name=sn_member_name]").val("");
-						$("input[name=sn_member_name]").attr("readonly", false);
+						$("input[name=sn_m_name]").val("");
+						$("input[name=sn_m_name]").attr("readonly", false);
 						$("input[name=sn_member_zipcode]").val("");
 						$("input[name=sn_member_zipcode]").attr("readonly", true);
 						$("input[name=sn_member_faddr]").val("");
 						$("input[name=sn_member_faddr]").attr("readonly", true);
 						$("input[name=sn_member_laddr]").val("");
 						$("input[name=sn_member_laddr]").attr("readonly", false);
-						$("input[name=sn_member_phone]").val("");
-						$("input[name=sn_member_phone]").attr("readonly", false);
+						$("input[name=sn_m_phone]").val("");
+						$("input[name=sn_m_phone]").attr("readonly", false);
 						$("input[name=nn_searchPost]").css("visibility", "visible");
 					}
 				});
@@ -515,12 +515,12 @@
 			function termChk() {
 				var chk1 = $("#chk1").is(":checked");
 				var chk2 = $("#chk2").is(":checked");
-				var member_id = $("#member_id").val();
+				var m_id = $("#m_id").val();
 				var member_zipcode = $("input[name=sn_member_zipcode]").val();
 				var member_faddr = $("input[name=sn_member_faddr]").val();
 				var member_laddr = $("input[name=sn_member_laddr]").val();
-				var member_phone = $("input[name=sn_member_phone]").val();
-				var credit_number = $("#credit1").val()+"-"+$("#credit2").val()+"-"+$("#credit3").val()+"-"+$("#credit4").val();
+				var m_phone = $("input[name=sn_m_phone]").val();
+				var pay_creditcard = $("#credit1").val()+"-"+$("#credit2").val()+"-"+$("#credit3").val()+"-"+$("#credit4").val();
 				var prd_list = new Array();
 				var chkbox = $("input[name=chkbox]");
 				jQuery.ajaxSettings.traditional = true;
@@ -537,24 +537,24 @@
 							swal("결제 성공", "결제를 완료했습니다.", "success").then(function(isConfirm) {
 								chkbox.each(function(i) {
 									var tr = chkbox.parent().parent().eq(i).children();
-									var prd_id = tr.eq(1).text();	// prd_id
-									var prd_opt = tr.eq(3).text();	// prd_opt
-									var buy_quantity = tr.eq(5).text();
-									prd_list.push(prd_id);
-									prd_list.push(prd_opt);
-									prd_list.push(buy_quantity);
+									var p_no = tr.eq(1).text();	// p_no
+									var p_size = tr.eq(3).text();	// p_size
+									var pay_quantity = tr.eq(5).text();
+									prd_list.push(p_no);
+									prd_list.push(p_size);
+									prd_list.push(pay_quantity);
 								});
 								$.ajax({
 									type : "POST", 
 									url : "decopay", 
 									data : {
 										"prd_list" : prd_list,
-										"member_id" : member_id,
+										"m_id" : m_id,
 										"member_zipcode" : member_zipcode,
 										"member_faddr" : member_faddr,
 										"member_laddr" : member_laddr,
-										"member_phone" : member_phone,
-										"credit_number" : credit_number
+										"m_phone" : m_phone,
+										"pay_creditcard" : pay_creditcard
 									}, success : function(data) { window.location.href = "main"; }
 								});
 								console.log(prd_list);

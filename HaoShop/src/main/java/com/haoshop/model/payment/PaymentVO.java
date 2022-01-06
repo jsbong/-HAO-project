@@ -3,7 +3,9 @@ package com.haoshop.model.payment;
 import java.util.Date;
 
 public class PaymentVO {
-	private int pay_no;					//
+	private int pay_no;
+	private int m_no;
+	private int p_no;//
 	private int pay_quantity;
 	private String m_addr;
 	private String m_phone;
@@ -13,12 +15,30 @@ public class PaymentVO {
 	private String pay_state;
 	private Date pay_regdate;
 
+	private String p_size;
+
 	public int getPay_no() {
 		return pay_no;
 	}
 
 	public void setPay_no(int pay_no) {
 		this.pay_no = pay_no;
+	}
+
+	public int getM_no() {
+		return m_no;
+	}
+
+	public void setM_no(int m_no) {
+		this.m_no = m_no;
+	}
+
+	public int getP_no() {
+		return p_no;
+	}
+
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
 	}
 
 	public int getPay_quantity() {
@@ -83,6 +103,14 @@ public class PaymentVO {
 
 	public void setPay_regdate(Date pay_regdate) {
 		this.pay_regdate = pay_regdate;
+	}
+
+	public String getP_size() {
+		return p_size;
+	}
+
+	public void setP_size(String p_size) {
+		this.p_size = p_size;
 	}
 
 }

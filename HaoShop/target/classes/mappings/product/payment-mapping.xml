@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PaymentDAO">
+	<resultMap id="payment" type="payment">
+		<result property="pay_no" column="PAY_NO" />
+		<result property="m_no" column="M_NO" />
+		<result property="p_no" column="P_NO" />
+		<result property="pay_quantity" column="PAY_QUANTITY" />
+		<result property="m_addr" column="M_ADDR" />
+		<result property="m_phone" column="M_PHONE" />
+		<result property="pay_price" column="PAY_PRICE" />
+		<result property="pay_method" column="PAY_METHOD" />
+		<result property="pay_creditcard" column="PAY_CREDITCARD" />
+		<result property="pay_state" column="PAY_STATE" />
+		<result property="pay_regdate" column="PAY_REGDATE" />
+		<result property="p_size" column="P_SIZE" />
+		
+	</resultMap>
+	
+	<insert id="insertPayment">
+		<![CDATA[
+			INSERT INTO PAYMENT
+			(PAY_NO, M_NO, P_NO, PAY_QUANTITY, M_ADDR, M_PHONE, PAY_PRICE, PAY_METHOD, PAY_CREDITCARD, PAY_STATE)
+			VALUES
+			(PAYMENT_SEQ.NEXTVAL, #{m_no}, #{p_no}, #{pay_quantity}, #{m_addr}, #{m_phone}, #{pay_price}, #{pay_method}, #{pay_creditcard}, #{pay_state})
+		]]>
+	</insert>
+	
+	<delete id="deleteCartPayment">
+		<![CDATA[
+			DELETE CART WHERE M_NO=#{m_no} AND P_NO=#{p_no}
+		]]>
+	</delete>
+	
+	<select id="paymentProduct" resultMap="payment">
+		<![CDATA[
+			SELECT *
+			FROM PRODUCT NATURAL JOIN MEMBER
+			WHERE P_NO=#{payment.p_no} AND M_NO=#{payment.m_no}
+		]]>
+	</select>
+	
+	<select id="cartPaymentProduct" resultMap="payment">
+		<![CDATA[
+			SELECT * 
+			FROM CART NATURAL JOIN PRODUCT
+			WHERE M_NO=#{payment.m_no}
+		]]>
+	</select>
+</mapper>

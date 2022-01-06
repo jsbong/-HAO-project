@@ -7,11 +7,17 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- 회원 -->
 	<typeAliases>
 		<typeAlias alias="member" type="com.haoshop.model.member.MemberVO" />
+		<typeAlias alias="product" type="com.haoshop.model.product.ProductVO" />
+		<typeAlias alias="productcart" type="com.haoshop.model.cart.CartVO" />
+		<typeAlias alias="payment" type="com.haoshop.model.payment.PaymentVO" />
 	</typeAliases>
 	
 	<!-- Sql Mapper 설정 -->
 	<!-- 회원 -->
 	<mappers>
 		<mapper resource="mappings/member/member-mapping.xml" />
+		<mapper resource="mappings/product/product-mapping.xml" />
+		<mapper resource="mappings/product/cart-mapping.xml" />
+		<mapper resource="mappings/product/payment-mapping.xml" />
 	</mappers>
 </configuration>
