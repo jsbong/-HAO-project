@@ -74,7 +74,6 @@ function doSignup() {
 	if (checkID == false || checkPWD == false || checkNAME == false || checkYEAR == false) {
 		swal("", "필수항목이 비어있습니다. 입력해주세요.", "warning");
 	} else {
-		swal("", "필수sss항목이 비어있습니다. 입력해주세요.", "warning");
 		$.ajax({
 			type : "POST",
 			url : "join",
