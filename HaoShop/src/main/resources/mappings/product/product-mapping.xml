@@ -27,7 +27,7 @@
 		SELECT * FROM (
 			SELECT ROWNUM AS RN, A.* FROM (
 				SELECT * FROM PRODUCT
-				WHERE UPPER(P_NAME) LIKE UPPER('%'||#{sPrd}||'%') OR LOWER(PRD_NAME) LIKE LOWER('%'||#{sPrd}||'%')
+				WHERE UPPER(P_NAME) LIKE UPPER('%'||#{sPrd}||'%') OR LOWER(P_NAME) LIKE LOWER('%'||#{sPrd}||'%')
 			) A
 		) WHERE RN BETWEEN #{start} AND #{end}
 	</select>
@@ -35,8 +35,8 @@
 	<select id="countSearchPrd" resultType="java.lang.Integer">
 		SELECT COUNT(*) 
 		FROM PRODUCT 
-		WHERE UPPER(PRD_NAME) LIKE UPPER('%'||#{sPrd}||'%') 
-		OR LOWER(PRD_NAME) LIKE LOWER('%'||#{sPrd}||'%')
+		WHERE UPPER(P_NAME) LIKE UPPER('%'||#{sPrd}||'%') 
+		OR LOWER(P_NAME) LIKE LOWER('%'||#{sPrd}||'%')
 	</select>
 
 	<insert id="insertProduct">
