@@ -93,18 +93,19 @@
 					<input type="hidden" id="hidden_m_name" value="${member.m_name}">
 				</td>
 			</tr>
-			<%-- <tr>
-				<th rowspan="2" width="150" height="50" bgcolor="#CCE1FF">주소</th>
-				<td>
-					<input type="hidden" id="hidden_member_zipcode" value="${member.member_zipcode}">
-					<input type="hidden" id="hidden_member_faddr" value="${member.member_faddr}">
-				</td>
-			</tr> --%>
 			<tr>
 				<th rowspan="2" width="150" height="50" bgcolor="#CCE1FF">주소</th>
 				<td>
-					<label id="m_addr" class="input" size="60">${member.m_addr}</label>
-					<input type="hidden" id="hidden_m_addr" value="${member.m_addr}">
+					<label id="m_addr" class="input" size="60">${fn:split(member.m_addr,'*')[0]}</label>
+					<input type="hidden" id="hidden_member_zipcode" value="${fn:split(member.m_addr,'*')[0]}">
+					<label id="m_addr" class="input" size="60">${fn:split(member.m_addr,'*')[1]}</label>
+					<input type="hidden" id="hidden_member_faddr" value="${fn:split(member.m_addr,'*')[1]}">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label id="m_addr" class="input" size="60">${fn:split(member.m_addr,'*')[2]}</label>
+					<input type="hidden" id="hidden_m_addr" value="${fn:split(member.m_addr,'*')[2]}">
 				</td>
 			</tr>
 			<tr>
@@ -140,13 +141,13 @@
 			<tr>
 				<th rowspan="2" width="150" height="50" bgcolor="#CCE1FF">주소</th>
 				<td>
-					<input type="text" name="sn_member_zipcode" class="input" size="10" placeholder="우편번호" value="${member.m_addr}" readonly>
+					<input type="text" name="sn_member_zipcode" class="input" size="10" placeholder="우편번호" value="${fn:split(member.m_addr,'*')[0]}" readonly>
 					<input type="button" name="nn_searchPost" onclick="searchPost()" value="우편번호 찾기" style="visibility: hidden"><br>
-					<input type="text" name="sn_member_faddr" class="input" size="60" placeholder="우편주소" value="${member.m_addr}" readonly>
+					<input type="text" name="sn_member_faddr" class="input" size="60" placeholder="우편주소" value="${fn:split(member.m_addr,'*')[1]}" readonly>
 				</td>
 			</tr>
 			<tr>
-				<td><input type="text" name="sn_member_laddr" id="member_laddr" class="input" size="60" placeholder="상세주소" value="${member.m_addr}" readonly></td>
+				<td><input type="text" name="sn_member_laddr" id="member_laddr" class="input" size="60" placeholder="상세주소" value="${fn:split(member.m_addr,'*')[2]}" readonly></td>
 			</tr>
 			<tr>
 				<th height="50" bgcolor="#CCE1FF">핸드폰 번호</th>
@@ -460,6 +461,7 @@
 			</tr>
 			<tr>
 				<input type="hidden" id="m_no" value="${member.m_no}" />
+				<input type="hidden" id="pay_price" value="${priceSum - discountSum + 5000}" />
 				<th colspan="2"><input type="button" onClick="termChk()" value="결제 하기" /></th>
 			</tr>
 		</table>
@@ -514,9 +516,9 @@
 				var chk1 = $("#chk1").is(":checked");
 				var chk2 = $("#chk2").is(":checked");
 				var m_no = $("#m_no").val();
-				var m_addr = $("input[name=sn_member_laddr]").val();
+				var m_addr = $("input[name=sn_member_zipcode]").val()+"*"+$("input[name=sn_member_faddr]").val()+"*"+$("input[name=sn_member_laddr]").val();
 				var m_phone = $("input[name=sn_m_phone]").val();
-				var pay_price = ${priceSum - discountSum + 5000};
+				var pay_price = $("#pay_price").val();
 				var pay_creditcard = $("#credit1").val()+"-"+$("#credit2").val()+"-"+$("#credit3").val()+"-"+$("#credit4").val();
 				var prd_list = new Array();
 				var chkbox = $("input[name=chkbox]");

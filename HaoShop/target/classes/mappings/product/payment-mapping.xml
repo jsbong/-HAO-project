@@ -20,6 +20,7 @@
 		<result property="p_size" column="P_SIZE" />
 		<result property="p_img" column="P_IMG" />
 		<result property="p_name" column="P_NAME" />
+		<result property="prd_sum" column="PRD_SUM" />
 		
 	</resultMap>
 	
