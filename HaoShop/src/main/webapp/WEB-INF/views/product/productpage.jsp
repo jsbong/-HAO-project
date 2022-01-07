@@ -67,7 +67,7 @@
 					<th>상품 설명</th>
 				</tr>
 				<tr>
-					<td>${product.prd_explain}</td>
+					<td>${product.p_explain}</td>
 				</tr>
 			</table>
 		</div>

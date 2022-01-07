@@ -22,63 +22,63 @@
 					<tr>
 						<th>카테고리</th>
 						<td>
-							<select name="cate_id" id="cate_id" style="width: 150px; height: 24px;">
+							<select name="cate_no" id="cate_no" style="width: 150px; height: 24px;">
 								<option value="" selected>::선택::</option>
-								<option value="TAB20180010">테이블</option>
-								<option value="PLO20180020">화분</option>
-								<option value="LIG20180030">인테리어조명</option>
-								<option value="LED20180040">LED</option>
-								<option value="CHE20180050">전신거울</option>
-								<option value="AWA20180060">벽걸이거울</option>
-								<option value="ADF20180070">탁상거울</option>
-								<option value="PLA20180080">플레이트</option>
-								<option value="CUT20180090">커틀리</option>
-								<option value="TEA20180100">티도구</option>
-								<option value="FAB20180110">탁상보</option>
+								<option value="100001">Jacket</option>
+								<option value="100002">Coat</option>
+								<option value="100003">DownJacket</option>
+								<option value="200001">Sweater</option>
+								<option value="200002">Knitwear</option>
+								<option value="200003">Shirts</option>
+								<option value="200004">Vest</option>
+								<option value="300001">Trouser</option>
+								<option value="300002">Short</option>
+								<option value="400001">Shoes</option>
+								<option value="400002">Lifegoods</option>
 							</select>
 						</td>
 					</tr>
 					<tr>
 						<th>품명</th>
 						<td>
-							<input type="text" name="prd_name" id="prd_name" />
+							<input type="text" name="p_name" id="p_name" />
 						</td>
 					</tr>
 					<tr>
 						<th>물품번호</th>
 						<td>
-							<input type="text" name="prd_id" id="prd_id" />
+							<input type="text" name="p_no" id="p_no" />
 							<input type="button" value="중복 확인" onclick="prdidChk()"><br/>
 						</td>
 					</tr>
 					<tr>
 						<th>상품가격</th>
 						<td>
-							<input type="text" name="prd_price" id="prd_price" />
+							<input type="text" name="p_price" id="p_price" />
 						</td>
 					</tr>
-					<tr>
+					<!-- <tr>
 						<th>배송비</th>
 						<td>
 							<input type="text" name="prd_delivery" id="prd_delivery" />
 						</td>
-					</tr>
+					</tr> -->
 					<tr>
 						<th>재고</th>
 						<td>
-							<input type="text" name="prd_stock" id="prd_stock" />
+							<input type="text" name="p_amount" id="p_amount" />
 						</td>
 					</tr>
 					<tr>
-						<th>상품옵션</th>
+						<th>상품사이즈</th>
 						<td>
-							<input type="text" name="prd_option" id="prd_option" />
+							<input type="text" name="p_size" id="p_size" />
 						</td>
 					</tr>
 					<tr>
 						<th>할인금액</th>
 						<td>
-							<input type="text" name="prd_discount" id="prd_discount" />
+							<input type="text" name="p_discount" id="p_discount" />
 						</td>
 					</tr>
 					<tr>
@@ -90,9 +90,9 @@
 					<tr>
 						<th>상품 설명</th>
 						<td>
-							<textarea name="prd_explain" id="prd_explain" cols="88" rows="80"></textarea>
+							<textarea name="p_explain" id="p_explain" cols="88" rows="80"></textarea>
 							<script>
-								CKEDITOR.replace('prd_explain', {});
+								CKEDITOR.replace('p_explain', {});
 							</script>
 						</td>
 					</tr>

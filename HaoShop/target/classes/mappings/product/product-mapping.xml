@@ -50,7 +50,6 @@
 				P_COLOR,
 				P_SIZE,
 				P_AMOUNT,
-				P_REGDATE,
 				P_IMG,
 				P_EXPLAIN
 			) VALUES (
@@ -59,10 +58,9 @@
 				#{p_name},
 				#{p_price},
 				#{p_discount},
-				#{p_color},
+				'red',
 				#{p_size},
 				#{p_amount},
-				#{p_regdate},
 				#{p_img},
 				#{p_explain}
 			)

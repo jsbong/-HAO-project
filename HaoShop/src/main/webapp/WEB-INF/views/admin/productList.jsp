@@ -36,12 +36,12 @@
 						<c:set var="product" value="${map.list[i]}" />
 						<c:if test="${not empty product}">
 							<tr>
-								<td>${product.cate_id}</td>
-								<td><img src="${product.prd_img}" width="100" height="100"></td>
-								<td>${product.prd_name}</td>
-								<td>${product.prd_id}</td>
-								<td>${product.prd_price}</td>
-								<td>${product.prd_img}</td>
+								<td>${product.cate_no}</td>
+								<td><img src="${product.p_img}" width="100" height="100"></td>
+								<td>${product.p_name}</td>
+								<td>${product.p_no}</td>
+								<td>${product.p_price}</td>
+								<td>${product.p_img}</td>
 							</tr>
 						</c:if>
 					</c:forEach>

@@ -2,18 +2,21 @@ package com.haoshop.model.product;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductVO {
-	private int p_no;			//상품 번호
-	private int cate_no;		//카테고리 번호
-	private String p_name;		//상품이름
-	private int p_price;		//상품가격
-	private int p_discount;		//상품할인가
-	private String p_color;		//상품색상
-	private String p_size;		//상품사이즈
-	private int p_amount;		//상품재고
-	private Date p_regdate;		//상품등록일
-	private String p_img;		//상품이미지
-	private String p_explain;	//상품설명
+	private int p_no; // 상품 번호
+	private int cate_no; // 카테고리 번호
+	private String p_name; // 상품이름
+	private int p_price; // 상품가격
+	private int p_discount; // 상품할인가
+	private String p_color; // 상품색상
+	private String p_size; // 상품사이즈
+	private int p_amount; // 상품재고
+	private Date p_regdate; // 상품등록일
+	private String p_img; // 상품이미지
+	private String p_explain; // 상품설명
+	private MultipartFile uploadFile; // 이미지파일
 
 	public int getP_no() {
 		return p_no;
@@ -101,6 +104,14 @@ public class ProductVO {
 
 	public void setP_explain(String p_explain) {
 		this.p_explain = p_explain;
+	}
+
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 
 }

@@ -1,24 +1,24 @@
 function buyProduct() {
-	var member_id = $("#member_id").val();
-	var prd_id = $("#prd_id").val();
-	var buy_quantity = $("#buy_quantity").val();
-	var prd_opt = $("#prd_opt").val();
+	var m_no = $("#m_no").val();
+	var p_no = $("#p_no").val();
+	var pay_quantity = $("#pay_quantity").val();
+	var p_size = $("#p_size").val();
 	var hiddenbtn = $("#hiddenbtn").val();
-	if (member_id == "Administrator") {
+	if (m_no == "Administrator") {
 		swal("", "관리자 권한으로는 이용하실 수 없습니다.", "warning");
-	} else if (!member_id) {
+	} else if (!m_no) {
 		swal("", "비회원은 이용하실 수 없습니다.", "error");
-	} else if (buy_quantity == 0) {
+	} else if (pay_quantity == 0) {
 		swal("", "수량을 선택해주세요", "error");
 	} else {
 		$.ajax({
 			type : "POST",
 			url : "payment",
 			data : {
-				"member_id" : member_id,
-				"prd_id" : prd_id,
-				"buy_quantity" : buy_quantity,
-				"prd_opt" : prd_opt,
+				"m_no" : m_no,
+				"p_no" : p_no,
+				"pay_quantity" : pay_quantity,
+				"p_size" : p_size,
 				"hiddenbtn" : hiddenbtn
 			},
 			success : function(data) {
@@ -32,11 +32,11 @@ function buyProduct() {
 }
 
 function doInsertProduct() {
-	if (!cate_id) {
+	if (!cate_no) {
 		swal("", "카테고리를 선택해주세요.", "error");
 	} else {
 		var formData = new FormData($("#fileForm")[0]);
-		formData.append('prd_explain', CKEDITOR.instances.prd_explain.getData());
+		formData.append('p_explain', CKEDITOR.instances.p_explain.getData());
 		$.ajax({
 			type : "POST",
 			url : "insertProduct",
@@ -49,7 +49,7 @@ function doInsertProduct() {
 					location.href="prdinsert";
 				});
 			}, error : function(error) {
-				swal("왜", "에러일까", "error");
+				swal("왜", cate_no, "error");
 			}
 		});
 	}
@@ -58,7 +58,7 @@ function doInsertProduct() {
 function prdidChk() {
 	var p_no=$("#p_no").val();
 	if (!p_no) {
-		swal("", "ㅇㅇ" , "error");
+		swal("", "물품 번호를 입력하세요" , "error");
 	} else {
 		$.ajax({
 			type : "POST",
@@ -68,9 +68,9 @@ function prdidChk() {
 			success : function(data) {
 				if (data == 0) {
 					$("#p_no").attr("disable", true);
-					swal("", "사용가능한 아이디입니다.", "success");
+					swal("", "사용가능한 번호입니다.", "success");
 				} else if (data != 0) {
-					swal("", "이미 존재하는 아이디입니다.", "error");
+					swal("", "이미 존재하는 번호입니다.", "error");
 				} else {
 					swal("a", "a", "error");
 				}
