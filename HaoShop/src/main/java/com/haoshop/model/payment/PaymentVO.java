@@ -14,7 +14,8 @@ public class PaymentVO {
 	private String pay_creditcard;
 	private String pay_state;
 	private Date pay_regdate;
-
+	private String p_img;
+	
 	private String p_size;
 
 	public int getPay_no() {

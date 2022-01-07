@@ -195,7 +195,7 @@
 				//버튼을 클릭했을 때 함수 실행
 				$('#back3').click(function() { back(); });
 				$('#next3').click(function() { next(); });
-
+				
 				function back() {
 					if (1 < img_position) {
 						imgs.animate({ left : '+=1000px' });

@@ -30,13 +30,13 @@
 							<c:set var="item" value="${map.list[row * 4 + col]}"/>
 							<c:if test="${not empty item}">
 								<td width="300">
-									<div onClick="location.href='productpage?prd_id=${item.prd_id}'" style="cursor: pointer">
+									<div onClick="location.href='productpage?p_no=${item.p_no}'" style="cursor: pointer">
 										<div>
-											<img src="${item.prd_img}" width="200" height="200">
+											<img src="${item.p_img}" width="200" height="200">
 										</div>
-										<div>${item.prd_name}</div>
+										<div>${item.p_name}</div>
 										<div>
-											<fmt:formatNumber value="${item.prd_price}" pattern="#,###,###" />원
+											<fmt:formatNumber value="${item.p_price}" pattern="#,###,###" />원
 										</div>
 									</div>
 								</td>

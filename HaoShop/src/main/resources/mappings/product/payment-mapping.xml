@@ -17,6 +17,7 @@
 		<result property="pay_state" column="PAY_STATE" />
 		<result property="pay_regdate" column="PAY_REGDATE" />
 		<result property="p_size" column="P_SIZE" />
+		<result property="p_img" column="P_IMG" />
 		
 	</resultMap>
 	

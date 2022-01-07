@@ -12,8 +12,8 @@
 		<link rel="stylesheet" type="text/css" href="resources/css/product.css">
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script>
-			function list(cate_id, page) {
-				location.href="category?cate_id="+cate_id+"&curPage="+page;
+			function list(cate_no, page) {
+				location.href="category?cate_no="+cate_no+"&curPage="+page;
 			}
 		</script>
 	</head>
@@ -30,10 +30,10 @@
 							<c:set var="item" value="${map.list[row * 4 + col]}" />
 							<c:if test="${not empty item}">
 								<td width="300">
-									<div onclick="location.href='productpage?prd_id=${item.prd_id}'" style="cursor: pointer">
-										<div><img src="${item.prd_img}" width="200" height="200"></div>
-										<div>${item.prd_name}</div>
-										<div><fmt:formatNumber value="${item.prd_price}" pattern="#,###,###"/>원</div>
+									<div onclick="location.href='productpage?p_no=${item.p_no}'" style="cursor: pointer">
+										<div><img src="${item.p_img}" width="200" height="200"></div>
+										<div>${item.p_name}</div>
+										<div><fmt:formatNumber value="${item.p_price}" pattern="#,###,###"/>원</div>
 									</div>
 								</td>
 							</c:if>
@@ -44,10 +44,10 @@
 					<tr>
 						<td colspan="4" align="center">
 							<c:if test="${map.pager.curBlock > 1}">
-								<a href="#" onclick="list('${map.cate_id}', '1')">[처음]</a>
+								<a href="#" onclick="list('${map.cate_no}', '1')">[처음]</a>
 							</c:if>
 							<c:if test="${map.pager.curBlock > 1}">
-								<a href="#" onclick="list('${map.cate_id}', '${map.pager.prevPage}')">[이전]</a>
+								<a href="#" onclick="list('${map.cate_no}', '${map.pager.prevPage}')">[이전]</a>
 							</c:if>
 							<c:forEach var="num" begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}">
 								<c:choose>
@@ -55,15 +55,15 @@
 										<span style="color:red;">${num}</span>
 									</c:when>
 									<c:otherwise>
-										<a href="#" onclick="list('${map.cate_id}', '${num}')">${num}</a>
+										<a href="#" onclick="list('${map.cate_no}', '${num}')">${num}</a>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
 							<c:if test="${map.pager.curBlock < map.pager.totBlock}">
-								<a href="#" onclick="list('${map.cate_id}', '${map.pager.nextPage}')">[다음]</a>
+								<a href="#" onclick="list('${map.cate_no}', '${map.pager.nextPage}')">[다음]</a>
 							</c:if>
 							<c:if test="${map.pager.curBlock < map.pager.totPage}">
-								<a href="#" onclick="list('${map.cate_id}', '${map.pager.totPage}')">[끝]</a>
+								<a href="#" onclick="list('${map.cate_no}', '${map.pager.totPage}')">[끝]</a>
 							</c:if>
 						</td>
 					</tr>

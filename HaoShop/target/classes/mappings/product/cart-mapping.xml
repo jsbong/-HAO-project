@@ -18,7 +18,7 @@
 	<insert id="insertProductCart">
 		<![CDATA[
 			MERGE INTO CART
-			USING DUAL ON (M_NO=#{m_no} AND P_NO=#{p_no} AND P_SIZE=#{p_size})
+			USING DUAL ON (M_NO=#{m_no} AND P_NO=#{p_no} AND P_SIZE='S')
 			WHEN MATCHED THEN
 			UPDATE SET PAY_QUANTITY = PAY_QUANTITY + #{pay_quantity}
 			WHEN NOT MATCHED THEN

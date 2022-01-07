@@ -68,42 +68,39 @@
 </div>
 <div id="nav">
 	<ul>
-		<li class='Mirror'>거울
+		<li onclick="location.href='category?cate_no=FAB20180110'">&nbsp;</li>
+		<li class='Mirror'>OUTER
 			<ul>
-				<li
-					onclick="location.href='category?cate_id=CHE20180050'">전신 거울</li>
-				<li onclick="location.href='category?cate_id=ADF20180070'">탁상
+				<li	onclick="location.href='category?cate_no=100001'">Jacket</li>
+				<li onclick="location.href='category?cate_no=100002'">Coat
 					거울</li>
 				<li class="liBot"
-					onclick="location.href='category?cate_id=AWA20180060'">벽걸이 거울</li>
+					onclick="location.href='category?cate_no=100003'">DownJacket</li>
 			</ul>
 		</li>
-		<li>식탁용 제품
+		<li>TOP
 			<ul>
-				<li
-					onclick="location.href='category?cate_id=PLA20180080'">플레이트</li>
-				<li onclick="location.href='category?cate_id=CUT20180090'">커틀러리</li>
+				<li	onclick="location.href='category?cate_no=200001'">Sweater</li>
+				<li onclick="location.href='category?cate_no=200002'">Knitwear</li>
+				<li	onclick="location.href='category?cate_no=200003'">Shirts</li>
 				<li class="liBot"
-					onclick="location.href='category?cate_id=TEA20180100'">티</li>
+					onclick="location.href='category?cate_no=200004'">Vest</li>
 			</ul>
 		</li>
-		<li>장식품
+		<li>BOTTOM
 			<ul>
-				<li
-					onclick="location.href='category?cate_id=TAB20180010'">테이블</li>
+				<li	onclick="location.href='category?cate_no=300001'">Trouser</li>
 				<li class="liBot"
-					onclick="location.href='category?cate_id=PLO20180020'">화분</li>
+					onclick="location.href='category?cate_no=300002'">Short</li>
 			</ul>
 		</li>
-		<li>조명
+		<li>ETC
 			<ul>
-				<li
-					onclick="location.href='category?cate_id=LIG20180030'">인테리어 조명</li>
+				<li	onclick="location.href='category?cate_no=400001'">Shoes</li>
 				<li class="liBot"
-					onclick="location.href='category?cate_id=LED20180040'">LED</li>
+					onclick="location.href='category?cate_no=400002'">Lifegoods</li>
 			</ul>
 		</li>
-		<li onclick="location.href='category?cate_id=FAB20180110'">천</li>
 		<li class='contact' onclick="location.href='board'">공지사항</li>
 	</ul>
 </div>

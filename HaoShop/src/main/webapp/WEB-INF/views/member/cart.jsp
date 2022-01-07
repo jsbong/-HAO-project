@@ -35,16 +35,14 @@
 					<!--체크박스-->
 					<td>
 						<input type="checkbox" name="chk" onclick="calCart()" value="${cartprd.p_no}" checked />
-						<input type="hidden" name="prd_delivery" value="${cartprd.prd_delivery}" />
 						<input type="hidden" name="p_sum" value="${cartprd.p_sum}" />
 						<input type="hidden" id="m_no" value="${member.m_no}"/>
 					</td>
-					<td><img src="${cartprd.prd_img}" width="75" height="75"></td><!-- 이미지 -->
-					<td>${cartprd.prd_name}</td><!-- 상품명 -->
-					<td>${cartprd.prd_opt}</td>
-					<td><fmt:formatNumber value="${cartprd.prd_price}" pattern="#,###"/></td><!-- 판매가 -->
-					<td><fmt:formatNumber value="${cartprd.buy_quantity}" pattern="#,###"/></td><!-- 수량 -->
-					<td><fmt:formatNumber value="${cartprd.prd_delivery}" pattern="#,###"/></td><!-- 배송비 -->
+					<td><img src="${cartprd.p_img}" width="75" height="75"></td><!-- 이미지 -->
+					<td>${cartprd.p_name}</td><!-- 상품명 -->
+					<td>${cartprd.p_size}</td>
+					<td><fmt:formatNumber value="${cartprd.p_price}" pattern="#,###"/></td><!-- 판매가 -->
+					<td><fmt:formatNumber value="${cartprd.pay_quantity}" pattern="#,###"/></td><!-- 수량 -->
 					<td><fmt:formatNumber value="${cartprd.p_sum}" pattern="#,###"/></td><!-- 합계 -->
 					<td>
 						<input type="button" id="delCart" onClick="delCart('${cartprd.p_no}', '${member.m_no}')" value="삭제" />
@@ -52,7 +50,7 @@
 					</td>
 				</tr>
 				<c:set var="priceSum" value="${priceSum + cartprd.p_sum}" />
-				<c:set var="deliverySum" value="${deliverySum + cartprd.prd_delivery}" />
+				<c:set var="deliverySum" value="${deliverySum}" />
 			</c:forEach>
 			<tr align="center">
 				<td colspan="9">
