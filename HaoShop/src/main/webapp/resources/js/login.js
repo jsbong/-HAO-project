@@ -35,7 +35,7 @@ function memberCheck() {
 	}
 }
 function productCart() {
-	var m_id=$("#m_id").val();
+	var m_no=$("#m_no").val();
 	document.frm.method="POST";
 	document.frm.action="productCart";
 	document.frm.submit();

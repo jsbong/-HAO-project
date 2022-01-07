@@ -13,6 +13,7 @@ function insertCart() {
 	} else if (pay_quantity == 0) {
 		swal("", "수량을 선택해주세요", "error");
 	} else {
+		swal("", p_size, "error");
 		$.ajax({
 			type : "GET",
 			url : "insertCart",
@@ -70,7 +71,7 @@ function delCart(p_no, m_no) {
 function cartClear() {
 	var m_no = $("#m_no").val();
 	if (!m_no) {
-		swal("", "비회원은 장니를 이용하실 수 없습니다.", "error")
+		swal("", "비회원은 장바구니를 이용하실 수 없습니다.", "error")
 	} else {
 		$.ajax({
 			type : "POST",

@@ -36,7 +36,7 @@
 					<td>
 						<input type="checkbox" name="chk" onclick="calCart()" value="${cartprd.p_no}" checked />
 						<input type="hidden" name="p_sum" value="${cartprd.p_sum}" />
-						<input type="hidden" id="m_no" value="${member.m_no}"/>
+						<input type="hidden" name = "m_no" id="m_no" value="${member.m_no}"/>
 					</td>
 					<td><img src="${cartprd.p_img}" width="75" height="75"></td><!-- 이미지 -->
 					<td>${cartprd.p_name}</td><!-- 상품명 -->
@@ -54,6 +54,7 @@
 			</c:forEach>
 			<tr align="center">
 				<td colspan="9">
+					<input type="hidden" name = "m_no" id="m_no" value="${member.m_no}"/>
 					<input type="button" name="cartClear" id="cartClear" onclick="cartClear()" value="상품 비우기" />
 				</td>
 			</tr>
