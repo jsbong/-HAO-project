@@ -22,7 +22,7 @@
 			WHEN MATCHED THEN
 			UPDATE SET PAY_QUANTITY = PAY_QUANTITY + #{pay_quantity}
 			WHEN NOT MATCHED THEN
-			INSERT (M_NO, P_NO, PAY_QUANTITY) VALUES (#{m_no}, #{p_no}, #{pay_quantity})
+			INSERT (M_NO, P_NO, PAY_QUANTITY, P_SIZE, P_COLOR) VALUES (#{m_no}, #{p_no}, #{pay_quantity}, #{p_size}, 'red')
 		]]>
 	</insert>
 	

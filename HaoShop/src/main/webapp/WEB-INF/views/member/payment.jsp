@@ -35,7 +35,7 @@
 						<input type="hidden" id="p_no" value="${pay.p_no}"/>
 						<input type="hidden" id="pay_quantity" value="${pay.pay_quantity}"/>
 						<input type="hidden" id="p_size" value="${pay.p_size}" />
-						<input type="hidden" id="m_id" value="${member.m_id}" />
+						<input type="hidden" id="m_no" value="${member.m_no}" />
 						<tr>
 							<td>
 								<img src="${pay.p_img}" width="100px" height="100px">
@@ -46,14 +46,12 @@
 							<td>${pay.p_size}</td>
 							<td><fmt:formatNumber value="${pay.p_price}" pattern="#,###"/></td>
 							<td>${pay.pay_quantity}</td>
-							<td><fmt:formatNumber value="${pay.prd_delivery}" pattern="#,###"/></td>
 							<c:set var="paySum" value="${pay.p_price * pay.pay_quantity}"/>
 							<td><fmt:formatNumber value="${paySum}" pattern="#,###"/></td>
 						</tr>
 						<c:set var="discountSum" value="${discountSum + (pay.p_discount * pay.pay_quantity)}" />
 						<c:set var="priceSum" value="${priceSum + paySum}" />
-						<c:set var="deliverySum" value="${deliverySum + pay.prd_delivery}" />
-						<c:set var="total" value="${priceSum + deliverySum}" />
+						<c:set var="total" value="${priceSum}" />
 					</c:forEach>
 				</c:when>
 				<c:when test="${map.hidden eq 'prdpage'}">
@@ -71,20 +69,18 @@
 							<td>${map.p_size}</td>
 							<td><fmt:formatNumber value="${pay.p_price}" pattern="#,###"/></td>
 							<td>${map.pay_quantity}</td>
-							<td><fmt:formatNumber value="${pay.prd_delivery}" pattern="#,###"/></td>
-							<c:set var="paySum" value="${pay.p_price * map.pay_quantity}"/>
+							<td><fmt:formatNumber value="${5000}" pattern="#,###"/></td>
+							<c:set var="paySum" value="${pay.p_price * map.pay_quantity + 5000}"/>
 							<td><fmt:formatNumber value="${paySum}" pattern="#,###"/></td>
 						</tr>
 						<c:set var="discountSum" value="${discountSum + (pay.p_discount * map.pay_quantity)}" />
-						<c:set var="priceSum" value="${priceSum + paySum}" />
-						<c:set var="deliverySum" value="${deliverySum + pay.prd_delivery}" />
-						<c:set var="total" value="${priceSum + deliverySum}" />
+						<c:set var="priceSum" value="${pay.p_price * map.pay_quantity}" />
 					</c:forEach>
 				</c:when>
 			</c:choose>
 			<tr>
 				<td colspan="8" align="left" id="ordersheet" height="30">
-					상품 구매금액: <fmt:formatNumber value="${priceSum}" pattern="#,###" /> + 배송비: <fmt:formatNumber value="${deliverySum}" pattern="#,###" /> = 합계: <fmt:formatNumber value="${total}" pattern="#,###" />
+					상품 구매금액: <fmt:formatNumber value="${priceSum}" pattern="#,###" />  + 배송비: <fmt:formatNumber value="${5000}" pattern="#,###" /> = 합계: <fmt:formatNumber value="${priceSum+5000}" pattern="#,###" /> 
 				</td>
 			</tr>
 		</table><br><br>
@@ -97,19 +93,18 @@
 					<input type="hidden" id="hidden_m_name" value="${member.m_name}">
 				</td>
 			</tr>
+			<%-- <tr>
+				<th rowspan="2" width="150" height="50" bgcolor="#CCE1FF">주소</th>
+				<td>
+					<input type="hidden" id="hidden_member_zipcode" value="${member.member_zipcode}">
+					<input type="hidden" id="hidden_member_faddr" value="${member.member_faddr}">
+				</td>
+			</tr> --%>
 			<tr>
 				<th rowspan="2" width="150" height="50" bgcolor="#CCE1FF">주소</th>
 				<td>
-					<label id="member_zipcode" class="input" size="10">${member.member_zipcode}</label><br>
-					<input type="hidden" id="hidden_member_zipcode" value="${member.member_zipcode}">
-					<label id="member_faddr" class="input" size="60">${member.member_faddr}</label>
-					<input type="hidden" id="hidden_member_faddr" value="${member.member_faddr}">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label id="member_laddr" class="input" size="60">${member.member_laddr}</label>
-					<input type="hidden" id="hidden_member_laddr" value="${member.member_laddr}">
+					<label id="m_addr" class="input" size="60">${member.m_addr}</label>
+					<input type="hidden" id="hidden_m_addr" value="${member.m_addr}">
 				</td>
 			</tr>
 			<tr>
@@ -145,13 +140,13 @@
 			<tr>
 				<th rowspan="2" width="150" height="50" bgcolor="#CCE1FF">주소</th>
 				<td>
-					<input type="text" name="sn_member_zipcode" class="input" size="10" placeholder="우편번호" value="${member.member_zipcode}" readonly>
+					<input type="text" name="sn_member_zipcode" class="input" size="10" placeholder="우편번호" value="${member.m_addr}" readonly>
 					<input type="button" name="nn_searchPost" onclick="searchPost()" value="우편번호 찾기" style="visibility: hidden"><br>
-					<input type="text" name="sn_member_faddr" class="input" size="60" placeholder="우편주소" value="${member.member_faddr}" readonly>
+					<input type="text" name="sn_member_faddr" class="input" size="60" placeholder="우편주소" value="${member.m_addr}" readonly>
 				</td>
 			</tr>
 			<tr>
-				<td><input type="text" name="sn_member_laddr" id="member_laddr" class="input" size="60" placeholder="상세주소" value="${member.member_laddr}" readonly></td>
+				<td><input type="text" name="sn_member_laddr" id="member_laddr" class="input" size="60" placeholder="상세주소" value="${member.m_addr}" readonly></td>
 			</tr>
 			<tr>
 				<th height="50" bgcolor="#CCE1FF">핸드폰 번호</th>
@@ -170,12 +165,14 @@
 			<tr>
 				<th height="50" bgcolor="#CCE1FF" align="center">총 주문 금액</th>
 				<th height="50" bgcolor="#CCE1FF" align="center">총 할인 금액</th>
+				<th height="50" bgcolor="#CCE1FF" align="center">배송비</th>
 				<th height="50" bgcolor="#CCE1FF" align="center">총 결제예정 금액</th>
 			</tr>
 			<tr>
-				<td height="50" align="center"><fmt:formatNumber value="${total}" pattern="#,###" />원</td>
+				<td height="50" align="center"><fmt:formatNumber value="${priceSum}" pattern="#,###" />원</td>
 				<td height="50" align="center"><fmt:formatNumber value="${discountSum}" pattern="#,###" />원</td>
-				<td height="50" align="center"><fmt:formatNumber value="${total - discountSum}" pattern="#,###" />원</td>
+				<td height="50" align="center"><fmt:formatNumber value="${5000}" pattern="#,###" />원</td>
+				<td height="50" align="center"><fmt:formatNumber value="${priceSum - discountSum + 5000}" pattern="#,###" />원</td>
 			</tr>
 		</table>
 		<br><br><br><br><br>
@@ -458,10 +455,11 @@
 		<h3>최종 결제 금액</h3>
 		<table id="paymoney">
 			<tr>
-				<td>결제금액: <fmt:formatNumber value="${total - discountSum}" pattern="#,###" /></td>
+				<td>결제금액: <fmt:formatNumber value="${priceSum - discountSum + 5000}" pattern="#,###" /></td>
 				<td></td>
 			</tr>
 			<tr>
+				<input type="hidden" id="m_no" value="${member.m_no}" />
 				<th colspan="2"><input type="button" onClick="termChk()" value="결제 하기" /></th>
 			</tr>
 		</table>
@@ -515,11 +513,10 @@
 			function termChk() {
 				var chk1 = $("#chk1").is(":checked");
 				var chk2 = $("#chk2").is(":checked");
-				var m_id = $("#m_id").val();
-				var member_zipcode = $("input[name=sn_member_zipcode]").val();
-				var member_faddr = $("input[name=sn_member_faddr]").val();
-				var member_laddr = $("input[name=sn_member_laddr]").val();
+				var m_no = $("#m_no").val();
+				var m_addr = $("input[name=sn_member_laddr]").val();
 				var m_phone = $("input[name=sn_m_phone]").val();
+				var pay_price = ${priceSum - discountSum + 5000};
 				var pay_creditcard = $("#credit1").val()+"-"+$("#credit2").val()+"-"+$("#credit3").val()+"-"+$("#credit4").val();
 				var prd_list = new Array();
 				var chkbox = $("input[name=chkbox]");
@@ -534,11 +531,11 @@
 						buttons : [ "취소", "결제" ],
 					}).then(function(isConfirm) {
 						if (isConfirm) {
-							swal("결제 성공", "결제를 완료했습니다.", "success").then(function(isConfirm) {
+							swal("결제 성공", "" , "success").then(function(isConfirm) {
 								chkbox.each(function(i) {
 									var tr = chkbox.parent().parent().eq(i).children();
-									var p_no = tr.eq(1).text();	// p_no
-									var p_size = tr.eq(3).text();	// p_size
+									var p_no = tr.eq(1).text();
+									var p_size = tr.eq(3).text();
 									var pay_quantity = tr.eq(5).text();
 									prd_list.push(p_no);
 									prd_list.push(p_size);
@@ -548,12 +545,11 @@
 									type : "POST", 
 									url : "decopay", 
 									data : {
+										"m_no" : m_no,
 										"prd_list" : prd_list,
-										"m_id" : m_id,
-										"member_zipcode" : member_zipcode,
-										"member_faddr" : member_faddr,
-										"member_laddr" : member_laddr,
+										"m_addr" : m_addr,
 										"m_phone" : m_phone,
+										"pay_price" : pay_price,
 										"pay_creditcard" : pay_creditcard
 									}, success : function(data) { window.location.href = "main"; }
 								});

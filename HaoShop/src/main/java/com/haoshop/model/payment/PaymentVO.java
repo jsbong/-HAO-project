@@ -9,14 +9,17 @@ public class PaymentVO {
 	private int pay_quantity;
 	private String m_addr;
 	private String m_phone;
+	private int p_price;
 	private int pay_price;
 	private String pay_method;
 	private String pay_creditcard;
 	private String pay_state;
 	private Date pay_regdate;
+
 	private String p_img;
-	
 	private String p_size;
+	private String p_name;
+	private int p_discount;
 
 	public int getPay_no() {
 		return pay_no;
@@ -66,12 +69,20 @@ public class PaymentVO {
 		this.m_phone = m_phone;
 	}
 
+	public int getP_price() {
+		return p_price;
+	}
+
+	public void setP_price(int p_price) {
+		this.p_price = p_price;
+	}
+
 	public int getPay_price() {
 		return pay_price;
 	}
 
-	public void setPay_price(int pay_price) {
-		this.pay_price = pay_price;
+	public void setPay_price(int p_price, int pay_quantity) {
+		this.pay_price = p_price * pay_quantity;
 	}
 
 	public String getPay_method() {
@@ -106,12 +117,36 @@ public class PaymentVO {
 		this.pay_regdate = pay_regdate;
 	}
 
+	public String getP_img() {
+		return p_img;
+	}
+
+	public void setP_img(String p_img) {
+		this.p_img = p_img;
+	}
+
 	public String getP_size() {
 		return p_size;
 	}
 
 	public void setP_size(String p_size) {
 		this.p_size = p_size;
+	}
+
+	public String getP_name() {
+		return p_name;
+	}
+
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
+	}
+
+	public int getP_discount() {
+		return p_discount;
+	}
+
+	public void setP_discount(int p_discount) {
+		this.p_discount = p_discount;
 	}
 
 }

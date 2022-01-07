@@ -11,6 +11,7 @@
 		<result property="pay_quantity" column="PAY_QUANTITY" />
 		<result property="m_addr" column="M_ADDR" />
 		<result property="m_phone" column="M_PHONE" />
+		<result property="p_price" column="P_PRICE" />
 		<result property="pay_price" column="PAY_PRICE" />
 		<result property="pay_method" column="PAY_METHOD" />
 		<result property="pay_creditcard" column="PAY_CREDITCARD" />
@@ -18,6 +19,7 @@
 		<result property="pay_regdate" column="PAY_REGDATE" />
 		<result property="p_size" column="P_SIZE" />
 		<result property="p_img" column="P_IMG" />
+		<result property="p_name" column="P_NAME" />
 		
 	</resultMap>
 	
@@ -26,7 +28,7 @@
 			INSERT INTO PAYMENT
 			(PAY_NO, M_NO, P_NO, PAY_QUANTITY, M_ADDR, M_PHONE, PAY_PRICE, PAY_METHOD, PAY_CREDITCARD, PAY_STATE)
 			VALUES
-			(PAYMENT_SEQ.NEXTVAL, #{m_no}, #{p_no}, #{pay_quantity}, #{m_addr}, #{m_phone}, #{pay_price}, #{pay_method}, #{pay_creditcard}, #{pay_state})
+			(PAYMENT_SEQ.NEXTVAL, #{m_no}, #{p_no}, #{pay_quantity}, #{m_addr}, #{m_phone}, #{pay_price}, '카드결제', #{pay_creditcard}, '배송중')
 		]]>
 	</insert>
 	

@@ -13,7 +13,6 @@ function insertCart() {
 	} else if (pay_quantity == 0) {
 		swal("", "수량을 선택해주세요", "error");
 	} else {
-		swal("", p_size, "error");
 		$.ajax({
 			type : "GET",
 			url : "insertCart",
