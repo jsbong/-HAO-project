@@ -115,38 +115,3 @@ function myinfoUp() {
 		})
 	}
 }
-
-//회원탈퇴
-function distroyAccount() {
-	var m_id=$("#m_id").val();
-	var m_pwd=$("#m_pwd").val();
-	if (!m_id || !m_pwd) {
-		swal("", "아이디 혹은 패스워드를 입력해주세요.", "error");
-	} else {
-		$.ajax({
-			type : "POST",
-			url : "checkMember",
-			data : {
-				"m_id" : m_id,
-				"m_pwd" : m_pwd
-			}, success : function(data) {
-				if (data != 0) {
-					$.ajax({
-						type : "POST",
-						url : "distroy",
-						data : {
-							"m_id" : m_id,
-							"m_pwd" : m_pwd
-						}, success : function() {
-							window.location.href = "main";
-						}
-					});
-				} else {
-					swal("","패스워드를 확인해주세요.","warning")
-				}
-			}, error : function(data) {
-				console.log(data);
-			}
-		});
-	}
-}

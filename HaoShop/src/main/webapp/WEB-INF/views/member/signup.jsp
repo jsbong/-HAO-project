@@ -22,7 +22,6 @@
 					<tr><th>아이디</th></tr>
 					<tr><td>
 						<input type="text" id="m_id" class="input" onFocus="" />
-						<input type="button" onClick="idChk()" style="cursor: pointer" value="중복확인" /><br>
 						<label id="idchk"></label>
 					</td></tr>
 					<tr><th>비밀번호</th></tr>

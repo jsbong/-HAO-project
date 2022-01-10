@@ -4,6 +4,34 @@ var checkYEAR = false;
 var checkNAME = false;
 
 $(document).ready(function() {
+	$("#m_id").blur(function() {
+		var m_id = $("#m_id").val();
+		var oMsg = $("#idchk");
+		if (!m_id) {
+			swal("", "아이디를 입력해주세요.", "error");
+			$("#idchk").text("");
+		} else {
+			$.ajax({
+				type : "POST",
+				url : "checkID",
+				data : {
+					"m_id" : m_id
+				},
+				success : function(data) {
+					if (data == 0) {
+						oMsg.css("color", "green");
+						oMsg.text("사용 가능한 아이디입니다.");
+						checkID = true;
+					} else if (data != 0) {
+						$("#idchk").css("color", "red");
+						$("#idchk").text("이미 존재하는 아이디입니다.");
+						checkID = false;
+					} else { console.log('ERROR'); }
+				}, error : function(error) { swal("", m_id, "error"); }
+			});
+		}
+	});
+	
 	$("#m_pwd").keyup(function() {
 		$("#checkPasswd").text("");
 	});
@@ -71,7 +99,7 @@ function doSignup() {
 	if (checkPWD == false) { console.log("비밀번호 다름"); }
 	if (checkNAME == false) { console.log("이름이 비어있음"); }
 	if (checkYEAR == false) { console.log("생일이 비어있음"); }
-	if (checkID == false || checkPWD == false || checkNAME == false || checkYEAR == false) {
+	if (!m_id || checkID == false || checkPWD == false || checkNAME == false || checkYEAR == false) {
 		swal("", "필수항목이 비어있습니다. 입력해주세요.", "warning");
 	} else {
 		$.ajax({
@@ -89,34 +117,6 @@ function doSignup() {
 			success : function(data) {
 				window.location.href="main";
 			}
-		});
-	}
-}
-
-function idChk() {
-	var m_id = $("#m_id").val();
-	var oMsg = $("#idchk");
-	if (!m_id) {
-		swal("", "아이디를 입력해주세요.", "error");
-	} else {
-		$.ajax({
-			type : "POST",
-			url : "checkID",
-			data : {
-				"m_id" : m_id
-			},
-			success : function(data) {
-				if (data == 0) {
-					$("#m_id").attr("disabled", true);
-					oMsg.css("color", "green");
-					oMsg.text("사용 가능한 아이디입니다.");
-					checkID = true;
-				} else if (data != 0) {
-					$("#idchk").css("color", "red");
-					$("#idchk").text("이미 존재하는 아이디입니다.");
-					checkID = false;
-				} else { console.log('ERROR'); }
-			}, error : function(error) { swal("", m_id, "error"); }
 		});
 	}
 }

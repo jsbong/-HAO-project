@@ -68,7 +68,7 @@
 			<form id="myInfo">
 				<!-- 회원 비밀번호 체크 -->
 				<input type="button" class="confirm" value="확인" onClick="mypg2()" />&nbsp;&nbsp;&nbsp;
-				<input type="reset" class="cancel" value="취소" onClick="" />
+				<input type="button" class="cancel" value="취소" onClick="" />
 			</form>
 		</div>
 		<%@ include file="../include/csinfo.jsp"%>
