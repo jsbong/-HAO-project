@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.haoshop.model.member.MemberVO;
+import com.haoshop.model.payment.PaymentVO;
 
 @Repository
 public class MemberDAO {
@@ -30,6 +31,10 @@ public class MemberDAO {
 	public void insertMember(MemberVO vo) {
 		mybatis.insert("MemberDAO.insertMember", vo);
 	}
+	
+	public void deleteMember(MemberVO vo) {
+		mybatis.insert("MemberDAO.deleteMember", vo);
+	}
 
 	// 로그인
 	public MemberVO login(MemberVO vo) {
@@ -42,18 +47,18 @@ public class MemberDAO {
 	}
 
 	// 회원 주문내역
-	/*public List<PaymentVO> getOrderList(MemberVO vo, int start, int end) {
+	public List<PaymentVO> getOrderList(MemberVO vo, int start, int end) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("member_id", vo.getM_id());
+		map.put("m_no", vo.getM_no());
 		map.put("start", start);
 		map.put("end", end);
 		return mybatis.selectList("MemberDAO.orderMember", map);
-	}*/
+	}
 
 	// 회원 주문내역 갯수
-	/*public int getCountOrder(MemberVO vo) {
+	public int getCountOrder(MemberVO vo) {
 		return mybatis.selectOne("MemberDAO.orderCount", vo);
-	}*/
+	}
 	
 	public int forgotPWChkMember(MemberVO vo) {
 		return mybatis.selectOne("MemberDAO.forgotPWChkMember", vo);
@@ -63,7 +68,6 @@ public class MemberDAO {
 		mybatis.update("MemberDAO.forgotPWUpdate", vo);
 	}
 
-	// 테스트용
 	public List<MemberVO> getMemberList(int start, int end, MemberVO vo) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("start", start);

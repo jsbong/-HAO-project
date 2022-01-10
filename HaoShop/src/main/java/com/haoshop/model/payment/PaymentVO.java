@@ -20,7 +20,7 @@ public class PaymentVO {
 	private String p_size;
 	private String p_name;
 	private int p_discount;
-	private int prd_sum;
+	private int p_sum;
 
 	public int getPay_no() {
 		return pay_no;
@@ -150,12 +150,12 @@ public class PaymentVO {
 		this.p_discount = p_discount;
 	}
 
-	public int getPrd_sum() {
-		return prd_sum;
+	public int getP_sum() {
+		return p_sum;
 	}
 
-	public void setPrd_sum(int prd_sum) {
-		this.prd_sum = prd_sum;
+	public void setP_sum(int p_sum) {
+		this.p_sum = p_sum;
 	}
 
 }

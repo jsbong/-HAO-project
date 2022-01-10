@@ -56,10 +56,9 @@
 		UPDATE MEMBER
 		SET
 		M_PWD = #{m_pwd},
-		M_NAME = #{m_name},
 		M_EMAIL = #{m_email},
 		M_PHONE = #{m_phone},
-		M_ADDR = #{m_addr},
+		M_ADDR = #{m_addr}
 		WHERE
 		M_ID = #{m_id}
 	</update>
@@ -80,8 +79,25 @@
 	<!-- 회원 탈퇴 및 삭제-->
 	<delete id="deleteMember">
 		DELETE FROM MEMBER WHERE
-		M_ID = #{m_id}
+		M_NO = #{m_no}
 	</delete>
+	
+	<select id="orderMember" resultType="payment">
+		SELECT * FROM(
+			SELECT ROWNUM AS RN, A.* FROM (
+				SELECT * FROM (
+					SELECT P_NO, PAY_NO, PAY_REGDATE, P_NAME,
+					((P_PRICE - P_DISCOUNT) * PAY_QUANTITY) AS P_SUM 
+					FROM PAYMENT NATURAL JOIN PRODUCT WHERE M_NO = #{m_no}
+					<include refid="myp"></include>
+				) ORDER BY PAY_REGDATE DESC
+			) A
+		) WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="orderCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM PAYMENT WHERE M_NO = #{m_no}
+	</select>
 	
 	<!-- 비밀번호 찾기 시 회원 확인 -->
 	<select id="forgotPWChkMember" resultType="java.lang.Integer">
@@ -95,6 +111,6 @@
 	
 	<!-- 마이페이지 상세내역 기준(3개월) -->
 	<sql id="myp">
-		AND PAYMENT_DATE BETWEEN ADD_MONTHS(SYSDATE, -3) AND SYSDATE
+		AND PAY_REGDATE BETWEEN ADD_MONTHS(SYSDATE, -3) AND SYSDATE
 	</sql>
 </mapper>

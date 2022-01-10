@@ -8,16 +8,16 @@
 <script>
 	// 마이페이지 클릭 이벤트
 	function mypBtn() {
-		var m_id = $("#m_id").val();
+		var m_no = $("#m_no").val();
 		var myp = $("#myp").val();
 		$.ajax({
 			type : "GET",
 			url : "mypL",
 			data : {
-				"m_id" : m_id,
+				"m_no" : m_no,
 				"myp" : myp
 			}, success : function(data) {
-				window.location.href = "mypage?m_id=" + m_id + "&myp=" + myp;
+				window.location.href = "mypage?m_no=" + m_no + "&myp=" + myp;
 			}
 		});
 	}

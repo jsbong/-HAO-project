@@ -2,6 +2,8 @@ package com.haoshop.model.member;
 
 import java.util.List;
 
+import com.haoshop.model.payment.PaymentVO;
+
 public interface MemberService {
 	
 	// ID 중복검사
@@ -13,11 +15,14 @@ public interface MemberService {
 	// 회원가입
 	void insertMember(MemberVO vo);
 	
+	// 회원탈퇴
+	void deleteMember(MemberVO vo);
+	
 	// 마이페이지
 	// 회원 주문내역
-	/*List<PaymentVO> getOrderList(MemberVO vo, int start, int end);*/
+	List<PaymentVO> getOrderList(MemberVO vo, int start, int end);
 	// 회원 주문내역 갯수
-	/*int getCountOrder(MemberVO vo);*/
+	int getCountOrder(MemberVO vo);
 	// 회원정보 수정
 	void updateMember(MemberVO vo);
 	

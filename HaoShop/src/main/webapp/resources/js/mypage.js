@@ -57,8 +57,8 @@ function searchPost() {
 				}
 				fullAddr += (extraAddr !== '' ? '(' + extraAddr + ')' : '');
 			}
-			document.getElementById('member_zipcode').value = data.zonecode;
-			document.getElementById('m_addr').value = fullAddr;
+			document.getElementById('m_zipcode').value = data.zonecode;
+			document.getElementById('m_faddr').value = fullAddr;
 			document.getElementById('m_laddr').value = '';
 		}
 	}).open();
@@ -67,13 +67,12 @@ function searchPost() {
 // 회원정보 수정
 function myinfoUp() {
 	var m_id = $("#m_id").val();
+	var m_no = $("#m_no").val();
 	var m_pwd = $("#m_pwd").val();
 	var m_email = $("#email_id").val() + "@" + $("#email_addr").val();
 	var m_phone = $("#NUMst").val() + "-" + $("#NUMnd").val() + "-"
 			+ $("#NUMrd").val();
-	var member_zipcode = $("#member_zipcode").val();
-	var m_addr = $("#m_addr").val();
-	var m_laddr = $("#m_laddr").val();
+	var m_addr = $("#m_zipcode").val() + "*" + $("#m_faddr").val() + "*" + $("#m_laddr").val();
 	var myp = $("#myp").val();
 	if (checkPWD == false) {
 		console.log("비밀번호 다름");
@@ -98,15 +97,13 @@ function myinfoUp() {
 							"m_pwd" : m_pwd,
 							"m_email" : m_email,
 							"m_phone" : m_phone,
-							"member_zipcode" : member_zipcode,
 							"m_addr" : m_addr,
-							"m_laddr" : m_laddr,
 							"myp" : myp
 						},
 						success : function(data) {
 							console.log(m_id);
 							console.log(myp);
-							window.location.href = "mypage?m_id=" + m_id + "&myp=" + myp;
+							window.location.href = "mypage?m_no=" + m_no + "&myp=" + myp;
 						},
 						error : function(data) {
 							console.log(m_id);
@@ -116,5 +113,40 @@ function myinfoUp() {
 				});
 			}
 		})
+	}
+}
+
+//회원탈퇴
+function distroyAccount() {
+	var m_id=$("#m_id").val();
+	var m_pwd=$("#m_pwd").val();
+	if (!m_id || !m_pwd) {
+		swal("", "아이디 혹은 패스워드를 입력해주세요.", "error");
+	} else {
+		$.ajax({
+			type : "POST",
+			url : "checkMember",
+			data : {
+				"m_id" : m_id,
+				"m_pwd" : m_pwd
+			}, success : function(data) {
+				if (data != 0) {
+					$.ajax({
+						type : "POST",
+						url : "distroy",
+						data : {
+							"m_id" : m_id,
+							"m_pwd" : m_pwd
+						}, success : function() {
+							window.location.href = "main";
+						}
+					});
+				} else {
+					swal("","패스워드를 확인해주세요.","warning")
+				}
+			}, error : function(data) {
+				console.log(data);
+			}
+		});
 	}
 }

@@ -36,7 +36,7 @@
 			<tr align="right">
 			<td colspan="3" width="70%"></td>
 			<td><input type="button" class="revise" value="회원 정보 수정" onClick="location.href='mypage2'"></td>
-			<td><input type="button" class="delete" value="회원 정보 삭제" onClick=""></td>
+			<td><input type="button" class="delete" value="회원 정보 삭제" onClick="location.href='mypage5'"></td>
 			</tr>
 				<tr bgcolor="#7FB3FA" align="center">
 					<td>번호</td>
@@ -52,12 +52,11 @@
 						<%-- 검색결과가 있을 때 --%>
 						<c:when test="${not empty row}">
 							<tr bgcolor="#fff" height="50">
-								<td align="center">${row.payment_id}</td>
-								<td align="center">${row.payment_date}
-								<td>${row.prd_name}</td>
-								<%-- <fmt:formatNumber value="${row.prd_sum}" pattern="#,###"/> --%>
-								<td align="center"><fmt:formatNumber value="${row.prd_sum}" pattern="#,###"/>원</td>
-								<td align="center">${row.delivery}</td>
+								<td align="center">${row.pay_no}</td>
+								<td align="center">${row.pay_regdate}
+								<td>${row.p_name}</td>
+								<%-- <fmt:formatNumber value="${row.p_sum}" pattern="#,###"/> --%>
+								<td align="center"><fmt:formatNumber value="${row.p_sum + 5000}" pattern="#,###"/>원</td>
 							</tr>
 						</c:when>
 						<%-- 검색결과가 없을 떄 --%>
@@ -72,10 +71,10 @@
 			<!-- 페이지 네비게이션 출력 -->
 			<div align="center">
 				<c:if test="${map.pager.curBlock > 1}">
-					<a href="mypL?myp=1&m_id=${m_id}">[처음]</a>
+					<a href="mypL?myp=1&m_no=${m_no}">[처음]</a>
 				</c:if>
 				<c:if test="${map.pager.curBlock > 1}">
-					<a href="mypL?myp=${map.pager.prevPage}&m_id=${m_id}">[이전]</a>
+					<a href="mypL?myp=${map.pager.prevPage}&m_no=${m_no}">[이전]</a>
 				</c:if>
 				<c:forEach var="num" begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}">
 					<c:choose>
@@ -84,15 +83,15 @@
 							<span style="color: red;">${num}</span>
 						</c:when>
 						<c:otherwise>
-							<a href="mypage?m_id=${m_id}&myp=${num}">${num}</a>
+							<a href="mypage?m_no=${m_no}&myp=${num}">${num}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${map.pager.curBlock < map.pager.totBlock}">
-					<a href="mypL?myp=${map.pager.nextPage}&m_id=${m_id}">[다음]</a>
+					<a href="mypL?myp=${map.pager.nextPage}&m_no=${m_no}">[다음]</a>
 				</c:if>
 				<c:if test="${(map.pager.totPage > 5) && (map.pager.totPage != map.pager.curPage)}">
-					<a href="mypL?myp=${map.pager.totPage}&m_id=${m_id}">[끝]</a>
+					<a href="mypL?myp=${map.pager.totPage}&m_no=${m_no}">[끝]</a>
 				</c:if>
 			</div>
 		</div>

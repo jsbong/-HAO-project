@@ -30,6 +30,7 @@
 						<tr>
 							<th>아이디</th>
 							<td>
+								<input type="hidden" id="m_no" name="m_no" value="${member.m_no}" />
 								<label id="m_id" class="input" onFocus="">${member.m_id}</label><br>
 								<label id="idchk"></label>
 							</td>
@@ -55,9 +56,9 @@
 						<tr>
 							<th>생년월일</th>
 							<td>
-								<fmt:parseDate value="${member.m_birth}" pattern="yyyy-MM-ddHH:mm:ss" var="m_birth" />
-								<fmt:formatDate value="${m_birth}" pattern="yyyy-MM-dd" var="mbirth" />
-								<label id="m_year" class="input">${mbirth}</label><br>
+								<%-- <fmt:parseDate value="${member.m_birth}" pattern="yyyy-MM-ddHH:mm:ss" var="m_birth" /> --%>
+								<%-- <fmt:formatDate value="${m_birth}" pattern="yyyy-MM-dd" var="mbirth" /> --%>
+								<label id="m_year" class="input">${member.m_birth}</label><br>
 							</td>
 						</tr>
 						<tr>
@@ -101,14 +102,14 @@
 						<tr>
 							<th>주소</th>
 							<td>
-								<input type="text" name="member_zipcode" id="member_zipcode" class="input" readonly size="10" value="${member.member_zipcode}">
+								<input type="text" name="m_zipcode" id="m_zipcode" class="input" readonly size="10" value="${fn:split(member.m_addr,'*')[0]}">
 								<input type="button" onclick="searchPost()" style="cursor: pointer" value="우편번호 찾기"><br><br>
-								<input type="text" name="m_faddr" id="m_faddr" class="input" size="60" value="${member.m_faddr}" readonly>
+								<input type="text" name="m_faddr" id="m_faddr" class="input" size="60" value="${fn:split(member.m_addr,'*')[1]}" readonly>
 							</td>
 						</tr>
 						<tr>
 							<th id="a">상세주소</th>
-							<td id="a"><input type="text" name="m_laddr" id="m_laddr" class="input" value="${member.m_laddr}"></td>
+							<td id="a"><input type="text" name="m_laddr" id="m_laddr" class="input" value="${fn:split(member.m_addr,'*')[2]}"></td>
 						</tr>
 					</table>
 					</form>

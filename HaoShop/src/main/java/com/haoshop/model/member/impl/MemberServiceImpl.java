@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.haoshop.model.member.MemberService;
 import com.haoshop.model.member.MemberVO;
+import com.haoshop.model.payment.PaymentVO;
 
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
@@ -54,6 +55,11 @@ public class MemberServiceImpl implements MemberService {
 		securityPWD(vo);
 		memberDAO.insertMember(vo);
 	}
+	
+	// 회원탈퇴
+	public void deleteMember(MemberVO vo) {
+		memberDAO.deleteMember(vo);
+	}
 
 	// 로그인
 	public MemberVO login(MemberVO vo) {
@@ -68,14 +74,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	// 회원 주문내역
-	/*public List<PaymentVO> getOrderList(MemberVO vo, int start, int end) {
+	public List<PaymentVO> getOrderList(MemberVO vo, int start, int end) {
 		return memberDAO.getOrderList(vo, start, end);
-	}*/
+	}
 
 	// 회원 주문내역 갯수
-	/*public int getCountOrder(MemberVO vo) {
+	public int getCountOrder(MemberVO vo) {
 		return memberDAO.getCountOrder(vo);
-	}*/
+	}
 	
 	// 임시비밀번호
 	public int forgotPWChkMember(MemberVO vo) {
