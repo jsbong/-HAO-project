@@ -3,6 +3,7 @@ package com.haoshop.model.cart;
 import java.util.Date;
 
 public class CartVO {
+	private int c_no;
 	private int m_no;
 	private int p_no;
 	private int pay_quantity;
@@ -14,6 +15,14 @@ public class CartVO {
 	private String p_color;
 	private String p_size;
 	private int p_sum;
+
+	public int getC_no() {
+		return c_no;
+	}
+
+	public void setC_no(int c_no) {
+		this.c_no = c_no;
+	}
 
 	public int getM_no() {
 		return m_no;

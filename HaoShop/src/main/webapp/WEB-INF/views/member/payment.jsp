@@ -46,6 +46,7 @@
 							<td>${pay.p_size}</td>
 							<td><fmt:formatNumber value="${pay.p_price}" pattern="#,###"/></td>
 							<td>${pay.pay_quantity}</td>
+							<td>-</td>
 							<c:set var="paySum" value="${pay.p_price * pay.pay_quantity}"/>
 							<td><fmt:formatNumber value="${paySum}" pattern="#,###"/></td>
 						</tr>

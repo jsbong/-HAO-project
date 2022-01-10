@@ -44,6 +44,8 @@
 			<c:otherwise>
 				<input type="hidden" id="m_id" name="m_id"
 					value="${member.m_id}" />
+				<input type="hidden" id="m_no" name="m_no"
+					value="${member.m_no}" />
 				<i class="fa fa-user-times  fa-2x" onclick="location.href='logout'"
 					style="cursor: pointer"></i>
 				<i class="fa fa-shopping-cart fa-2x" onclick="productCart()"

@@ -24,7 +24,6 @@
 				<th>옵션</th>
 				<th>판매가</th>
 				<th>수량</th>
-				<th>배송비</th>
 				<th>합계</th>
 				<th>선택</th>
 			</tr>
@@ -45,12 +44,11 @@
 					<td><fmt:formatNumber value="${cartprd.pay_quantity}" pattern="#,###"/></td><!-- 수량 -->
 					<td><fmt:formatNumber value="${cartprd.p_sum}" pattern="#,###"/></td><!-- 합계 -->
 					<td>
-						<input type="button" id="delCart" onClick="delCart('${cartprd.p_no}', '${member.m_no}')" value="삭제" />
+						<input type="button" id="delCart" onClick="delCart('${cartprd.p_no}', '${member.m_no}', '${cartprd.p_size}')" value="삭제" />
 						<input type="hidden" id="p_no" value="${cartprd.p_no}" />
 					</td>
 				</tr>
 				<c:set var="priceSum" value="${priceSum + cartprd.p_sum}" />
-				<c:set var="deliverySum" value="${deliverySum}" />
 			</c:forEach>
 			<tr align="center">
 				<td colspan="9">
@@ -71,9 +69,9 @@
 			<tr align="center">
 				<td colspan="2"><h2 id="p_sum"><fmt:formatNumber value="${priceSum}" pattern="#,###" /></h2></td>
 				<td><h2>+</h2></td>
-				<td colspan="2"><h2 id="prd_delivery"><fmt:formatNumber value="${deliverySum}" pattern="#,###" /></h2></td>
+				<td colspan="2"><h2><fmt:formatNumber value="${5000}" pattern="#,###" /></h2></td>
 				<td><h2>=</h2></td>
-				<td><h2 id="total"><fmt:formatNumber value="${priceSum + deliverySum}" pattern="#,###" /></h2></td>
+				<td><h2 id="total"><fmt:formatNumber value="${priceSum + 5000}" pattern="#,###" /></h2></td>
 			</tr>
 			<tr align="center">
 				<td colspan="7">

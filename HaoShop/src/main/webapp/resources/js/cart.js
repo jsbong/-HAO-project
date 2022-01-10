@@ -50,16 +50,17 @@ function buyCart(p_no, m_no) {
 	}
 }
 
-function delCart(p_no, m_no) {
+function delCart(p_no, m_no, p_size) {
 	if (!m_no) {
-		swal("", "비회원은 장바구니를 이용하실 수 없습니다.", "error")
+		swal("", "비회원은 장바구니를 이용하실 수 없습니다.", "error");
 	} else {
 		$.ajax({
 			type : "POST",
 			url : "delCart",
 			data : {
 				"m_no" : m_no,
-				"p_no" : p_no
+				"p_no" : p_no,
+				"p_size" : p_size
 			},
 			success : function(data) {
 				window.location.reload();
@@ -87,17 +88,14 @@ function cartClear() {
 }
 
 function calCart() {
-	var prd_delivery = 0;
-	var prd_sum = 0;
+	var p_sum = 0;
 	for (i = 0; i < $("input[name=chk]").length; i++) {
 		if ($("input[name=chk]")[i].checked == true) {
-			prd_delivery += parseInt($("input[name=prd_delivery]")[i].value);
-			prd_sum += parseInt($("input[name=prd_sum]")[i].value);
+			p_sum += parseInt($("input[name=p_sum]")[i].value);
 		}
 	}
-	document.getElementById("prd_delivery").innerHTML = numberWithCommas(prd_delivery);
-	document.getElementById("prd_sum").innerHTML = numberWithCommas(prd_sum);
-	document.getElementById("total").innerHTML = numberWithCommas(prd_delivery + prd_sum);
+	document.getElementById("p_sum").innerHTML = numberWithCommas(p_sum);
+	document.getElementById("total").innerHTML = numberWithCommas(p_sum);
 }
 
 function numberWithCommas(x) {

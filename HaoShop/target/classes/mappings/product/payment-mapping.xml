@@ -50,8 +50,8 @@
 	<select id="cartPaymentProduct" resultMap="payment">
 		<![CDATA[
 			SELECT * 
-			FROM CART NATURAL JOIN PRODUCT
-			WHERE M_NO=#{payment.m_no}
+			FROM CART , PRODUCT
+			WHERE M_NO=#{payment.m_no} AND PRODUCT.P_NO = CART.P_NO
 		]]>
 	</select>
 </mapper>
