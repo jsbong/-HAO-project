@@ -24,4 +24,9 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate);
 		return "main";
 	}
+	
+	@RequestMapping(value = "/about", method = RequestMethod.GET)
+	public String about() {
+		return "common/about";
+	}
 }

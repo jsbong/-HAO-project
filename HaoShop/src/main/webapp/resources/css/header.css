@@ -1,0 +1,110 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, 
+strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, 
+tbody, tfoot, thead, tr, th, td{
+    margin:0;padding:0;
+}
+a {
+    color: inherit; text-decoration: inherit;
+}
+img {
+    vertical-align: middle;
+}
+a img {
+    border: none;
+}
+li {
+    list-style: none;
+}
+address, em, i {
+    font-style: normal;
+}
+a:focus {
+    outline: none
+}
+button:focus {
+    outline: none
+}
+
+/* layout */
+/* header */
+header {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* .logo 설정 */
+header .logo {
+    width: 260px;
+    position: absolute;
+    left: 50%;
+    margin-left: -130px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    z-index: 1001;
+}
+
+/* nav */
+nav {
+    font-family: 'Nanum Gothic', sans-serif;
+    width: 100%;
+    padding: 0 20px;
+    /* 일단 해보는 css */
+    box-sizing: border-box;
+    height: 60px;
+    line-height: 60px;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    transition: all 0.5s;
+    font-size: 14px;
+}
+
+/* .menu_left 설정 */
+nav .menu_left {
+    float: left;
+}
+nav .menu_left li {
+    float: left;
+    padding: 0 10px;
+    margin-right: 2px;
+}
+
+/* .menu_left li 에 해당하는 하위카테고리(div) 설정 */
+nav .menu_left li > div {
+    position: absolute;
+    left: 0;
+    background: #fff;
+    color: #000;
+    width: 100%;
+    height: 100px;
+    display: none;
+    z-index: 1000;
+    border-bottom: 1px solid #000;
+    opacity: 0.8;
+}
+
+/* .menu_right 설정 */
+nav .menu_right {
+    float: right;
+}
+
+nav .menu_right li {
+    float: left;
+    padding: 0 10px;
+    margin-right: 2px;
+}
+
+
+

@@ -53,7 +53,7 @@
 				P_IMG,
 				P_EXPLAIN
 			) VALUES (
-				#{p_no},
+				PRODUCT_SEQ.NEXTVAL,
 				#{cate_no},
 				#{p_name},
 				#{p_price},

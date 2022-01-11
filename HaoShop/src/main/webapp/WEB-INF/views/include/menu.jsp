@@ -36,7 +36,7 @@
 					style="cursor: pointer"></i>
 			</c:when>
 			<c:when test="${member.m_id == null}">
-				<i class="fa fa-user-plus fa-2x" onclick="location.href='term'"
+				<i class="fa fa-user-plus fa-2x" onclick="location.href='signup'"
 					style="cursor: pointer"></i>
 				<i class="fa fa-user  fa-2x" onclick="location.href='login'"
 					style="cursor: pointer"></i>

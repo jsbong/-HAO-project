@@ -1,144 +1,125 @@
-@CHARSET "UTF-8";
-
-::-ms-input-placeholder {
-	color: #a8a8a8;
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+/*reset*/
+*, html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, 
+p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, 
+image, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, 
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{
+    margin:0;
+    padding:0;
 }
-
-::-webkit-input-placeholder {
-	color: #a8a8a8;
-}
-
-::-moz-placeholder {
-	color: #a8a8a8;
-}
-
 body {
-	font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial,
-		sans-serif;
-	font-size: 13px;
-	padding: 0;
-	margin: 0;
-	padding: 20px;
-	background: #fff;
+    font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.6;
+    position: relative;
 }
-
-h1 {
-	width: 100%;
-	margin: 0px auto;
-	text-align: center;
-}
-
 a {
-	color: #000;
-	text-decoration: none;
+    color: inherit; text-decoration: inherit;
+}
+li {
+    list-style: none;
 }
 
-/* ---------- LOGIN-FORM ---------- */
-#login-form {
-	background: #eaeaea;
-	color: #999;
-	font: 100%/1.5em sans-serif;
-	margin: 50px auto;
-	width: 300px;
-}
-
-#login-form input {
-	border: none;
-	font-family: inherit;
-	font-size: inherit;
-	margin: 0;
-	outline: none;
-	-webkit-appearance: none;
-}
-
-#login-form .login_title {
-	background-color: #66A5FA;
-	border-radius: 5px 5px 0 0;
-	color: #fff;
-	font-size: 14px;
-	margin: 0;
-	padding: 20px 0px;
-	text-align: center;
-	text-transform: uppercase;
-}
-
-#login-form fieldset {
+/* layout */
+section.login {
+	width: 100%;
+	height: 800px;
 	position: relative;
-	background: #B1D0FA;
-	border: none;
-	border-radius: 0 0 5px 5px;
-	margin: 0;
-	padding: 20px;
 }
 
-#login-form fieldset:before {
-	background-color: #B1D0FA;
-	content: "";
-	height: 8px;
-	left: 50%;
-	margin: -4px 0 0 -4px;
+section.login div.login_section {
+	width: 320px;
+	height: 300px;
 	position: absolute;
-	top: 0;
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	transform: rotate(45deg);
-	width: 8px;
+	left: 50%;
+	top: 50%;
+	margin: -170px 0 0 -150px;
+}
+/* .inputbox의 .login_logo */
+section.login .login_logo {
+	text-align: center;
+	padding: 10px 0;
+	margin-bottom: 20px;
 }
 
-#login-form input[type="text"], #login-form input[type="password"] {
-	border: 1px solid #dcdcdc;
-	padding: 12px 10px;
-	width: 238px;
+section.login .login_logo h2 {
+	font-size: 28px;
 }
 
-#login-form input[type="text"] {
-	border-radius: 3px 3px 0 0;
+/* .inputbox(로그인, 비밀번호창) */
+section.login .login_box {
+	position: relative;
+	margin: 10px 0;
 }
 
-#login-form input[type="password"] {
-	border-top: none;
-	border-radius: 0px 0px 3px 3px;
+section.login .login_box > input {
+	background: transparent; /* transparent: 투명 */
+	border: none;
+	border-bottom: solid 1px #ccc;
+	padding: 20px 0px 5px 0px;
+	font-size: 14px;
+	width: 100%;
 }
 
-#login-form input[type="button"] {
-	background: #7FB3FA;
-	border-radius: 3px;
-	color: #fff;
+section.login .login_box > input::placeholder {
+	color: transparent;
+}
+
+section.login .login_box > input:placeholder-shown + label { /* '+'는 인접형제선택자로 같은 부모를 가지고 바로 뒤에오는 'label'만 선택 */
+	color: #aaa;
+	font-size: 14px;
+	top: 15px; 
+}
+
+section.login .login_box > input:focus + label, label {
+	font-family: 'Nanum Gothic', sans-serif;
+	color: #8aa1a1;
+	font-size: 12px;
+	pointer-events: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+}
+
+section.login .login_box > input:focus, input:not(:placeholder-shown) {
+	border-bottom: solid 1px #8a1a1;
+	outline: none;
+}
+
+section.login .login_section div.forgot {
 	float: right;
+}
+section.login .login_section  div.forgot span {
+	float: left;
+	font-size: 12px;
+	padding: 0px 5px;
+	color: #8aa1a1;
+}
+
+section.login .login_section  div.forgot span:hover {
 	font-weight: bold;
-	margin-top: 20px;
-	padding: 12px 20px;
 	cursor: pointer;
 }
 
-#login-form input[type="button"]:hover {
-	background: #9CCEFF;
+section.login .login_section  div.forgot span:nth-child(2):hover {
+	font-weight: normal;
+	cursor: default;
 }
 
-.clearfix {
-	*zoom: 1;
-	font-size: 12px;
-	margin-top: 16px;
+section.login .login_section input[type=button] {
+	width: 100%;
+	height: 40px;
+	margin-top: 10px;
+	border: 0;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
-.clearfix:before, .clearfix:after {
-	content: "";
-	display: table;
-}
-
-.clearfix:after {
-	clear: both;
-}
-
-.info {
-	background: #e5e5e5;
-	border-radius: 50%;
-	display: inline-block;
-	height: 20px;
-	line-height: 20px;
-	margin: 0 10px 0 0;
-	text-align: center;
-	width: 20px;
+section.login .login_section input[type=button]:hover {
+	font-weight: bold;
+	background: #8aa1a1;
+	cursor: pointer;
 }

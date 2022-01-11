@@ -12,7 +12,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo:400,700,800&amp;subset=korean" rel="stylesheet">
 	</head>
 	<body>
-		<%@ include file="include/menu.jsp"%>
+		<%@ include file="include/header.jsp"%>
 		<section>
 			<div class="contents">
 				<article>
@@ -305,6 +305,6 @@
 			});
 			</script>
 		</section>
-		<%@ include file="include/csinfo.jsp"%>
+		<%@ include file="include/footer.jsp"%>
 	</body>
 </html>
