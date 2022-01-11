@@ -55,28 +55,8 @@ function doInsertProduct() {
 	}
 }
 
-function prdidChk() {
-	var p_no=$("#p_no").val();
-	if (!p_no) {
-		swal("", "물품 번호를 입력하세요" , "error");
-	} else {
-		$.ajax({
-			type : "POST",
-			url : "prdCheckID",
-			data : { "p_no" : p_no },
-			dataType : "JSON",
-			success : function(data) {
-				if (data == 0) {
-					$("#p_no").attr("disable", true);
-					swal("", "사용가능한 번호입니다.", "success");
-				} else if (data != 0) {
-					swal("", "이미 존재하는 번호입니다.", "error");
-				} else {
-					swal("a", "a", "error");
-				}
-			}, error : function(error) {
-				swal("", p_no, "error");
-			}
-		});
-	}
+function chking() {
+	var main_name = $("#cate_main_name option:selected").val();
+	var sub_name = $("#cate_sub_name option:selected").val();
+	$("#cate_no").val(main_name + sub_name);
 }

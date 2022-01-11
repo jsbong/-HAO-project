@@ -3,40 +3,40 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<title>Decorating's</title>
-		<script type="text/javascript" src="resources/js/login.js?129" charset="UTF-8"></script>
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<meta charset="UTF-8">
+		<title>HAOSHOP - SIGNUP</title>
+		<link rel="stylesheet" href="resources/css/login.css">
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="resources/css/login.css">
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script type="text/javascript" src="resources/js/login.js" charset="UTF-8"></script>
 	</head>
 	<body>
-		<%@ include file="../include/menu.jsp" %>
-		<section>
-			<div>
-				<form name="f0rm" id="f0rm">
-					<div id="login-form">
-						<h1 class="login_title">Login</h1>
-						<fieldset>
-								<input type="text" name="m_id" id="m_id" placeholder="ID">
-								<!-- onBlur="if(this.value=='')this.value='Email'" onFocus="if(this.value=='Email')this.value='' " -->
-								<input type="password" name="m_pwd" id="m_pwd" placeholder="Password" >
-								<!-- onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' " -->
-								<input type="button" value="Login" onclick="memberCheck()"/>
-								<footer class="clearfix">
-									<p>
-										<span class="info">?</span>
-										<a href="" onclick="forgotPWView()">Forgot Password</a>
-									</p>
-								</footer>
-						</fieldset>
+		<!-- header -->
+		<%@ include file="../include/header.jsp" %>
+		
+		<!-- login section -->
+		<section class="login">
+			<div class="login_section">
+				<div class="login_logo">
+					<h2>Login</h2>
+				</div>
+					<div class="login_box">
+						<input id="m_id" name="m_id" type="text" placeholder="아이디" required>
+						<label for="m_id">아이디</label>
 					</div>
-				</form>
+					<div class="login_box">
+						<input id="m_pwd" name="m_pwd" type="password" placeholder="비밀번호" required>
+						<label for="m_pwd">비밀번호</label>
+					</div>
+					<div class="forgot">
+						<span onclick="forgotPWView()">비밀번호 찾기</span> <!-- 이상함!!!!! -->
+						<span>|</span>
+						<span><a href="signup">회원가입</a></span>
+					</div>
+					<input type="button" onclick="memberCheck()" value="로그인">
 			</div>
-			<!-- end login-form -->
 		</section>
-		<%@ include file="../include/csinfo.jsp" %>
+		
+		<!-- footer -->
+		<%@ include file="../include/footer.jsp" %>
 	</body>
 </html>

@@ -1,0 +1,99 @@
+/* footer */
+/*reset*/
+*, html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, 
+p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, 
+image, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, 
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{
+    margin:0;
+    padding:0;
+}
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+a {
+    color: inherit; text-decoration: inherit;
+}
+li {
+    list-style: none;
+}
+
+footer {
+    width: 100%;
+    height: 500px;
+    border-top: 1px solid darkgray;
+}
+
+/* footer 안에 하위 요소들을 감싸고 있는 .footer_inner */
+footer .footer_inner {
+    width: 95%;
+    margin: auto;
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+/* .footer_inner 자식요소인 .logo */
+footer .footer_inner .logo {
+    float: left;
+    width: 14%;
+    text-align: center;
+    margin-right: 20px;
+}
+
+/* .footer_inner 자식요소인 .logo */
+footer .footer_inner .contact_area {
+    float: left;
+    width: 68%;
+}
+
+footer .footer_inner .contact_area  li{
+    float: left;
+    padding-top: 0;
+    padding-right: 8%;
+}
+
+footer .footer_inner .contact_area  li:first-child{
+    padding-left: 3%;
+}
+
+footer .footer_inner .contact_area  li:hover{
+ 	color: #000;
+ 	text-decoration: none;
+ 	font-weight: 400;
+}
+
+footer .footer_inner .contact_area  li p {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+footer .footer_inner .contact_area  li p:first-child {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+/* .footer_inner 자식요소인 .footer_right */
+footer .footer_inner .footer_right {
+    float: right;
+    width: 16%;
+}
+
+footer .footer_inner .footer_right .icon li{
+    float: left;
+    padding-right: 40px;
+    padding-top: 0;
+    box-sizing: border-box;
+}
+
+footer .footer_inner .footer_right .icon li a{
+    font-size: 20px;
+}
+
+/* .footer_inner 자식요소인 .copy */
+footer .footer_inner .copy {
+    clear: both;
+    font-size: 12px;
+    margin-left: 15px;
+    padding-top: 10px;
+    color: darkgray;
+}

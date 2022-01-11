@@ -18,7 +18,8 @@
 		</script>
 	</head>
 	<body>
-		<%@ include file="../include/menu.jsp" %>
+		<!-- header -->
+		<%@ include file="../include/header.jsp" %>
 		<div id="pdc">
 			<table id="product">
 				<c:if test="${(fn:length(map.list)) eq 0}">
@@ -70,6 +71,8 @@
 				</c:if>
 			</table>
 		</div>
-		<%@ include file="../include/csinfo.jsp" %>
+		
+		<!-- footer -->
+		<%@ include file="../include/footer.jsp" %>
 	</body>
 </html>
