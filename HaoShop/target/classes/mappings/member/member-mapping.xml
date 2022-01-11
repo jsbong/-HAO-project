@@ -13,6 +13,8 @@
 		<result property="m_phone" column="M_PHONE" />
 		<result property="m_addr" column="M_ADDR" />
 		<result property="m_regdate" column="M_REGDATE" />
+		<result property="authkey" column="AUTHKEY" />
+		<result property="authstatus" column="AUTHSTATUS" />
 	</resultMap>
 
 	<select id="checkID" resultType="java.lang.Integer">
@@ -113,4 +115,15 @@
 	<sql id="myp">
 		AND PAY_REGDATE BETWEEN ADD_MONTHS(SYSDATE, -3) AND SYSDATE
 	</sql>
+	
+	<!-- 이메일 인증키 -->
+	<update id="updateAuthkey">
+		UPDATE MEMBER SET AUTHKEY=#{authkey} WHERE M_EMAIL = #{m_email}
+	</update>
+	
+	<!-- 인증확인 후 상태 업데이트 -->
+	<update id="updateAuthstatus">
+		UPDATE MEMBER SET AUTHSTATUS=#{authstatus} WHERE M_ID=#{m_id}
+	</update>
+	
 </mapper>

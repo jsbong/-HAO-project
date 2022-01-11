@@ -35,6 +35,10 @@ public class MemberDAO {
 	public void deleteMember(MemberVO vo) {
 		mybatis.insert("MemberDAO.deleteMember", vo);
 	}
+	
+	public void create(MemberVO vo) {
+		mybatis.insert("MemberDAO.updateAuthkey", vo);
+	}
 
 	// 로그인
 	public MemberVO login(MemberVO vo) {
@@ -78,6 +82,14 @@ public class MemberDAO {
 
 	public int getCountMember(MemberVO vo) {
 		return mybatis.selectOne("MemberDAO.getCountMember", vo);
+	}
+
+	public void updateAuthkey(MemberVO vo) {
+		mybatis.update("MemberDAO.updateAuthkey", vo);
+	}
+
+	public void updateAuthstatus(MemberVO vo) {
+		mybatis.update("MemberDAO.updateAuthstatus", vo);
 	}
 }
 

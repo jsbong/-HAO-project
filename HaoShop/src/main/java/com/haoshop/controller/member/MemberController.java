@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -146,7 +147,7 @@ public class MemberController {
 		return "main";
 	}
 	
-	// 회원가입
+	// 회원탈퇴
 	@RequestMapping("/distroy")
 	public String withdrawal(MemberVO vo) {
 		System.out.println("탈퇴 완료....");
@@ -181,5 +182,22 @@ public class MemberController {
 	@RequestMapping(value="/forgotPW", method = RequestMethod.POST)
 	public String forgotPW(MemberVO vo) {
 		return "";
+	}
+	
+	@RequestMapping(value="/joinPost", method=RequestMethod.POST)
+	public String joinPost(@ModelAttribute("vo") MemberVO vo) throws Exception {
+		/*logger.info("currnent join member: " + vo.toString());*/
+		memberService.create(vo);
+		return "member/joinPost";
+	}
+	
+	@RequestMapping(value="joinConfirm", method=RequestMethod.GET)
+	public String emailConfirm(@ModelAttribute("vo") MemberVO vo, Model model) throws Exception {
+		vo.setAuthstatus(1);	// authstatus를 1로,, 권한 업데이트
+		memberService.updateAuthstatus(vo);
+		
+		model.addAttribute("auth_check", 1);
+		
+		return "/member/joinPost";
 	}
 }
