@@ -119,7 +119,9 @@ function doSignup() {
 				"authkey" : authkey
 			},
 			success : function(data) {
-				window.location.href="main";
+				swal("", "회원가입을 축하합니다.", "success").then(function(isConfirm) {
+					window.location.href="main";
+				});
 			}
 		});
 	}
@@ -144,7 +146,7 @@ function matchCode() {
 	var authkey = $("#authkey").val();
 	var oMsg = $("#mailChk");
 	if (!authkey) {
-		swal("", "", "error");
+		swal("", "인증번호를 입력하세요", "error");
 	} else {
 		oMsg.text("");
 		$.ajax({
@@ -159,6 +161,7 @@ function matchCode() {
 				else { 
 					oMsg.css("color", "red");
 					oMsg.text("인증 실패");
+					checkEMAIL = false;
 				}
 			}, error : function(error) { swal("", "오류 발생", "error"); }
 		});

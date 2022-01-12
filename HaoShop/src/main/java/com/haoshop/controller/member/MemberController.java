@@ -141,9 +141,10 @@ public class MemberController {
 
 	// 회원가입
 	@RequestMapping("/join")
-	public String signUp(MemberVO vo) {
+	public String signUp(MemberVO vo, HttpSession session) {
 		System.out.println("가입 성공....");
 		memberService.insertMember(vo);
+		session.removeAttribute("key");
 		return "main";
 	}
 	
@@ -202,7 +203,6 @@ public class MemberController {
 	@RequestMapping(value="/joinConfirm", method=RequestMethod.POST)
 	public String emailConfirm(@ModelAttribute("vo") MemberVO vo, HttpSession session) throws Exception {
 		String key = (String)session.getAttribute("key");
-		session.removeAttribute("key");
 		return key;
 	}
 }

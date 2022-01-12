@@ -17,6 +17,7 @@
             $(this).find("div:visible").slideUp("fast");
         });
     });
+    
     </script>
 </head>
 <body>
@@ -68,7 +69,8 @@
                 </li>
             </ul>
             <ul class="menu_right">
-                <li>SEARCH</li>
+                <!-- <li>SEARCH</li> -->
+	                
                 <c:choose>
                 	<c:when test="${member.m_id == null}">
                 		<li><a href="signup">JOIN</a></li>
@@ -81,7 +83,19 @@
                 </c:choose>
                 <li><a href="#">CART</a></li>
                 <li><a href="#">FORUM</a></li>
+        		<div id="search" align="center">
+			         <input type="text" name="sPrd" id="sPrd" placeholder="검색어 입력" onkeypress="if(event.keyCode == 13) {searchPrd(); return;}">
+			         <button type="button" id="searchBtn" onclick="searchPrd()" style="cursor: pointer">
+			            <strong>SEARCH</strong>
+			         </button>
+   				</div>
             </ul>
+		      <script>
+		         function searchPrd() {
+		            var sea = $("#sPrd").val();
+		            self.location = "searchPrd?sPrd=" + sea;
+		         }
+		      </script>
         </nav>
 </body>
 </html>
