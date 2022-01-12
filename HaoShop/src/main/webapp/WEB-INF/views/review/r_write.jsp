@@ -9,18 +9,19 @@
 <script src="resources/ckeditor/ckeditor.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
-function createB() {
+function createR() {
 	var m_no=$("#m_no").val();
+	var p_name=$("#p_name").val();
 	var m_id=$("#m_id").val();
-	var b_title=$("#b_title").val();
-	var b_content=CKEDITOR.instances.b_content.getData();
-	var titleLength=b_title.length;
+	var r_title=$("#r_title").val();
+	var r_content=CKEDITOR.instances.r_content.getData();
+	var titleLength=r_title.length;
 	
-	if(!b_title) {
+	if(!r_title) {
 		swal("", "제목을 입력하세요.", "error");
 	} else if(titleLength>50) {
 		swal("", "제목이 너무 깁니다.", "error");
-	} else if(b_content==""){ 
+	} else if(r_content==""){ 
 		 swal("", "글내용을 입력해 주세요!!.", "error");
 		 return false; 
 	} else {
@@ -36,14 +37,15 @@ function createB() {
 			    	{
 			    		$.ajax({
 							type : "POST",
-							url : "createBoard",
+							url : "createReview",
 							data : {
 								"m_no" : m_no,
+								"p_name" : p_name,
 								"m_id" : m_id,
-								"b_title" : b_title,
-								"b_content" : b_content
+								"r_title" : r_title,
+								"r_content" : r_content
 						}, success : function(data) {
-							location.href='board';
+							location.href='review';
 						}
 						});
 			    	});
@@ -55,7 +57,7 @@ function createB() {
 // 키보드로 글자수 입력 받았을 때 글자카운트 스크립트
 $(document).ready(function(){
 
-	$('#b_title').keyup(function(){
+	$('#r_title').keyup(function(){
 		// 남은 글자수를 구한다.
 		var titleLength = $(this).val().length; //현재 글자수
 		var remain = 50 - titleLength;
@@ -77,7 +79,7 @@ $(document).ready(function(){
 </script>
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <%@ include file="../include/menu.jsp" %>
-<title>${board.b_title}</title>
+<title>${review.r_title}</title>
 </head>
 <body>
 <center>
@@ -86,30 +88,31 @@ $(document).ready(function(){
 		<br/><br/>
 	<form>
 		<input type="hidden" name="m_no" id="m_no" value="${member.m_no}" />
+		<input type="hidden" name="p_name" id="p_name" value="${product.p_name}"/>
 		<input type="hidden" name="m_id" id="m_id" value="${member.m_id}" />
 		<table class="textb" width="100%">
 			<tr>
 			<td class="asd" width="60">제목</td>
 			<td  class="asd" align="left">
-			<input type="text" name="b_title" id="b_title" maxlength="70" size="70%" />
+			<input type="text" name="r_title" id="r_title" maxlength="70" size="70%" />
 			<span id="titleCount" style="color:green;">50</span><span>/50</span>
 			</td>
 			</tr>
 				
 			<tr>
 			<td colspan="2" align="left" height="500px">
-			<textarea name="b_content" id="b_content" cols="88" rows="80"></textarea>
+			<textarea name="r_content" id="r_content" cols="88" rows="80"></textarea>
 		<script>
-			CKEDITOR.replace( 'b_content', {} );
+			CKEDITOR.replace( 'r_content', {} );
 		</script>
 			</td>
 			</tr>
 		</table>
 		<br/><br/>
-		<input type="button" class="write" value="작성하기" onClick="createB()" />
+		<input type="button" class="r_write" value="작성하기" onClick="createR()" />
 	</form>
 	
-		<button style="float:right;" class="listp"onClick="location.href='board'">목록</button>
+		<button style="float:right;" class="listp"onClick="location.href='review'">목록</button>
 	</div>
 </center>
 <%@ include file="../include/csinfo.jsp" %>

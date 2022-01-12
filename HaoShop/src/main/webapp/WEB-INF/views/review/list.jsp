@@ -12,7 +12,7 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="resources/css/board.css?u">
+	<link rel="stylesheet" type="text/css" href="resources/css/review.css?u">
 <title>공지사항</title>
 </head>
 <body>
@@ -40,7 +40,7 @@
 				
 			<!-- 일반 사용자일 때 -->
 				<c:if test="${member.m_id != null && member.m_no != null}">
-					<button type="button" class="text" onClick="location.href='write'">글쓰기</button>
+					<button type="button" class="text" onClick="location.href='r_write'">글쓰기</button>
 				</c:if>
 			</div>
 			<br/><br/><br/>
@@ -55,25 +55,25 @@
 				</tr>
 				<c:forEach begin="0" end="${(fn:length(map.list))}" var="i">
 					<c:set var="row" value="${map.list[i]}" />
-						<input type="hidden" id="b_no" name="b_no" value="${row.b_no}"/>
+						<input type="hidden" id="r_no" name="r_no" value="${row.r_no}"/>
 					<c:choose>
 					<%-- 검색결과가 있을 때 --%>
 					<c:when test="${not empty row}">
-						<td class="list2">${row.b_no}</td>
+						<td class="list2">${row.r_no}</td>
 						<td class="list2">${row.m_no}</td>
-						<td  class="list2" style="text-align:left;"><a href="view?b_no=${row.b_no}">${row.b_title}</a>
+						<td  class="list2" style="text-align:left;"><a href="r_view?r_no=${row.r_no}">${row.r_title}</a>
 						<td  class="list2" style="text-align:center;">${row.m_id}</td>
 					<fmt:formatDate value="${now}" pattern="yyyyMMdd" var="today" />
-					<fmt:formatDate value="${row.b_regdate}" pattern="yyyyMMdd" var="regDate"/>
+					<fmt:formatDate value="${row.r_regdate}" pattern="yyyyMMdd" var="regDate"/>
 					<c:choose>
-					<c:when test="${today == b_regDate}" >
+					<c:when test="${today == r_regDate}" >
 						<td class="list2" style="color:red;">오늘</td>					
 					</c:when>
 					<c:otherwise>
-						<td class="list2">${row.b_regdate}</td>
+						<td class="list2">${row.r_regdate}</td>
 					</c:otherwise>
 					</c:choose>
-						<td class="list2">${row.b_viewcnt}</td>
+						<td class="list2">${row.reviewcnt}</td>
 					</tr>
 					</c:when>
 					<%-- 검색결과가 없을 떄 --%>
@@ -91,12 +91,12 @@
 			<!-- 페이지 네비게이션 출력 -->
 			<div align="center">
 				<c:if test="${map.pager.curBlock > 1}">
-					<a href="board?curPage=1
+					<a href="review?curPage=1
 							&searchOption=${searchOption}&keyword=${keyword}
 							&search=${search}">[처음]</a>
 				</c:if>
 				<c:if test="${map.pager.curBlock > 1}">
-					<a href="board?curPage=${map.pager.prevPage}
+					<a href="review?curPage=${map.pager.prevPage}
 							&searchOption=${searchOption}&keyword=${keyword}
 							&search=${search}">[이전]</a>
 				</c:if>
@@ -110,32 +110,32 @@
 						</c:when>
 						
 						<c:otherwise>
-							<a href="board?curPage=${num}
+							<a href="review?curPage=${num}
 							&searchOption=${searchOption}&keyword=${keyword}
 							&search=${search}">${num}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 			<!-- 검색 조건 뷰 -->
-			<form action="board" class="boardsearch" align="left">
+			<form action="review" class="reviewsearch" align="left">
 					<select name="searchOption" id="searchOption">
 						<option value="ALL" <c:out value="${map.searchOption=='ALL'?'selected':''}"/> >제목+이름+내용</option>
-						<option value="B_TITLE" <c:out value="${map.searchOption=='B_TITLE'?'selected':''}"/> >제목</option>
+						<option value="R_TITLE" <c:out value="${map.searchOption=='R_TITLE'?'selected':''}"/> >제목</option>
 						<option value="M_ID" <c:out value="${map.searchOption=='M_ID'?'selected':''}"/> >이름</option>
-						<option value="B_CONTENT" <c:out value="${map.searchOption=='B_CONTENT'?'selected':''}"/> >내용</option>
+						<option value="R_CONTENT" <c:out value="${map.searchOption=='R_CONTENT'?'selected':''}"/> >내용</option>
 					</select> 
 				<input type="text" name="keyword" placeholder="검색어 입력" id="keyword" value="${keyword}">
 				<input type="hidden" name="search" id="search" value="s"/>
 				<input type="submit" class="check2" value="조회"/>
 			</form>				
 				<c:if test="${map.pager.curBlock < map.pager.totBlock}">
-					<a href="board?curPage=${map.pager.nextPage}
+					<a href="review?curPage=${map.pager.nextPage}
 							&searchOption=${searchOption}&keyword=${keyword}
 							&search=${search}">[다음]</a>
 				</c:if>
 				<c:if test="${(map.pager.totPage > 5) && 
 				(map.pager.totPage != map.pager.curPage)}">
-					<a href="board?curPage=${map.pager.totPage}
+					<a href="review?curPage=${map.pager.totPage}
 							&searchOption=${searchOption}&keyword=${keyword}
 							&search=${search}">[끝]</a>
 				</c:if>

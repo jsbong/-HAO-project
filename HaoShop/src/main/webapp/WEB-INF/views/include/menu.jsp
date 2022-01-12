@@ -70,7 +70,7 @@
 </div>
 <div id="nav">
 	<ul>
-		<li onclick="location.href='category?cate_no=FAB20180110'">&nbsp;</li>
+		<li onclick="location.href='review'">리뷰</li>
 		<li class='Mirror'>OUTER
 			<ul>
 				<li	onclick="location.href='category?cate_no=100001'">Jacket</li>

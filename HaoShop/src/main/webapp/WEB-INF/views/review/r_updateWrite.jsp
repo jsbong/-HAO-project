@@ -8,17 +8,17 @@
 <link rel="stylesheet" type="text/css" href="resources/css/view.css?">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
-function updateB() {
-	var b_no=$("#b_no").val();
-	var b_title=$("#b_title").val();
-	var b_content=CKEDITOR.instances.b_content.getData();
-	var titleLength=b_title.length;
-	if(!b_title) {
+function updateR() {
+	var r_no=$("#r_no").val();
+	var r_title=$("#r_title").val();
+	var r_content=CKEDITOR.instances.r_content.getData();
+	var titleLength=r_title.length;
+	if(!r_title) {
 		swal("error", "제목을 입력하세요.", "error");
 	} else if(titleLength>50) {
 		swal("", "제목이 너무 깁니다.", "error");
 	} 
-	else if(b_content == ""){ 
+	else if(r_content == ""){ 
 		 swal("error", "글내용을 입력해 주세요!!.", "error");
 		 return false; 
 	} 
@@ -35,13 +35,13 @@ function updateB() {
 			    	{
 			    		$.ajax({
 							type : "POST",
-							url : "updateBoard",
+							url : "updateReview",
 							data : {
-								"b_no" : b_no,
-								"b_title" : b_title,
-								"b_content" : b_content
+								"r_no" : r_no,
+								"r_title" : r_title,
+								"r_content" : r_content
 						}, success : function(data) {
-							location.href="view?b_no="+b_no;
+							location.href="r_view?r_no="+r_no;
 						}
 					});
 			    	});
@@ -53,7 +53,7 @@ function updateB() {
 //키보드로 글자수 입력 받았을 때 글자카운트 스크립트
 $(document).ready(function(){
 	/* 키보드 이벤트 활용 */
-	$('#b_title').keyup(function(){
+	$('#r_title').keyup(function(){
 		// 남은 글자수를 구한다.
 		var titleLength = $(this).val().length; //현재 글자수
 		var remain = 50 - titleLength;
@@ -76,7 +76,7 @@ $(document).ready(function(){
 <script src="resources/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <%@ include file="../include/menu.jsp" %>
-<title>${board.b_title}</title>
+<title>${review.r_title}</title>
 </head>
 <body>
 <center>
@@ -86,45 +86,45 @@ $(document).ready(function(){
 		<br/><br/>
 
 	<form>
-		<input type="hidden" name="b_no" id="b_no" value="${board.b_no}"/>
+		<input type="hidden" name="r_no" id="r_no" value="${review.r_no}"/>
 		<table border="1" bordercolor="#E1DCDC" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 			<td width="70">제목</td>
 			<td align="left">
-			<input type="text" name="b_title" id="b_title" size="70%" maxlength="100" 
-			value="${board.b_title}" />
+			<input type="text" name="r_title" id="r_title" size="70%" maxlength="100" 
+			value="${review.r_title}" />
 			<span id="titleCount" style="color:green;">50</span><span>/50</span>
 			</td>
 			</tr>
 				
 			<tr>
 			<td>작성자</td>
-			<td align="left">${board.m_id}</td>
+			<td align="left">${review.m_id}</td>
 			</tr>
 				
 			<tr>
 			<td>작성일</td>
-			<td align="left">${board.b_regdate}</td>
+			<td align="left">${review.r_regdate}</td>
 			</tr>
 				
 			<tr>
 			<td>조회수</td>
-			<td align="left">${board.b_viewcnt}</td>
+			<td align="left">${review.reviewcnt}</td>
 			</tr>
 				
 			<tr>
 			<td colspan="2" align="left" height="500px">
-			<textarea name="b_content" id="b_content" cols="88" rows="80">${board.b_content}</textarea>
+			<textarea name="r_content" id="r_content" cols="88" rows="80">${review.r_content}</textarea>
 		<script>
-   		 	CKEDITOR.replace( 'b_content', {} );
+   		 	CKEDITOR.replace( 'r_content', {} );
 		</script>
 			</td>
 			</tr>
 		</table>
 		<br/><br/>
-		<input id="list_btn" type="button" value="저장" onclick="updateB()" />
+		<input id="list_btn" type="button" value="저장" onclick="updateR()" />
 	</form>
-		<button id="list_btn" style="float:right;" onclick="location.href='board'">목록</button>
+		<button id="list_btn" style="float:right;" onclick="location.href='review'">목록</button>
 	</div>
 </center>
 <%@ include file="../include/csinfo.jsp" %>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReviewDAO">
+	
+	
+	<!-- 글쓰기 -->
+	<insert id="createReview">
+		INSERT INTO REVIEW (
+			R_NO,
+			M_NO,
+			R_TITLE, 
+			R_CONTENT, 
+			M_ID
+		) VALUES(
+			REVIEW_SEQ.NEXTVAL,
+			#{m_no},
+			#{r_title}, 
+			#{r_content}, 
+			#{m_id}
+		)
+	</insert>
+	
+	
+	<!-- <update id="join">
+		UPDATE BOARD 
+		SET M_NO = (SELECT M_NO
+					FROM MEMBER
+					WHERE BOARD.M_ID = MEMBER.M_ID)
+	</update> -->
+
+	<!-- 글 수정 -->
+	<update id="updateReview">
+		UPDATE REVIEW
+		SET
+		R_TITLE = #{r_title},
+		R_CONTENT = #{r_content}
+		WHERE
+		R_NO = #{r_no}
+	</update>
+
+	<!-- 글 삭제 -->
+	<delete id="deleteReview">
+		DELETE FROM REVIEW WHERE R_NO = #{r_no} 
+	</delete>
+
+	<!-- 글 삭제 체크 -->
+	<select id="checkReview" resultType="java.lang.Integer"> 
+		SELECT COUNT(*) FROM REVIEW WHERE R_NO = #{r_no} 
+	</select>
+
+	<!-- 조회수 -->
+	<update id="reviewCnt">
+		UPDATE REVIEW
+		SET
+		REVIEWCNT = REVIEWCNT+1
+		WHERE
+		R_NO = #{r_no}
+	</update>
+
+	<!-- 게시글 보기 -->
+	<select id="readReview" resultType="review">
+		SELECT 
+		*
+		FROM 
+		REVIEW
+		WHERE
+		R_NO = #{r_no}
+	</select>
+	
+	<!-- 이전글 -->
+	<select id="previousB" resultType="review">
+	<![CDATA[
+	SELECT * FROM REVIEW WHERE R_NO = 
+	(SELECT MAX(R_NO) FROM REVIEW WHERE  R_NO < #{r_no})
+	]]>
+	</select>
+	
+	<!-- 다음글 -->
+	<select id="nextB" resultType="review">
+	<![CDATA[
+	SELECT * FROM REVIEW WHERE R_NO = 
+	(SELECT MIN(R_NO) FROM REVIEW WHERE R_NO > #{r_no})
+	]]>
+	</select>
+
+	<!-- 목록 -->
+	<select id="listAllReview" resultType="review">
+		SELECT * FROM 
+		(SELECT ROWNUM AS RN, A.* FROM (SELECT * FROM (
+		SELECT * FROM REVIEW <include refid="search"></include>
+		) ORDER BY R_NO DESC, R_REGDATE DESC) A ) 
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 게시글 갯수 -->
+	<select id="getCountReview" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM REVIEW <include refid="search"></include>
+	</select>
+	
+	<!-- 검색조건-->
+	<sql id="search">
+		<choose>
+			<when test="searchOption == 'ALL'">
+				WHERE (M_ID LIKE '%'||#{keyword}||'%'
+				OR R_CONTENT LIKE LOWER('%'||#{keyword}||'%')
+				OR R_CONTENT LIKE UPPER('%'||#{keyword}||'%')
+				OR R_TITLE LIKE LOWER('%'||#{keyword}||'%')
+				OR R_TITLE LIKE UPPER('%'||#{keyword}||'%')
+				)
+			</when>
+			<otherwise>
+				WHERE 
+				(${searchOption} LIKE LOWER('%'||#{keyword}||'%') OR
+				${searchOption} LIKE UPPER('%'||#{keyword}||'%'))
+			</otherwise>
+		</choose>
+	</sql>
+	
+	
+</mapper>
