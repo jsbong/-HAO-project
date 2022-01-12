@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -140,18 +141,24 @@ public class MemberController {
 
 	// 회원가입
 	@RequestMapping("/join")
-	public String signUp(MemberVO vo) {
+	public String signUp(MemberVO vo, HttpSession session) {
 		System.out.println("가입 성공....");
 		memberService.insertMember(vo);
+		session.removeAttribute("key");
 		return "main";
 	}
 	
-	// 회원가입
+	// 회원탈퇴
 	@RequestMapping("/distroy")
 	public String withdrawal(MemberVO vo) {
 		System.out.println("탈퇴 완료....");
 		memberService.deleteMember(vo);
 		return "main";
+	}
+
+	@RequestMapping(value = "/email", method = RequestMethod.GET)
+	public String emailView(MemberVO vo) {
+		return "member/email";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -165,7 +172,7 @@ public class MemberController {
 		MemberVO member = memberService.login(vo);
 		if (member != null) {
 			session.setAttribute("member", member);
-			return "main";
+			return "main";				
 		} else {
 			return "member/login";
 		}
@@ -181,5 +188,21 @@ public class MemberController {
 	@RequestMapping(value="/forgotPW", method = RequestMethod.POST)
 	public String forgotPW(MemberVO vo) {
 		return "";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/joinPost", method=RequestMethod.POST)
+	public String joinPost(@ModelAttribute("vo") MemberVO vo, HttpSession session) throws Exception {
+		String key = memberService.create(vo);
+		session.setAttribute("key", key);
+		System.out.println(key);
+		return "ok";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/joinConfirm", method=RequestMethod.POST)
+	public String emailConfirm(@ModelAttribute("vo") MemberVO vo, HttpSession session) throws Exception {
+		String key = (String)session.getAttribute("key");
+		return key;
 	}
 }

@@ -35,7 +35,7 @@ public class MemberDAO {
 	public void deleteMember(MemberVO vo) {
 		mybatis.insert("MemberDAO.deleteMember", vo);
 	}
-
+	
 	// 로그인
 	public MemberVO login(MemberVO vo) {
 		return (MemberVO) mybatis.selectOne("MemberDAO.login", vo);

@@ -18,6 +18,9 @@ public interface MemberService {
 	// 회원탈퇴
 	void deleteMember(MemberVO vo);
 	
+	//이메일 인증코드
+	String create(MemberVO vo) throws Exception;
+	
 	// 마이페이지
 	// 회원 주문내역
 	List<PaymentVO> getOrderList(MemberVO vo, int start, int end);
@@ -36,4 +39,5 @@ public interface MemberService {
 	// 회원 리스트
 	List<MemberVO> getMemberList(int start, int end, MemberVO vo);
 	int getCountMember(MemberVO vo);
+
 }

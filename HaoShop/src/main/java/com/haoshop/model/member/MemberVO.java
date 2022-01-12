@@ -3,14 +3,14 @@ package com.haoshop.model.member;
 import java.sql.Date;
 
 public class MemberVO {
-	private int m_no; 		// 회원 고유코드
-	private String m_id; 	// 회원 아이디
-	private String m_pwd; 	// 회원 비밀번호
+	private int m_no; // 회원 고유코드
+	private String m_id; // 회원 아이디
+	private String m_pwd; // 회원 비밀번호
 	private String m_email; // 회원 이메일
-	private String m_name;	 // 회원 이름
-	private Date m_birth; 	// 회원 생년월일
+	private String m_name; // 회원 이름
+	private Date m_birth; // 회원 생년월일
 	private String m_phone; // 회원 연락처
-	private String m_addr; 	// 회원 주소
+	private String m_addr; // 회원 주소
 	private Date m_regdate; // 회원 가입일
 
 	public int getM_no() {

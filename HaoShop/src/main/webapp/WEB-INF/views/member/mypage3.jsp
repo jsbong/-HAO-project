@@ -56,9 +56,8 @@
 						<tr>
 							<th>생년월일</th>
 							<td>
-								<%-- <fmt:parseDate value="${member.m_birth}" pattern="yyyy-MM-ddHH:mm:ss" var="m_birth" /> --%>
-								<%-- <fmt:formatDate value="${m_birth}" pattern="yyyy-MM-dd" var="mbirth" /> --%>
-								<label id="m_year" class="input">${member.m_birth}</label><br>
+								<fmt:formatDate value="${member.m_birth}" pattern="yy-MM-dd" var="m_birth" />
+								<label id="m_year" class="input">${m_birth}</label><br>
 							</td>
 						</tr>
 						<tr>

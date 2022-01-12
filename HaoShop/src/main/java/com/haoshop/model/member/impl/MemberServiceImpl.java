@@ -5,6 +5,7 @@ import java.util.List;
 import org.bouncycastle.jcajce.provider.digest.SHA3;
 import org.bouncycastle.util.encoders.Hex;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.haoshop.model.member.MemberService;
@@ -15,7 +16,9 @@ import com.haoshop.model.payment.PaymentVO;
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
-
+	@Autowired
+	private JavaMailSender mailSender;
+	
 	// 패스워드 암호화
 	public void securityPWD(MemberVO vo) {
 		SHA3.DigestSHA3 digestSHA3 = new SHA3.DigestSHA3(512);
@@ -38,7 +41,34 @@ public class MemberServiceImpl implements MemberService {
 		}
 		String imPW = sb.toString();
 	}
+	
+	// 이메일 인증키 생성
+	public String create(MemberVO vo) throws Exception {
+		// 임의의 authkey 생성
+		String authkey = new TempKey().getKey(10, false);
 
+		// mail 작성 관련 
+		MailUtils sendMail = new MailUtils(mailSender);
+
+		sendMail.setSubject("[HAP Shop] 회원가입 이메일 인증");
+		sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
+				.append(authkey)
+				/*.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
+				.append("<a href='http://localhost:8181/HaoShop/joinConfirm?m_id=")
+				.append(vo.getM_id())
+				.append("&m_email=")
+				.append(vo.getM_email())
+				.append("&authkey=")
+				.append(authkey)
+				.append("' target='_blenk'>이메일 인증 확인</a>")*/
+				.toString());
+		sendMail.setFrom("haoshop40@gmail.com ", "hao");
+		sendMail.setTo(vo.getM_email());
+		sendMail.send();
+		return authkey;
+	}
+	
+	
 	// ID 중복검사
 	public int checkID(MemberVO vo) {
 		return memberDAO.checkID(vo);
@@ -92,7 +122,7 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.forgotPWUpdate(vo);
 	}
 
-	// 테스트
+	
 	public List<MemberVO> getMemberList(int start, int end, MemberVO vo) {
 		return memberDAO.getMemberList(start, end, vo);
 	}
