@@ -55,11 +55,11 @@
 			</c:otherwise>
 		</c:choose>
 		<div id="search" align="center">
-         <input type="text" name="sPrd" id="sPrd" placeholder="검색어 입력" onkeypress="if(event.keyCode == 13) {searchPrd(); return;}">
-         <button type="button" id="searchBtn" onclick="searchPrd()" style="cursor: pointer">
-            <strong>검색</strong>
-         </button>
-      </div>
+		<input type="text" name="sPrd" id="sPrd" placeholder="검색어 입력" onkeypress="if(event.keyCode == 13) {searchPrd(); return;}">
+		<button type="button" id="searchBtn" onclick="searchPrd()" style="cursor: pointer">
+			<strong>검색</strong>
+		</button>
+		</div>
       <script>
          function searchPrd() {
             var sea = $("#sPrd").val();

@@ -1,21 +1,5 @@
 @CHARSET "UTF-8";
 
-::-ms-input-placeholder {
-	color: #a8a8a8;
-}
-
-::-webkit-input-placeholder {
-	color: #a8a8a8;
-}
-
-::-moz-placeholder {
-	color: #a8a8a8;
-}
-
-::-moz-placeholder {
-	color: #a8a8a8;
-}
-
 body {
 	font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial,
 		sans-serif;
