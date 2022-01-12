@@ -21,7 +21,7 @@ import com.haoshop.model.board.BoardVO;
 @Controller
 @SessionAttributes("board")
 public class BoardController {
-
+//
 	@Autowired
 	private BoardService boardService;
 
