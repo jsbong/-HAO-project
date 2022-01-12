@@ -44,7 +44,6 @@
 	<body>
 		<!-- header -->
 		<%@ include file="include/header.jsp"%>
-
 		<!-- main banner -->
 		<section class="visual">
         <!-- 슬라이드 -->

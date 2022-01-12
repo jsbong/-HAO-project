@@ -16,7 +16,7 @@
 		<title>Decorating's</title>
 	</head>
 	<body>
-		<%@ include file="../include/menu.jsp"%>
+		<%@ include file="../include/header.jsp" %>
 		<div align="center">
 			<h1 class="my">MY PAGE</h1>
 			<table class="list">

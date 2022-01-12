@@ -48,7 +48,7 @@
 					value="${member.m_no}" />
 				<i class="fa fa-user-times  fa-2x" onclick="location.href='logout'"
 					style="cursor: pointer"></i>
-				<i class="fa fa-shopping-cart fa-2x" onclick="productCart()"
+				<i class="fa fa-shopping-cart fa-2x" onclick="productCart1()"
 					style="cursor: pointer"></i>
 				<i class="fa fa-shopping-bag fa-2x" onClick="mypBtn()"
 					style="cursor: pointer"></i>

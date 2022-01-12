@@ -14,7 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body>
-		<%@ include file="../include/menu.jsp" %>
+		<%@ include file="../include/header.jsp" %>
 		<h1>상품목록</h1>
 		<table class="cart" align="center">
 			<tr>

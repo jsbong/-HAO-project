@@ -91,6 +91,7 @@ public class CartController {
 	// 장바구니
 	@RequestMapping("/productCart")
 	public String cartList(CartVO vo, Model model) {
+		System.out.println("============================");
 		model.addAttribute("cartPrd", CartService.getProductCartList(vo));
 		return "member/cart";
 	}

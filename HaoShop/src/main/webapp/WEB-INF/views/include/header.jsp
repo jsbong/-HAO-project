@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Header</title>
+    <script src="resources/js/login.js" charset="UTF-8"></script>
     <link rel="stylesheet" href="resources/css/header.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
@@ -21,6 +22,7 @@
     </script>
 </head>
 <body>
+	<form name="frm" id="frm">
         <header>
             <a href="main" class="logo">HOW ABOUT OOTD</a>
         </header>
@@ -79,16 +81,19 @@
                 	<c:otherwise>
                 		<li><a href="mypage?m_no=${member.m_no}">MYPAGE</a></li>
                 		<li><a href="logout">LOGOUT</a></li>
-                	</c:otherwise>
-                </c:choose>
-                <li><a href="#">CART</a></li>
-                <li><a href="#">FORUM</a></li>
-        		<div id="search" align="center">
-			         <input type="text" name="sPrd" id="sPrd" placeholder="검색어 입력" onkeypress="if(event.keyCode == 13) {searchPrd(); return;}">
-			         <button type="button" id="searchBtn" onclick="searchPrd()" style="cursor: pointer">
-			            <strong>SEARCH</strong>
-			         </button>
-   				</div>
+                		<input type="hidden" id="m_id" name="m_id" value="${member.m_id}" />
+						<input type="hidden" id="m_no" name="m_no" value="${member.m_no}" />
+	                	<li><a href="#" onclick="productCart();">CART</a></li>
+	                	<!-- <li><a href="productCart">CART</a></li> -->
+	                	<li><a href="#">FORUM</a></li>
+	        		<div id="search" align="center">
+				         <input type="text" name="sPrd" id="sPrd" placeholder="검색어 입력" onkeypress="if(event.keyCode == 13) {searchPrd(); return;}">
+				         <button type="button" id="searchBtn" onclick="searchPrd()" style="cursor: pointer">
+				            <strong>SEARCH</strong>
+				         </button>
+	   				</div>
+   					</c:otherwise>
+   				</c:choose>
             </ul>
 		      <script>
 		         function searchPrd() {
@@ -97,5 +102,6 @@
 		         }
 		      </script>
         </nav>
+        </form>
 </body>
 </html>
