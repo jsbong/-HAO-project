@@ -59,7 +59,7 @@ public class ProductDAO {
 		return mybatis.selectList("ProductDAO.getAdminProductList", map);
 	}
 
-	// 리스트 갯수 체크
+	// 서브 카테고리 상품 갯수 체크
 	public int getCountProduct(ProductVO vo) {
 		return mybatis.selectOne("ProductDAO.getCountProduct", vo);
 	}

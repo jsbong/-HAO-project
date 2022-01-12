@@ -1,14 +1,14 @@
 package com.haoshop.home;
 
 public class Pager {
-	public static final int PAGE_SCALE = 12;// 페이지당 게시물수
-	public static final int BLOCK_SCALE = 5;// 화면당 페이지수
+	public static final int PAGE_SCALE = 16;// 페이지당 게시물수
+	public static final int BLOCK_SCALE = 2;// 화면당 페이지수
 
-	private int curPage;	// 현재 페이지
-	private int prevPage;	// 이전 페이지
-	private int nextPage;	// 다음페이지
+	private int curPage;	// 현재 페이지 넘버
+	private int prevPage;	// 이전 페이지 넘버
+	private int nextPage;	// 다음페이지 넘버
 	private int totPage;	// 전체 페이지 갯수
-	private int totBlock;	// 전체 페이지 블록 객수
+	private int totBlock;	// 전체 페이지 블록 갯수
 	private int curBlock;	// 현재 블록
 	private int prevBlock;	// 이전 블록
 	private int nextBlock;	// 다음블록
@@ -21,7 +21,7 @@ public class Pager {
 	// Pager(레코드 갯수, 출력할페이지번호)
 	public Pager(int count, int curPage) {
 		curBlock = 1;			// 현재블록 번호
-		this.curPage = curPage;	// 현제 페이지 번호
+		this.curPage = curPage;	// 현제 페이지 번호 (default 1)
 		setTotPage(count);		// 전체 페이지 갯수 계산
 		setPageRange();			// #{start},#{end} 값 계산
 		setTotBlock();			// 전체 블록 갯수 계산

@@ -3,308 +3,102 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<title>Decorating's</title>
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<meta charset="UTF-8">
+		<title>HAOSHOP</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="resources/css/main.css">
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo:400,700,800&amp;subset=korean" rel="stylesheet">
+		<script>
+	       $(document).ready(function() {
+	           $(".slide").not(".active").hide(); // 화면 로딩 후 첫번째 div를 제외한 나머지 숨김
+	
+	           setInterval(nextSlide, 4000); // 4초(4000)마다 다음 슬라이드로 넘어감
+	       })
+	
+	       // 다음 슬라이드로 넘어가는 메소드(무한반복)
+	       function nextSlide() {
+	           $(".slide").hide();
+	           var allSide = $(".slide");
+	           var currentIndex = 0;
+	
+	           $(".slide").each(function(index, item) { // index .slide 순서
+	               if($(this).hasClass("active")) {
+	                   currentIndex = index; // currnetIndex는 다음 .slide 인덱스 번호를 가짐
+	               }
+	           });
+	           var nexIndex = 0;
+	
+	           if(currentIndex >= allSide.length-1) { // 현재 인덱스가 allSide 개수 -1 보다 같거나 커지면
+	               nexIndex = 0; // 처음 인덱스로 돌아감
+	           } else {
+	               // 현재 슬라이드의 index에서 한 칸 만큼 앞으로 간 index 지정
+	               nexIndex = currentIndex+1;
+	           }
+	
+	           $(".menu:after").css("width", "0%");
+	           $(".slide").removeClass("active");
+	           $(".slide").eq(nexIndex).addClass("active");
+	           $(".slide").eq(nexIndex).show();
+	       }
+		</script>
 	</head>
 	<body>
+		<!-- header -->
 		<%@ include file="include/header.jsp"%>
-		<section>
-			<div class="contents">
-				<article>
-					<div class="banner">
-						<script>
-							$(document).ready(function() {
-								// 사용할 배너
-								var $banner = $(".banner").find("ul");
-								// 배너 이미지의 폭
-								var $bannerWidth = $banner.children().outerWidth();
-								// 높이
-								var $bannerHeight = $banner.children().outerHeight();
-								// 배너 이미지의 갯수
-								var $bannerLength = $banner.children().length;
-								// 정해진 초마다 함수 실행
-								var rollingId;
-								// 다음 이미지로 롤링 애니메이션 할 시간차
-								rollingId = setInterval(function() {
-									rollingStart();
-								}, 2000);
-								// 마우스 오버시 롤링을 멈춘다.
-								$banner.mouseover(function() {
-									clearInterval(rollingId);
-									$(this).css("cursor", "pointer");
-								});
-								// 마우스 아웃되면 다시 시작
-								$banner.mouseout(function() {
-									rollingId = setInterval(function() {
-										rollingStart();
-									}, 2000);
-									
-									$(this).css("cursor", "default");
-								});
-								
-								function rollingStart() {
-									$banner.css("width", $bannerWidth * $bannerLength + "px");
-									$banner.css("height", $bannerHeight + "px");
-									
-									//배너의 좌측 위치를 옮겨 준다.
-									//숫자는 롤링 진행되는 시간이다.
-									$banner.animate({left : -$bannerWidth + "px"}, 1500, function() {
-										//첫번째 이미지를 마지막 끝에 복사(이동이 아니라 복사)해서 추가한다.
-										$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
-										//뒤로 복사된 첫번재 이미지는 필요 없으니 삭제한다.
-										$(this).find("li:first").remove();
-										//다음 움직임을 위해서 배너 좌측의 위치값을 초기화 한다.
-										$(this).css("left", 0);
-										//이 과정을 반복하면서 계속 롤링하는 배너를 만들 수 있다.
-									});
-								}
-							});
-						</script>
-						<ul>
-							<li><img src="resources/img/main1.jpg" width="1380px" height="550px"></li>
-							<li><img src="resources/img/main2.jpg" width="1380px" height="550px"></li>
-							<li><img src="resources/img/main3.jpg" width="1380px" height="550px"></li>
-						</ul>
-					</div>
-				</article>
-			</div>
-			<h2 align="center" id="ca">거울</h2>
-			<hr align="center" width="1400px">
-			<img id="back" src="resources/img/slider/left.png">
-			<div class="slide">
-				<ul>
-					<li>
-						<img src="resources/img/slider/mirror/1.png">
-						<img src="resources/img/slider/mirror/2.png">
-						<img src="resources/img/slider/mirror/3.png">
-						<img src="resources/img/slider/mirror/4.png">
-						<img src="resources/img/slider/mirror/5.png">
-					</li>
-				</ul>
-			</div>
-		<img id="next" src="resources/img/slider/right.png">
-		<script type="text/javascript">
-			$(document).ready(function() {
-				var imgs;
-				var img_count;
-				var img_position = 1;
-				
-				imgs = $(".slide ul");
-				img_count = imgs.children().length;
 
-				//버튼을 클릭했을 때 함수 실행
-				$('#back').click(function() { back(); });
-				$('#next').click(function() { next(); });
-				
-				function back() {
-					if (1 < img_position) {
-						imgs.animate({ left : '+=1000px' });
-						img_position--;
-					}
-				}
-				function next() {
-					if (img_count > img_position) {
-						imgs.animate({ left : '-=1000px' });
-						img_position++;
-					}
-				}
-			});
-		</script>
-		<h2 align="center" id="ca">식탁용 제품</h2>
-		<hr align="center" width="1400px">
-		<img id="back2" src="resources/img/slider/left.png">
-		<div class="slide2">
-			<ul>
-				<li>
-					<img src="resources/img/slider/table/1.png"> 
-					<img src="resources/img/slider/table/2.png"> 
-					<img src="resources/img/slider/table/3.png"> 
-					<img src="resources/img/slider/table/4.png"> 
-					<img src="resources/img/slider/table/5.png">
-				</li>
-				<li>
-					<img src="resources/img/slider/table/6.png">
-					<img src="resources/img/slider/table/7.png">
-					<img src="resources/img/slider/table/8.png">
-					<img src="resources/img/slider/table/9.png">
-					<img src="resources/img/slider/table/10.png">
-				</li>
-			</ul>
-		</div>
-		<img id="next2" src="resources/img/slider/right.png">
-		<script type="text/javascript">
-			$(document).ready(function() {
-				var imgs;
-				var img_count;
-				var img_position = 1;
-
-				imgs = $(".slide2 ul");
-				img_count = imgs.children().length;
-
-				//버튼을 클릭했을 때 함수 실행
-				$('#back2').click(function() { back(); });
-				$('#next2').click(function() { next(); });
-
-				function back() {
-					if (1 < img_position) {
-						imgs.animate({ left : '+=1000px' });
-						img_position--;
-					}
-				}
-				function next() {
-					if (img_count > img_position) {
-						imgs.animate({ left : '-=1000px' });
-						img_position++;
-					}
-				}
-			});
-		</script>
-		<h2 align="center" id="ca">장식품</h2>
-		<hr align="center" width="1400px">
-		<img id="back3" src="resources/img/slider/left.png">
-		<div class="slide3">
-			<ul>
-				<li><img src="resources/img/slider/deco/6.png"> <img
-					src="resources/img/slider/deco/7.png"> <img
-					src="resources/img/slider/deco/8.png"> <img
-					src="resources/img/slider/deco/9.png"> <img
-					src="resources/img/slider/deco/10.png"></li>
-				<li><img src="resources/img/slider/deco/6.png"> <img
-					src="resources/img/slider/deco/7.png"> <img
-					src="resources/img/slider/deco/8.png"> <img
-					src="resources/img/slider/deco/9.png"> <img
-					src="resources/img/slider/deco/10.png"></li>
-			</ul>
-
-		</div>
-		<img id="next3" src="resources/img/slider/right.png">
-		<script type="text/javascript">
-			$(document).ready(function() {
-				var imgs;
-				var img_count;
-				var img_position = 1;
-
-				imgs = $(".slide3 ul");
-				img_count = imgs.children().length;
-
-				//버튼을 클릭했을 때 함수 실행
-				$('#back3').click(function() { back(); });
-				$('#next3').click(function() { next(); });
-				
-				function back() {
-					if (1 < img_position) {
-						imgs.animate({ left : '+=1000px' });
-						img_position--;
-					}
-				}
-				function next() {
-					if (img_count > img_position) {
-						imgs.animate({ left : '-=1000px' });
-						img_position++;
-					}
-				}
-			});
-		</script>
-		<h2 align="center" id="ca">조명</h2>
-		<hr align="center" width="1400px">
-		<img id="back4" src="resources/img/slider/left.png">
-		<div class="slide4">
-
-			<ul>
-				<li><img src="resources/img/slider/lamp/1.png"> <img
-					src="resources/img/slider/lamp/2.png"> <img
-					src="resources/img/slider/lamp/3.png"> <img
-					src="resources/img/slider/lamp/4.png"> <img
-					src="resources/img/slider/lamp/5.png"></li>
-				<li><img src="resources/img/slider/lamp/1.png"> <img
-					src="resources/img/slider/lamp/2.png"> <img
-					src="resources/img/slider/lamp/3.png"> <img
-					src="resources/img/slider/lamp/4.png"> <img
-					src="resources/img/slider/lamp/5.png"></li>
-			</ul>
-
-		</div>
-		<img id="next4" src="resources/img/slider/right.png">
-		<script type="text/javascript">
-			$(document).ready(function() {
-				var imgs;
-				var img_count;
-				var img_position = 1;
-
-				imgs = $(".slide4 ul");
-				img_count = imgs.children().length;
-
-				//버튼을 클릭했을 때 함수 실행
-				$('#back4').click(function() { back(); });
-				$('#next4').click(function() { next(); });
-
-				function back() {
-					if (1 < img_position) {
-						imgs.animate({ left : '+=1000px' });
-						img_position--;
-					}
-				}
-				function next() {
-					if (img_count > img_position) {
-						imgs.animate({ left : '-=1000px' });
-						img_position++;
-					}
-				}
-			});
-		</script>
-		<h2 align="center" id="ca">천</h2>
-		<hr align="center" width="1400px">
-		<img id="back5" src="resources/img/slider/left.png">
-		<div class="slide5">
-
-			<ul>
-				<li><img src="resources/img/slider/fabric/1.png"> <img
-					src="resources/img/slider/fabric/2.png"> <img
-					src="resources/img/slider/fabric/3.png"> <img
-					src="resources/img/slider/fabric/4.png"> <img
-					src="resources/img/slider/fabric/5.png"></li>
-				<li><img src="resources/img/slider/fabric/6.png"> <img
-					src="resources/img/slider/fabric/7.png"> <img
-					src="resources/img/slider/fabric/8.png"> <img
-					src="resources/img/slider/fabric/9.png"> <img
-					src="resources/img/slider/fabric/10.png"></li>
-			</ul>
-
-		</div>
-		<img id="next5" src="resources/img/slider/right.png">
-		<script type="text/javascript">
-			$(document).ready(function() {
-				var imgs;
-				var img_count;
-				var img_position = 1;
-
-				imgs = $(".slide5 ul");
-				img_count = imgs.children().length;
-
-				//버튼을 클릭했을 때 함수 실행
-				$('#back5').click(function() { back(); });
-				$('#next5').click(function() { next(); });
-
-				function back() {
-					if (1 < img_position) {
-						imgs.animate({ left : '+=1000px' });
-						img_position--;
-					}
-				}
-				function next() {
-					if (img_count > img_position) {
-						imgs.animate({ left : '-=1000px' });
-						img_position++;
-					}
-				}
-			});
-			</script>
-		</section>
+		<!-- main banner -->
+		<section class="visual">
+        <!-- 슬라이드 -->
+        	<div class="slide fade active">
+            	<img src="resources/img/visual_01.jpg" alt="">
+            	<div class="mainText">
+                	<strong>HAO SHOP</strong>
+                	<div class="num">
+                    	0 <span>1</span>
+                	</div>
+            	</div>
+        	</div>
+        	<div class="slide fade">
+            	<img src="resources/img/visual_02.jpg" alt="">
+	            <div class="mainText">
+    	            <strong>HAO SHOP</strong>
+        	        <div class="num">
+            	        0 <span>2</span>
+                	</div>
+        	    </div>
+        	</div>
+        	<div class="slide fade">
+            	<img src="resources/img/visual_03.jpg" alt="">
+            	<div class="mainText">
+                	<strong>HAO SHOP</strong>
+                	<div class="num">
+                    	0 <span>3</span>
+                	</div>
+            	</div>
+        	</div>
+        	<div class="slide fade">
+            	<img src="resources/img/visual_04.jpg" alt="">
+            	<div class="mainText">
+                	<strong>HAO SHOP</strong>
+	                <div class="num">
+    	                0 <span>4</span>
+        	        </div>
+	            </div>
+        	</div>
+    	    <div class="slide fade">
+            	<img src="resources/img/visual_05.jpg" alt="">
+            	<div class="mainText">
+                	<strong>HAO SHOP</strong>
+                	<div class="num">
+                    	0 <span>5</span>
+                	</div>
+            	</div>
+        	</div>
+        	<div class="menu"> <!-- 고정된 슬라이드 -->
+            	    <a href="about.jsp">View more</a>
+        	</div>
+    	</section>
+		
+		<!-- footer -->
 		<%@ include file="include/footer.jsp"%>
 	</body>
 </html>

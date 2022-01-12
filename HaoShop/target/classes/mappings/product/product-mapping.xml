@@ -58,7 +58,7 @@
 				#{p_name},
 				#{p_price},
 				#{p_discount},
-				'red',
+				#{p_color},
 				#{p_size},
 				#{p_amount},
 				#{p_img},
@@ -93,6 +93,7 @@
 		]]>
 	</select>
 	
+	<!-- 서브 카테고리에 해당하는  상품 개수 질의문 -->
 	<select id="getCountProduct" resultType="java.lang.Integer">
 		<![CDATA[
 			SELECT COUNT(*) FROM PRODUCT WHERE CATE_NO=#{cate_no}
