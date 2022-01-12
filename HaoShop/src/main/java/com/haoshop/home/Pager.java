@@ -1,7 +1,7 @@
 package com.haoshop.home;
 
 public class Pager {
-	public static final int PAGE_SCALE = 8;// 페이지당 게시물수
+	public static final int PAGE_SCALE = 16;// 페이지당 게시물수
 	public static final int BLOCK_SCALE = 2;// 화면당 페이지수
 
 	private int curPage;	// 현재 페이지 넘버

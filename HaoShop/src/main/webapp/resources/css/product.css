@@ -1,40 +1,68 @@
-@CHARSET "UTF-8";
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
-body {
-	font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial,
-		sans-serif;
-	font-size: 13px;
-	padding: 0;
-	margin: 0;
-	padding: 20px;
-	background: #fff;
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
 }
-
-h1 {
-	width: 100%;
-	margin: 0px auto;
-	text-align: center;
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, 
+strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, 
+tbody, tfoot, thead, tr, th, td{
+    margin:0;padding:0;
 }
-
 a {
-	color: #000;
-	text-decoration: none;
+    color: inherit; text-decoration: inherit;
+}
+img {
+    vertical-align: middle;
+}
+a img {
+    border: none;
+}
+li {
+    list-style: none;
+}
+address, em, i {
+    font-style: normal;
+}
+a:focus {
+    outline: none
+}
+button:focus {
+    outline: none
 }
 
-.btn {
-	border: 0px;
-	outline: none;
-	background-color: transparent;
-	z-index: 100;
+.product_table product tr {
+	width: 100%;
+	background: pink;
 }
 
-/* 상품 테이블 */
-#product {
-	margin-left: auto;
-	margin-right: auto;
+
+/* layout */
+.category_section {
+	background: red;
+	position: relative;
+	height: 1600px;
+}
+
+.category_section .product_table {
 	text-align: center;
+	background: blue;
+	position: absolute;
+	top: 6%;
 }
 
-#product, #product tr, #product tr td {
-	width: 300px;
+.category_section .product_table .product {
+	display: inline-block;
+	background : green;
+	padding: 10px 0;
+	margin: 0 3%;
+}
+
+.category_section .product_table .product img {
+	width: 250px;
+	height: 300px;
+	display: block;
 }

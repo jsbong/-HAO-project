@@ -6,13 +6,11 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="resources/js/cart.js" charset="UTF-8"></script>
 		<script type="text/javascript" src="resources/js/product.js" charset="UTF-8"></script>
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="resources/css/productpage.css">
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<title>Decorating's</title>
 	</head>
 	<body>
