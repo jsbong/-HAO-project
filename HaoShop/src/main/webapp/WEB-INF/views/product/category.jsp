@@ -11,17 +11,11 @@
 		<script>
 			$(document).ready(function() {
 				var cate_number = $(".cate_number").val();
-				var cate_curnumber = $(".cate_curnumber").val().
 				
 				$(".product_page li").click(function() {
 					var gotonum = $(this).attr("data-tab");
 					location.href = "category?cate_no=" + cate_number + "&curPage=" + gotonum;
 				});
-				
-				if(cate_number = cate_curnumber) {
-					$(".product_page li").addClass("color");
-				}
-				
 			});
 		</script>
 	</head>
@@ -38,17 +32,21 @@
 					<li>
 						<c:forEach begin="0" end="3" var="col">
 							<c:set var="item" value="${map.list[row * 4 + col]}" />
+							<c:if test="${not empty item}">
 							<a href="productpage?p_no=${item.p_no}" class="product">
 								<img src="${item.p_img}">
-								<span>${item.p_name}</span>
-								<span>
-									<!-- 할인가 적용해야됨 -->
-									<fmt:formatNumber value="${item.p_price}" pattern="#,###,###원"/>
-								</span>
-								<span>
-									<fmt:formatNumber value="${item.p_price - item.p_discount}" pattern="#,###,###원"/>										
-								</span>
+								<span style="font-size:20px; font-weight: 800;">${item.p_name}</span><br>
+								<c:choose>
+									<c:when test="${ item.p_discount == 0 }">
+										<span><fmt:formatNumber value="${item.p_price}" pattern="\#,###,###" /></span>
+									</c:when>
+									<c:otherwise>
+										<span style="color:darkgray; text-decoration:line-through; font-size:14px"><fmt:formatNumber value="${item.p_price}" pattern="\#,###,###" /></span>
+										<span><fmt:formatNumber value="${item.p_price - item.p_discount}" pattern="\#,###,###"/></span>
+									</c:otherwise>
+								</c:choose>
 							</a>
+							</c:if>
 						</c:forEach>
 					</li>
 				</c:forEach>
@@ -56,16 +54,20 @@
 			<ul class="product_page">
 				<c:if test="${(fn:length(map.list)) ne 0}">
 					<input type="hidden" value="${map.cate_no}" class="cate_number">
-					<input type="hidden" value="${map.pager.curPage}" class="cate_curnumber">
 					<!-- 페이징 처리 -->
 						<li data-tab="1"><</li>
 						<c:if test="${map.pager.curBlock > 1}">
 							<li data-tab="${map.pager.prevPage}">[이전]</li>
 						</c:if>
 						<c:forEach var="num" begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}">
-							
-								<li data-tab="${num}">${num}</li>
-							
+							<c:choose>
+								<c:when test="${num == map.pager.curPage}">
+									<li><span style="color:red;">${num}</span></li>
+								</c:when>
+								<c:otherwise>
+									<li data-tab="${num}">${num}</li>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 						<c:if test="${map.pager.curBlock < map.pager.totBlock}">
 							<li data-tab="${map.pager.nextPage}">[다음]</li>

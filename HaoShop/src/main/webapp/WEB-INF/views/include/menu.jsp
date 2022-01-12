@@ -5,23 +5,7 @@
 <script src="resources/js/login.js" charset="UTF-8"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/include.css">
-<script>
-	// 마이페이지 클릭 이벤트
-	function mypBtn() {
-		var m_no = $("#m_no").val();
-		var myp = $("#myp").val();
-		$.ajax({
-			type : "GET",
-			url : "mypL",
-			data : {
-				"m_no" : m_no,
-				"myp" : myp
-			}, success : function(data) {
-				window.location.href = "mypage?m_no=" + m_no + "&myp=" + myp;
-			}
-		});
-	}
-</script>
+
 <h1 id="main_title"><a href="main"><img src="resources/img/deco.png" /></a></h1>
 <div id="icon" align="right">
 <form name="frm" id="frm">

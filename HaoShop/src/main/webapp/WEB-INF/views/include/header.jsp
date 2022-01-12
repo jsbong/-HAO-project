@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>Header</title>
     <link rel="stylesheet" href="resources/css/header.css">
+    <script src="resources/js/login.js" charset="UTF-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
     $(function() {
@@ -69,6 +70,7 @@
             </ul>
             <ul class="menu_right">
                 <li>SEARCH</li>
+                <input type="hidden" id="myp" value="${myp}" />
                 <c:choose>
                 	<c:when test="${member.m_id == null}">
                 		<li><a href="signup">JOIN</a></li>
@@ -79,7 +81,8 @@
                 		<li><a href="logout">LOGOUT</a></li>
                 	</c:otherwise>
                 </c:choose>
-                <li><a href="#">CART</a></li>
+                <!-- <a href="javascript:void(0); onclick="함수명(this)">꾸울팁</a> -->
+                <li><a href="productCart?m_no=${member.m_no}">CART</a></li>
                 <li><a href="#">FORUM</a></li>
             </ul>
         </nav>

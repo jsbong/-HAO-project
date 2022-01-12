@@ -34,37 +34,32 @@ button:focus {
     outline: none
 }
 
-.product_table product tr {
-	width: 100%;
-	background: pink;
-}
-
-
 /* layout */
 .category_section {
-	background: red;
 	position: relative;
 }
 
+
 /* product_table 설정 */
 .category_section .product_table {
-	text-align: center;
-	background: blue;
-	margin-top: 50px;
+	width: 1290px;
+	margin: 50px auto 0;
+}
+
+.category_section .product_table .product:nth-child(4) {
+	margin-right: 0;	
 }
 
 /* 전체를 감싸고 있는 a 태그(상품)에 대한 설정*/
 .category_section .product_table .product {
 	display: inline-block;
-	background : green;
-	margin-bottom: 30px;
+	margin : 0px 10px 30px 0px;
+	text-align: left;
 }
 
 .category_section .product_table .product span {
-	display: block;	
-	background: pink;
+	text-align: left;
 }
-
 
 .category_section .product_table .product img {
 	width: 311px;
@@ -77,22 +72,18 @@ button:focus {
 .category_section .product_page {
 	margin-top: 30px;
 	text-align : center;
-	background: #ddd;
 }
 
 
 /* product_page(페이지 처리) 설정 */
 .category_section .product_page  {
-	background: yellow;
 	margin-bottom: 50px;
 }
 
 .category_section .product_page li {
 	display: inline-block;
-	background: pink;
 	font-size: 18px;
-}
-
-.category_section .product_page li.color {
-	color: red;
+	padding: 3px 5px;
+	margin: 0 3px;
+	cursor: pointer;
 }
