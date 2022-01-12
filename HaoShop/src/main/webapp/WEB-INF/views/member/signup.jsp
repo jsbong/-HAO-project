@@ -72,6 +72,10 @@
 								<option value="nate.com">nate.com</option>
 								<option value="1">직접입력</option>
 							</select>
+							<input type="button" onclick="emailChk()" value="인증번호 발송" /><br>
+							<input type="text" name="authkey" id="authkey" class="input rel" size="60" placeholder="인증번호를 입력하세요" >
+							<label id="mailChk"></label><br>
+							<input type="button" onclick="matchCode()" value="확인" /><br>
 						</td></tr>
 						<tr><th>연락처</th></tr>
 						<tr><td>

@@ -155,6 +155,11 @@ public class MemberController {
 		return "main";
 	}
 
+	@RequestMapping(value = "/email", method = RequestMethod.GET)
+	public String emailView(MemberVO vo) {
+		return "member/email";
+	}
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginView(MemberVO vo) {
 		return "member/login";
@@ -166,7 +171,7 @@ public class MemberController {
 		MemberVO member = memberService.login(vo);
 		if (member != null) {
 			session.setAttribute("member", member);
-			return "main";
+			return "main";				
 		} else {
 			return "member/login";
 		}
@@ -184,20 +189,20 @@ public class MemberController {
 		return "";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value="/joinPost", method=RequestMethod.POST)
-	public String joinPost(@ModelAttribute("vo") MemberVO vo) throws Exception {
-		/*logger.info("currnent join member: " + vo.toString());*/
-		memberService.create(vo);
-		return "member/joinPost";
+	public String joinPost(@ModelAttribute("vo") MemberVO vo, HttpSession session) throws Exception {
+		String key = memberService.create(vo);
+		session.setAttribute("key", key);
+		System.out.println(key);
+		return "ok";
 	}
 	
-	@RequestMapping(value="joinConfirm", method=RequestMethod.GET)
-	public String emailConfirm(@ModelAttribute("vo") MemberVO vo, Model model) throws Exception {
-		vo.setAuthstatus(1);	// authstatus를 1로,, 권한 업데이트
-		memberService.updateAuthstatus(vo);
-		
-		model.addAttribute("auth_check", 1);
-		
-		return "/member/joinPost";
+	@ResponseBody
+	@RequestMapping(value="/joinConfirm", method=RequestMethod.POST)
+	public String emailConfirm(@ModelAttribute("vo") MemberVO vo, HttpSession session) throws Exception {
+		String key = (String)session.getAttribute("key");
+		session.removeAttribute("key");
+		return key;
 	}
 }

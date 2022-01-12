@@ -19,8 +19,7 @@ public interface MemberService {
 	void deleteMember(MemberVO vo);
 	
 	//이메일 인증코드
-	void create(MemberVO vo) throws Exception;
-	void updateAuthstatus(MemberVO vo);
+	String create(MemberVO vo) throws Exception;
 	
 	// 마이페이지
 	// 회원 주문내역

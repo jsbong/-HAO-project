@@ -43,38 +43,31 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	// 이메일 인증키 생성
-	public void create(MemberVO vo) throws Exception {
-		memberDAO.create(vo);
-	
+	public String create(MemberVO vo) throws Exception {
 		// 임의의 authkey 생성
-		String authkey = new TempKey().getKey(50, false);
-
-		vo.setAuthkey(authkey);
-		memberDAO.updateAuthkey(vo);
+		String authkey = new TempKey().getKey(10, false);
 
 		// mail 작성 관련 
 		MailUtils sendMail = new MailUtils(mailSender);
 
 		sendMail.setSubject("[HAP Shop] 회원가입 이메일 인증");
 		sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
-				.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
+				.append(authkey)
+				/*.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
 				.append("<a href='http://localhost:8181/HaoShop/joinConfirm?m_id=")
 				.append(vo.getM_id())
 				.append("&m_email=")
 				.append(vo.getM_email())
 				.append("&authkey=")
 				.append(authkey)
-				.append("' target='_blenk'>이메일 인증 확인</a>")
+				.append("' target='_blenk'>이메일 인증 확인</a>")*/
 				.toString());
-		sendMail.setFrom("관리자 ", "관리자명");
+		sendMail.setFrom("haoshop40@gmail.com ", "hao");
 		sendMail.setTo(vo.getM_email());
 		sendMail.send();
+		return authkey;
 	}
 	
-	//이메일 인증 상태 업데이트
-	public void updateAuthstatus(MemberVO vo) {
-		memberDAO.updateAuthstatus(vo);
-	}
 	
 	// ID 중복검사
 	public int checkID(MemberVO vo) {
@@ -129,7 +122,7 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.forgotPWUpdate(vo);
 	}
 
-	// 테스트
+	
 	public List<MemberVO> getMemberList(int start, int end, MemberVO vo) {
 		return memberDAO.getMemberList(start, end, vo);
 	}

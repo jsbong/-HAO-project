@@ -12,8 +12,6 @@ public class MemberVO {
 	private String m_phone; // 회원 연락처
 	private String m_addr; // 회원 주소
 	private Date m_regdate; // 회원 가입일
-	private String authkey;
-	private int authstatus;
 
 	public int getM_no() {
 		return m_no;
@@ -85,22 +83,6 @@ public class MemberVO {
 
 	public void setM_regdate(Date m_regdate) {
 		this.m_regdate = m_regdate;
-	}
-
-	public String getAuthkey() {
-		return authkey;
-	}
-
-	public void setAuthkey(String authkey) {
-		this.authkey = authkey;
-	}
-
-	public int getAuthstatus() {
-		return authstatus;
-	}
-
-	public void setAuthstatus(int i) {
-		this.authstatus = i;
 	}
 
 }

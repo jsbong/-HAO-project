@@ -2,6 +2,7 @@ var checkID = false;
 var checkPWD = false;
 var checkYEAR = false;
 var checkNAME = false;
+var checkEMAIL = false;
 
 $(document).ready(function() {
 	$("#m_id").blur(function() {
@@ -95,11 +96,13 @@ function doSignup() {
 	var m_email = $("#email_id").val() + "@" + $("#email_addr").val(); 
 	var m_phone = $("#NUMst").val() + "-" + $("#NUMnd").val() + "-" + $("#NUMrd").val();
 	var m_addr = $("#m_zipcode").val() + "*" + $("#m_faddr").val() + "*" + $("#m_laddr").val();
+	var authkey = $("#authkey").val();
 	if (checkID == false) { console.log("아이디 중복검사 안함"); }
 	if (checkPWD == false) { console.log("비밀번호 다름"); }
 	if (checkNAME == false) { console.log("이름이 비어있음"); }
 	if (checkYEAR == false) { console.log("생일이 비어있음"); }
-	if (!m_id || checkID == false || checkPWD == false || checkNAME == false || checkYEAR == false) {
+	if (checkEMAIL == false) { console.log("이메일 인증 안함"); }
+	if (!m_id || checkID == false || checkPWD == false || checkNAME == false || checkYEAR == false || checkEMAIL == false) {
 		swal("", "필수항목이 비어있습니다. 입력해주세요.", "warning");
 	} else {
 		$.ajax({
@@ -113,6 +116,7 @@ function doSignup() {
 				"m_birth" : m_birth,
 				"m_phone" : m_phone,
 				"m_addr" : m_addr,
+				"authkey" : authkey
 			},
 			success : function(data) {
 				window.location.href="main";
@@ -120,6 +124,48 @@ function doSignup() {
 		});
 	}
 }
+
+function emailChk() {
+	var m_email = $("#email_id").val() + "@" + $("#email_addr").val();
+	if (!m_email) {
+		swal("", "이메일을 입력해주세요.", "error");
+	} else {
+		swal("", "이메일이 발송되었습니다", "success");
+		$.ajax({
+			type : "POST",
+			url : "joinPost",
+			data : {"m_email" : m_email}, 
+			error : function(error) {}
+		});
+	}
+}
+
+function matchCode() {
+	var authkey = $("#authkey").val();
+	var oMsg = $("#mailChk");
+	if (!authkey) {
+		swal("", "", "error");
+	} else {
+		oMsg.text("");
+		$.ajax({
+			type : "POST",
+			url : "joinConfirm",
+			success : function(data) {
+				if (data == authkey) {
+						oMsg.css("color", "green");
+						oMsg.text("인증 완료");
+						checkEMAIL = true;
+				} 
+				else { 
+					oMsg.css("color", "red");
+					oMsg.text("인증 실패");
+				}
+			}, error : function(error) { swal("", "오류 발생", "error"); }
+		});
+	}
+}
+
+
 
 function checkBirth() {
 	var birthDay;
