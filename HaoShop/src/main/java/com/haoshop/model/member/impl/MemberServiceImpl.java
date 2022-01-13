@@ -1,6 +1,7 @@
 package com.haoshop.model.member.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.bouncycastle.jcajce.provider.digest.SHA3;
 import org.bouncycastle.util.encoders.Hex;
@@ -53,14 +54,6 @@ public class MemberServiceImpl implements MemberService {
 		sendMail.setSubject("[HAP Shop] 회원가입 이메일 인증");
 		sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
 				.append(authkey)
-				/*.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-				.append("<a href='http://localhost:8181/HaoShop/joinConfirm?m_id=")
-				.append(vo.getM_id())
-				.append("&m_email=")
-				.append(vo.getM_email())
-				.append("&authkey=")
-				.append(authkey)
-				.append("' target='_blenk'>이메일 인증 확인</a>")*/
 				.toString());
 		sendMail.setFrom("haoshop40@gmail.com ", "hao");
 		sendMail.setTo(vo.getM_email());
@@ -68,6 +61,24 @@ public class MemberServiceImpl implements MemberService {
 		return authkey;
 	}
 	
+	// 이메일 인증키 생성(비번찾기)
+		public String makePwd(MemberVO vo) throws Exception {
+			// 임의의 authkey 생성
+			String authkey = new TempKey().getKey(10, false);
+
+			// mail 작성 관련 
+			MailUtils sendMail = new MailUtils(mailSender);
+
+			sendMail.setSubject("[HAP Shop] 임시 비밀번호 발급");
+			sendMail.setText(new StringBuffer().append("<h1>[임시 비밀번호 입니다]</h1><Strong>")
+					.append(authkey)
+					.append("</Strong><br>즉시 비밀번호를 변경해 주세요")
+					.toString());
+			sendMail.setFrom("haoshop40@gmail.com ", "hao");
+			sendMail.setTo(vo.getM_email());
+			sendMail.send();
+			return authkey;
+		}
 	
 	// ID 중복검사
 	public int checkID(MemberVO vo) {
@@ -114,11 +125,21 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	// 임시비밀번호
-	public int forgotPWChkMember(MemberVO vo) {
-		return memberDAO.forgotPWChkMember(vo);
+	public String forgotPWChkMember(MemberVO vo) throws Exception {
+		String email =memberDAO.forgotPWChkMember(vo);
+		vo.setM_email(email);
+		System.out.println("=000====");
+		String newpwd = makePwd(vo);
+		vo.setM_pwd(newpwd);
+		securityPWD(vo);
+		memberDAO.forgotPWUpdate(vo);
+		return "ok";
 	}
 	
-	public void forgotPWUpdate(MemberVO vo) {
+	public void forgotPWUpdate(MemberVO vo) throws Exception {
+		/*System.out.println("=============");
+		String newpwd = create(vo);
+		vo.setM_pwd(newpwd);*/
 		memberDAO.forgotPWUpdate(vo);
 	}
 

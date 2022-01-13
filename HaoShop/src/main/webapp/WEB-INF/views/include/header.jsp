@@ -87,12 +87,12 @@
    					</c:otherwise>
    				</c:choose>
    					<li><a href="#">FORUM</a></li>
-   					<div id="search" align="center">
+   					<!-- <div id="search" align="center">
 				         <input type="text" name="sPrd" id="sPrd" placeholder="검색어 입력" onkeypress="if(event.keyCode == 13) {searchPrd(); return;}">
 				         <button type="button" id="searchBtn" onclick="searchPrd()" style="cursor: pointer">
 				            <strong>SEARCH</strong>
 				         </button>
-	   				</div>
+	   				</div> -->
             </ul>
 		      <script>
 		         function searchPrd() {

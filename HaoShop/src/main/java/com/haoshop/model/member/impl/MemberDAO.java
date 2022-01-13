@@ -60,7 +60,7 @@ public class MemberDAO {
 		return mybatis.selectOne("MemberDAO.orderCount", vo);
 	}
 	
-	public int forgotPWChkMember(MemberVO vo) {
+	public String forgotPWChkMember(MemberVO vo) {
 		return mybatis.selectOne("MemberDAO.forgotPWChkMember", vo);
 	}
 	

@@ -33,9 +33,6 @@ public class MemberController {
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signUpView(MemberVO vo) { return "member/signup"; }
 
-	@RequestMapping("/forgotPW")
-	public String forgotPWView(MemberVO vo) { return "member/forgotPW"; }
-
 	//회원 주문내역
 	@ResponseBody
 	@RequestMapping("/mypL")
@@ -178,15 +175,21 @@ public class MemberController {
 		}
 	}
 	
+	@RequestMapping("/forgotPW")
+	public String forgotPWView(MemberVO vo) { 
+		return "member/forgotPW"; 
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="/forgotPWChkm")
-	public int forgotPWChkm(MemberVO vo) {
-		int forgotPWChkm = memberService.forgotPWChkMember(vo);
+	public String forgotPWChkm(MemberVO vo) throws Exception {
+		String forgotPWChkm = memberService.forgotPWChkMember(vo);
 		return forgotPWChkm;
 	}
 	
 	@RequestMapping(value="/forgotPW", method = RequestMethod.POST)
-	public String forgotPW(MemberVO vo) {
+	public String forgotPW(MemberVO vo) throws Exception {
+		memberService.forgotPWUpdate(vo);
 		return "";
 	}
 	

@@ -16,8 +16,8 @@
 					<div id="login-form">
 						<h1>임시비밀번호 발급</h1>
 						<fieldset>
-							<input type="text" name="member_id" id="member_id" placeholder="ID">
-							<input type="text" name="member_name" id="member_name" placeholder="이름">
+							<input type="text" name="m_id" id="m_id" placeholder="ID">
+							<input type="text" name="m_name" id="m_name" placeholder="이름">
 							<input type="button" onclick="forgotPW()" value="비밀번호 발급">
 						</fieldset>
 					</div>

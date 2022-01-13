@@ -33,8 +33,8 @@ public interface MemberService {
 	MemberVO login(MemberVO vo);
 	
 	// 비밀번호 찾기
-	int forgotPWChkMember(MemberVO vo);
-	void forgotPWUpdate(MemberVO vo);
+	String forgotPWChkMember(MemberVO vo) throws Exception;
+	void forgotPWUpdate(MemberVO vo) throws Exception;
 	
 	// 회원 리스트
 	List<MemberVO> getMemberList(int start, int end, MemberVO vo);
