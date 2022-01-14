@@ -36,6 +36,11 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductVO> getProductList(int start, int end, ProductVO vo) {
 		return productDAO.getProductList(start, end, vo);
 	}
+	
+	// 품목 리스트 메인
+	public List<ProductVO> getProductListAll(int start, int end, ProductVO vo) {
+		return productDAO.getProductListAll(start, end, vo);
+	}
 
 	// 관리자 품목 리스트
 	public List<ProductVO> getAdminProductList(int start, int end, ProductVO vo) {
@@ -45,6 +50,11 @@ public class ProductServiceImpl implements ProductService {
 	// 품목 갯수 카운트
 	public int getCountProduct(ProductVO vo) {
 		return productDAO.getCountProduct(vo);
+	}
+	
+	// 품목 갯수 카운트 메인
+	public int getCountProductAll(ProductVO vo) {
+		return productDAO.getCountProductAll(vo);
 	}
 
 	// 관리자 품목 갯수 카운트

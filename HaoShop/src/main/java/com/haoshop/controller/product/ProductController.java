@@ -30,20 +30,53 @@ public class ProductController {
 	// 카테고리 품목 출력
 	@RequestMapping("/category")
 	public String getfbMirrorList(@RequestParam(defaultValue = "1") int curPage, ProductVO vo, Model model) { // 현재 페이지, 상품VO, 저장할 Model
-		int count = productService.getCountProduct(vo); // 서브 카테고리에 해당하는 상품 개수 리턴
-		Pager pager = new Pager(count, curPage); // (레코드 개수, 현재 페이지 번호(default = 1) )
-		int start = pager.getPageBegin(); //  
-		int end = pager.getPageEnd(); // 
-
-		List<ProductVO> list = productService.getProductList(start, end, vo);
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("cate_no", vo.getCate_no());
-		map.put("list", list);
-		map.put("count", count);
-		map.put("pager", pager);
-		model.addAttribute("map", map);
+		if(vo.getCate_no()%100000 == 0) {
+			int count = productService.getCountProductAll(vo); // 서브 카테고리에 해당하는 상품 개수 리턴
+			Pager pager = new Pager(count, curPage); // (레코드 개수, 현재 페이지 번호(default = 1) )
+			int start = pager.getPageBegin(); //  
+			int end = pager.getPageEnd(); // 
+			
+			List<ProductVO> list = productService.getProductListAll(start, end, vo);
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("cate_no", vo.getCate_no());
+			map.put("list", list);
+			map.put("count", count);
+			map.put("pager", pager);
+			model.addAttribute("map", map);
+		}else {
+			int count = productService.getCountProduct(vo); // 서브 카테고리에 해당하는 상품 개수 리턴
+			Pager pager = new Pager(count, curPage); // (레코드 개수, 현재 페이지 번호(default = 1) )
+			int start = pager.getPageBegin(); //  
+			int end = pager.getPageEnd(); // 
+			
+			List<ProductVO> list = productService.getProductList(start, end, vo);
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("cate_no", vo.getCate_no());
+			map.put("list", list);
+			map.put("count", count);
+			map.put("pager", pager);
+			model.addAttribute("map", map);
+		}
 		return "product/category";
 	}
+	
+	// 카테고리 품목 출력
+		@RequestMapping("/categoryAll")
+		public String getfbMirrorListAll(@RequestParam(defaultValue = "1") int curPage, ProductVO vo, Model model) { // 현재 페이지, 상품VO, 저장할 Model
+			int count = productService.getCountProduct(vo); // 서브 카테고리에 해당하는 상품 개수 리턴
+			Pager pager = new Pager(count, curPage); // (레코드 개수, 현재 페이지 번호(default = 1) )
+			int start = pager.getPageBegin(); //  
+			int end = pager.getPageEnd(); // 
+
+			List<ProductVO> list = productService.getProductList(start, end, vo);
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("cate_no", vo.getCate_no());
+			map.put("list", list);
+			map.put("count", count);
+			map.put("pager", pager);
+			model.addAttribute("map", map);
+			return "product/category";
+		}
 
 	// 제품 상세페이지
 	@RequestMapping("/productpage")
@@ -80,12 +113,12 @@ public class ProductController {
 
 	// 관리자
 	// 상품코드 중복검사
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping(value = "/prdCheckID")
 	public int prdCheckID(ProductVO vo) {
 		int prdCheckID = productService.prdCheckID(vo);
 		return prdCheckID;
-	}
+	}*/
 
 	// 상품등록 페이지
 	@RequestMapping("/prdinsert")

@@ -83,6 +83,16 @@
 		]]>
 	</select>
 	
+	<select id="getProductListAll" resultMap="product">
+		<![CDATA[
+			SELECT * FROM (
+				SELECT ROWNUM AS RN, A.* FROM (
+					SELECT * FROM PRODUCT WHERE CATE_NO BETWEEN #{product.cate_no} AND #{product.cate_no}+5 ORDER BY P_NO DESC
+				) A
+			) WHERE RN BETWEEN #{start} AND #{end}
+		]]>
+	</select>
+	
 	<select id="getAdminProductList" resultMap="product">
 		<![CDATA[
 			SELECT CATE_NO, nvl(p_img, 'resource/img/product/') AS P_IMG, P_NAME, P_NO, P_PRICE FROM (
@@ -97,6 +107,13 @@
 	<select id="getCountProduct" resultType="java.lang.Integer">
 		<![CDATA[
 			SELECT COUNT(*) FROM PRODUCT WHERE CATE_NO=#{cate_no}
+		]]>
+	</select>
+	
+	<!-- 메인 카테고리에 해당하는  상품 개수 질의문 -->
+	<select id="getCountProductAll" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM PRODUCT WHERE CATE_NO BETWEEN #{cate_no} AND #{cate_no}+5
 		]]>
 	</select>
 	

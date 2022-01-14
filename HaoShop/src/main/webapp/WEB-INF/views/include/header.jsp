@@ -31,7 +31,7 @@
                 <li><a href="about">HAO</a></li>
                 <li><a href="#">ALL</a></li>
                 <li>
-                    <a href="#">OUTER</a>
+                    <a href="category?cate_no=100000">OUTER</a>
                     <div>
                         <ul>
                             <li><a href="category?cate_no=100001">JACKT</a></li>
@@ -41,7 +41,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#">TOP</a>
+                    <a href="category?cate_no=200000">TOP</a>
                     <div>
                         <ul>
                             <li><a href="category?cate_no=200001">SWEAT</a></li>
@@ -52,7 +52,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#">BOTTOM</a>
+                    <a href="category?cate_no=300000">BOTTOM</a>
                     <div>
                         <ul>
                             <li><a href="category?cate_no=300001">TROUSER</a></li>
@@ -61,7 +61,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#">ETC</a>
+                    <a href="category?cate_no=400000">ETC</a>
                     <div>
                         <ul>
                             <li><a href="category?cate_no=400001">SHOES</a></li>

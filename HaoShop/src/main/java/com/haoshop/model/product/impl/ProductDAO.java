@@ -49,6 +49,15 @@ public class ProductDAO {
 		map.put("product", vo);
 		return mybatis.selectList("ProductDAO.getProductList", map);
 	}
+	
+	// 품목 리스트
+	public List<ProductVO> getProductListAll(int start, int end, ProductVO vo) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("product", vo);
+		return mybatis.selectList("ProductDAO.getProductListAll", map);
+	}
 
 	// 관리자 품목 리스트
 	public List<ProductVO> getAdminProductList(int start, int end, ProductVO vo) {
@@ -63,6 +72,11 @@ public class ProductDAO {
 	public int getCountProduct(ProductVO vo) {
 		return mybatis.selectOne("ProductDAO.getCountProduct", vo);
 	}
+	
+	// 메인 카테고리 상품 갯수 체크
+		public int getCountProductAll(ProductVO vo) {
+			return mybatis.selectOne("ProductDAO.getCountProductAll", vo);
+		}
 
 	// 관리자 페이지 리스트 갯수 체크
 	public int getAdminCountProduct(ProductVO vo) {

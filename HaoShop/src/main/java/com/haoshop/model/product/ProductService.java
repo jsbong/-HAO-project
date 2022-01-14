@@ -17,10 +17,14 @@ public interface ProductService {
 
 	// 물품 리스트
 	List<ProductVO> getProductList(int start, int end, ProductVO vo);
+	
+	List<ProductVO> getProductListAll(int start, int end, ProductVO vo);
 
 	List<ProductVO> getAdminProductList(int start, int end, ProductVO vo);
 
 	int getCountProduct(ProductVO vo);
+	
+	int getCountProductAll(ProductVO vo);
 
 	int getAdminCountProduct(ProductVO vo);
 
