@@ -29,4 +29,19 @@ public class HomeController {
 	public String about() {
 		return "common/about";
 	}
+	
+	@RequestMapping(value = "/member", method = RequestMethod.GET)
+	public String member() {
+		return "admin/member";
+	}
+	
+	@RequestMapping(value = "/deliver", method = RequestMethod.GET)
+	public String deliver() {
+		return "admin/deliver";
+	}
+	
+	@RequestMapping(value = "/collection", method = RequestMethod.GET)
+	public String collection() {
+		return "admin/collection";
+	}
 }

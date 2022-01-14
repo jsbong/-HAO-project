@@ -1,0 +1,83 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+/*reset*/
+*, html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, 
+p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, 
+image, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, 
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{
+    margin:0;
+    padding:0;
+}
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1;
+    position: relative;
+}
+a {
+    color: inherit; text-decoration: inherit;
+}
+li {
+    list-style: none;
+}
+
+body {
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+
+/* layout*/
+/* section 위치 설정 */
+.insert_section {
+	color: #000;
+	margin-left: 33%;
+}
+
+/* 테이블 설정*/
+.insert_table{
+    border-collapse: collapse; /* 테두리 겹침 설정 */
+    text-align: center; 
+    line-height: 1; /* 줄 높이 */
+    border: 1px solid #ccc; /* 위쪽 테두리 */
+    border-left: 3px solid #369; /* 왼쪽 테두리 */
+    margin : 20px 10px;
+}
+.insert_table th{
+	text-align:center;
+    width: 147px;
+    padding: 10px;
+    font-weight: bold; /* 글자 굵기 */
+    vertical-align: top; /* 수직 정렬 */
+    color: #153d73;
+    border-right: 1px solid #ccc; /* 오른쪽 테두리 */
+    border-bottom: 1px solid #ccc; /* 아래쪽 테두리 */
+}
+.insert_table td{
+   text-align:left;
+   width: 300px;
+   height: 10px;
+   padding: 10px;
+   vertical-align: top;  
+   border-right: 1px solid #ccc;  
+   border-bottom: 1px solid #ccc;  
+}
+/* 상품등록 설정 */
+.insert_product {
+	float: right;
+	width: 75%;
+}
+
+.insert_product span {
+	display: block;
+	width: 100%;
+	margin-top: 20px;
+	font-size: 28px;
+	text-align: center;
+}
+
+.insert_product .insert_form {
+	padding:50px 300px;
+}
+
+.insert_product .insert_form  table tr {
+	padding: 50px;
+}

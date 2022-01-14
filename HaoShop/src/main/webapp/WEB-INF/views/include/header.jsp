@@ -77,6 +77,7 @@
                 	<c:otherwise>
                 		<li><a href="mypage?m_no=${member.m_no}">MYPAGE</a></li>
                 		<li><a href="logout">LOGOUT</a></li>
+                		<li><a href="prdinsert">임시등록</a>
                 	</c:otherwise>
                 </c:choose>
                 <li><a href="#">CART</a></li>
