@@ -1,116 +1,136 @@
 @charset "utf-8";
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap')
+	;
 
 /* reset */
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
-pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, 
-strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, 
-tbody, tfoot, thead, tr, th, td{
-    margin:0;padding:0;
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+	em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup,
+	tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label,
+	legend, table, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
 }
+
 a {
-    color: inherit; text-decoration: inherit;
+	color: inherit;
+	text-decoration: inherit;
 }
+
 img {
-    vertical-align: middle;
+	vertical-align: middle;
 }
+
 a img {
-    border: none;
+	border: none;
 }
+
 li {
-    list-style: none;
+	list-style: none;
 }
+
 address, em, i {
-    font-style: normal;
+	font-style: normal;
 }
+
 a:focus {
-    outline: none;
+	outline: none;
 }
 
 button:focus {
-    outline: none;
+	outline: none;
 }
 
 /* layout */
 .product-content {
-    font-family: 'Nanum Gothic', sans-serif;
-    width: 100%;
-    height: 800px;
-    position: relative;
+	font-family: 'Nanum Gothic', sans-serif;
+	width: 100%;
+	height: 800px;
+	position: relative;
 }
 
 .product-content .product_detail {
-    width: 80%;
-    height: 620px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -310px;
-    margin-left: -40%;
+	width: 80%;
+	height: 620px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -310px;
+	margin-left: -40%;
+	background: pink;
 }
 
 /* .product_left */
 .product-content .product_detail .product_left {
-    display: inline-block;
-    width: 65%;
-    height: 620px;
-    float: left;
+	display: inline-block;
+	width: 62%;
+	height: 620px;
+	float: left;
+	background: skyblue;
 }
 
 .product-content .product_detail .product_left ul {
-    width: 100%;
-    height: 90%;
-    position: relative;
-    margin-top: 5%;
+	width: 100%;
+	height: 90%;
+	position: relative;
+	margin-top: 5%;
+	background: #ddd;
 }
 
 .product-content .product_detail .product_left ul li {
-    width: 40%;
-    max-width: 350px;
-    display: inline-block;
+	width: 40%;
+	max-width: 380px;
+	display: inline-block;
 }
 
 .product-content .product_detail .product_left ul li:first-child {
 	margin-left: 10%;
-    margin-right: 10px;
+	margin-right: 10px;
 }
 
 .product-content .product_detail .product_left ul li img {
-    display: inline-block;
-    width: 100%;
-    height: auto;
+	display: inline-block;
+	width: 100%;
+	height: auto;
 }
 
 /* .product_right */
 .product-content .product_detail .product_right {
-    display: inline-block;
-    width: 25%;
-    height: 50%;
-    font-size: 13px;
-    margin-top: 5%;
+	display: inline-block;
+	width: 25%;
+	height: 50%;
+	font-size: 14px;
+	margin-top: 5%;
+	background: yellow;
 }
 
 .product-content .product_detail .product_right li {
-    margin-bottom: 10px;
-    padding: 5px 0;
+	margin-bottom: 13px;
+	padding: 5px 0;
+	background: green;
 }
 
 /* 수량 */
 .product-content .product_detail .product_right .select_quantity {
 	display: none;
-	font-size: 12px;
+	font-size: 13px;
 }
 
-.product-content .product_detail .product_right .select_quantity li  {
+.product-content .product_detail .product_right .select_quantity li {
 	display: inline-block;
 	margin-left: 6px;
+	background: pink;
 }
 
-.product-content .product_detail .product_right .select_quantity .select_quantity_detail {
+.product-content .product_detail .product_right .select_quantity .select_quantity_detail
+	{
 	float: right;
 	margin-right: 20px;
 }
@@ -118,19 +138,21 @@ button:focus {
 /* 버튼 설정 */
 input[type="text"] {
 	font-family: 'Nanum Gothic', sans-serif;
-	font-size: 12px;
+	font-size: 13px;
 	background: transparent;
 	border: 0;
 	width: 15px;
 	text-align: center;
+	background: skyblue;
 }
 
 input[type="button"] {
-	padding: 2px 10px;
+	padding: 4px 12px;
 	border: 0;
 	font-family: 'Nanum Gothic', sans-serif;
 	background: transparent;
 	color: #8aa1a1;
+	background: orange;
 }
 
 input[type="button"]:hover {
@@ -140,7 +162,7 @@ input[type="button"]:hover {
 }
 
 #buy_btn {
-	padding: 7px 12px;
+	padding: 12px 22px;
 	background: #8aa1a1;
 	color: #fff;
 }
@@ -152,7 +174,7 @@ input[type="button"]:hover {
 }
 
 #cart_btn {
-	padding: 7px 12px;
+	padding: 12px 22px;
 	border: 1px solid #8aa1a1;
 }
 
@@ -166,7 +188,8 @@ input[type="button"]:hover {
 	border-bottom: 1px solid #ddd;
 }
 
-.product-content .product_detail .product_right .product_explain .product_explain_detail {
+.product-content .product_detail .product_right .product_explain .product_explain_detail
+	{
 	display: none;
 	font-size: 12px;
 	padding-left: 3px;
@@ -178,13 +201,15 @@ input[type="button"]:hover {
 	border-bottom: 1px solid #ddd;
 }
 
-.product-content .product_detail .product_right li .shipping_info_detail {
+.product-content .product_detail .product_right li .shipping_info_detail
+	{
 	display: none;
 	font-size: 12px;
 	padding-left: 3px;
 }
 
-.product-content .product_detail .product_right li .shipping_info_detail .shiping_info_title {
-	font-weight:bold;
+.product-content .product_detail .product_right li .shipping_info_detail .shiping_info_title
+	{
+	font-weight: bold;
 	margin-top: 15px
 }

@@ -15,7 +15,7 @@
 		<script>
 		    $(function() {
 				$("#pay_quantity").keyup(function(e){
-					var regNumber = /^([0-9]{2})$/;
+					var regNumber = /^([0-9]{1,2})$/;
 					var str = $(this).val();
 					if(!regNumber.test(str)) {
 						var res = str.substring(0, str.length-1);
@@ -93,8 +93,9 @@
 					<ul>
 					<li class="product_left">
 						<ul>
-							<li><img src="${fn:split(product.p_img, '*')[0]}"></li>
-							<li><img src="${fn:split(product.p_img, '*')[1]}"></li>
+							<c:forEach items="${fn:split(product.p_img, '*')}" var="img">
+								<li><img src="${img}"></li>
+							</c:forEach>
 						</ul>
 					</li>
 					</ul>
