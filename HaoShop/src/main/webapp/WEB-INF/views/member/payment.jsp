@@ -38,7 +38,7 @@
 						<input type="hidden" id="m_no" value="${member.m_no}" />
 						<tr>
 							<td>
-								<img src="${pay.p_img}" width="100px" height="100px">
+								<img src="${fn:split(pay.p_img, '*')[0]}" width="100px" height="100px">
 								<input type="hidden" name="chkbox">
 							</td>
 							<td class="tdright">${pay.p_no}</td>

@@ -32,7 +32,7 @@
 								<td width="300">
 									<div onClick="location.href='productpage?p_no=${item.p_no}'" style="cursor: pointer">
 										<div>
-											<img src="${item.p_img}" width="200" height="200">
+											<img src="${fn:split(item.p_img, '*')[0]}" width="200" height="200">
 										</div>
 										<div>${item.p_name}</div>
 										<div>

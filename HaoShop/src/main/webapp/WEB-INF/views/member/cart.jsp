@@ -37,7 +37,7 @@
 						<input type="hidden" name="p_sum" value="${cartprd.p_sum}" />
 						<input type="hidden" name = "m_no" id="m_no" value="${member.m_no}"/>
 					</td>
-					<td><img src="${cartprd.p_img}" width="75" height="75"></td><!-- 이미지 -->
+					<td><img src="${fn:split(cartprd.p_img, '*')[0]}" width="75" height="75"></td><!-- 이미지 -->
 					<td>${cartprd.p_name}</td><!-- 상품명 -->
 					<td>${cartprd.p_size}</td>
 					<td><fmt:formatNumber value="${cartprd.p_price}" pattern="#,###"/></td><!-- 판매가 -->
