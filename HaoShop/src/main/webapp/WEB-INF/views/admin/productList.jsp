@@ -37,11 +37,11 @@
 						<c:if test="${not empty product}">
 							<tr>
 								<td>${product.cate_no}</td>
-								<td><img src="${product.p_img}" width="100" height="100"></td>
+								<td><img src="${fn:split(product.p_img, '*')[0]}" width="100" height="100"></td>
 								<td>${product.p_name}</td>
 								<td>${product.p_no}</td>
 								<td>${product.p_price}</td>
-								<td>${product.p_img}</td>
+								<td>${fn:split(product.p_img, '*')[0]}</td>
 							</tr>
 						</c:if>
 					</c:forEach>

@@ -34,7 +34,7 @@
 							<c:set var="item" value="${map.list[row * 4 + col]}" />
 							<c:if test="${not empty item}">
 							<a href="productpage?p_no=${item.p_no}" class="product">
-								<img src="${item.p_img}">
+								<img src="${fn:split(item.p_img, '*')[0]}">
 								<span style="font-size:20px; font-weight: 800;">${item.p_name}</span><br>
 								<c:choose>
 									<c:when test="${ item.p_discount == 0 }">

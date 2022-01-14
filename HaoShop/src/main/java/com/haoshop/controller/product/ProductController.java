@@ -1,6 +1,7 @@
 package com.haoshop.controller.product;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -92,10 +93,9 @@ public class ProductController {
 		return "admin/insertProduct";
 	}
 
-	// (진) 상품등록
+	// 상품등록
 	@RequestMapping("/insertProduct")
-	public String insertProduct(MultipartHttpServletRequest multi, ProductVO vo) {
-		System.out.println(vo.toString());
+	public String insertProduct(MultipartHttpServletRequest multi, ProductVO vo) throws FileNotFoundException {
 		String root = "../HAO-project/HaoShop/src/main/webapp/";
 		String path = "resources/img/product/" + vo.getCate_no() + "/";
 		String realpath = root + "resources/img/product/" + vo.getCate_no() + "/";
@@ -104,21 +104,14 @@ public class ProductController {
 		if (!dir.isDirectory()) {
 			dir.mkdir();
 		}
-
-		Iterator<String> files = multi.getFileNames();
-		while (files.hasNext()) {
-			String uploadFile = files.next();
-
-			MultipartFile mFile = multi.getFile(uploadFile);
-			String fileName = mFile.getOriginalFilename();
-			vo.setP_img(path + fileName);
-			
-			try {
-				mFile.transferTo(new File(realpath + fileName));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		String P_img = "";
+		List<MultipartFile> fileList = multi.getFiles("file");
+		
+		for (int i = 0; i < fileList.size(); i++) {
+            String fileName = fileList.get(i).getOriginalFilename();
+            P_img += path;	P_img += fileName;	P_img += "*";
+        }
+		vo.setP_img(P_img);
 		productService.insertProduct(vo);
 		return "main";
 	}

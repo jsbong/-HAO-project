@@ -128,7 +128,6 @@ public class MemberServiceImpl implements MemberService {
 	public String forgotPWChkMember(MemberVO vo) throws Exception {
 		String email =memberDAO.forgotPWChkMember(vo);
 		vo.setM_email(email);
-		System.out.println("=000====");
 		String newpwd = makePwd(vo);
 		vo.setM_pwd(newpwd);
 		securityPWD(vo);
@@ -137,9 +136,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	public void forgotPWUpdate(MemberVO vo) throws Exception {
-		/*System.out.println("=============");
-		String newpwd = create(vo);
-		vo.setM_pwd(newpwd);*/
 		memberDAO.forgotPWUpdate(vo);
 	}
 

@@ -67,7 +67,6 @@ public class CartController {
 			vo.setP_no(Integer.parseInt(prd_list[i]));
 			vo.setP_size(prd_list[i+1]);
 			vo.setPay_quantity(Integer.parseInt(prd_list[i+2]));
-//			System.out.println(vo.toString());
 			paymentService.insertPayment(vo);
 			paymentService.deleteCartPayment(vo);
 		}

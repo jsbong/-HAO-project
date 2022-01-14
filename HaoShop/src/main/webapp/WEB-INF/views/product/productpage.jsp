@@ -27,7 +27,7 @@
 		<%@ include file="../include/menu.jsp" %>
 		<div class="productdetail">
 			<form>
-				<img class="productLeft" src="${product.p_img}">
+				<img class="productLeft" src="${fn:split(product.p_img, '*')[0]}">
 				<div class="productRight">
 					<p align="left" class="p1">상품명: ${product.p_name}</p>
 					<p align="left" class="p2">가격: <fmt:formatNumber value="${product.p_price}" pattern="#,###"/>원</p>
@@ -48,7 +48,7 @@
 						</select>
 					</p>
 					<p align="left">본 상품은 서울배송만 가능합니다.</p><br><br><br>
-					<input type="hidden" name="p_img" id="p_img" value="${product.p_img}" />
+					<input type="hidden" name="p_img" id="p_img" value="${fn:split(product.p_img, '*')[0]}" />
 					<input type="hidden" name="m_no" id="m_no" value="${member.m_no}" />
 					<input type="hidden" name="p_no" id="p_no" value="${product.p_no}" />
 					<p align="left">
