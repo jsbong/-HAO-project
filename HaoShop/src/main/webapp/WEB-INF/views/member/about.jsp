@@ -5,6 +5,25 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="resources/css/about.css">
+    <style>
+    	.hideme {
+    		opacity: 0;
+    	}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $(window).scroll( function(){
+            $('.hideme').each( function(i){
+                var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+                var bottom_of_window = $(window).scrollTop() + $(window).height();
+                if( bottom_of_window > bottom_of_object/2 ){
+                    $(this).animate({'opacity':'1'},1000);
+                }
+            }); 
+        });
+    });
+    </script>
 </head>
 <body>
 	<!-- header -->
@@ -16,7 +35,7 @@
 			<a href="#" class="more">View more</a>
 		</div>
 	</section>
-		<div class="wrap">
+		<div class="wrap hideme">
 			<span class="bar"></span>
 			<ul class="list">
 				<li>
