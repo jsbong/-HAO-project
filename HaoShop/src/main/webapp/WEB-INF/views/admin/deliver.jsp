@@ -80,9 +80,11 @@
 								<td>${row.p_name}</td>
 								<td align="center"><fmt:formatNumber value="${row.p_sum}" pattern="#,###"/>원</td>
 									<td align="center">
-										<input class="stachange"+${i} type="text" value="${row.pay_state}" size="4" data-tab="${row.pay_state}">
-										<input class="pay_no" type="hidden" value="${row.pay_no}" data-tab1="${row.pay_no}" />
-										<input type="button" value="변경" onclick="stachange()" />
+									<label>
+										<input class="stachange" type="text" value="${row.pay_state}" size="4" onchange="classch()">
+										<input class="pay_no" type="hidden" value="${row.pay_no}" />
+										<input type="button" id="stachange" onClick="stachange('', '${row.pay_no}')" value="변경" />
+									</label>
 									</td>
 							</tr>
 						</c:when>
@@ -126,19 +128,15 @@
 			</div>
 		</div>
 		<script>
-			function chkingg() {
-				var pay_state = $(".stachange").val();
-				$(".abc").val(pay_state);
-			}
-			
-			
 			function list(page) {
 				location.href="deliver?curPage="+page;
 			}
-			function stachange() {
+			function classch() {
 				
-				var pay_state = $(".stachange").attr("data-tab");
-				var pay_no = $(".pay_no").attr("data-tab1");
+			}
+			function stachange(pay_state, pay_no) {
+				var pay_state = $(".")
+				var m_id=$("#m_id").val();
 				alert(pay_state+" "+pay_no);
 				$.ajax({
 					type : "POST",
@@ -150,9 +148,6 @@
 						alert("변경 완료");
 					}
 				});
-					document.sta.method="POST";
-					document.sta.action="paystate";
-					document.sta.submit();
 			}
 		</script>
 </body>

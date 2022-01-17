@@ -23,19 +23,19 @@ li {
 /* layout*/
 /* section 위치 설정 */
 .insert_section {
-	margin-left: 20%;
-	font-family: 'Nanum Gothic', sans-serif;
+   margin-left: 20%;
+   font-family: 'Nanum Gothic', sans-serif;
 }
 
 .insert_section .insert_div {
-	width: 80%;
-	margin: 0 auto;
-	padding: 20px 0 50px;
+   width: 80%;
+   margin: 0 auto;
+   padding: 20px 0 50px;
 }
 
 /* 테이블 설정*/
 .insert_section .insert_div .insert_table {
-	width: 90%;
+   width: 90%;
     border-collapse: collapse; /* 테두리 겹침 설정 */
     text-align: center; 
     line-height: 1; /* 줄 높이 */
@@ -46,7 +46,7 @@ li {
 
 
 .insert_table th{
-	text-align:center;
+   text-align:center;
     width: 50px;
     padding: 10px;
     font-weight: bold; /* 글자 굵기 */
@@ -68,19 +68,27 @@ li {
 
 
 .insert_table td .insertBtn {
-	margin: 10px auto;
-	padding: 20px 100px;
-	font-family: 'Nanum Gothic', sans-serif;
-	background: #ddd;
-	color: #8aa1a1;
-	border: 0;
-	font-weight: bold;
-	border-radius: 5px;
-	cursor: pointer;
+   margin: 10px auto;
+   padding: 20px 100px;
+   font-family: 'Nanum Gothic', sans-serif;
+   background: #ddd;
+   color: #8aa1a1;
+   border: 0;
+   font-weight: bold;
+   border-radius: 5px;
+   cursor: pointer;
 }
 
 .insert_table td .insertBtn:hover {
-	background: #8aa1a1;
-	color: #000;
-	font-weight: bold;
+   background: #8aa1a1;
+   color: #000;
+   font-weight: bold;
+}
+
+.cate_sub {
+   display: none;
+}
+
+.cate_sub.current {
+   display: table-row;
 }
