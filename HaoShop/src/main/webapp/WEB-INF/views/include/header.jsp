@@ -9,16 +9,25 @@
     <link rel="stylesheet" href="resources/css/header.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-    $(function() {
-        $("ul.menu_left li").mouseenter(function() {
-            $(this).find("div").slideDown("fast");
-            $(this).parent().parent().css("background", "#fff");
-        }).mouseleave(function() {
-            $(this).parent().parent().css("background", "none");
-            $(this).find("div:visible").slideUp("fast");
+        $(function() {
+            $("ul.menu_left li").mouseenter(function() {
+                $(this).parent().parent().css("background", "#fff");
+                $(this).find("div.menu_sub-content").show();
+            }).mouseleave(function() {
+                $(this).parent().parent().css("background", "none");
+                $(".menu_sub-content").css("background","#fff");
+                $(this).find("div.menu_sub-content").hide();
+            });
         });
-    });
-    
+
+
+        function showSeacrh() {
+            document.getElementById("search_input").style.display = "block";
+        }
+
+        function hideSearch() {
+            document.getElementById("search_input").style.display = 'none';
+        }
     </script>
 </head>
 <body>
@@ -32,46 +41,203 @@
                 <li><a href="#">ALL</a></li>
                 <li>
                     <a href="category?cate_no=100000">OUTER</a>
-                    <div>
-                        <ul>
-                            <li><a href="category?cate_no=100001">JACKT</a></li>
+                    <div class="menu_sub-content">
+                        <ul class="sub_cate">
+                            <li><a href="category?cate_no=100001">JACKET</a></li>
                             <li><a href="category?cate_no=100002">COAT</a></li>
                             <li><a href="category?cate_no=100003">DOWN JACKET</a></li>
+                        </ul>
+                                               <ul class="sub_img">
+                            <li>
+                                <a href="#">
+                                <img src="resources/img/visual_01.jpg">
+                                <div>
+                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                    <span>컬러</span>
+                                </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <img src="resources/img/visual_01.jpg">
+                                <div>
+                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                    <span>컬러</span>
+                                </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="resources/img/visual_01.jpg">
+                                    <div>
+                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                        <span>컬러</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="resources/img/visual_01.jpg">
+                                    <div>
+                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                        <span>컬러</span>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
                 <li>
                     <a href="category?cate_no=200000">TOP</a>
-                    <div>
-                        <ul>
+                    <div class="menu_sub-content">
+                        <ul class="sub_cate">
                             <li><a href="category?cate_no=200001">SWEAT</a></li>
                             <li><a href="category?cate_no=200002">KNITWEAT</a></li>
                             <li><a href="category?cate_no=200003">SHIRT</a></li>
                             <li><a href="category?cate_no=200004">VEST</a></li>
                         </ul>
+                                               <ul class="sub_img">
+                            <li>
+                                <a href="#">
+                                <img src="resources/img/visual_01.jpg">
+                                <div>
+                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                    <span>컬러</span>
+                                </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <img src="resources/img/visual_01.jpg">
+                                <div>
+                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                    <span>컬러</span>
+                                </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="resources/img/visual_01.jpg">
+                                    <div>
+                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                        <span>컬러</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="resources/img/visual_01.jpg">
+                                    <div>
+                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                        <span>컬러</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </li>
                 <li>
                     <a href="category?cate_no=300000">BOTTOM</a>
-                    <div>
-                        <ul>
+                    <div class="menu_sub-content">
+                        <ul class="sub_cate">
                             <li><a href="category?cate_no=300001">TROUSER</a></li>
                             <li><a href="category?cate_no=300002">SHORT</a></li>
+                        </ul>
+                                               <ul class="sub_img">
+                            <li>
+                                <a href="#">
+                                <img src="resources/img/visual_01.jpg">
+                                <div>
+                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                    <span>컬러</span>
+                                </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <img src="resources/img/visual_01.jpg">
+                                <div>
+                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                    <span>컬러</span>
+                                </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="resources/img/visual_01.jpg">
+                                    <div>
+                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                        <span>컬러</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="resources/img/visual_01.jpg">
+                                    <div>
+                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                        <span>컬러</span>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
                 <li>
                     <a href="category?cate_no=400000">ETC</a>
-                    <div>
-                        <ul>
+                    <div class="menu_sub-content">
+                        <ul class="sub_cate">
                             <li><a href="category?cate_no=400001">SHOES</a></li>
                             <li><a href="category?cate_no=400002">LIFEGOODS</a></li>
+                        </ul>
+                                               <ul class="sub_img">
+                            <li>
+                                <a href="#">
+                                <img src="resources/img/visual_01.jpg">
+                                <div>
+                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                    <span>컬러</span>
+                                </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <img src="resources/img/visual_01.jpg">
+                                <div>
+                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                    <span>컬러</span>
+                                </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="resources/img/visual_01.jpg">
+                                    <div>
+                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                        <span>컬러</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="resources/img/visual_01.jpg">
+                                    <div>
+                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
+                                        <span>컬러</span>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
             </ul>
             <ul class="menu_right">
-                <!-- <li>SEARCH</li> -->
+               <li onclick="showSeacrh();" style="cursor:pointer">SEARCH
+                    <div id="search_input">
+                        <input type="text" id="sPrd" placeholder="search" onkeypress="searchPrd();">
+                        <a href="javascript:hideSearch();">close</a>
+                    </div>
+                </li>
 	                
                 <c:choose>
                 	<c:when test="${member.m_id == null}">
@@ -87,6 +253,7 @@
    					</c:otherwise>
    				</c:choose>
    					<li><a href="#">FORUM</a></li>
+   					<li><a href="#">COLLECTION</a>
    					<!-- <div id="search" align="center">
 				         <input type="text" name="sPrd" id="sPrd" placeholder="검색어 입력" onkeypress="if(event.keyCode == 13) {searchPrd(); return;}">
 				         <button type="button" id="searchBtn" onclick="searchPrd()" style="cursor: pointer">
@@ -97,7 +264,9 @@
 		      <script>
 		         function searchPrd() {
 		            var sea = $("#sPrd").val();
-		            self.location = "searchPrd?sPrd=" + sea;
+		            if(window.event.keyCode == 13) {
+		            	self.location = "searchPrd?sPrd=" + sea;	
+		            }
 		         }
 		      </script>
         </nav>
