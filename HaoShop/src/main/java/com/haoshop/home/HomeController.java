@@ -35,11 +35,6 @@ public class HomeController {
 		return "admin/member";
 	}
 	
-	@RequestMapping(value = "/deliver", method = RequestMethod.GET)
-	public String deliver() {
-		return "admin/deliver";
-	}
-	
 	@RequestMapping(value = "/collection", method = RequestMethod.GET)
 	public String collection() {
 		return "admin/collection";

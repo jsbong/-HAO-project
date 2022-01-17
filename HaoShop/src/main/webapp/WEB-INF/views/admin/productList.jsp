@@ -90,8 +90,7 @@
 <span>«</span>
 </a>
 </li>
-<!-- li태그의 클래스에 active를 넣으면 색이 반전되고 클릭도 되지 않는다. -->
-<!-- active의 의미는 현재 페이지의 의미이다. -->
+
 <li class="active"><a href="#">1</a></li>
 <li><a href="member">2</a></li>
 <li><a href="#">3</a></li>

@@ -90,7 +90,7 @@
 					((P_PRICE - P_DISCOUNT) * PAY_QUANTITY) AS P_SUM 
 					FROM PAYMENT NATURAL JOIN PRODUCT WHERE M_NO = #{m_no}
 					<include refid="myp"></include>
-				) ORDER BY PAY_REGDATE DESC
+				) ORDER BY PAY_NO DESC
 			) A
 		) WHERE RN BETWEEN #{start} AND #{end}
 	</select>

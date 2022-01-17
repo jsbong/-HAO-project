@@ -22,11 +22,11 @@
 
 
         function showSeacrh() {
-            document.getElementById("search_input").style.display = "block";
+            document.getElementById("search").style.display = "block";
         }
 
         function hideSearch() {
-            document.getElementById("search_input").style.display = 'none';
+            document.getElementById("search").style.display = 'none';
         }
     </script>
 </head>
@@ -233,16 +233,25 @@
             </ul>
             <ul class="menu_right">
                <li onclick="showSeacrh();" style="cursor:pointer">SEARCH
-                    <div id="search_input">
-                        <input type="text" id="sPrd" placeholder="search" onkeypress="searchPrd();">
+                    <div id="search">
+                        <input type="text" name="sPrd" id="sPrd" placeholder="search" onkeypress="if(event.keyCode == 13) {searchPrd(); return;}">
                         <a href="javascript:hideSearch();">close</a>
                     </div>
                 </li>
+                    <div id="search" style="display:none">
+				         <input type="text" name="sPrd" id="sPrd">
+	   				</div>
 	                
                 <c:choose>
                 	<c:when test="${member.m_id == null}">
                 		<li><a href="signup">JOIN</a></li>
                 		<li><a href="login">LOGIN</a></li>
+                	</c:when>
+                	<c:when test="${member.m_id eq 'Administrator'}">
+                		<li><a href="mypage?m_no=${member.m_no}">MYPAGE</a></li>
+                		<li><a href="prdinsert">상품등록</a></li>
+                		<li><a href="deliver">주문 내역</a></li>
+                		<li><a href="logout">LOGOUT</a></li>
                 	</c:when>
                 	<c:otherwise>
                 		<li><a href="mypage?m_no=${member.m_no}">MYPAGE</a></li>

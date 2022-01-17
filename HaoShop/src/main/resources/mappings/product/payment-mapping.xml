@@ -21,6 +21,7 @@
 		<result property="p_img" column="P_IMG" />
 		<result property="p_name" column="P_NAME" />
 		<result property="prd_sum" column="PRD_SUM" />
+		<result property="p_sum" column="P_SUM" />
 		
 	</resultMap>
 	
@@ -55,8 +56,25 @@
 		]]>
 	</select>
 	
+	<select id="orderMemberAll" resultType="payment">
+		SELECT * FROM(
+			SELECT ROWNUM AS RN, A.* FROM (
+				SELECT * FROM (
+					SELECT PAY_NO, M_NO, P_NO, PAY_REGDATE, P_NAME, PAY_STATE,
+					((P_PRICE - P_DISCOUNT) * PAY_QUANTITY) AS P_SUM 
+					FROM PAYMENT NATURAL JOIN PRODUCT
+					) ORDER BY PAY_NO DESC
+			) A
+		) WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="orderCountAll" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM PAYMENT
+	</select>
+	
 	<!-- 회원 주문 상태 업데이트 -->
 	<update id="updateState">
 		UPDATE PAYMENT SET PAY_STATE=#{pay_state} WHERE PAY_NO=#{pay_no}
 	</update>
+	
 </mapper>

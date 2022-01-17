@@ -39,6 +39,16 @@ public class PaymentServiceImpl implements PaymentService {
 		paymentDAO.insertPayment(vo);
 	}
 	
+	// 주문내역 - 전체
+	public List<PaymentVO> getOrderListAll(PaymentVO vo, int start, int end) {
+		return paymentDAO.getOrderListAll(vo, start, end);
+	}
+
+	// 주문내역 갯수
+	public int getCountOrderAll(PaymentVO vo) {
+		return paymentDAO.getCountOrderAll(vo);
+	}
+	
 	public void deleteCartPayment(PaymentVO vo) {
 		paymentDAO.deleteCartPayment(vo);
 	}

@@ -17,4 +17,8 @@ public interface PaymentService {
 	
 	//주문 상태 변경
 	void updateState(PaymentVO vo);
+
+	int getCountOrderAll(PaymentVO vo);
+
+	List<PaymentVO> getOrderListAll(PaymentVO vo, int start, int end);
 }

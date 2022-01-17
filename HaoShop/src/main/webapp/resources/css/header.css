@@ -172,7 +172,7 @@ nav .menu_right li {
 
 /* seacrh 설정 */
 
-#search_input {
+#search {
     background:#ddd;
     padding : 0px 20px;
     height: 40px;
@@ -183,7 +183,7 @@ nav .menu_right li {
     border-radius: 4px;
 }
 
-#search_input input[type="text"] {
+#search input[type="text"] {
     background: transparent;
     border: 0;
     border-bottom: 1px solid #000;
