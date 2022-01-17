@@ -1,25 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE HTML>
-<html lang="ko">
+<html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<title>Decorating's</title>
+		<title>insertProduct</title>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="resources/js/product.js" charset="UTF-8"></script>
 		<script src="resources/ckeditor/ckeditor.js"></script>
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+		<link rel="stylesheet" href="resources/css/insertProduct.css">
+		<link rel="stylesheet" href="resources/css/admin_bar.css">
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
-	
 	<body>
-		<%@ include file="../include/menu.jsp" %>
-		<section>
+		<%@ include file="../admin/admin_bar.jsp" %>
+		<section class="insert_section">
+			<div class="insert_div">
 			<h2 align="center">상품등록</h2>
 			<form id="fileForm" action="insertProduct" method="POST" enctype="multipart/form-data">
-				<table align="center">
+				<table class="insert_table">
 					<tr>
 						<th>메인카테고리</th>
 						<td>

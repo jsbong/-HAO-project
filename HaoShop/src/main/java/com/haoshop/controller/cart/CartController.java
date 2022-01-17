@@ -31,35 +31,6 @@ public class CartController {
 		return "product/category";
 	}
 	
-	// 결제
-	@RequestMapping(value="/payment", method=RequestMethod.GET)
-	public String paymentView(CartVO vo) {
-		return "member/payment";
-	}
-
-	@RequestMapping(value="/payment", method=RequestMethod.POST)
-	public String payment(@RequestParam(value="hiddenbtn") String hidden, PaymentVO vo, HttpSession session, Model model) {
-		System.out.println(hidden);
-		if (hidden.equals("prdpage")) {
-			List<PaymentVO> list = paymentService.getPaymentProduct(vo);
-			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("list", list);
-			map.put("hidden", hidden);
-			map.put("p_size", vo.getP_size());
-			map.put("pay_quantity", vo.getPay_quantity());
-//			model.addAttribute("map", map);
-			session.setAttribute("map", map);
-		} else if (hidden.equals("cartpage")) {
-			List<PaymentVO> list = paymentService.cartPaymentProduct(vo);
-			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("list", list);
-			map.put("hidden", hidden);
-//			model.addAttribute("map", map);
-			session.setAttribute("map", map);
-		}
-		return "member/payment";
-	}
-	
 	// 결제목록 갱신
 	@RequestMapping(value="/decopay")
 	public String insertPayment(String[] prd_list, PaymentVO vo) {

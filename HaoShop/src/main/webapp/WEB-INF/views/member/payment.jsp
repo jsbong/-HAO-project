@@ -20,7 +20,7 @@
 			<tr>
 				<th height="50">이미지</th>
 				<th width="300" colspan="2">상품정보</th>
-				<th width="100">옵션</th>
+				<th width="100">사이즈</th>
 				<th width="100">판매가</th>
 				<th width="70">수량</th>
 				<th width="100">배송비</th>
@@ -62,7 +62,7 @@
 						<input type="hidden" id="p_size" value="${map.p_size}" />
 						<tr id="tr">
 							<td>
-								<img src="${pay.p_img}" width="100px" height="100px">
+								<img src="${fn:split(pay.p_img, '*')[0]}" width="100px" height="100px">
 								<input type="hidden" name="chkbox">
 							</td>
 							<td class="tdright">${pay.p_no}</td>

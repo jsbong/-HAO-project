@@ -14,4 +14,7 @@ public interface PaymentService {
 	
 	// 결제 후 장바구니 비우기
 	void deleteCartPayment(PaymentVO vo);
+	
+	//주문 상태 변경
+	void updateState(PaymentVO vo);
 }

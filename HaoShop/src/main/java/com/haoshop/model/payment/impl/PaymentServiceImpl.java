@@ -42,4 +42,8 @@ public class PaymentServiceImpl implements PaymentService {
 	public void deleteCartPayment(PaymentVO vo) {
 		paymentDAO.deleteCartPayment(vo);
 	}
+	
+	public void updateState(PaymentVO vo) {
+		paymentDAO.updateState(vo);
+	}
 }

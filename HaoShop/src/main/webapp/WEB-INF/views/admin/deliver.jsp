@@ -1,33 +1,53 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE htm>
-<html lang="ko">
-	<head>
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script src="resources/js/mypage.js" charset="UTF-8"></script>
-		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="resources/css/mypage.css">
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<title>Decorating's</title>
-	</head>
-	<body>
-		<%@ include file="../include/menu.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>deliver</title>
+</head>
+<body>
+<link rel="stylesheet" href="resources/css/member.css">
+<link rel="stylesheet" href="resources/css/admin_bar.css">
+</head>
+<body>
+<%@ include file="/WEB-INF/views/admin/admin_bar.jsp" %>
+<section class="member_section">
+  <h1 align="center">배송 현황</h1>
+  <h3 align="center">회원&상품 정보</h3>
+<div class="member_div">
+			<table>
+				<tr>
+					<th>구매 번호</th>
+					<th>회원 번호</th>
+					<th>구매날짜·구매시간</th>
+					<th>배송현황</th>
+					<th>배송상태 변경</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<th>ID</th>
+					<th>이름</th>
+					<th colspan="2">주소</th>
+					<th>전화번호</th>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>7</td>
+					<td colspan="2">8</td>
+					<td>9</td>
+				</tr>
+			</table>
+			
 		<div align="center">
-			<h1 class="my">MY PAGE</h1>
 			<table class="list">
 			<tr>
-			<td width="300">
-			<b style="color: purple;">${member.m_name}</b>님의 주문내역입니다.(최근 3개월기준)
-			</td>
-			<td width="200" align="left">회원 가입일: ${member.m_birth}</td>
-			<td width="400">
-			총 주문 물품개수:<b style="color: green;">${map.count}</b>
-			</td>
+			총 주문 내역 개수:<b style="color: green;">${map.count}</b>
 			</tr> 
 			</table>
 		</div>	
@@ -35,8 +55,6 @@
 			<table cellpadding="0" cellspacing="0" class="orderlist" align="center" width="950">
 			<tr align="right">
 			<td colspan="3" width="70%"></td>
-			<td><input type="button" class="revise" value="회원 정보 수정" onClick="location.href='mypage2'"></td>
-			<td><input type="button" class="delete" value="회원 정보 삭제" onClick="location.href='mypage5'"></td>
 			</tr>
 				<tr bgcolor="#7FB3FA" align="center">
 					<td>번호</td>
@@ -45,7 +63,7 @@
 					<td>결제금액</td>
 					<td>배송현황</td>
 				</tr>
-				<!-- 마이페이지 "주문내역" -->
+				<!-- "주문내역" -->
 				<c:forEach begin="0" end="${(fn:length(map.mypL))}" var="i">
 					<c:set var="row" value="${map.mypL[i]}" />
 					<c:choose>
@@ -97,7 +115,6 @@
 			</div>
 		</div>
 		
-
-		<%@ include file="../include/csinfo.jsp"%>
-	</body>
+</body>
 </html>
+

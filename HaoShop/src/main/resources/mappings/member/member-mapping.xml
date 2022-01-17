@@ -13,8 +13,6 @@
 		<result property="m_phone" column="M_PHONE" />
 		<result property="m_addr" column="M_ADDR" />
 		<result property="m_regdate" column="M_REGDATE" />
-		<result property="authkey" column="AUTHKEY" />
-		<result property="authstatus" column="AUTHSTATUS" />
 	</resultMap>
 
 	<select id="checkID" resultType="java.lang.Integer">
@@ -88,7 +86,7 @@
 		SELECT * FROM(
 			SELECT ROWNUM AS RN, A.* FROM (
 				SELECT * FROM (
-					SELECT P_NO, PAY_NO, PAY_REGDATE, P_NAME,
+					SELECT P_NO, PAY_NO, PAY_REGDATE, P_NAME, PAY_STATE,
 					((P_PRICE - P_DISCOUNT) * PAY_QUANTITY) AS P_SUM 
 					FROM PAYMENT NATURAL JOIN PRODUCT WHERE M_NO = #{m_no}
 					<include refid="myp"></include>

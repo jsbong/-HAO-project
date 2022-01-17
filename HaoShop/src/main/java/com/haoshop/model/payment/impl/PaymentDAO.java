@@ -39,4 +39,9 @@ public class PaymentDAO {
 	public void deleteCartPayment(PaymentVO vo) {
 		mybatis.delete("PaymentDAO.deleteCartPayment", vo);
 	}
+
+	//주문 상태 변경 - 관리자
+	public void updateState(PaymentVO vo) {
+		mybatis.update("PaymentDAO.updateState", vo);
+	}
 }

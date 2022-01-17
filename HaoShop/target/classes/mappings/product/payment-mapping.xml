@@ -54,4 +54,9 @@
 			WHERE M_NO=#{payment.m_no} AND PRODUCT.P_NO = CART.P_NO
 		]]>
 	</select>
+	
+	<!-- 회원 주문 상태 업데이트 -->
+	<update id="updateState">
+		UPDATE PAYMENT SET PAY_STATE=#{pay_state} WHERE PAY_NO=#{pay_no}
+	</update>
 </mapper>
