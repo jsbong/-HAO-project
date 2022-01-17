@@ -35,7 +35,7 @@
 					}
 				});
 				
-				$(".shipping_info").click(function() {
+				$(".shipping_info").click(function() { // 아래 배송 설명 js랑 합쳐야함
 					if($(this).find("div").css("display") == "none") {
 						$(this).find("div").slideDown();
 						$(this).find("span").css("transform", "rotate(45deg)");
@@ -78,6 +78,48 @@
 					$("#pay_quantity").val(num);
 				});
 				
+				// 이미지 슬라이드 설정
+				var imgs;
+				var img_count;
+				var img_position = 1;
+				
+				imgs = $(".product_slide ul");
+				img_count = imgs.children().length - 1; // 마지막 * 까지 있어서 -1 해줘야함
+
+				// .prev 버튼을 눌렀을 때
+				$(".prev").click(function() {
+					img_position--;
+					
+					if(img_position >= 1) {
+						imgs.animate({
+							left: "+=400px"
+						});
+					}
+					
+					if(img_position == 0) {
+						imgs.animate({
+							left: "-=1200px"
+						});
+						img_position = img_count;
+					}
+				});
+				
+				$(".next").click(function() {
+					img_position++;
+					
+					if(img_position <= img_count) {
+						imgs.animate({
+							left: "-=400px"
+						});
+					}
+					
+					if(img_position == (img_count + 1)) {
+						imgs.animate({
+							left: "+=1200px"
+						});
+						img_position = 1;
+					}
+				});
 		    });
 		</script>
 	</head>
@@ -89,16 +131,20 @@
 		<!-- 상품 상세 페이지 -->
 		<div class="product-content">
 			<article class="product_detail">
-				<div>
-					<ul>
-					<li class="product_left">
+				<div class="product_left_layout">
+					<div class="product_slide">
 						<ul>
-							<c:forEach items="${fn:split(product.p_img, '*')}" var="img">
-								<li><img src="${img}"></li>
-							</c:forEach>
+						<li class="product_left">
+							<ul>
+								<c:forEach items="${fn:split(product.p_img, '*')}" var="img">
+									<li><img src="${img}"></li>
+								</c:forEach>
+							</ul>
+						</li>
 						</ul>
-					</li>
-					</ul>
+					</div>
+					<a class="prev">&#10094;</a>
+					<a class="next">&#10095;</a>
 				</div>
 				<div class="product_right">
 					<input type="hidden" name="p_img" id="p_img" value="${product.p_img}" />
@@ -163,5 +209,4 @@
 		<!-- footer -->
 		<%@ include file="../include/footer.jsp" %>
 	</body>
-</html>		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="resources/css/productpage.css">
+</html>
