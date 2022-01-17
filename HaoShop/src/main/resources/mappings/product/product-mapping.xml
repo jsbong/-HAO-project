@@ -95,7 +95,7 @@
 	
 	<select id="getAdminProductList" resultMap="product">
 		<![CDATA[
-			SELECT CATE_NO, nvl(p_img, 'resource/img/product/') AS P_IMG, P_NAME, P_NO, P_PRICE FROM (
+			SELECT CATE_NO, nvl(p_img, 'resource/img/product/') AS P_IMG, P_NAME, P_NO, P_PRICE, P_DISCOUNT, P_COLOR, P_EXPLAIN FROM (
 				SELECT ROWNUM AS RN, A.* FROM (
 					SELECT * FROM PRODUCT ORDER BY P_NO DESC
 				) A
