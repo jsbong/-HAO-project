@@ -34,13 +34,6 @@ public class PaymentController {
 			paymentService.updateState(vo);
 		}
 		
-		/*// 관리자 - 주문 상태 보기
-		@RequestMapping(value = "/deliver", method = RequestMethod.GET)
-		public String deliver() {
-			
-			return "admin/deliver";
-		}*/
-		
 		@RequestMapping("/deliver")
 		public String getPatmentpage(@RequestParam(defaultValue = "1") int curPage, PaymentVO vo, Model model) { 
 			int count = paymentService.getCountOrderAll(vo);
