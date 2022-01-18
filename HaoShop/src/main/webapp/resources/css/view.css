@@ -1,28 +1,146 @@
 @CHARSET "UTF-8";
 
+.organize{
+	margin: 0 auto;
+	width: 650px;
+}
+
+h2{
+	text-align: center;
+}
+
+.list {
+	background-color:black;
+	width: 70px;
+	height: 25px;
+	border: 0px;
+	outline: none;
+	color: white;
+}
+
+.list:hover{
+	color: #483d8b;
+}
+
+.list_button {
+	background-color:black;
+	width: 70px;
+	height: 25px;
+	border: 0px;
+	outline: none;
+	color: white;
+	margin-left: 634px;
+}
+
+.updateWrite {
+	background-color:black;
+	width: 70px;
+	height: 25px;
+	border: 0px;
+	outline: none;
+	color: white;
+	margin-left: 566px;
+}
+
+.updateWrite:hover{
+	color: #483d8b;
+}
+
+.list_button:hover{
+	color: #483d8b;
+}
+
+.updateList{
+	background-color:black;
+	width: 70px;
+	height: 25px;
+	border: 0px;
+	outline: none;
+	color: white;
+	margin-left: 290px;
+	
+}
+
+.updateList:hover{
+	color: #483d8b;
+}
+
+.board_form{
+	margin: 0 auto;
+	border: 0;
+}
+
+.board_section{
+	padding: 100px 0;
+}
+
+.board_main{
+	margin: 0 auto
+}
+
+.write{
+	margin: 0 auto;
+	text-align: center;
+}
+
+.t_title{
+	background-color: black;
+	color: white;
+	text-align: center;
+	width: 200px;
+	height: 40px;
+	
+}
+
+.t_content{
+	width: 200px;
+	height: 500px;
+	text-align: center;
+	vertical-align: middle;
+	background-color: black;
+	color: white;
+}
+
+.t_value{
+	width: 500px;
+	height: 40px;
+}
+
+.c_value{
+	width: 500px;
+	height: 500px;
+}
+
 view {
 	table-layout: fixed;
-	#E1DCDC
 }
+
+.simpleView-content {
+	margin-bottom: 30px;
+}
+
 .simpleView { 
     border-collapse: collapse; 
     border-spacing: 0px;
+    margin: 0 auto;
 }
 
 .a {
 	border-top: 2px solid #000;
 	border-bottom: 1px dashed black;
+	text-align: center;
 }
 .b {
 	border-bottom: 2px solid #000;
 	border-top: 1px dashed black;
+	text-align: center;
 }
 .tdS {
 	width: 100px;
 }
 .previous {
 	font-family: 돋움;
-	background-color:#708090;
+	background-color: black;
 	width: 70px;
 	height: 25px;
 	border: 0px;
@@ -34,7 +152,7 @@ view {
 }
 .next {
 	font-family: 돋움;
-	background-color:#708090;
+	background-color: black;
 	width: 70px;
 	height: 25px;
 	border: 0px;

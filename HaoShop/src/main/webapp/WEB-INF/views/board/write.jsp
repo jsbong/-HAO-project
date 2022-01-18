@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-	<link rel="stylesheet" type="text/css" href="resources/css/board.css?cv">
+	<link rel="stylesheet" type="text/css" href="resources/css/view.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="resources/ckeditor/ckeditor.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -76,18 +76,17 @@ $(document).ready(function(){
 })
 </script>
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../include/header.jsp" %>
 <title>${board.b_title}</title>
 </head>
 <body>
-<center>
-	<div style="width:800px;">
+	<div class="organize">
 
 		<br/><br/>
 	<form>
 		<input type="hidden" name="m_no" id="m_no" value="${member.m_no}" />
 		<input type="hidden" name="m_id" id="m_id" value="${member.m_id}" />
-		<table class="textb" width="100%">
+		<table class="textb">
 			<tr>
 			<td class="asd" width="60">제목</td>
 			<td  class="asd" align="left">
@@ -105,13 +104,13 @@ $(document).ready(function(){
 			</td>
 			</tr>
 		</table>
-		<br/><br/>
-		<input type="button" class="write" value="작성하기" onClick="createB()" />
+		<input type="button" class="updateWrite" value="작성하기" onClick="createB()" />
 	</form>
-	
-		<button style="float:right;" class="listp"onClick="location.href='board'">목록</button>
+		<br><br>
+		<button class="updateList" onClick="location.href='board'">목록</button>
+		<br>
+		<br>
 	</div>
-</center>
-<%@ include file="../include/csinfo.jsp" %>
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,12 +34,28 @@
     </tr>
   </thead>
     <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
+      <c:forEach begin="0" end="${(fn:length(map.list))}" var="i">
+					<c:set var="row" value="${map.list[i]}" />
+					<c:choose>
+						<%-- 검색결과가 있을 때 --%>
+						<c:when test="${not empty row}">
+							<tr bgcolor="#fff" height="50">
+								<td align="center">${row.m_no}</td>
+								<td align="center">${row.m_id}</td>
+								<td align="center">${row.m_name}</td>
+								<td><fmt:formatDate value="${row.m_birth}" pattern="yyyy-MM-dd" /></td>
+								<td align="center">${row.m_phone}</td>
+								<td align="center">${fn:split(row.m_addr, '*')[1]}</td>
+							</tr>
+						</c:when>
+						<%-- 검색결과가 없을 떄 --%>
+						<c:when test="${map.count == 0}">
+							<tr style="text-align: center;">
+								<td colspan='5'><b>회원이 없습니다.</b></td>
+							</tr>
+						</c:when>
+					</c:choose>
+				</c:forEach>
     </tr>
     <tr>
       <td>7</td>
@@ -95,28 +114,32 @@
       <td>Ipsumdfasfgdsgdsgagagagagdagag</td>
     </tr>
 </table>
+<div align="center">
+				<c:if test="${map.pager.curBlock > 1}">
+					<a href="#" onclick="list('1')">[처음]</a>
+				</c:if>
+				<c:if test="${map.pager.curBlock > 1}">
+					<a href="#" onclick="list('${map.pager.prevPage}')">[이전]</a>
+				</c:if>
+				<c:forEach var="num" begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}">
+					<c:choose>
+						<c:when test="${num == map.pager.curPage}">
+							<!-- 현재 페이지인 경우 하이퍼링크 제거 -->
+							<span style="color: red;">${num}</span>
+						</c:when>
+						<c:otherwise>
+							<a href="#" onclick="list('${num}')">${num}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${map.pager.curBlock < map.pager.totBlock}">
+					<a href="#" onclick="list('${map.pager.nextPage}')">[다음]</a>
+				</c:if>
+				<c:if test="${(map.pager.totPage > 5) && (map.pager.totPage != map.pager.curPage)}">
+					<a href="#" onclick="list('${map.pager.totPage}')">[끝]</a>
+				</c:if>
+			</div>
 </div>
-<!-- 페이징을 지정할 태그에 class에 pagination을 넣으면 자동으로 페이징이 된다.-->
-<!-- 페이징의 크기를 제어할 수 있는데 pagination-lg를 추가하면 페이징 크기가 커지고, pagination-sm를 넣으면 작아진다. -->
-<!-- 큰 페이징 class="pagination pagination-lg", 보통 페이징 class="pagination", 작은 페이징 class="pagination pagination-sm" -->
-<ul class="pagination">
-<!-- li태그의 클래스에 disabled를 넣으면 마우스를 위에 올렸을 때 클릭 금지 마크가 나오고 클릭도 되지 않는다.-->
-<!-- disabled의 의미는 앞의 페이지가 존재하지 않다는 뜻이다. -->
-<li class="disabled">
-<a href="#">
-<span><<</span>
-</a>
-</li>
-<!-- li태그의 클래스에 active를 넣으면 색이 반전되고 클릭도 되지 않는다. -->
-<!-- active의 의미는 현재 페이지의 의미이다. -->
-<li><a href="productList">1</a></li>
-<li class="active"><a href="member">2</a></li>
-<li><a href="#">3</a></li>
-<li><a href="#">4</a></li>
-<li><a href="#">5</a></li>
-<li>
-<a href="#">
-<span>»</span>
 </section>
 </body>
 </html>

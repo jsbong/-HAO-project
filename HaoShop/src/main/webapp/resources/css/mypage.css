@@ -1,67 +1,14 @@
-@charset "utf-8";
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@CHARSET "EUC-KR";
 
-/* reset */
-* {
-    margin: 0;
-    padding: 0;
-}
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
-pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, 
-strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, 
-tbody, tfoot, thead, tr, th, td{
-    margin:0;padding:0;
-}
-a {
-    color: inherit; text-decoration: inherit;
-}
-img {
-    vertical-align: middle;
-}
-a img {
-    border: none;
-}
-li {
-    list-style: none;
-}
-address, em, i {
-    font-style: normal;
-}
-a:focus {
-    outline: none
-}
-button:focus {
-    outline: none
-}
-/* layout */
-section.section_my {
-	width: 95%;
-	height: 800px;
-	position: relative;
-}
-section.section_cen {
-	width: 92%;
-	height: 550px;
-	position: relative;
-	margin: 160px 0 0 90px;
-}
-.order .orderlist {
-	width: 950px;
-	text-align: center;
-	margin: 0 auto;
-}
 .orderlist td{
-	width: 70%;
 	border-bottom:1px solid;
 	border-color: #E1DCDC;
-	padding: 5px;
-	margin: 0 0 0 70px;
 }
 .list{
 	height: 50px;
 	background: #DFEBFA;
-	margin-top: 30px;
-	margin-bottom: 30px;
+	margin-top: 40px;
+	margin-bottom: 40px;
 	position:relative;
 	
 }
@@ -85,36 +32,13 @@ section.section_cen {
 	color: white;
 }
 .pwcheck{
-	width: 400px;
-	height: 170px;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	margin: -170px 0 0 -150px;
+	margin-top:100px;
 }
 .pwcheck th{
-	text-align: center;
-	padding-bottom: 10px;
-}
-.pwcheck td{
-	text-align: center;
-	width: 250px;
+	padding-bottom: 20px;
 }
 .checkbtn{
-	width: 320px;
-	height: 300px;
-	position: absolute;
-	left: 50%;
-	top: 78%;
-	margin: -190px 0 0 -150px;
-}
-.checkbtn2{
-	width: 320px;
-	height: 300px;
-	position: absolute;
-	left: 52%;
-	top: 78%;
-	margin: -190px 0 0 -150px;
+	margin-bottom: 300px;
 }
 #f1rm table{
 	margin-top: 50px;
@@ -124,13 +48,13 @@ section.section_cen {
 	border-right: 1px solid #E1DCDC;
 }
 #f1rm th,td{
-	border-top:1px solid white;
+	border-top:1px solid #E1DCDC;
 }
 #a{
 	border-bottom:1px solid #E1DCDC;
 }
 input[type=button] {
 	border: none;
-	background-color: white;
-	color: #000000;
+	background-color: #7FB3FA;
+	color: white;
 }

@@ -3,29 +3,29 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, user-scalable=no" />
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="resources/css/board.css?u">
-<title>공지사항</title>
+	<meta charset="UTF-8">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<link rel="stylesheet" type="text/css" href="resources/css/board.css">
+<title>FORUM</title>
+
 </head>
 <body>
-<div id="listLayout">
-	<%@ include file="../include/menu.jsp"%>
+	<!-- header -->
+	<%@ include file="../include/header.jsp"%>
+	<div class="board_section">
 	<input type="hidden" id="curPage" value="${curPage }"/>
-	<center>
-		<div style="width:800px;">
-		<div class="name">
-			<h2><img alt="공지사항" src="resources/img/pro.jpg"> </h2>
-		</div>
-			<div style="float: right;">
-			
+	<h2 class="title">FORUM</h2>
+	<br><br>
+	
+			<!-- 일반 사용자일 때 -->
+				<c:if test="${member.m_id != null && member.m_no != null}">
+				<button type="button" class="text" onClick="location.href='write'">글쓰기</button>
+				</c:if>
+				<br>
+				<br>
 			<!-- 검색했을 때 카운트-->
 				<c:if test="${map.search eq 's'}">
 					<c:choose>
@@ -37,14 +37,8 @@
 						</c:otherwise>
 					</c:choose>
 				</c:if>
-				
-			<!-- 일반 사용자일 때 -->
-				<c:if test="${member.m_id != null && member.m_no != null}">
-					<button type="button" class="text" onClick="location.href='write'">글쓰기</button>
-				</c:if>
-			</div>
-			<br/><br/><br/>
-			<table cellpadding="0" cellspacing="0" style="text-align:center;" width="100%">
+			
+			<table class="board_section">
 				<tr height="50">
 					<th class="list1" width="5%">번호</th>
 					<th class="list1" width="5%">멤버</th>
@@ -59,10 +53,11 @@
 					<c:choose>
 					<%-- 검색결과가 있을 때 --%>
 					<c:when test="${not empty row}">
+					<tr>
 						<td class="list2">${row.b_no}</td>
 						<td class="list2">${row.m_no}</td>
-						<td  class="list2" style="text-align:left;"><a href="view?b_no=${row.b_no}">${row.b_title}</a>
-						<td  class="list2" style="text-align:center;">${row.m_id}</td>
+						<td class="list2" style="text-align:left; margin:0 auto;"><a href="view?b_no=${row.b_no}">${row.b_title}</a>
+						<td class="list2" style="text-align:center;">${row.m_id}</td>
 					<fmt:formatDate value="${now}" pattern="yyyyMMdd" var="today" />
 					<fmt:formatDate value="${row.b_regdate}" pattern="yyyyMMdd" var="regDate"/>
 					<c:choose>
@@ -78,18 +73,20 @@
 					</c:when>
 					<%-- 검색결과가 없을 떄 --%>
 					<c:when test="${map.count == 0}">
-					<tr style="text-align:center;"><td colspan='5' size="30px">
+					<tr style="text-align:center;"><td colspan='5'>
 					<b style="color: red; font-size:30px;">'${keyword}'</b> 에 대한 검색결과가 없습니다.
-					</td></tr>
+					</td>
+					</tr>
 					</c:when>
 					</c:choose>
 				</c:forEach>
 			</table>
+		
 			<br />
 			<br />
 			
 			<!-- 페이지 네비게이션 출력 -->
-			<div align="center">
+			<div>
 				<c:if test="${map.pager.curBlock > 1}">
 					<a href="board?curPage=1
 							&searchOption=${searchOption}&keyword=${keyword}
@@ -116,8 +113,9 @@
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
+			</div>
 			<!-- 검색 조건 뷰 -->
-			<form action="board" class="boardsearch" align="left">
+			<form action="board" class="boardsearch">
 					<select name="searchOption" id="searchOption">
 						<option value="ALL" <c:out value="${map.searchOption=='ALL'?'selected':''}"/> >제목+이름+내용</option>
 						<option value="B_TITLE" <c:out value="${map.searchOption=='B_TITLE'?'selected':''}"/> >제목</option>
@@ -139,10 +137,8 @@
 							&searchOption=${searchOption}&keyword=${keyword}
 							&search=${search}">[끝]</a>
 				</c:if>
-			</div>
-		</div>
-		</div>
-	</center>
-	<%@ include file="../include/csinfo.jsp"%>
+				</div>
+	<%@ include file="../include/footer.jsp"%>
 </body>
 </html>
+

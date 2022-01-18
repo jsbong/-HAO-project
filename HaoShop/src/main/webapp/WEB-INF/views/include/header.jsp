@@ -261,7 +261,7 @@
 	                	<li><a href="#" onclick="productCart();">CART</a></li>
    					</c:otherwise>
    				</c:choose>
-   					<li><a href="#">FORUM</a></li>
+   					<li><a href="board">FORUM</a></li>
    					<li><a href="#">COLLECTION</a>
    					<!-- <div id="search" align="center">
 				         <input type="text" name="sPrd" id="sPrd" placeholder="검색어 입력" onkeypress="if(event.keyCode == 13) {searchPrd(); return;}">

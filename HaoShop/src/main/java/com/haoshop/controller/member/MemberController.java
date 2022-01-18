@@ -32,7 +32,9 @@ public class MemberController {
 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signUpView(MemberVO vo) { return "member/signup"; }
-
+	
+	
+	
 	//회원 주문내역
 	@ResponseBody
 	@RequestMapping("/mypL")
