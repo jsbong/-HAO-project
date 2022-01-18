@@ -47,30 +47,32 @@
 				}
 			}
 		</script>
-		<title>Decorating's</title>
+		<title>mypage2</title>
 	</head>
 	<body>
-		<%@ include file="../include/menu.jsp"%>
-		<table class="pwcheck" align="center">
+		<%@ include file="../include/header.jsp"%>
+		<section class="section_my">
+		<table class="pwcheck">
 			<tr>
 				<th colspan="2">비밀번호 확인</th>
 			</tr>
 			<tr>
-				<td width="100" bgcolor="#7FB3FA">회원 아이디</td>
+				<td bgcolor="#7FB3FA">회원 아이디</td>
 				<td width="250">${member.m_id}</td>
 			</tr>
 			<tr>
 				<td bgcolor="#7FB3FA">비밀번호</td>
-				<td><input type="password" size="35" id="m_pwd" placeholder="비밀번호 확인" /></td>
+				<td><input type="password" size="20" id="m_pwd" placeholder="비밀번호 확인" /></td>
 			</tr>
 		</table>
-		<div class="checkbtn" align="center">
+		<div class="checkbtn2" align="center">
 			<form id="myInfo">
 				<!-- 회원 비밀번호 체크 -->
 				<input type="button" class="confirm" value="확인" onClick="mypg2()" />&nbsp;&nbsp;&nbsp;
 				<input type="button" class="cancel" value="취소" onClick="" />
 			</form>
 		</div>
-		<%@ include file="../include/csinfo.jsp"%>
+		</section>
+		<%@ include file="../include/footer.jsp"%>
 	</body>
 </html>

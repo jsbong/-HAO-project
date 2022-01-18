@@ -55,16 +55,17 @@
 				}
 			}
 		</script>
-		<title>Decorating's</title>
+		<title>mypage5</title>
 	</head>
 	<body>
-		<%@ include file="../include/menu.jsp"%>
+		<%@ include file="../include/header.jsp"%>
+		<section class="section_my">
 		<table class="pwcheck" align="center">
 			<tr>
 				<th colspan="2">비밀번호 확인</th>
 			</tr>
 			<tr>
-				<td width="100" bgcolor="#7FB3FA">회원 아이디</td>
+				<td bgcolor="#7FB3FA">회원 아이디</td>
 				<td width="250">${member.m_id}</td>
 			</tr>
 			<tr>
@@ -80,6 +81,7 @@
 				<input type="button" class="cancel" value="취소" onClick="" />
 			</form>
 		</div>
-		<%@ include file="../include/csinfo.jsp"%>
+		</section>
+		<%@ include file="../include/footer.jsp"%>
 	</body>
 </html>

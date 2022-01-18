@@ -8,14 +8,156 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="resources/css/payment.css">
-		<title>Decorating's</title>
+		<title>payment</title>
+		<script>
+			$(document).ready(function() {	// 최상단 체크박스 클릭
+				$("#checkAll").click(function() {	// 클릭
+					if ($("#checkAll").prop("checked")) {	// input tag name="chk" checked=true
+						$("input[name=chk]").prop("checked", true);
+					} else {
+						$("input[name=chk]").prop("checked", false);
+					}
+				})
+				
+				$("input[name=chk]").click(function() {
+					if ($("input[name=chk]").length == $("input[name=chk]:checkbox:checked").length) {
+						$("#checkAll").prop("checked", true);
+					} else {
+						$("#checkAll").prop("checked", false);
+					}
+				})
+				
+				$("input[type=radio][name=choice]").change(function() {
+					if(this.value == "sameaddr") {
+						$("input[name=sn_m_name]").val($("#hidden_m_name").val());
+						$("input[name=sn_m_name]").attr("readonly", true);
+						$("input[name=sn_member_zipcode]").val($("#hidden_member_zipcode").val());
+						$("input[name=sn_member_zipcode]").attr("readonly", true);
+						$("input[name=sn_member_faddr]").val($("#hidden_member_faddr").val());
+						$("input[name=sn_member_faddr]").attr("readonly", true);
+						$("input[name=sn_member_laddr]").val($("#hidden_member_laddr").val());
+						$("input[name=sn_member_laddr]").attr("readonly", true);
+						$("input[name=sn_m_phone]").val($("#hidden_m_phone").val());
+						$("input[name=sn_m_phone]").attr("readonly", true);
+						$("input[name=nn_searchPost]").css("visibility", "hidden");
+					} else if (this.value == "newaddr") {
+						$("input[name=sn_m_name]").val("");
+						$("input[name=sn_m_name]").attr("readonly", false);
+						$("input[name=sn_member_zipcode]").val("");
+						$("input[name=sn_member_zipcode]").attr("readonly", true);
+						$("input[name=sn_member_faddr]").val("");
+						$("input[name=sn_member_faddr]").attr("readonly", true);
+						$("input[name=sn_member_laddr]").val("");
+						$("input[name=sn_member_laddr]").attr("readonly", false);
+						$("input[name=sn_m_phone]").val("");
+						$("input[name=sn_m_phone]").attr("readonly", false);
+						$("input[name=nn_searchPost]").css("visibility", "visible");
+					}
+				});
+			})
+			
+			function termChk() {
+				var chk1 = $("#chk1").is(":checked");
+				var chk2 = $("#chk2").is(":checked");
+				var m_no = $("#m_no").val();
+				var m_addr = $("input[name=sn_member_zipcode]").val()+"*"+$("input[name=sn_member_faddr]").val()+"*"+$("input[name=sn_member_laddr]").val();
+				var m_phone = $("input[name=sn_m_phone]").val();
+				var pay_price = $("#pay_price").val();
+				var pay_creditcard = $("#credit1").val()+"-"+$("#credit2").val()+"-"+$("#credit3").val()+"-"+$("#credit4").val();
+				var prd_list = new Array();
+				var chkbox = $("input[name=chkbox]");
+				jQuery.ajaxSettings.traditional = true;
+				
+				if (chk1 == true && chk2 == true && $("#credit1").val() != "" && $("#credit2").val() != "" && $("#credit3").val() != "" && $("#credit4").val() != "") {
+ 					swal({
+						icon : "info", 
+						text : "결제를 진행 하시겠습니까?", 
+						closeOnClickOutside : false, 
+						closeOnEsc : false, 
+						buttons : [ "취소", "결제" ],
+					}).then(function(isConfirm) {
+						if (isConfirm) {
+							swal("결제 성공", "" , "success").then(function(isConfirm) {
+								chkbox.each(function(i) {
+									var tr = chkbox.parent().parent().eq(i).children();
+									var p_no = tr.eq(1).text();
+									var p_size = tr.eq(3).text();
+									var pay_quantity = tr.eq(5).text();
+									prd_list.push(p_no);
+									prd_list.push(p_size);
+									prd_list.push(pay_quantity);
+								});
+								$.ajax({
+									type : "POST", 
+									url : "decopay", 
+									data : {
+										"m_no" : m_no,
+										"prd_list" : prd_list,
+										"m_addr" : m_addr,
+										"m_phone" : m_phone,
+										"pay_price" : pay_price,
+										"pay_creditcard" : pay_creditcard
+									}, success : function(data) { window.location.href = "main"; }
+								});
+								console.log(prd_list);
+							});
+						}
+					});
+				} else if (chk1 == false || chk2 == false) {
+					swal("", "약관에 동의해야 합니다.", "info");
+				} else {
+					swal("", "카드번호를 입력해주세요.", "info");
+				}
+			}
+			
+			// 카드번호 숫자입력
+			function onlyNumber(){
+				if((event.keyCode<48)||(event.keyCode>57)) {
+					event.returnValue=false;
+				}
+			}
+			
+			function searchPost() {
+				new daum.Postcode({
+					oncomplete : function(data) {
+						var fullAddr = '';
+						var extraAddr = '';
+
+						if (data.userSelectedType == 'R') {
+							fullAddr = data.roadAddress;
+						} else {
+							fullAddr = data.jibunAddress;
+						}
+						if (data.userSelectedType == 'R') {
+							if (data.bname !== '') {
+								extraAddr += data.bname;
+							}
+							if (data.buildingName !== '') {
+								extraAddr += (extraAddr !== '' ? ', ' + data.buildingName
+										: data.buildingName);
+							}
+							fullAddr += (extraAddr !== '' ? '(' + extraAddr + ')' : '');
+						}
+						$("input[name=sn_member_zipcode]").val(data.zonecode);
+						console.log($("input[name=sn_member_zipcode]").val());
+						// document.getElementById('sn_member_zipcode').value = data.zonecode;
+						$("input[name=sn_member_faddr]").val(fullAddr);
+						// document.getElementById('sn_member_faddr').value = fullAddr;
+						$("input[name=sn_member_laddr]").focus();
+						// document.getElementById('sn_member_laddr').focus();
+					}
+				}).open();
+			}
+		</script>
 	</head>
 	<body>
-		<%@ include file="../include/menu.jsp"%>
+		<%@ include file="../include/header.jsp"%>
+		<section class="section_container">
 		<div id="container">
-		<h3>주문서 작성</h3>
+		<h3 class="h3_pay">주문서 작성</h3>
 		<table id="oSW">
 			<tr>
 				<th height="50">이미지</th>
@@ -85,7 +227,7 @@
 				</td>
 			</tr>
 		</table><br><br>
-		<h3>주문자 정보</h3>
+		<h3 class="h3_pay">주문자 정보</h3>
 		<table id="oSI">
 			<tr>
 				<th width="150" height="50">주문자 명</th>
@@ -124,7 +266,7 @@
 				</td>
 			</tr>
 		</table><br><br><br>
-		<h3>배송 정보</h3>
+		<h3 class="h3_pay">배송 정보</h3>
 		<table id="oSD">
 			<tr>
 				<th width="150" height="50" bgcolor="#CCE1FF">배송지 선택</th>
@@ -162,7 +304,7 @@
 			</tr>
 		</table>
 		<br><br><br>
-		<h3>결제 예정 금액</h3>
+		<h3 class="h3_pay">결제 예정 금액</h3>
 		<table id="oSP">
 			<tr>
 				<th height="50" bgcolor="#CCE1FF" align="center">총 주문 금액</th>
@@ -463,150 +605,11 @@
 			<tr>
 				<input type="hidden" id="m_no" value="${member.m_no}" />
 				<input type="hidden" id="pay_price" value="${priceSum - discountSum + 5000}" />
-				<th colspan="2"><input type="button" onClick="termChk()" value="결제 하기" /></th>
+				<th align="center" colspan="2"><input type="button" onClick="termChk()" value="결제 하기" /></th>
 			</tr>
-		</table>
-		<script>
-			$(document).ready(function() {	// 최상단 체크박스 클릭
-				$("#checkAll").click(function() {	// 클릭
-					if ($("#checkAll").prop("checked")) {	// input tag name="chk" checked=true
-						$("input[name=chk]").prop("checked", true);
-					} else {
-						$("input[name=chk]").prop("checked", false);
-					}
-				})
-				
-				$("input[name=chk]").click(function() {
-					if ($("input[name=chk]").length == $("input[name=chk]:checkbox:checked").length) {
-						$("#checkAll").prop("checked", true);
-					} else {
-						$("#checkAll").prop("checked", false);
-					}
-				})
-				
-				$("input[type=radio][name=choice]").change(function() {
-					if(this.value == "sameaddr") {
-						$("input[name=sn_m_name]").val($("#hidden_m_name").val());
-						$("input[name=sn_m_name]").attr("readonly", true);
-						$("input[name=sn_member_zipcode]").val($("#hidden_member_zipcode").val());
-						$("input[name=sn_member_zipcode]").attr("readonly", true);
-						$("input[name=sn_member_faddr]").val($("#hidden_member_faddr").val());
-						$("input[name=sn_member_faddr]").attr("readonly", true);
-						$("input[name=sn_member_laddr]").val($("#hidden_member_laddr").val());
-						$("input[name=sn_member_laddr]").attr("readonly", true);
-						$("input[name=sn_m_phone]").val($("#hidden_m_phone").val());
-						$("input[name=sn_m_phone]").attr("readonly", true);
-						$("input[name=nn_searchPost]").css("visibility", "hidden");
-					} else if (this.value == "newaddr") {
-						$("input[name=sn_m_name]").val("");
-						$("input[name=sn_m_name]").attr("readonly", false);
-						$("input[name=sn_member_zipcode]").val("");
-						$("input[name=sn_member_zipcode]").attr("readonly", true);
-						$("input[name=sn_member_faddr]").val("");
-						$("input[name=sn_member_faddr]").attr("readonly", true);
-						$("input[name=sn_member_laddr]").val("");
-						$("input[name=sn_member_laddr]").attr("readonly", false);
-						$("input[name=sn_m_phone]").val("");
-						$("input[name=sn_m_phone]").attr("readonly", false);
-						$("input[name=nn_searchPost]").css("visibility", "visible");
-					}
-				});
-			})
-			
-			function termChk() {
-				var chk1 = $("#chk1").is(":checked");
-				var chk2 = $("#chk2").is(":checked");
-				var m_no = $("#m_no").val();
-				var m_addr = $("input[name=sn_member_zipcode]").val()+"*"+$("input[name=sn_member_faddr]").val()+"*"+$("input[name=sn_member_laddr]").val();
-				var m_phone = $("input[name=sn_m_phone]").val();
-				var pay_price = $("#pay_price").val();
-				var pay_creditcard = $("#credit1").val()+"-"+$("#credit2").val()+"-"+$("#credit3").val()+"-"+$("#credit4").val();
-				var prd_list = new Array();
-				var chkbox = $("input[name=chkbox]");
-				jQuery.ajaxSettings.traditional = true;
-				
-				if (chk1 == true && chk2 == true && $("#credit1").val() != "" && $("#credit2").val() != "" && $("#credit3").val() != "" && $("#credit4").val() != "") {
- 					swal({
-						icon : "info", 
-						text : "결제를 진행 하시겠습니까?", 
-						closeOnClickOutside : false, 
-						closeOnEsc : false, 
-						buttons : [ "취소", "결제" ],
-					}).then(function(isConfirm) {
-						if (isConfirm) {
-							swal("결제 성공", "" , "success").then(function(isConfirm) {
-								chkbox.each(function(i) {
-									var tr = chkbox.parent().parent().eq(i).children();
-									var p_no = tr.eq(1).text();
-									var p_size = tr.eq(3).text();
-									var pay_quantity = tr.eq(5).text();
-									prd_list.push(p_no);
-									prd_list.push(p_size);
-									prd_list.push(pay_quantity);
-								});
-								$.ajax({
-									type : "POST", 
-									url : "decopay", 
-									data : {
-										"m_no" : m_no,
-										"prd_list" : prd_list,
-										"m_addr" : m_addr,
-										"m_phone" : m_phone,
-										"pay_price" : pay_price,
-										"pay_creditcard" : pay_creditcard
-									}, success : function(data) { window.location.href = "main"; }
-								});
-								console.log(prd_list);
-							});
-						}
-					});
-				} else if (chk1 == false || chk2 == false) {
-					swal("", "약관에 동의해야 합니다.", "info");
-				} else {
-					swal("", "카드번호를 입력해주세요.", "info");
-				}
-			}
-			
-			// 카드번호 숫자입력
-			function onlyNumber(){
-				if((event.keyCode<48)||(event.keyCode>57)) {
-					event.returnValue=false;
-				}
-			}
-			
-			function searchPost() {
-				new daum.Postcode({
-					oncomplete : function(data) {
-						var fullAddr = '';
-						var extraAddr = '';
-
-						if (data.userSelectedType == 'R') {
-							fullAddr = data.roadAddress;
-						} else {
-							fullAddr = data.jibunAddress;
-						}
-						if (data.userSelectedType == 'R') {
-							if (data.bname !== '') {
-								extraAddr += data.bname;
-							}
-							if (data.buildingName !== '') {
-								extraAddr += (extraAddr !== '' ? ', ' + data.buildingName
-										: data.buildingName);
-							}
-							fullAddr += (extraAddr !== '' ? '(' + extraAddr + ')' : '');
-						}
-						$("input[name=sn_member_zipcode]").val(data.zonecode);
-						console.log($("input[name=sn_member_zipcode]").val());
-						// document.getElementById('sn_member_zipcode').value = data.zonecode;
-						$("input[name=sn_member_faddr]").val(fullAddr);
-						// document.getElementById('sn_member_faddr').value = fullAddr;
-						$("input[name=sn_member_laddr]").focus();
-						// document.getElementById('sn_member_laddr').focus();
-					}
-				}).open();
-			}
-		</script>
+		</table>	
 		</div>
-		<%@ include file="../include/csinfo.jsp"%>
+		</section>
+		<%@ include file="../include/footer.jsp"%>
 	</body>
 </html>

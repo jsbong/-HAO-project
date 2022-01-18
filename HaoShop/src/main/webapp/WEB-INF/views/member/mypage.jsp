@@ -13,10 +13,12 @@
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<title>Decorating's</title>
+		<title>mypage</title>
 	</head>
 	<body>
-		<%@ include file="../include/menu.jsp"%>
+		<%@ include file="../include/header.jsp"%>
+		
+		<section class="section_cen">
 		<div align="center">
 			<h1 class="my">MY PAGE</h1>
 			<table class="list">
@@ -31,10 +33,11 @@
 			</tr> 
 			</table>
 		</div>	
+		
 		<div class="order">
-			<table cellpadding="0" cellspacing="0" class="orderlist" align="center" width="950">
+			<table class="orderlist">
 			<tr align="right">
-			<td colspan="3" width="70%"></td>
+			<td colspan="3"></td>
 			<td><input type="button" class="revise" value="회원 정보 수정" onClick="location.href='mypage2'"></td>
 			<td><input type="button" class="delete" value="회원 정보 삭제" onClick="location.href='mypage5'"></td>
 			</tr>
@@ -96,8 +99,8 @@
 				</c:if>
 			</div>
 		</div>
-		
+		</section>
 
-		<%@ include file="../include/csinfo.jsp"%>
+		<%@ include file="../include/footer.jsp"%>
 	</body>
 </html>

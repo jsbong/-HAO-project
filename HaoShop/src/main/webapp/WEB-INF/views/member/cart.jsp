@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Decorating's</title>
+		<title>cart</title>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script type="text/javascript" src="resources/js/cart.js" charset="UTF-8"></script>
@@ -14,8 +14,9 @@
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body>
-		<%@ include file="../include/menu.jsp" %>
-		<h1>상품목록</h1>
+		<%@ include file="../include/header.jsp" %>
+		<section class="section_cart">
+		<h2>상품목록</h2>
 		<table class="cart" align="center">
 			<tr>
 				<th><input id="checkAll" type="checkbox" checked /></th>
@@ -37,7 +38,7 @@
 						<input type="hidden" name="p_sum" value="${cartprd.p_sum}" />
 						<input type="hidden" name = "m_no" id="m_no" value="${member.m_no}"/>
 					</td>
-					<td><img src="${fn:split(cartprd.p_img, '*')[0]}" width="75" height="75"></td><!-- 이미지 -->
+					<td><img src="${cartprd.p_img}" width="75" height="75"></td><!-- 이미지 -->
 					<td>${cartprd.p_name}</td><!-- 상품명 -->
 					<td>${cartprd.p_size}</td>
 					<td><fmt:formatNumber value="${cartprd.p_price}" pattern="#,###"/></td><!-- 판매가 -->
@@ -57,7 +58,7 @@
 				</td>
 			</tr>
 		</table>
-		<h1>결제</h1>
+		<h2>결제</h2>
 		<table class="cart3" align="center">
 			<tr align="center">
 				<th colspan="2">총 상품 금액</th>
@@ -119,6 +120,7 @@
 				}
 			}
 		</script>
-		<%@ include file="../include/csinfo.jsp" %>
+		</section>
+		<%@ include file="../include/footer.jsp" %>
 	</body>
 </html>

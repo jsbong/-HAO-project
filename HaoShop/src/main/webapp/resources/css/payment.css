@@ -1,64 +1,71 @@
-@CHARSET "UTF-8";
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
-::-ms-input-placeholder {
-	color: #a8a8a8;
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
 }
-
-::-webkit-input-placeholder {
-	color: #a8a8a8;
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, 
+strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, 
+tbody, tfoot, thead, tr, th, td{
+    margin:0;padding:0;
 }
-
-::-moz-placeholder {
-	color: #a8a8a8;
+a {
+    color: inherit; text-decoration: inherit;
 }
-
-.input {
-	height: 23px;
+img {
+    vertical-align: middle;
 }
-
-body {
-	font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial,
-		sans-serif;
-	font-size: 13px;
-	padding: 0;
-	margin: 0;
-	padding: 20px;
-	background: #fff;
-	padding: 0;
+a img {
+    border: none;
 }
+li {
+    list-style: none;
+}
+address, em, i {
+    font-style: normal;
+}
+a:focus {
+    outline: none
+}
+button:focus {
+    outline: none
+}
+/* layout */
 
 #container {
-	margin: 0 auto;
+	margin: 150px auto;
 	width: 900px;
+	padding:5px;
 }
 
 a {
 	color: #000;
-	text-decoration: none;
+	text-decoration: none; /*  글씨의 장식(선) 색을 지정 */
 }
 
-h3 {
+h3.h3_pay{
+	text-align: center;
 	position: relative;
+	 line-height :2;
 }
 
 #oSW, #oSI, #oSD, #oSP, #pay, #paymoney {
 	width: 100%;
 	margin: 0 auto;
+	padding:5px;
 	position: relative;
 	border-top: 2px solid #7FB3FA;
 	border-bottom: 1px solid #7FB3FA;
 }
-
-#oSW, #oSI, #oSD, #oSP {
-	font-size: 15px;
-}
-
 #pay, #paymoney {
-	font-size: 20px;
+	text-align: left;
+	padding:5px;
 }
 
 th {
-	font-size: 9pt;
 	background-color: #9CCEFF;
 }
 
