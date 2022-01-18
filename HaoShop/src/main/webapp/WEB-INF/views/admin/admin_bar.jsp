@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>admin_bar</title>
-    <link rel="stylesheet" href="css/admin_bar.css">
+    <link rel="stylesheet" href="resources/css/admin_bar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
 	$(document).ready(function() {
