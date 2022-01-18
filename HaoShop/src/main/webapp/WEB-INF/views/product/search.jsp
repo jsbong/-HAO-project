@@ -5,12 +5,9 @@
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<title>Decorating's</title>
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<title>HAOSHOP-PRODUCT</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="resources/css/product.css">
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script>
 			function list(sPrd, page) {
 				location.href = "searchPrd?sPrd=" + sPrd + "&curPage=" + page;
@@ -18,9 +15,9 @@
 		</script>
 	</head>
 	<body>
-		<%@ include file="../include/menu.jsp"%>
-		<div id="pdc">
-			<table id="product" >
+		<%@ include file="../include/header.jsp"%>
+		<section class="category_section">
+			<table class="product_table" >
 				<c:if test="${(fn:length(map.list)) eq 0}">
 					<tr><td colspan="4">상품내역이 없습니다.</td></tr>
 				</c:if>
@@ -73,7 +70,7 @@
 					</tr>
 				</c:if>
 			</table>
-		</div>
-		<%@ include file="../include/csinfo.jsp"%>
+		</section>
+		<%@ include file="../include/footer.jsp" %>
 	</body>
 </html>
