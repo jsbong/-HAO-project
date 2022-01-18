@@ -87,4 +87,8 @@ public class ProductDAO {
 	public ProductVO productDetail(ProductVO vo) {
 		return (ProductVO) mybatis.selectOne("ProductDAO.productDetail", vo);
 	}
+
+	public void updatePrd(ProductVO vo) {
+		mybatis.update("ProductVO.updatePrd", vo);
+	}
 }

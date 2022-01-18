@@ -46,6 +46,11 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductVO> getAdminProductList(int start, int end, ProductVO vo) {
 		return productDAO.getAdminProductList(start, end, vo);
 	}
+	
+	// 관리자 상품 변경
+	public void updatePrd(ProductVO vo) {
+		productDAO.updatePrd(vo);
+	}
 
 	// 품목 갯수 카운트
 	public int getCountProduct(ProductVO vo) {

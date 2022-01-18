@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.haoshop.home.Pager;
+import com.haoshop.model.payment.PaymentVO;
 import com.haoshop.model.product.ProductService;
 import com.haoshop.model.product.ProductVO;
 
@@ -94,13 +95,7 @@ public class ProductController {
 	}
 
 	// 관리자
-	// 상품코드 중복검사
-	/*@ResponseBody
-	@RequestMapping(value = "/prdCheckID")
-	public int prdCheckID(ProductVO vo) {
-		int prdCheckID = productService.prdCheckID(vo);
-		return prdCheckID;
-	}*/
+	
 
 	// 상품등록 페이지
 	@RequestMapping("/prdinsert")
@@ -131,7 +126,7 @@ public class ProductController {
 		return "main";
 	}
 
-	// 관리자 용 상품 목록
+	// 관리자-상품 목록 뷰
 	@RequestMapping(value = "/productList", method = RequestMethod.GET)
 	public String productListView(@RequestParam(defaultValue = "1") int curPage, ProductVO vo, Model model) {
 		int count = productService.getAdminCountProduct(vo);
@@ -146,5 +141,11 @@ public class ProductController {
 		map.put("pager", pager);
 		model.addAttribute("map", map);
 		return "admin/productList";
+	}
+	
+	//관리자-상품 수정 처리
+	@RequestMapping(value = "/updatePrd", method = RequestMethod.POST)
+	public void changePrd(ProductVO vo) {
+		productService.updatePrd(vo);
 	}
 }
