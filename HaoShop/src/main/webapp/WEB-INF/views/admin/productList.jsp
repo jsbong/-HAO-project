@@ -36,7 +36,7 @@
 						<c:set var="product" value="${map.list[i]}" />
 						<c:if test="${not empty product}">
 							<tr>
-								<td><a href="#">${product.p_no}</a></td>
+								<td><a href="productdetail">${product.p_no}</a></td>
 								<td>${product.cate_no}</td>
 								<td><img src="${fn:split(product.p_img, '*')[0]}" width="100" height="100"></td>
 								<td>${product.p_name}</td>
