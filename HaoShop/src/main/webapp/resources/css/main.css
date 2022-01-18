@@ -45,6 +45,7 @@ button:focus {
     position: relative;
     width: 100%;
     height: calc(100vh - 60px) !important;
+    overflow: hidden;
 }
 
 /* li 안에 이미지 */
@@ -69,7 +70,6 @@ button:focus {
 .visual .slide .mainText strong {
     display: block; /* inline 요소를 가지면 */
     font-size: 50px;
-    font-weight: bold;
     margin-bottom: 30px;
     font-weight: 500;
     letter-spacing: 2px;
@@ -113,7 +113,7 @@ button:focus {
     position: absolute; /* .menu(absolute)에 대해 기준을 가지고 absolute 설정 */
     left: 0;
     bottom: 0;
-    animation: bar 4s infinite; /* name: bar, duration: 4.5s, time-function: infinite */
+    animation: bar 4.5s infinite; /* name: bar, duration: 4.5s, time-function: infinite */
 }
 
 @keyframes bar {
@@ -122,23 +122,6 @@ button:focus {
 }
 
 /* animation */
-/* 메인베너 애니메이션 효과 */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 4s;
-}
-
-@-webkit-keyframes fade {
-  0% {opacity: .8} 
-  30% {opacity: 1}
-}
-
-@keyframes fade {
-  0% {opacity: .8} 
-  30% {opacity: 1}
-}
 
 /* .slide .mainText의 .num 애니메이션 */
 @keyframes trans {
@@ -162,7 +145,7 @@ button:focus {
 }
 .visual .slide .mainText .num span {
     animation-name: trans;
-    animation-duration: 4.3s;
+    animation-duration: 4.5s;
 }
 
 @keyframes opa {
@@ -176,11 +159,11 @@ button:focus {
     animation-duration: 2s;
 }
 
-/* @keyframes scaleani {
-    0% { transform: scale(1); }
+@keyframes scaleani {
+    0% { transform: scale(1.1); }
 }
 
 .visual .slide img {
     animation-name: scaleani;
     animation-duration: 4.5s;
-} */
+}
