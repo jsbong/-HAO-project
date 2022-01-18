@@ -126,7 +126,7 @@ public class ProductController {
 		return "main";
 	}
 
-	// 관리자-상품 목록 뷰
+	// 관리자- 상품 목록 뷰
 	@RequestMapping(value = "/productList", method = RequestMethod.GET)
 	public String productListView(@RequestParam(defaultValue = "1") int curPage, ProductVO vo, Model model) {
 		int count = productService.getAdminCountProduct(vo);
@@ -143,9 +143,17 @@ public class ProductController {
 		return "admin/productList";
 	}
 	
-	//관리자-상품 수정 처리
+	//관리자- 상품 수정 뷰
+	@RequestMapping("/productDetail")
+	public String productView(ProductVO vo, Model model) {
+		model.addAttribute("product", productService.productDetail(vo));
+		return "admin/productDetail";
+	}
+	
+	//관리자- 상품 수정 처리
 	@RequestMapping(value = "/updatePrd", method = RequestMethod.POST)
-	public void changePrd(ProductVO vo) {
+	public String changePrd(ProductVO vo) {
 		productService.updatePrd(vo);
+		return "admin/productList";
 	}
 }

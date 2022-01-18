@@ -14,6 +14,21 @@
 			function list(page) {
 				location.href="productList?curPage="+page;
 			}
+			/* function productdetail(p_no) {
+				alert(p_no);
+				$.ajax({
+			         type : "POST",
+			         url : "productdetail",
+			         data : {
+			            "p_no" : p_no
+			         },
+			         success : function(data) {
+			            window.location.href="productDetail";
+			         }, error : function(data) {
+			            alert(p_no);
+			         }
+				});
+			} */
 		</script>
 	</head>
 	<body>
@@ -36,14 +51,16 @@
 						<c:set var="product" value="${map.list[i]}" />
 						<c:if test="${not empty product}">
 							<tr>
-								<td><a href="productdetail">${product.p_no}</a></td>
+								<td>
+								<a href="productDetail?p_no=${product.p_no}" class="product">${product.p_no}</a>
+								</td>
 								<td>${product.cate_no}</td>
 								<td><img src="${fn:split(product.p_img, '*')[0]}" width="100" height="100"></td>
 								<td>${product.p_name}</td>
 								<td>${product.p_price}</td>
 								<td>${product.p_discount}</td>
 								<td>${product.p_color}</td>
-								<td>${product.p_explain }</td>
+								<td>${product.p_explain}</td>
 							</tr>
 						</c:if>
 					</c:forEach>

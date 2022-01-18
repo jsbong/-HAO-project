@@ -29,6 +29,7 @@ public interface ProductService {
 	int getAdminCountProduct(ProductVO vo);
 
 	ProductVO productDetail(ProductVO vo);
-
+	
+	// 물품 상태 변경
 	void updatePrd(ProductVO vo);
 }
