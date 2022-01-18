@@ -18,34 +18,7 @@
   <h1 align="center">배송 현황</h1>
   <h3 align="center">회원&상품 정보</h3>
 <div class="member_div">
-			<table>
-				<tr>
-					<th>구매 번호</th>
-					<th>회원 번호</th>
-					<th>구매날짜·구매시간</th>
-					<th>배송현황</th>
-					<th>배송상태 변경</th>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>2</td>
-					<td>3</td>
-					<td>4</td>
-					<td>5</td>
-				</tr>
-				<tr>
-					<th>ID</th>
-					<th>이름</th>
-					<th colspan="2">주소</th>
-					<th>전화번호</th>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>7</td>
-					<td colspan="2">8</td>
-					<td>9</td>
-				</tr>
-			</table>
+		
 			
 		<div align="center">
 			<table class="list">
@@ -76,14 +49,17 @@
 							<tr bgcolor="#fff" height="50">
 								<td align="center">${row.pay_no}</td>
 								<td align="center">${row.m_no}</td>
-								<td align="center">${row.pay_regdate}
+								<td><fmt:formatDate value="${row.pay_regdate}" pattern="yyyy-MM-dd" /></td>
 								<td>${row.p_name}</td>
 								<td align="center"><fmt:formatNumber value="${row.p_sum}" pattern="#,###"/>원</td>
 									<td align="center">
 									<label>
-										<input class="stachange" type="text" value="${row.pay_state}" size="4" onchange="classch()">
-										<input class="pay_no" type="hidden" value="${row.pay_no}" />
-										<input type="button" id="stachange" onClick="stachange('', '${row.pay_no}')" value="변경" />
+										<select name="${row.pay_no}" value="${row.pay_state}" onchange="stachange('${row.pay_no}')">
+										  <option value="${row.pay_state}" hidden>${row.pay_state}</option>
+										  <option value="배송대기중">배송대기중</option>
+										  <option value="배송중">배송중</option>
+										  <option value="배송완료">배송완료</option>
+										</select>
 									</label>
 									</td>
 							</tr>
@@ -97,7 +73,6 @@
 					</c:choose>
 				</c:forEach>
 				<tr>
-					<td><input type="text" class="abc"></td>
 				</tr>
 			</table>
 			<!-- 페이지 네비게이션 출력 -->
@@ -131,13 +106,8 @@
 			function list(page) {
 				location.href="deliver?curPage="+page;
 			}
-			function classch() {
-				
-			}
-			function stachange(pay_state, pay_no) {
-				var pay_state = $(".")
-				var m_id=$("#m_id").val();
-				alert(pay_state+" "+pay_no);
+			function stachange(pay_no) {
+				var pay_state = document.getElementsByName(pay_no)[0].value;
 				$.ajax({
 					type : "POST",
 					url : "paystate",
