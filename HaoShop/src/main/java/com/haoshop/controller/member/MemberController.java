@@ -33,7 +33,22 @@ public class MemberController {
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signUpView(MemberVO vo) { return "member/signup"; }
 	
-	
+	//회원 관리뷰(관리자)
+	@RequestMapping("/memberList")
+	public String getMemberpage(@RequestParam(defaultValue = "1") int curPage, MemberVO vo, Model model) { 
+		int count = memberService.getCountMember(vo);
+		Pager pager = new Pager(count, curPage); // (레코드 개수, 현재 페이지 번호(default = 1) )
+		int start = pager.getPageBegin(); //  
+		int end = pager.getPageEnd(); // 
+		
+		List<MemberVO> list = memberService.getMemberList(start, end, vo);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		map.put("count", count);
+		map.put("pager", pager);
+		model.addAttribute("map", map);
+		return "admin/memberList";
+	}
 	
 	//회원 주문내역
 	@ResponseBody

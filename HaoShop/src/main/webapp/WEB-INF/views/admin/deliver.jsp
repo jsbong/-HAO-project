@@ -6,33 +6,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>deliver</title>
+<title>member</title>
 </head>
 <body>
 <link rel="stylesheet" href="resources/css/member.css">
 <link rel="stylesheet" href="resources/css/admin_bar.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/admin/admin_bar.jsp" %>
 <section class="member_section">
   <h1 align="center">배송 현황</h1>
   <h3 align="center">회원&상품 정보</h3>
-<div class="member_div">
 		
 			
 		<div align="center">
 			<table class="list">
 			<tr>
-			총 주문 내역 갯수:<b style="color: green;">${map.count}</b>
+				총 주문 내역 갯수:<b style="color: blue;">${map.count}</b>
 			</tr> 
 			</table>
-		</div>	
-		<div class="order">
-			<table cellpadding="0" cellspacing="0" class="orderlist" align="center" width="950">
-			<tr align="right">
-			<td colspan="3" width="70%"></td>
-			</tr>
-				<tr bgcolor="#7FB3FA" align="center">
+		</div>
+			
+		<div class="member_div">
+ 			 <table>
+    			<tr>
 					<td>주문 번호</td>
 					<td>회원 번호</td>
 					<td>주문일자</td>
@@ -40,6 +42,7 @@
 					<td>결제금액</td>
 					<td>배송현황</td>
 				</tr>
+				<tr>
 				<!-- "주문내역" -->
 				<c:forEach begin="0" end="${(fn:length(map.list))}" var="i">
 					<c:set var="row" value="${map.list[i]}" />
@@ -72,6 +75,7 @@
 						</c:when>
 					</c:choose>
 				</c:forEach>
+				</tr>
 				<tr>
 				</tr>
 			</table>

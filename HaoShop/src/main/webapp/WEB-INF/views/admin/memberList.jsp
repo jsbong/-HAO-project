@@ -32,7 +32,6 @@
       <th>전화번호</th>
       <th>주소</th>
     </tr>
-  </thead>
     <tr>
       <c:forEach begin="0" end="${(fn:length(map.list))}" var="i">
 					<c:set var="row" value="${map.list[i]}" />
@@ -65,54 +64,6 @@
       <td>11</td>
       <td>12</td>
     </tr>
-    <tr>
-      <td>13</td>
-      <td>14</td>
-      <td>15</td>
-      <td>16</td>
-      <td>17</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <td>19</td>
-      <td>20</td>
-      <td>21</td>
-      <td>22</td>
-      <td>23</td>
-      <td>24</td>
-    </tr>
-    <tr>
-      <td>25</td>
-      <td>26</td>
-      <td>27</td>
-      <td>28</td>
-      <td>29</td>
-      <td>30</td>
-    </tr>
-    <tr>
-      <td>31</td>
-      <td>32</td>
-      <td>33</td>
-      <td>34</td>
-      <td>35</td>
-      <td>36</td>
-    </tr>
-    <tr>
-      <td>37</td>
-      <td>38</td>
-      <td>39</td>
-      <td>40</td>
-      <td>41</td>
-      <td>42</td>
-    </tr>
-    <tr>
-      <td>43</td>
-      <td>44</td>
-      <td>45</td>
-      <td>46</td>
-      <td>47</td>
-      <td>Ipsumdfasfgdsgdsgagagagagdagag</td>
-    </tr>
 </table>
 <div align="center">
 				<c:if test="${map.pager.curBlock > 1}">
@@ -141,5 +92,10 @@
 			</div>
 </div>
 </section>
+<script>
+			function list(page) {
+				location.href="memberList?curPage="+page;
+			}
+		</script>
 </body>
 </html>

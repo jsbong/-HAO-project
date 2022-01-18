@@ -39,7 +39,7 @@
             <li class="product_list">PRODUCT <span>&#10094;</span>
             <li class="sub" data-tab="prdinsert"><a href="prdinsert">&#187; PRODUCT REGISTER</a></li>
             <li class="sub" data-tab="productList"><a href="productList">&#187; PRODUCT LIST</a></li>
-            <li data-tab="member">MEMBER</li>
+            <li data-tab="memberList">MEMBER</li>
             <li data-tab="deliver">DELIVER</li>
           	<li data-tab="main">MAIN PAGE</li>
         </ul>
