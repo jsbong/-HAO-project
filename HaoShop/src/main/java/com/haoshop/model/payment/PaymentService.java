@@ -21,4 +21,8 @@ public interface PaymentService {
 	int getCountOrderAll(PaymentVO vo);
 
 	List<PaymentVO> getOrderListAll(PaymentVO vo, int start, int end);
+
+	int getCountOrderNow(PaymentVO vo);
+
+	List<PaymentVO> getOrderListNow(PaymentVO vo, int start, int end);
 }

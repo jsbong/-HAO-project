@@ -72,6 +72,22 @@
 		SELECT COUNT(*) FROM PAYMENT
 	</select>
 	
+	<select id="orderMemberNow" resultType="payment">
+		SELECT * FROM(
+			SELECT ROWNUM AS RN, A.* FROM (
+				SELECT * FROM (
+					SELECT PAY_NO, M_NO, P_NO, PAY_REGDATE, P_NAME, PAY_STATE,
+					((P_PRICE - P_DISCOUNT) * PAY_QUANTITY) AS P_SUM 
+					FROM PAYMENT NATURAL JOIN PRODUCT WHERE TO_CHAR(PAY_REGDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+					) ORDER BY PAY_NO DESC
+			) A
+		) WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="orderCountNow" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM PAYMENT WHERE TO_CHAR(PAY_REGDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+	</select>
+	
 	<!-- 회원 주문 상태 업데이트 -->
 	<update id="updateState">
 		UPDATE PAYMENT SET PAY_STATE=#{pay_state} WHERE PAY_NO=#{pay_no}

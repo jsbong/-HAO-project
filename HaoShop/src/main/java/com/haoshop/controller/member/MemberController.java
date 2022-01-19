@@ -27,9 +27,6 @@ public class MemberController {
 	@RequestMapping("/main")
 	public String main() { return "main"; }
 
-	@RequestMapping("/term")
-	public String term(MemberVO vo) { return "member/term"; }
-
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signUpView(MemberVO vo) { return "member/signup"; }
 	

@@ -34,7 +34,7 @@
 <body>
     <nav class="admin_bar">
         <ul class="category_admin">
-            <li data-tab="#"><a href="#">ADMIN PAGE</a></li>
+            <li data-tab="adminpage"><a href="adminpage">ADMIN PAGE</a></li>
             <li data-tab="journal"><a href="journal">COLLECTION</a></li>
             <li class="product_list">PRODUCT <span>&#10094;</span>
             <li class="sub" data-tab="prdinsert"><a href="prdinsert">&#187; PRODUCT REGISTER</a></li>

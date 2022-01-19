@@ -22,7 +22,10 @@ function memberCheck() {
 							"m_id" : m_id,
 							"m_pwd" : m_pwd
 						}, success : function() {
-							window.location.href = "main";
+							if(m_id=='Administrator')
+								window.location.href = "adminpage";
+							else
+								window.location.href = "main";
 						}
 					});
 				} else {

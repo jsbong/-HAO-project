@@ -58,4 +58,15 @@ public class PaymentDAO {
 	public void updateState(PaymentVO vo) {
 		mybatis.update("PaymentDAO.updateState", vo);
 	}
+
+	public List<PaymentVO> getOrderListNow(PaymentVO vo, int start, int end) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);
+		return mybatis.selectList("PaymentDAO.orderMemberNow", map);
+	}
+
+	public int getCountOrderNow(PaymentVO vo) {
+		return mybatis.selectOne("PaymentDAO.orderCountNow", vo);
+	}
 }
