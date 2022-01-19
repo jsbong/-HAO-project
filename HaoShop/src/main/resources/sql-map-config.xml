@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="productcart" type="com.haoshop.model.cart.CartVO" />
 		<typeAlias alias="payment" type="com.haoshop.model.payment.PaymentVO" />
 		<typeAlias alias="board" type="com.haoshop.model.board.BoardVO" />
-		<typeAlias alias="review" type="com.haoshop.model.review.ReviewVO" />
+		<typeAlias alias="journal" type="com.haoshop.model.journal.JournalVO" />
 	</typeAliases>
 	
 	<!-- Sql Mapper 설정 -->
@@ -22,6 +22,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mappings/product/cart-mapping.xml" />
 		<mapper resource="mappings/product/payment-mapping.xml" />
 		<mapper resource="mappings/board/board-mapping.xml" />
-		<mapper resource="mappings/review/review-mapping.xml" />
+		<mapper resource="mappings/journal/journal-mapping.xml" />
 	</mappers>
 </configuration>

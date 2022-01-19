@@ -58,8 +58,7 @@
 								<td align="center">${row.pay_no}</td>
 								<td align="center">${row.pay_regdate}
 								<td>${row.p_name}</td>
-								<%-- <fmt:formatNumber value="${row.p_sum}" pattern="#,###"/> --%>
-								<td align="center"><fmt:formatNumber value="${row.p_sum + 5000}" pattern="#,###"/>원</td>
+								<td align="center"><fmt:formatNumber value="${row.p_sum}" pattern="#,###"/>원</td>
 								<td align="center">${row.pay_state}</td>
 							</tr>
 						</c:when>

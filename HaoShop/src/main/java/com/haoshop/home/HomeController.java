@@ -36,8 +36,8 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value = "/collection", method = RequestMethod.GET)
+	@RequestMapping(value = "/journal", method = RequestMethod.GET)
 	public String collection() {
-		return "admin/collection";
+		return "admin/journal";
 	}
 }

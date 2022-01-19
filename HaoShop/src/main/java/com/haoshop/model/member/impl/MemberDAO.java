@@ -83,5 +83,9 @@ public class MemberDAO {
 	public MemberVO getMemberDetail(MemberVO vo) {
 		return (MemberVO) mybatis.selectOne("MemberDAO.getMemberDetail", vo);
 	}
+
+	public int getTotalPay(MemberVO vo) {
+		return mybatis.selectOne("MemberDAO.getTotalPay", vo);
+	}
 }
 

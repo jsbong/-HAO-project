@@ -54,7 +54,7 @@ public class MemberController {
 	@RequestMapping(value = "/memberDetail", method = RequestMethod.GET)
 	public String getMemberDetail(MemberVO vo, HttpSession session, Model model, @RequestParam(defaultValue = "1") int myp) {
 		model.addAttribute("memberdetail", memberService.getMemberDetail(vo));
-		
+		int totalpay = memberService.getTotalPay(vo);
 		int count = memberService.getCountOrder(vo);
 		
 		Pager pager = new Pager(count, myp);

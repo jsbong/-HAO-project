@@ -114,6 +114,10 @@
 		) WHERE RN BETWEEN #{start} AND #{end}
 	</select>
 	
+	<select id="getTotalPay" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM MEMBER
+	</select>
+	
 	<select id="getCountMember" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM MEMBER
 	</select>

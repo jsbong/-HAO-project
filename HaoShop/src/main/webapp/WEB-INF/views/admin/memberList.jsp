@@ -7,8 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>member</title>
-</head>
-<body>
 <link rel="stylesheet" href="resources/css/member.css">
 <link rel="stylesheet" href="resources/css/admin_bar.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">

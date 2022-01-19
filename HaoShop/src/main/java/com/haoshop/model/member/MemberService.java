@@ -41,4 +41,6 @@ public interface MemberService {
 	int getCountMember(MemberVO vo);
 
 	MemberVO getMemberDetail(MemberVO vo);
+
+	int getTotalPay(MemberVO vo);
 }

@@ -42,8 +42,7 @@
 							<c:set var="data" value="${map.mypL[i]}" />
 							<c:choose>
 								<c:when test="${not empty data}">
-										<c:set var="p_sum" value="${data.p_sum + 5000}" />
-										<c:set var="p_sumall" value="${p_sumall + p_sum}" />
+										<c:set var="p_sumall" value="${p_sumall + data.pay_price}" />
 								</c:when>
 							</c:choose>
 						</c:forEach>

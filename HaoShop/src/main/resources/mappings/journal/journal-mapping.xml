@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="JournalDAO">
+	<resultMap id="journal" type="journal">
+		<result property="jour_no" column="JOUR_NO" />
+		<result property="m_no" column="M_NO" />
+		<result property="jour_name" column="JOUR_NAME" />
+		<result property="jour_img" column="JOUR_IMG" />
+		<result property="jour_explain" column="JOUR_EXPLAIN" />
+	</resultMap>
+	
+	<!-- 컬렉션 등록 -->
+	<insert id="insertJournal">
+		<![CDATA[
+			INSERT INTO JOURNAL (
+				JOUR_NO,
+				M_NO,
+				JOUR_NAME,
+				JOUR_IMG,
+				JOUR_EXPLAIN,
+				JOUR_REGDATE
+			) VALUES (
+				JOURNAL_SEQ.NEXTVAL,
+				#{m_no},
+				#{jour_name},
+				#{jour_img},
+				#{jour_explain},
+				sysdate
+			)
+		]]>
+	</insert>
+</mapper>

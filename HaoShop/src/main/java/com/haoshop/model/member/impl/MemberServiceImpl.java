@@ -151,4 +151,8 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO getMemberDetail(MemberVO vo) {
 		return memberDAO.getMemberDetail(vo);
 	}
+
+	public int getTotalPay(MemberVO vo) {
+		return memberDAO.getTotalPay(vo);
+	}
 }
