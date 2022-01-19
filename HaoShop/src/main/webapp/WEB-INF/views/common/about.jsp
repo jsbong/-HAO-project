@@ -50,7 +50,8 @@
 						<P>Yeonmujang-gil, Seongdong-gu, Seoul License Number : 2020-서울성동-03012</p>
 					</div>
 					<div class="img">
-						<img src="resources/img/about/about01.jpg" alt="">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12651.014680239863!2d127.0259385305412!3d37.560866986486836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca35960102233%3A0x7a12165c02d12360!2z7ISx64-Z7Jqw7LK06rWt!5e0!3m2!1sko!2skr!4v1642560206603!5m2!1sko!2skr" allowfullscreen="" loading="lazy">
+						</iframe>
 					</div>
 				</li>
 				<li class="left">
@@ -79,8 +80,8 @@
 				</li>
 			</ul>
 		</div>
+		
     <!-- footer -->
-    <%@ include file="../include/footer.jsp" %>
-    
+    <%@ include file="../include/footer.jsp" %> 
 </body>
 </html>
