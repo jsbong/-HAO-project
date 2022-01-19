@@ -79,5 +79,9 @@ public class MemberDAO {
 	public int getCountMember(MemberVO vo) {
 		return mybatis.selectOne("MemberDAO.getCountMember", vo);
 	}
+
+	public MemberVO getMemberDetail(MemberVO vo) {
+		return (MemberVO) mybatis.selectOne("MemberDAO.getMemberDetail", vo);
+	}
 }
 

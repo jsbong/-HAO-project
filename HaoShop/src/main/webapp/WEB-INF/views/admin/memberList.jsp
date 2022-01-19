@@ -56,14 +56,6 @@
 					</c:choose>
 				</c:forEach>
     </tr>
-    <tr>
-      <td>7</td>
-      <td>8</td>
-      <td>9</td>
-      <td>10</td>
-      <td>11</td>
-      <td>12</td>
-    </tr>
 </table>
 <div align="center">
 				<c:if test="${map.pager.curBlock > 1}">

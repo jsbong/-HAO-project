@@ -49,6 +49,28 @@ public class MemberController {
 		model.addAttribute("map", map);
 		return "admin/memberList";
 	}
+	
+	//회원 상세 관리뷰(관리자)
+	@RequestMapping(value = "/memberDetail", method = RequestMethod.GET)
+	public String getMemberDetail(MemberVO vo, HttpSession session, Model model, @RequestParam(defaultValue = "1") int myp) {
+		model.addAttribute("memberdetail", memberService.getMemberDetail(vo));
+		
+		int count = memberService.getCountOrder(vo);
+		
+		Pager pager = new Pager(count, myp);
+		int start = pager.getPageBegin();
+		int end = pager.getPageEnd();
+		
+		session.setAttribute("myp", myp);
+		List<PaymentVO> list = memberService.getOrderList(vo, start, end);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("mypL", list); // map에 자료 저장
+		map.put("count", count);
+		map.put("pager", pager); // 페이지 네버게이션을 위한 변수
+		session.setAttribute("map", map);
+		return "admin/memberDetail";
+	}
 
 	// 회원 주문내역 뷰 (페이징 처리)
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
@@ -70,6 +92,9 @@ public class MemberController {
 		session.setAttribute("map", map);
 		return "member/mypage";
 	}
+	
+	
+	
 
 	// 마이페이지-비밀번호 view
 	@RequestMapping(value = "/mypage2", method = RequestMethod.GET)

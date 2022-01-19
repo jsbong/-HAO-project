@@ -147,4 +147,8 @@ public class MemberServiceImpl implements MemberService {
 	public int getCountMember(MemberVO vo) {
 		return memberDAO.getCountMember(vo);
 	}
+
+	public MemberVO getMemberDetail(MemberVO vo) {
+		return memberDAO.getMemberDetail(vo);
+	}
 }

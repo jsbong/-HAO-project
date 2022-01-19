@@ -82,12 +82,20 @@
 		M_NO = #{m_no}
 	</delete>
 	
+	<!-- 회원 정보 상세-->
+	<select id="getMemberDetail" resultMap="member">
+		<![CDATA[
+			SELECT * FROM MEMBER WHERE M_NO = #{m_no}
+		]]>
+	</select>
+	
+	<!-- 회원 주문내역-->
 	<select id="orderMember" resultType="payment">
 		SELECT * FROM(
 			SELECT ROWNUM AS RN, A.* FROM (
 				SELECT * FROM (
 					SELECT P_NO, PAY_NO, PAY_REGDATE, P_NAME, PAY_STATE,
-					((P_PRICE - P_DISCOUNT) * PAY_QUANTITY) AS P_SUM 
+					((P_PRICE - P_DISCOUNT) * PAY_QUANTITY) AS P_SUM
 					FROM PAYMENT NATURAL JOIN PRODUCT WHERE M_NO = #{m_no}
 					<include refid="myp"></include>
 				) ORDER BY PAY_NO DESC

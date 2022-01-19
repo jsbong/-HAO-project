@@ -40,4 +40,5 @@ public interface MemberService {
 	List<MemberVO> getMemberList(int start, int end, MemberVO vo);
 	int getCountMember(MemberVO vo);
 
+	MemberVO getMemberDetail(MemberVO vo);
 }
