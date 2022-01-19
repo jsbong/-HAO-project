@@ -152,7 +152,7 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.getMemberDetail(vo);
 	}
 
-	public int getTotalPay(MemberVO vo) {
+	public int getTotalPay(MemberVO vo) throws NullPointerException{
 		return memberDAO.getTotalPay(vo);
 	}
 }

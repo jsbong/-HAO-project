@@ -37,7 +37,9 @@
 			</tr>
 			<tr>
 				<th>총 구매금액</th>
-				<td><fmt:formatNumber value="${map.totalpay}" pattern="#,###"/>원</td>
+				<td>
+					<fmt:formatNumber value="${map.totalpay}" pattern="#,###"/>원
+				</td>
 			</tr>
 			<tr>
 				<th>구매물품</th>

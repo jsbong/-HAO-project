@@ -84,8 +84,11 @@ public class MemberDAO {
 		return (MemberVO) mybatis.selectOne("MemberDAO.getMemberDetail", vo);
 	}
 
-	public int getTotalPay(MemberVO vo) {
-		return mybatis.selectOne("MemberDAO.getTotalPay", vo);
+	public int getTotalPay(MemberVO vo) throws NullPointerException{
+		if(mybatis.selectOne("MemberDAO.getTotalPay", vo) == null)
+			return 0;
+		else
+			return mybatis.selectOne("MemberDAO.getTotalPay", vo);
 	}
 }
 
