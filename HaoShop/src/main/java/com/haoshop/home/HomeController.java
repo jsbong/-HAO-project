@@ -35,6 +35,11 @@ public class HomeController {
 		return "admin/member";
 	}
 	
+	@RequestMapping(value = "/memberDetail", method = RequestMethod.GET)
+	public String memberDetail() {
+		return "admin/memberDetail";
+	}
+	
 	@RequestMapping(value = "/collection", method = RequestMethod.GET)
 	public String collection() {
 		return "admin/collection";

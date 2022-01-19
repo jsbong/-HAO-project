@@ -39,7 +39,7 @@
 						<%-- 검색결과가 있을 때 --%>
 						<c:when test="${not empty row}">
 							<tr bgcolor="#fff" height="50">
-								<td align="center">${row.m_no}</td>
+								<td align="center"><a href="memberDetail?m_no=${row.m_no}">${row.m_no}</a></td>
 								<td align="center">${row.m_id}</td>
 								<td align="center">${row.m_name}</td>
 								<td><fmt:formatDate value="${row.m_birth}" pattern="yyyy-MM-dd" /></td>
