@@ -115,7 +115,7 @@
 	</select>
 	
 	<select id="getTotalPay" resultType="java.lang.Integer">
-		SELECT COUNT(*) FROM MEMBER
+		SELECT SUM((P_PRICE - P_DISCOUNT) * PAY_QUANTITY) AS P_SUM FROM PAYMENT NATURAL JOIN PRODUCT  WHERE M_NO = #{m_no}
 	</select>
 	
 	<select id="getCountMember" resultType="java.lang.Integer">

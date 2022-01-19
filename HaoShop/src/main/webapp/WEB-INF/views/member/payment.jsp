@@ -194,6 +194,7 @@
 						</tr>
 						<c:set var="discountSum" value="${discountSum + (pay.p_discount * pay.pay_quantity)}" />
 						<c:set var="priceSum" value="${priceSum + paySum}" />
+						<c:set var="partotal" value="${(pay.p_price - pay.p_discount)*pay.pay_quantity}" />
 						<c:set var="total" value="${priceSum}" />
 					</c:forEach>
 				</c:when>
@@ -217,6 +218,7 @@
 							<td><fmt:formatNumber value="${paySum}" pattern="#,###"/></td>
 						</tr>
 						<c:set var="discountSum" value="${discountSum + (pay.p_discount * map.pay_quantity)}" />
+						<c:set var="partotal" value="${(pay.p_price - pay.p_discount)*pay.pay_quantity}" />
 						<c:set var="priceSum" value="${pay.p_price * map.pay_quantity}" />
 					</c:forEach>
 				</c:when>
@@ -604,7 +606,7 @@
 			</tr>
 			<tr>
 				<input type="hidden" id="m_no" value="${member.m_no}" />
-				<input type="hidden" id="pay_price" value="${priceSum - discountSum + 5000}" />
+				<input type="hidden" id="pay_price" value="${partotal}" />
 				<th align="center" colspan="2"><input type="button" onClick="termChk()" value="결제 하기" /></th>
 			</tr>
 		</table>	

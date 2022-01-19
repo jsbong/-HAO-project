@@ -37,16 +37,7 @@
 			</tr>
 			<tr>
 				<th>총 구매금액</th>
-						<c:set var="p_sumall" value="0" />
-						<c:forEach begin="0" end="${(fn:length(map.mypL))}" var="i">
-							<c:set var="data" value="${map.mypL[i]}" />
-							<c:choose>
-								<c:when test="${not empty data}">
-										<c:set var="p_sumall" value="${p_sumall + data.pay_price}" />
-								</c:when>
-							</c:choose>
-						</c:forEach>
-				<td><fmt:formatNumber value="${p_sumall}" pattern="#,###"/>원</td>
+				<td><fmt:formatNumber value="${map.totalpay}" pattern="#,###"/>원</td>
 			</tr>
 			<tr>
 				<th>구매물품</th>
@@ -71,7 +62,7 @@
 										<td align="center">${row.p_no}</td>
 										<td align="center">${row.pay_regdate}
 										<td>${row.p_name}</td>
-										<td align="center"><fmt:formatNumber value="${row.p_sum + 5000}" pattern="#,###"/>원</td>
+										<td align="center"><fmt:formatNumber value="${row.p_sum}" pattern="#,###"/>원</td>
 										<td align="center">${row.pay_state}</td>
 									</tr>
 								</c:when>

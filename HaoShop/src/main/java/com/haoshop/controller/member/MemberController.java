@@ -68,6 +68,7 @@ public class MemberController {
 		map.put("mypL", list); // map에 자료 저장
 		map.put("count", count);
 		map.put("pager", pager); // 페이지 네버게이션을 위한 변수
+		map.put("totalpay", totalpay);
 		session.setAttribute("map", map);
 		return "admin/memberDetail";
 	}
