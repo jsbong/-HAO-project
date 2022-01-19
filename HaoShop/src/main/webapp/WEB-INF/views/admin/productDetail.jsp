@@ -8,54 +8,10 @@
 <meta charset="UTF-8">
 <title>productDetail</title>
 <link rel="stylesheet" href="resources/css/admin_bar.css">
+<link rel="stylesheet" href="resources/css/productDetail.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="resources/ckeditor/ckeditor.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-</head>
-<body>
-	<section>
-		<table>
-			<tr>
-				<td>상품번호</td>
-				<td><input type="text" id="p_no" name="p_no" value="${product.p_no}" disabled>
-			</tr>
-			<tr>
-				<td>카테고리번호</td>
-				<td><input type="text" value="${product.cate_no}" disabled>
-			</tr>
-			<tr>
-				<td>상품이름</td>
-				<td><input type="text" id="p_name" name="p_name" value="${product.p_name}"></td>
-			</tr>
-			<tr>
-				<td>이미지</td>
-				<td><img src="${fn:split(product.p_img,'*')[0]}" alt="이미지"></td>
-			</tr>
-			<tr>
-				<td>가격</td>
-				<td><input type="text" id="p_price" name="p_price" value="${product.p_price}"></td>
-			</tr>
-			<tr>
-				<td>할인가</td>
-				<td><input type="text" id="p_discount" name="p_discount" value="${product.p_discount}"></td>
-			</tr>
-			<tr>
-				<td>사이즈</td>
-				<td><input type="text" id="p_size" name="p_size" value="${product.p_size}"></td>
-			</tr>
-			<tr>
-				<td>색상</td>
-				<td><input type="text" id="p_color" name="p_color" value="${product.p_color}"></td>
-			</tr>
-			<tr>
-				<td>상품설명</td>
-				<td><input type="text" id="p_explain" name="p_explain" value="${product.p_explain}"></td>
-			</tr>
-			<tr>
-				<td><input type="button" value="수정" onclick="productUp()"></td>
-			</tr>
-		</table>
-	</section>
 	<script>
 		// 상품정보 수정
 		function productUp() {
@@ -97,6 +53,122 @@
 				}
 			})
 		}
+		
+		var slideIndex = 0;
+		
+		function plusImg() {
+			var x = document.getElementsByClassName("imgSlides");
+			slideIndex++;
+			
+			
+			if(slideIndex > (x.length-1)) { // 슬라이드 번호가 x 개수보다 커지면 1로 돌아가기 
+				slideIndex = 0;
+			}
+			
+			for(i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			
+			x[slideIndex].style.display = "block";
+		}
+		
+		function subImg() {
+			var x = document.getElementsByClassName("imgSlides");
+			slideIndex--;
+	
+			if(slideIndex < 0) {
+				slideIndex = x.length-1;
+			}
+			
+			for(i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			
+			x[slideIndex].style.display = "block";
+		}
+		
+		$(document).ready(function() {
+			$("#image_button").click(function() {
+				$(".background").addClass("show");
+			});
+			
+			$(".window").click(function(e) {
+				if($(".window").has(e.target).length === 0) {
+				$(".background").removeClass("show");
+				}
+			});
+		});
 	</script>
+</head>
+<body>
+	<!-- navigation -->
+	<%@ include file="../admin/admin_bar.jsp" %>
+	<section class="productdetail-content">
+		<div class="productdetail">
+		<h2>PRODUCT_DETAIL</h2>
+			<table class="product_table">
+				<tr>
+					<th>상품번호</th>
+					<td><input type="text" id="p_no" name="p_no" value="${product.p_no}" disabled>
+				</tr>
+				<tr>
+					<th>카테고리번호</th>
+					<td><input type="text" value="${product.cate_no}" disabled>
+				</tr>
+				<tr>
+					<th>상품이름</th>
+					<td><input type="text" id="p_name" name="p_name" value="${product.p_name}"></td>
+				</tr>
+				<tr>
+					<th>이미지</th>
+					<td><input type="button" value="이미지 보기" id="image_button"></td>
+				</tr>
+				<tr>
+					<th>가격</th>
+					<td><input type="text" id="p_price" name="p_price" value="${product.p_price}"></td>
+				</tr>
+				<tr>
+					<th>할인가</th>
+					<td><input type="text" id="p_discount" name="p_discount" value="${product.p_discount}"></td>
+				</tr>
+				<tr>
+					<th>사이즈</th>
+					<td><input type="text" id="p_size" name="p_size" value="${product.p_size}"></td>
+				</tr>
+				<tr>
+					<th>색상</th>
+					<td><input type="text" id="p_color" name="p_color" value="${product.p_color}"></td>
+				</tr>
+				<tr>
+					<th>상품설명</th>
+					<td>
+					    <textarea name="p_explain" id="p_explain" cols="88" rows="80"></textarea>
+                        <script>
+                           CKEDITOR.replace('p_explain', {
+                              filebrowserUploadUrl : "imageUpload.do"
+                           });
+                        </script>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="button" value="상품 수정" onclick="productUp()">
+						<input type="button" value="상품 삭제">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</section>
+	<div class="background">
+		<div class="window">
+			<div class="popup">
+				<a class="prev" onclick="subImg();">&#10094;</a>
+					<c:forEach items="${fn:split(product.p_img, '*')}" var="img">
+						<img src="${img}" class="imgSlides">
+					</c:forEach>
+				<a class="next" onclick="plusImg();">&#10095;</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

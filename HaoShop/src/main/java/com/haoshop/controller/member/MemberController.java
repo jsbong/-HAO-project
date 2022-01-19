@@ -49,31 +49,6 @@ public class MemberController {
 		model.addAttribute("map", map);
 		return "admin/memberList";
 	}
-	
-	//회원 주문내역
-	@ResponseBody
-	@RequestMapping("/mypL")
-	public String mypage1(MemberVO vo, HttpSession session, Model model, @RequestParam(defaultValue = "1") int myp) {
-		// 주문 테이블 갯수 계산
-		int count = memberService.getCountOrder(vo);
-
-		session.setAttribute("myp", myp);
-		session.setAttribute("m_no", vo.getM_no());
-
-		// 페이지 관련 설정
-		Pager pager = new Pager(count, myp);
-		int start = pager.getPageBegin();
-		int end = pager.getPageEnd();
-
-		List<PaymentVO> list = memberService.getOrderList(vo, start, end);
-
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("mypL", list); // map에 자료 저장
-		map.put("count", count);
-		map.put("pager", pager); // 페이지 네버게이션을 위한 변수
-		session.setAttribute("map", map);
-		return "member/mypage";
-	}
 
 	// 회원 주문내역 뷰 (페이징 처리)
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
@@ -82,7 +57,10 @@ public class MemberController {
 		Pager pager = new Pager(count, myp);
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
-
+		
+		session.setAttribute("myp", myp);
+		session.setAttribute("m_no", vo.getM_no());
+		
 		List<PaymentVO> list = memberService.getOrderList(vo, start, end);
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
