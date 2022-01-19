@@ -55,11 +55,12 @@ public class JournalVO {
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "jourectionVO [jour_no=" + jour_no + ", m_no=" + m_no + ", jour_name=" + jour_name + ", jour_img="
-				+ jour_img + ", jour_explain=" + jour_explain + ", uploadFile=" + uploadFile + "]";
+		return "JournalVO [jour_no=" + jour_no + ", m_no=" + m_no + ", jour_name=" + jour_name + ", jour_img="
+				+ jour_img + ", jour_explain=" + jour_explain + ", jour_regdate=" + jour_regdate + ", uploadFile="
+				+ uploadFile + "]";
 	}
 
 	

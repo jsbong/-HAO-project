@@ -31,4 +31,24 @@
 			)
 		]]>
 	</insert>
+	
+	<select id="getJournalList" resultMap="journal">
+		<![CDATA[
+			SELECT * FROM (
+				SELECT ROWNUM AS RN, A.* FROM (
+					SELECT JOUR_NAME, JOUR_IMG, JOUR_REGDATE
+					FROM JOURNAL  ORDER BY JOUR_NO DESC
+				) A
+			)WHERE RN BETWEEN #{start} AND #{end}
+		]]>
+	</select>
+
+	<select id="getCountJournal" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM JOURNAL
+		]]>
+	</select>
+	
+	
+	
 </mapper>
