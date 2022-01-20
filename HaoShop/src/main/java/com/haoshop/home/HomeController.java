@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.haoshop.model.member.MemberService;
 import com.haoshop.model.payment.PaymentService;
 import com.haoshop.model.payment.PaymentVO;
 
@@ -24,6 +25,8 @@ public class HomeController {
 	
 	@Autowired
 	private PaymentService paymentService;
+	@Autowired
+	private MemberService memberService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -53,7 +56,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/adminpage", method = RequestMethod.GET)
 	public String adminpage(@RequestParam(defaultValue = "1") int curPage, PaymentVO vo, Model model) {
-		int count = paymentService.getCountOrderNow(vo);
+		int count = paymentService.getCountOrderNow();
 		Pager pager = new Pager(count, curPage);
 		int start = pager.getPageBegin(); 
 		int end = pager.getPageEnd();

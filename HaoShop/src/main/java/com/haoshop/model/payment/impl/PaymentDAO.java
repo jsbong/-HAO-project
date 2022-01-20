@@ -66,7 +66,7 @@ public class PaymentDAO {
 		return mybatis.selectList("PaymentDAO.orderMemberNow", map);
 	}
 
-	public int getCountOrderNow(PaymentVO vo) {
-		return mybatis.selectOne("PaymentDAO.orderCountNow", vo);
+	public int getCountOrderNow() {
+		return mybatis.selectOne("PaymentDAO.orderCountNow");
 	}
 }

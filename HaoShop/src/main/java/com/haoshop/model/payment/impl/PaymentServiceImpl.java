@@ -57,8 +57,8 @@ public class PaymentServiceImpl implements PaymentService {
 		paymentDAO.updateState(vo);
 	}
 
-	public int getCountOrderNow(PaymentVO vo) {
-		return paymentDAO.getCountOrderNow(vo);
+	public int getCountOrderNow() {
+		return paymentDAO.getCountOrderNow();
 	}
 
 	public List<PaymentVO> getOrderListNow(PaymentVO vo, int start, int end) {

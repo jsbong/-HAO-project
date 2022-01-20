@@ -30,7 +30,7 @@
 			INSERT INTO PAYMENT
 			(PAY_NO, M_NO, P_NO, PAY_QUANTITY, M_ADDR, M_PHONE, PAY_PRICE, PAY_METHOD, PAY_CREDITCARD, PAY_STATE)
 			VALUES
-			(PAYMENT_SEQ.NEXTVAL, #{m_no}, #{p_no}, #{pay_quantity}, #{m_addr}, #{m_phone}, #{pay_price}, '카드결제', #{pay_creditcard}, '배송중')
+			(PAYMENT_SEQ.NEXTVAL, #{m_no}, #{p_no}, #{pay_quantity}, #{m_addr}, #{m_phone}, #{pay_price}, '카드결제', #{pay_creditcard}, '배송대기중')
 		]]>
 	</insert>
 	

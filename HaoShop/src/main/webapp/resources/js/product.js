@@ -10,7 +10,9 @@ function buyProduct() {
       swal("", "비회원은 이용하실 수 없습니다.", "error");
    } else if (pay_quantity == 0) {
       swal("", "수량을 선택해주세요", "error");
-   } else {
+   } else if (!p_size) {
+      swal("", "사이즈를 선택해주세요", "error");
+   }else {
       $.ajax({
          type : "POST",
          url : "payment",
