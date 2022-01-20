@@ -35,17 +35,19 @@ public class PaymentController {
 		}
 		
 		@RequestMapping("/deliver")
-		public String getPatmentpage(@RequestParam(defaultValue = "1") int curPage, PaymentVO vo, Model model) { 
-			int count = paymentService.getCountOrderAll(vo);
+		public String getPatmentpage(@RequestParam(defaultValue = "1") int curPage,
+				@RequestParam(defaultValue = "") String sPrd,PaymentVO vo, Model model) { 
+			int count = paymentService.getCountOrderAll(sPrd);
 			Pager pager = new Pager(count, curPage); // (레코드 개수, 현재 페이지 번호(default = 1) )
 			int start = pager.getPageBegin(); //  
 			int end = pager.getPageEnd(); // 
 			
-			List<PaymentVO> list = paymentService.getOrderListAll(vo, start, end);
+			List<PaymentVO> list = paymentService.getOrderListAll(sPrd, start, end);
 			HashMap<String, Object> map = new HashMap<String, Object>();
 			map.put("list", list);
 			map.put("count", count);
 			map.put("pager", pager);
+			map.put("sPrd", sPrd);
 			model.addAttribute("map", map);
 			return "admin/deliver";
 		}

@@ -1,0 +1,118 @@
+@CHARSET "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* layout */
+.board_section {
+	width: 100%;
+	text-align: center;
+	margin: 150px 0;
+}
+
+/* 큰틀(.board_detail) 설정 */
+.board_section .board_detail {
+	width: 55%;
+	margin: 0 auto;
+	position: relative;
+}
+
+/* h2(제목) 설정 */
+.board_section .board_detail > h2{
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.board_section .board_detail > span {
+	display: block;
+	font-weight: 800;
+	margin-bottom : 10px;
+	text-align: center;
+}
+
+/* 글쓰기 버튼 설정 */
+.writeBtn {
+	display: inline-block;
+	position: absolute;
+	top: 8%;
+	right: 0;
+	font-family: 'Nanum Gothic', sans-serif;
+	background: #ddd;
+	color: #000;
+	border: 0;
+	border-left: 3px solid #8aa1a1;
+	padding: 5px 12px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	letter-spacing: 1.5px;
+}
+
+.writeBtn:hover{
+	color: #000;
+	background: #8aa1a1;
+}
+
+/* 테이블 설정 */
+.board_table {
+	width: 100%;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	border: 1px solid #ddd;
+	border-top: 3px solid #8aa1a1;
+	border-collapse: collapse;
+}
+
+.list1 {
+	color: #000;
+	border: 1px solid #ddd;
+	background: #ddd;
+	padding: 10px;
+}
+
+.list2 {
+	border: 1px solid #ddd;
+	text-align: center;
+	padding: 2px;
+}
+
+.list2.admin {
+	font-weight: bold;
+	background: #f0f0f0;
+}
+
+/* 페이징(.page_navigation) 설정 */
+.page_navigation {
+	padding: 10px 0;
+}
+
+/* 검색조건 뷰 설정 */
+.boardSearch {
+	padding: 5px;
+}
+
+/* 조회버튼 */
+.check2 {
+	font-family: 'Nanum Gothic', sans-serif;
+	background: #ddd;
+	padding: 6px 12px;
+	margin-left: 10px;
+	border: 0; 
+	color: #black;
+	cursor: pointer;
+}
+
+.check2:hover{
+	background: #8aa1a1;
+}
+
+/* 선택옵션 설정 */
+#searchOption {
+	height: 25px;
+	width: 100px;
+	margin-right: 10px;
+	height: 26px;
+}
+
+/* 검색어 입력칸 설정 */
+#keyword {
+	width: 250px;
+	height: 23px;
+}

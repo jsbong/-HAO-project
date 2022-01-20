@@ -94,9 +94,6 @@ public class ProductController {
 		return "product/search";
 	}
 
-	// 관리자
-	
-
 	// 상품등록 페이지
 	@RequestMapping("/prdinsert")
 	public String insertProductView(ProductVO vo) {

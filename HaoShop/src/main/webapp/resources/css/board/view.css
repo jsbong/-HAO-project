@@ -1,0 +1,35 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+.write-content {
+	padding-top: 100px;
+	padding-bottom: 100px;
+	width: 100%;
+	background: skyblue;
+}
+
+/* 게시글 작성 설정 */
+.organize {
+	margin: 0 auto;
+	width: 45%;
+	background: yellow;
+}
+
+.organize > h3 {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+	background: pink;	
+}
+
+.organize .textb {
+	margin: 0 auto;
+	padding-top: 5px;
+	width: 90%;
+	background: lightcoral;
+}
+/* 제목 블록 섫정 */
+.organize .textb .textb_title {
+	padding: 10px;
+	background: #f0f0f0;
+}

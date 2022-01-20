@@ -42,16 +42,17 @@ public class PaymentDAO {
 	}
 	
 	// 주문내역 - 관리자
-	public List<PaymentVO> getOrderListAll(PaymentVO vo, int start, int end) {
+	public List<PaymentVO> getOrderListAll(String sPrd, int start, int end) {
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sPrd", sPrd);
 		map.put("start", start);
 		map.put("end", end);
 		return mybatis.selectList("PaymentDAO.orderMemberAll", map);
 	}
 
 	// 주문내역 갯수 - 관리자
-	public int getCountOrderAll(PaymentVO vo) {
-		return mybatis.selectOne("PaymentDAO.orderCountAll", vo);
+	public int getCountOrderAll(String sPrd) {
+		return mybatis.selectOne("PaymentDAO.orderCountAll", sPrd);
 	}
 
 	//주문 상태 변경 - 관리자

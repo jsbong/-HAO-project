@@ -40,13 +40,13 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 	
 	// 주문내역 - 전체
-	public List<PaymentVO> getOrderListAll(PaymentVO vo, int start, int end) {
-		return paymentDAO.getOrderListAll(vo, start, end);
+	public List<PaymentVO> getOrderListAll(String sPrd, int start, int end) {
+		return paymentDAO.getOrderListAll(sPrd, start, end);
 	}
 
 	// 주문내역 갯수
-	public int getCountOrderAll(PaymentVO vo) {
-		return paymentDAO.getCountOrderAll(vo);
+	public int getCountOrderAll(String sPrd) {
+		return paymentDAO.getCountOrderAll(sPrd);
 	}
 	
 	public void deleteCartPayment(PaymentVO vo) {
@@ -68,4 +68,5 @@ public class PaymentServiceImpl implements PaymentService {
 	public int getCountWait() {
 		return paymentDAO.getCountWait();
 	}
+
 }

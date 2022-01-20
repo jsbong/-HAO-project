@@ -18,9 +18,9 @@ public interface PaymentService {
 	//주문 상태 변경
 	void updateState(PaymentVO vo);
 
-	int getCountOrderAll(PaymentVO vo);
+	int getCountOrderAll(String sPrd);
 
-	List<PaymentVO> getOrderListAll(PaymentVO vo, int start, int end);
+	List<PaymentVO> getOrderListAll(String sPrd, int start, int end);
 
 	int getCountOrderNow();
 	int getCountWait();

@@ -31,7 +31,16 @@
 			</tr> 
 			</table>
 		</div>
-			
+		<div align="right">
+			<table>
+				<tr>
+					<td><a href="deliver?sPrd=배송대기중">배송 대기중</a>&emsp;</td>
+					<td><a href="deliver?sPrd=배송중">배송 중</a>&emsp;</td>
+					<td><a href="deliver?sPrd=배송완료">배송 완료</a>&emsp;</td>
+					<td><a href="deliver?sPrd=">전체</a></td>
+				</tr>
+			</table>
+		</div>
 		<div class="member_div">
  			 <table>
     			<tr>
@@ -82,33 +91,32 @@
 			<!-- 페이지 네비게이션 출력 -->
 			<div align="center">
 				<c:if test="${map.pager.curBlock > 1}">
-					<a href="#" onclick="list('1')">[처음]</a>
+					<a href="#" onClick="list('${map.sPrd}', '1')">[처음]</a>
 				</c:if>
 				<c:if test="${map.pager.curBlock > 1}">
-					<a href="#" onclick="list('${map.pager.prevPage}')">[이전]</a>
+					<a href="#" onClick="list('${map.sPrd}', '${map.pager.prevPage}')">[이전]</a>
 				</c:if>
 				<c:forEach var="num" begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}">
 					<c:choose>
 						<c:when test="${num == map.pager.curPage}">
-							<!-- 현재 페이지인 경우 하이퍼링크 제거 -->
 							<span style="color: red;">${num}</span>
 						</c:when>
 						<c:otherwise>
-							<a href="#" onclick="list('${num}')">${num}</a>
+							<a href="#" onClick="list('${map.sPrd}', '${num}')">${num}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${map.pager.curBlock < map.pager.totBlock}">
-					<a href="#" onclick="list('${map.pager.nextPage}')">[다음]</a>
+					<a href="#" onClick="list('${map.sPrd}', '${map.pager.nextPage}')">[다음]</a>
 				</c:if>
-				<c:if test="${(map.pager.totPage > 5) && (map.pager.totPage != map.pager.curPage)}">
-					<a href="#" onclick="list('${map.pager.totPage}')">[끝]</a>
+				<c:if test="${map.pager.curBlock < map.pager.totPage}">
+					<a href="#" onClick="list('${map.sPrd}', '${map.pager.totPage}')">[끝]</a>
 				</c:if>
 			</div>
 		</div>
 		<script>
-			function list(page) {
-				location.href="deliver?curPage="+page;
+			function list(sPrd, page) {
+				location.href="deliver?sPrd=" + sPrd + "&curPage=" + page;
 			}
 			function stachange(pay_no) {
 				var pay_state = document.getElementsByName(pay_no)[0].value;

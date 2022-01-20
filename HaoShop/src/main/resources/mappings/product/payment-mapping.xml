@@ -62,14 +62,14 @@
 				SELECT * FROM (
 					SELECT PAY_NO, M_NO, P_NO, PAY_REGDATE, P_NAME, PAY_STATE,
 					((P_PRICE - P_DISCOUNT) * PAY_QUANTITY) AS P_SUM 
-					FROM PAYMENT NATURAL JOIN PRODUCT
+					FROM PAYMENT NATURAL JOIN PRODUCT WHERE PAY_STATE LIKE ('%'||#{sPrd}||'%')
 					) ORDER BY PAY_NO DESC
 			) A
 		) WHERE RN BETWEEN #{start} AND #{end}
 	</select>
 	
 	<select id="orderCountAll" resultType="java.lang.Integer">
-		SELECT COUNT(*) FROM PAYMENT
+		SELECT COUNT(*) FROM PAYMENT WHERE PAY_STATE LIKE ('%'||#{sPrd}||'%')
 	</select>
 	
 	<select id="orderMemberNow" resultType="payment">
