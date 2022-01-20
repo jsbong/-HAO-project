@@ -90,5 +90,9 @@ public class MemberDAO {
 		else
 			return mybatis.selectOne("MemberDAO.getTotalPay", vo);
 	}
+
+	public int getCountMemberNow() {
+		return mybatis.selectOne("MemberDAO.getCountMemberNow");
+	}
 }
 

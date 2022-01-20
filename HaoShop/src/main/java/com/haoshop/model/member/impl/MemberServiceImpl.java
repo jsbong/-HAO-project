@@ -155,4 +155,8 @@ public class MemberServiceImpl implements MemberService {
 	public int getTotalPay(MemberVO vo) throws NullPointerException{
 		return memberDAO.getTotalPay(vo);
 	}
+
+	public int getCountMemberNow() {
+		return memberDAO.getCountMemberNow();
+	}
 }

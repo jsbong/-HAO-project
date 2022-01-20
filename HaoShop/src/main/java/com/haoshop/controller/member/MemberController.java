@@ -24,9 +24,6 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping("/main")
-	public String main() { return "main"; }
-
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signUpView(MemberVO vo) { return "member/signup"; }
 	

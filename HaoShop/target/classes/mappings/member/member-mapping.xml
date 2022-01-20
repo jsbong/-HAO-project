@@ -122,6 +122,10 @@
 		SELECT COUNT(*) FROM MEMBER
 	</select>
 	
+	<select id="getCountMemberNow" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM MEMBER WHERE TO_CHAR(M_REGDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+	</select>
+	
 	<select id="orderCount" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM PAYMENT WHERE M_NO = #{m_no}
 	</select>
