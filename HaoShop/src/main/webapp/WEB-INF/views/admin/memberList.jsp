@@ -19,7 +19,8 @@
 <%@ include file="/WEB-INF/views/admin/admin_bar.jsp" %>
 <section class="member_section">
   <h1 align="center">회원 관리목록</h1>
-  <h3 align="center">회원 정보</h3>
+  <h3 align="center">회원 정보</h3><br>
+  <h5 align="center">총 회원 수:${map.count}</h5>
 <div class="member_div">
   <table>
     <tr>
@@ -40,7 +41,9 @@
 								<td align="center"><a href="memberDetail?m_no=${row.m_no}">${row.m_no}</a></td>
 								<td align="center">${row.m_id}</td>
 								<td align="center">${row.m_name}</td>
-								<td><fmt:formatDate value="${row.m_birth}" pattern="yyyy-MM-dd" /></td>
+								<td align="center"><fmt:parseDate var="parseRegDate" value="${row.m_birth}" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate var="resultRegDt" value="${parseRegDate}" pattern="yyyy-MM-dd"/>
+									${resultRegDt}</td>
 								<td align="center">${row.m_phone}</td>
 								<td align="center">${fn:split(row.m_addr, '*')[1]}</td>
 							</tr>

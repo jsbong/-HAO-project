@@ -1,0 +1,135 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* reset */
+/* header에 담겨있음 */
+
+/* layout */
+.mypage-content {
+   width: 100%;
+   font-family: 'Nanum Gothic', sans-serif;
+   margin : 60px 0;
+}
+
+.mypage-content .mypage_detail {
+   width: 40%;
+   margin: 0 auto;
+   font-size: 14px;
+}
+
+/* 회원이름 및 이메일, 구매건수 설정 */
+.mypage-content .mypage_detail .member_name {
+   padding-bottom: 15px;
+   border-bottom: 1px solid #ddd;
+   position: relative;
+}
+
+.mypage-content .mypage_detail .member_name .name {
+   width: 100%;
+}
+
+.mypage-content .mypage_detail .member_name .myname {
+   font-size: 34px;   
+}
+
+.mypage-content .mypage_detail .member_name .myemail {
+   padding-left: 5px;
+   font-size: 14px;
+   color: #ddd;   
+}
+
+/* 구매건수 설정 */
+.mypage-content .mypage_detail .member_name .pay_count {
+   position: absolute;
+   top: 50%;
+   right: 8px;
+   transform: translateY(-50%);
+   text-align: right;
+}
+
+.mypage-content .mypage_detail .member_name .pay_count li > span {
+   font-size: 14px;
+   color: #8aa1a1;
+}
+
+/* 회원정보 설정 */
+.member_info {
+   padding: 20px 0 10px;
+   border-bottom: 1px solid #ddd;
+   position: relative;
+}
+
+.member_info > h4 {
+   margin-bottom: 5px;
+}
+
+.member_info > span {
+   display: block;
+   padding-left: 10px;
+   margin-bottom: 2px;
+}
+
+.member_info > div {
+   position: absolute;
+   top: 50%;
+   right: 8px;
+   transform: translateY(-20%);
+}
+
+.member_info > div > input[type=button] {
+   font-family: 'Nanum Gothic', sans-serif;
+   background: #ddd;
+   border: 0;
+   border-left: 3px solid #8aa1a1;
+   padding: 10px 15px;
+   cursor: pointer;
+}
+
+.member_info > div > input[type=button]:hover {
+   background: #8aa1a1;   
+}
+
+/* 주문내역 설정 */
+.member_order {
+   padding: 20px 0 10px;
+   width: 100%;
+}
+
+.member_order > h4 {
+   display: block;
+   margin-bottom: 5px;
+}
+
+.member_order_detail {
+   width: 95%;
+   margin: 0 auto;
+}
+
+.member_order_detail li {
+   width: 100%;
+   height: 100px;
+   margin-bottom: 5px;
+   background: rgb(247,247,247);   
+}
+
+.member_order_detail li > h4 {
+   display: block;
+   padding: 5px;
+}
+
+.member_order_detail li .payment_info .payment_detail {
+   float: left;
+   margin-right: 15px;
+   margin-left: 5px;
+   width: 50px;
+   height: 65px;
+}
+
+.member_order_detail li .payment_info .payment_detail img {
+   width: 100%;
+   height: 100%;
+}
+
+.member_order_detail li .payment_info .payment_explain {
+   padding: 10px 0;
+}

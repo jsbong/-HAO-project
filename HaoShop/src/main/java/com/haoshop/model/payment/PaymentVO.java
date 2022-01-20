@@ -1,6 +1,6 @@
 package com.haoshop.model.payment;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class PaymentVO {
 	private int pay_no;
