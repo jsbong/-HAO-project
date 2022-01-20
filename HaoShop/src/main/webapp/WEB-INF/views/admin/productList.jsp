@@ -14,21 +14,6 @@
 			function list(page) {
 				location.href="productList?curPage="+page;
 			}
-			/* function productdetail(p_no) {
-				alert(p_no);
-				$.ajax({
-			         type : "POST",
-			         url : "productdetail",
-			         data : {
-			            "p_no" : p_no
-			         },
-			         success : function(data) {
-			            window.location.href="productDetail";
-			         }, error : function(data) {
-			            alert(p_no);
-			         }
-				});
-			} */
 		</script>
 	</head>
 	<body>

@@ -32,4 +32,6 @@ public interface ProductService {
 	
 	// 물품 상태 변경
 	void updatePrd(ProductVO vo);
+
+	void deletePrd(ProductVO vo);
 }

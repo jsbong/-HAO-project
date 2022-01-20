@@ -51,6 +51,10 @@ public class ProductServiceImpl implements ProductService {
 	public void updatePrd(ProductVO vo) {
 		productDAO.updatePrd(vo);
 	}
+	
+	public void deletePrd(ProductVO vo) {
+		productDAO.deletePrd(vo);
+	}
 
 	// 품목 갯수 카운트
 	public int getCountProduct(ProductVO vo) {
@@ -71,4 +75,5 @@ public class ProductServiceImpl implements ProductService {
 	public ProductVO productDetail(ProductVO vo) {
 		return productDAO.productDetail(vo);
 	}
+
 }

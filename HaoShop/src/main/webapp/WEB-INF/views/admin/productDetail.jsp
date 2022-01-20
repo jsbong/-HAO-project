@@ -15,35 +15,52 @@
 	<script>
 		// 상품정보 수정
 		function productUp() {
-			var p_no = $("#p_no").val();
-			var p_name = $("#p_name").val();
-			var p_price = $("#p_price").val();
-			var p_discount = $("#p_discount").val();
-			var p_size = $("#p_size").val();
-			var p_color = $("#p_color").val();
-			var p_explain = $("#p_explain").val();
+			var formData = new FormData($("#prdForm")[0]);
+	      	formData.append('p_explain', CKEDITOR.instances.p_explain.getData());
 			swal({
 				icon : "warning",
 				text : "정말 수정 하시겠습니까?",
 				closeOnClickOutside : false,
 				closeOnEsc : false,
-				buttons : [ "돌아가기", "확인" ],
+				buttons : [ "취소", "확인" ],
 			}).then(function(isConfirm) {
 				if (isConfirm) {
 					$.ajax({
 						type : "POST",
 						url : "updatePrd",
-						data : {
-							"p_no" : p_no,
-							"p_name" : p_name,
-							"p_price" : p_price,
-							"p_discount" : p_discount,
-							"p_size" : p_size,
-							"p_color" : p_color,
-							"p_explain" : p_explain
-						},
+						data : formData,
+		   		        processData : false,
+			      	    contentType : false,
 						success : function(data) {
 							swal('수정 완료!', '상품정보 수정을 완료했습니다.', 'success').then(function(isConfirm) {
+							window.location.href = "productList";});
+						},
+						error : function(data) {
+							swal('', 'xx', 'error');
+						}
+					});
+				}
+			})
+		}
+		// 상품 삭제
+		function productdel() {
+			var p_no = $("#p_no").val();
+			swal({
+				icon : "warning",
+				text : "해당 상품을 삭제 하시겠습니까?",
+				closeOnClickOutside : false,
+				closeOnEsc : false,
+				buttons : [ "취소", "확인" ],
+			}).then(function(isConfirm) {
+				if (isConfirm) {
+					$.ajax({
+						type : "POST",
+						url : "deletePrd",
+						data : {
+				            "p_no" : p_no
+				         },
+						success : function(data) {
+							swal('삭제 완료!', '상품 정보가 삭제되었습니다.', 'success').then(function(isConfirm) {
 							window.location.href = "productList";});
 						},
 						error : function(data) {
@@ -106,10 +123,12 @@
 	<section class="productdetail-content">
 		<div class="productdetail">
 		<h2>PRODUCT_DETAIL</h2>
+		<form id="prdForm" action="updatePrd" method="POST" enctype="multipart/form-data">
 			<table class="product_table">
 				<tr>
 					<th>상품번호</th>
-					<td><input type="text" id="p_no" name="p_no" value="${product.p_no}" disabled>
+					<td><input type="text" value="${product.p_no}" disabled>
+						<input type="hidden" id="p_no" name="p_no" value="${product.p_no}">
 				</tr>
 				<tr>
 					<th>카테고리번호</th>
@@ -153,10 +172,11 @@
 				<tr>
 					<td colspan="2" align="center">
 						<input type="button" value="상품 수정" onclick="productUp()">
-						<input type="button" value="상품 삭제">
+						<input type="button" value="상품 삭제" onclick="productdel()">
 					</td>
 				</tr>
 			</table>
+		</form>
 		</div>
 	</section>
 	<div class="background">

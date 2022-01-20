@@ -92,4 +92,8 @@ public class ProductDAO {
 	public void updatePrd(ProductVO vo) {
 		mybatis.update("ProductDAO.updatePrd", vo);
 	}
+
+	public void deletePrd(ProductVO vo) {
+		mybatis.delete("ProductDAO.deletePrd", vo);
+	}
 }

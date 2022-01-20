@@ -109,6 +109,10 @@
 		UPDATE PRODUCT SET P_NAME=#{p_name}, P_PRICE=#{p_price}, P_DISCOUNT=#{p_discount}, P_SIZE=#{p_size}, P_COLOR=#{p_color}, P_EXPLAIN=#{p_explain}	WHERE P_NO=#{p_no}
 	</update>
 	
+	<delete id="deletePrd">
+		DELETE PRODUCT WHERE P_NO=#{p_no}
+	</delete>
+	
 	<!-- 서브 카테고리에 해당하는  상품 개수 질의문 -->
 	<select id="getCountProduct" resultType="java.lang.Integer">
 		<![CDATA[

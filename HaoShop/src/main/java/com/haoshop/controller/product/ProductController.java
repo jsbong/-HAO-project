@@ -156,4 +156,11 @@ public class ProductController {
 		productService.updatePrd(vo);
 		return "admin/productList";
 	}
+	
+	//관리자- 상품 삭제 처리
+	@RequestMapping(value = "/deletePrd", method = RequestMethod.POST)
+	public String deleteProduct(ProductVO vo) {
+		productService.deletePrd(vo);
+		return "admin/productList";
+	}
 }
