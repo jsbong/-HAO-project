@@ -23,6 +23,8 @@ public interface PaymentService {
 	List<PaymentVO> getOrderListAll(PaymentVO vo, int start, int end);
 
 	int getCountOrderNow();
+	int getCountWait();
 
 	List<PaymentVO> getOrderListNow(PaymentVO vo, int start, int end);
+
 }

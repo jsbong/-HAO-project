@@ -64,4 +64,8 @@ public class PaymentServiceImpl implements PaymentService {
 	public List<PaymentVO> getOrderListNow(PaymentVO vo, int start, int end) {
 		return paymentDAO.getOrderListNow(vo, start, end);
 	}
+
+	public int getCountWait() {
+		return paymentDAO.getCountWait();
+	}
 }

@@ -69,7 +69,8 @@ public class HomeController {
 	@RequestMapping(value = "/adminpage", method = RequestMethod.GET)
 	public String adminpage(@RequestParam(defaultValue = "1") int curPage, PaymentVO vo, Model model) {
 		int count = paymentService.getCountOrderNow();
-		int cnt = memberService.getCountMemberNow();
+		int newMemberCnt = memberService.getCountMemberNow();
+		int waitDelCnt = paymentService.getCountWait();
 		Pager pager = new Pager(count, curPage);
 		int start = pager.getPageBegin(); 
 		int end = pager.getPageEnd();
@@ -78,7 +79,8 @@ public class HomeController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list);
 		map.put("count", count);
-		map.put("cnt", cnt);
+		map.put("newMemberCnt", newMemberCnt);
+		map.put("waitDelCnt", waitDelCnt);
 		map.put("cntToday", cntToday);
 		map.put("pager", pager);
 		model.addAttribute("map", map);

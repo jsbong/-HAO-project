@@ -88,6 +88,10 @@
 		SELECT COUNT(*) FROM PAYMENT WHERE TO_CHAR(PAY_REGDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
 	</select>
 	
+	<select id="getCountWait" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM PAYMENT WHERE PAY_STATE='배송대기중'
+	</select>
+	
 	<!-- 회원 주문 상태 업데이트 -->
 	<update id="updateState">
 		UPDATE PAYMENT SET PAY_STATE=#{pay_state} WHERE PAY_NO=#{pay_no}

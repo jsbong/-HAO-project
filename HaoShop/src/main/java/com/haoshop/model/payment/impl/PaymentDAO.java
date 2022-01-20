@@ -69,4 +69,8 @@ public class PaymentDAO {
 	public int getCountOrderNow() {
 		return mybatis.selectOne("PaymentDAO.orderCountNow");
 	}
+
+	public int getCountWait() {
+		return mybatis.selectOne("PaymentDAO.getCountWait");
+	}
 }

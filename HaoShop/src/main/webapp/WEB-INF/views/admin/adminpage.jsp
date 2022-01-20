@@ -23,7 +23,9 @@
 <h3>일일 방문자 수</h3>
 <h4><p style="color: red;">${map.cntToday}명</p></h4><br>
 <h3>신규 가입 회원</h3>	
-<h4><p style="color: red;">${map.cnt}명</p></h4><br>
+<h4><p style="color: red;">${map.newMemberCnt}명</p></h4><br>
+<h3>배송 대기중인 주문</h3>
+<h4><p style="color: red;">${map.waitDelCnt}개</p></h4><br>
 <h3>금일 주문 현황</h3>
 	
 	<div align="center">
