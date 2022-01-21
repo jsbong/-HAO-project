@@ -125,8 +125,8 @@
                      <td>
                         <textarea name="p_explain" id="p_explain" cols="88" rows="80"></textarea>
                         <script>
-                           CKEDITOR.replace('p_explain', {});
-                        </script>
+							CKEDITOR.replace( 'p_explain', {} );
+						</script>
                      </td>
                   </tr>
                   <tr>

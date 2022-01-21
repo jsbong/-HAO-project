@@ -38,7 +38,7 @@ function doInsertProduct() {
       swal("", "카테고리를 선택해주세요.", "error");
    } else {
       var formData = new FormData($("#fileForm")[0]);
-      formData.append('p_explain', CKEDITOR.instances.p_explain.getData());
+      formData.set('p_explain', CKEDITOR.instances.p_explain.getData());
       $.ajax({
          type : "POST",
          url : "insertProduct",

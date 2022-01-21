@@ -16,7 +16,7 @@
 		// 상품정보 수정
 		function productUp() {
 			var formData = new FormData($("#prdForm")[0]);
-	      	formData.append('p_explain', CKEDITOR.instances.p_explain.getData());
+	      	formData.set('p_explain', CKEDITOR.instances.p_explain.getData());
 			swal({
 				icon : "warning",
 				text : "정말 수정 하시겠습니까?",
@@ -24,6 +24,7 @@
 				closeOnEsc : false,
 				buttons : [ "취소", "확인" ],
 			}).then(function(isConfirm) {
+				alert(p_explain);
 				if (isConfirm) {
 					$.ajax({
 						type : "POST",
@@ -163,9 +164,7 @@
 					<td>
 					    <textarea name="p_explain" id="p_explain" cols="88" rows="80"></textarea>
                         <script>
-                           CKEDITOR.replace('p_explain', {
-                              filebrowserUploadUrl : "imageUpload.do"
-                           });
+                           CKEDITOR.replace('p_explain', {});
                         </script>
 					</td>
 				</tr>

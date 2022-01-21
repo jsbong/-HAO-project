@@ -150,6 +150,7 @@ public class ProductController {
 	//관리자- 상품 수정 처리
 	@RequestMapping(value = "/updatePrd", method = RequestMethod.POST)
 	public String changePrd(ProductVO vo) {
+		System.out.println(vo.getP_explain());
 		productService.updatePrd(vo);
 		return "admin/productList";
 	}
