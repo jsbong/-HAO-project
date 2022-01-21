@@ -9,4 +9,6 @@ public interface JournalService {
 	int getCountJournal(JournalVO vo);
 
 	List<JournalVO> getJournalList(int start, int end, JournalVO vo);
+	
+	JournalVO journalDetail(JournalVO vo);
 }

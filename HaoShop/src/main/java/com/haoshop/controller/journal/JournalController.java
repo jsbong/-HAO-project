@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.haoshop.home.Pager;
 import com.haoshop.model.journal.JournalService;
 import com.haoshop.model.journal.JournalVO;
-import com.haoshop.model.product.ProductService;
 import com.haoshop.model.product.ProductVO;
 
 @Controller
@@ -30,7 +29,7 @@ public class JournalController {
 	//등록
 	@RequestMapping("/insertJournal")
 	public String insertCollection(MultipartHttpServletRequest multi, JournalVO vo) {
-		String path = "resources/collection/";
+		String path = "resources/img/collection/";
 
 		Iterator<String> files = multi.getFileNames();
 		while(files.hasNext()) {
@@ -64,7 +63,14 @@ public class JournalController {
 		map.put("pager", pager);
 		model.addAttribute("map", map);
 		return "common/journalList";
-	}
+	} //헤더에서
+	
+	//저널 내용 보기
+	@RequestMapping("/displayJour")
+	public String displayJour(JournalVO vo, Model model) {
+		model.addAttribute("journal", journalService.journalDetail(vo));
+		return "common/displayJour";
+	} //이미지 클릭시
 
 	
 }

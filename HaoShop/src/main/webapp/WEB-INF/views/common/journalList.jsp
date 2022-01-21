@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
-		<title>HAOSHOP-PRODUCT</title>
+		<title>HAOSHOP-JOURNAL_LIST</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="resources/css/product.css">
 		<script>
@@ -21,8 +21,8 @@
 		<!-- header -->
 		<%@ include file="../include/header.jsp" %>
 		<section class="category_section">
-			<c:if test="${(fn:length(map.list)) eq 0}"> <!-- 상품목록이 없을 경우 -->
-				<h2>상품내역이 없습니다.</h2>
+			<c:if test="${(fn:length(map.list)) eq 0}"> <!-- 저널이 없을 경우 -->
+				<h2>저널이 없습니다.</h2>
 			</c:if>
 			<ul class="product_table">
 				<!-- 상품 목록 -->
@@ -31,7 +31,7 @@
 						<c:forEach begin="0" end="3" var="col">
 							<c:set var="item" value="${map.list[row * 4 + col]}" />
 							<c:if test="${not empty item}">
-							<a href="journalList?JOUR_NO=${item.jour_no}" class="product">
+							<a href="displayJour?jour_no=${item.jour_no}" class="product">
 								<img src="${item.jour_img}">
 								<span style="font-size:20px; font-weight: 800;">${item.jour_name}</span><br>
 								<%-- <c:choose>

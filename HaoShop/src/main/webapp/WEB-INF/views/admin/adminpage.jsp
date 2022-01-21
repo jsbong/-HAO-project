@@ -22,10 +22,49 @@
   <h3 align="center">ㅇㅁㄴㅇㅁㄴㅇㅁㅇ</h3>
 <h3>일일 방문자 수</h3>
 <h4><p style="color: red;">${map.cntToday}명</p></h4><br>
-<h3>신규 가입 회원</h3>	
-<h4><p style="color: red;">${map.newMemberCnt}명</p></h4><br>
 <a href="deliver?sPrd=배송대기중"><h3>배송 대기중인 주문</h3></a>
 <h4><p style="color: red;">${map.waitDelCnt}개</p></h4><br>
+<h3>신규 가입 회원</h3>	
+<h4><p style="color: red;">${map.newMemberCnt}명</p></h4>
+
+<div class="member_div">
+  <table>
+    <tr>
+      <th>회원 번호</th>
+      <th>ID</th>
+      <th>이름</th>
+      <th>생년월일</th>
+      <th>전화번호</th>
+      <th>주소</th>
+    </tr>
+    <tr>
+      <c:forEach begin="0" end="${(fn:length(map.m_list))}" var="i">
+			<c:set var="row_m" value="${map.m_list[i]}" />
+			<c:choose>
+				<%-- 검색결과가 있을 때 --%>
+				<c:when test="${not empty row_m}">
+					<tr bgcolor="#fff" height="50">
+						<td align="center"><a href="memberDetail?m_no=${row_m.m_no}">${row_m.m_no}</a></td>
+						<td align="center">${row_m.m_id}</td>
+						<td align="center">${row_m.m_name}</td>
+						<td align="center"><fmt:parseDate var="parseRegDate" value="${row_m.m_birth}" pattern="yyyy-MM-dd"/>
+							<fmt:formatDate var="resultRegDt" value="${parseRegDate}" pattern="yyyy-MM-dd"/>
+							${resultRegDt}</td>
+						<td align="center">${row_m.m_phone}</td>
+						<td align="center">${fn:split(row_m.m_addr, '*')[1]}</td>
+					</tr>
+				</c:when>
+				<%-- 검색결과가 없을 떄 --%>
+				<c:when test="${map.newMemberCnt == 0}">
+					<tr style="text-align: center;">
+						<td colspan='5'><b>신규 가입 회원이 없습니다.</b></td>
+					</tr>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+    </tr>
+</table>
+</div>
 <h3>금일 주문 현황</h3>
 	
 	<div align="center">
@@ -112,7 +151,7 @@
 		</div>
 		<script>
 			function list(page) {
-				location.href="deliver?curPage="+page;
+				location.href="adminpage?curPage="+page;
 			}
 			function stachange(pay_no) {
 				var pay_state = document.getElementsByName(pay_no)[0].value;

@@ -45,4 +45,6 @@ public interface MemberService {
 	int getTotalPay(MemberVO vo) throws NullPointerException;
 
 	int getCountMemberNow();
+
+	List<MemberVO> getMemberNow();
 }

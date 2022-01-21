@@ -122,8 +122,15 @@
 		SELECT COUNT(*) FROM MEMBER
 	</select>
 	
+	<!-- 금일 회원가입 수 -->
 	<select id="getCountMemberNow" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM MEMBER WHERE TO_CHAR(M_REGDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+	</select>
+	
+	<!-- 금일 회원가입 리스트 -->
+	<select id="getMemberNow" resultType="member">
+		SELECT M_NO, M_ID, M_NAME, M_BIRTH, M_PHONE, M_ADDR FROM MEMBER 
+		WHERE TO_CHAR(M_REGDATE, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
 	</select>
 	
 	<select id="orderCount" resultType="java.lang.Integer">

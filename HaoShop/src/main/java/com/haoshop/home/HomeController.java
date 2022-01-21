@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.haoshop.model.member.MemberService;
+import com.haoshop.model.member.MemberVO;
 import com.haoshop.model.payment.PaymentService;
 import com.haoshop.model.payment.PaymentVO;
 
@@ -66,6 +67,7 @@ public class HomeController {
 		return "admin/journal";
 	}
 	
+	//관리자 페이지
 	@RequestMapping(value = "/adminpage", method = RequestMethod.GET)
 	public String adminpage(@RequestParam(defaultValue = "1") int curPage, PaymentVO vo, Model model) {
 		int count = paymentService.getCountOrderNow();
@@ -75,9 +77,12 @@ public class HomeController {
 		int start = pager.getPageBegin(); 
 		int end = pager.getPageEnd();
 		
+		List<MemberVO> m_list = memberService.getMemberNow();
+		
 		List<PaymentVO> list = paymentService.getOrderListNow(vo, start, end);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list);
+		map.put("m_list", m_list);
 		map.put("count", count);
 		map.put("newMemberCnt", newMemberCnt);
 		map.put("waitDelCnt", waitDelCnt);

@@ -27,5 +27,8 @@ public class JournalServiceImpl implements JournalService {
 	public List<JournalVO> getJournalList(int start, int end, JournalVO vo) {
 		return journalDAO.getJournalList(start, end, vo);
 	}
-
+	
+	public JournalVO journalDetail(JournalVO vo) {
+		return journalDAO.journalDetail(vo);
+	}
 }

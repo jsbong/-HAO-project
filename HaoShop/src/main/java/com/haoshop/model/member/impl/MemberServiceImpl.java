@@ -159,4 +159,8 @@ public class MemberServiceImpl implements MemberService {
 	public int getCountMemberNow() {
 		return memberDAO.getCountMemberNow();
 	}
+
+	public List<MemberVO> getMemberNow() {
+		return memberDAO.getMemberNow();
+	}
 }

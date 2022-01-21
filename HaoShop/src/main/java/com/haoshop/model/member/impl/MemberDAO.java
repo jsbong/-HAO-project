@@ -94,5 +94,9 @@ public class MemberDAO {
 	public int getCountMemberNow() {
 		return mybatis.selectOne("MemberDAO.getCountMemberNow");
 	}
+
+	public List<MemberVO> getMemberNow() {
+		return mybatis.selectList("MemberDAO.getMemberNow");
+	}
 }
 

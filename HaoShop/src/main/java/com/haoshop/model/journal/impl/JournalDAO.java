@@ -33,5 +33,9 @@ public class JournalDAO {
 		map.put("journal", vo);
 		return mybatis.selectList("JournalDAO.getJournalList", map);
 	}
+	
+	public JournalVO journalDetail(JournalVO vo) {
+		return (JournalVO) mybatis.selectOne("JournalDAO.journalDetail", vo);
+	}
 
 }
