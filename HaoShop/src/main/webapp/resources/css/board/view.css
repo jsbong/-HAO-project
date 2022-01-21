@@ -1,2 +1,147 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* reset */
+/* header에 담겨있음 */
+
+/* layout */
+.board_section {
+   padding: 70px 0;
+   width: 100%;
+   font-family: 'Nanum Gothic', sans-serif;
+   font-size: 14px;
+   background: pink;
+}
+
+.board-content {
+   width: 50%;
+   margin: 0 auto;
+   border: 1px solid #ddd;
+   background: skyblue;
+}
+
+.board-content .board_detail {
+   width: 95%;
+   margin: 0 auto;
+   background: yellow;
+}
+
+.board-content .board_detail > li {
+	width: 95%;
+	padding: 20px;
+	margin: 0 auto;
+	background: lightgreen;
+}
+
+.board-content .board_detail > li:nth-child(1) {
+	padding-bottom: 5px;
+}
+
+/* board_form(게시글 내용) 설정 */
+.board-content .board_detail .board_form {
+   width: 100%;
+   border-collapse: collapse;
+   background: lightcyan;
+}
+
+.board-content .board_detail .board_form li {
+   padding-bottom: 15px;
+   border-bottom: 1px solid #ddd;
+}
+
+.board-content .board_detail .board_form li:nth-child(1) {
+	border-bottom: 0;
+}
+
+.board-content .board_detail .board_form li:nth-child(2) {
+   font-weight: bold;
+   padding-bottom: 0;
+}
+
+.board-content .board_detail .board_form li:nth-child(3) {
+   padding-top: 20px;
+   height: 200px;   
+}
+
+.board-content .board_detail .board_form p {
+   color: #8aa1a1;
+}
+
+.board-content .board_detail .board_form p:hover {
+   font-weight: bold;
+}
+
+.board-content .board_detail .board_form .board_title {
+   background: yellow;
+}
+
+.board-content .board_detail .board_form .board_title > h3 {
+   font-size: 26px;
+   line-height: 1.6;
+}
+
+   
+/* 버튼 블록 설정 */
+.board-content .board_detail > li:nth-child(2) {
+	padding: 0;
+	background: lightcoral;
+}
+
+.board-content .board_detail > li .write {
+	padding: 10px;
+	text-align: right;
+	background: lightcyan;
+}
+
+.board-content .board_detail > li .write a {
+	padding: 5px 10px;
+	background: #ddd;
+	cursor: pointer;	
+}
+
+.board-content .board_detail > li .write a:hover {
+	background: #8aa1a1;
+}
+
+/* 이전글, 다음글 리스트 블록 설정 */
+.simpleView-content {
+	width: 50%;
+	height: 130px;
+	margin: 0 auto;
+	margin-top: 10px;
+	position: relative;
+	background: lightblue;
+}
+
+.simpleView-content .simpleView {
+	width: 80%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	background: lightgray;
+}
+
+.simpleView-content .movePage {
+	text-align: center;
+	cursor: pointer;
+}
+
+.simpleView-content .movePage td:nth-child(1) {
+	width: 20%;	
+}
+
+.simpleView-content .movePage td:nth-child(2) {
+	width: 50%;	
+}
+
+.simpleView-content .movePage td:nth-child(3) {
+	width: 10%;	
+}
+
+.simpleView-content .movePage td:nth-child(4) {
+	width: 20%;
+}
+

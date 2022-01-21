@@ -125,17 +125,19 @@ public class ProductController {
 
 	// 관리자- 상품 목록 뷰
 	@RequestMapping(value = "/productList", method = RequestMethod.GET)
-	public String productListView(@RequestParam(defaultValue = "1") int curPage, ProductVO vo, Model model) {
-		int count = productService.getAdminCountProduct(vo);
+	public String productListView(@RequestParam(defaultValue = "1") int curPage,
+			@RequestParam(defaultValue = "99999") String pCnt, Model model) {
+		int count = productService.getAdminCountProduct(pCnt);
 		Pager pager = new Pager(count, curPage);
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
 
-		List<ProductVO> list = productService.getAdminProductList(start, end, vo);
+		List<ProductVO> list = productService.getAdminProductList(start, end, pCnt);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list);
 		map.put("count", count);
 		map.put("pager", pager);
+		map.put("pCnt", pCnt);
 		model.addAttribute("map", map);
 		return "admin/productList";
 	}

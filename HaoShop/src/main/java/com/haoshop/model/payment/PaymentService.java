@@ -27,4 +27,6 @@ public interface PaymentService {
 
 	List<PaymentVO> getOrderListNow(PaymentVO vo, int start, int end);
 
+	List<Integer> paymentMonth();
+
 }

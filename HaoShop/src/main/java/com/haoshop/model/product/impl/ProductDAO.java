@@ -60,11 +60,11 @@ public class ProductDAO {
 	}
 
 	// 관리자 품목 리스트
-	public List<ProductVO> getAdminProductList(int start, int end, ProductVO vo) {
+	public List<ProductVO> getAdminProductList(int start, int end, String pCnt) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("start", start);
 		map.put("end", end);
-		map.put("product", vo);
+		map.put("pCnt", pCnt);
 		return mybatis.selectList("ProductDAO.getAdminProductList", map);
 	}
 
@@ -79,8 +79,8 @@ public class ProductDAO {
 		}
 
 	// 관리자 페이지 리스트 갯수 체크
-	public int getAdminCountProduct(ProductVO vo) {
-		return mybatis.selectOne("ProductDAO.getAdminCountProduct", vo);
+	public int getAdminCountProduct(String pCnt) {
+		return mybatis.selectOne("ProductDAO.getAdminCountProduct", pCnt);
 	}
 
 	// 물품 상세보기

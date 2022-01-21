@@ -22,7 +22,6 @@
 		)
 	</insert>
 	
-	
 	<!-- <update id="join">
 		UPDATE BOARD 
 		SET M_NO = (SELECT M_NO
@@ -118,5 +117,21 @@
 		</choose>
 	</sql>
 	
+	<!-- 댓글작성 -->
+	<insert id="createCommentBoard">
+		INSERT INTO BOARD_COMMENT(
+			BC_NO,
+			B_NO,
+			M_ID,
+			BC_CONTENT,
+			BC_REGDATE
+		) VALUES (
+			BOARD_COMMENT_SEQ.NEXTVAL,
+			#{b_no},
+			#{m_id},
+			#{bc_content},
+			SYSDATE
+		)
+	</insert>
 	
 </mapper>

@@ -9,9 +9,8 @@
 <title>member</title>
 <link rel="stylesheet" href="resources/css/member.css">
 <link rel="stylesheet" href="resources/css/admin_bar.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="resources/css/jqbar.css" />
+<script src="resources/js/jqbar.js" charset="UTF-8"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -24,6 +23,51 @@
 <h4><p style="color: red;">${map.cntToday}명</p></h4><br>
 <a href="deliver?sPrd=배송대기중"><h3>배송 대기중인 주문</h3></a>
 <h4><p style="color: red;">${map.waitDelCnt}개</p></h4><br>
+<a href="productList?pCnt=30"><h3>재고 부족 상품 (30개 이하)</h3></a>
+<h4><p style="color: red;">${map.p_Cnt}개</p></h4><br>
+${map.pay_M[0]}
+
+<div>
+	<div id="bar-1"></div>
+	<div id="bar-2"></div>
+	<div id="bar-3"></div>
+	<div id="bar-4"></div>
+	<div id="bar-5"></div>
+	<div id="bar-6"></div>
+</div>
+
+
+<br/><br/><br/><br/>
+<div class="bars">
+	<div id="bar-7"></div>
+	<div id="bar-8"></div>
+	<div id="bar-9"></div>
+	<div id="bar-10"></div>
+	<div id="bar-11"></div>
+	<div id="bar-12"></div>
+</div>
+
+<script type="text/javascript">
+
+	$(document).ready(function () {
+		$('#bar-1').jqbar({ label: 'ASP.NET', value: 99, barColor: '#D64747' });
+		$('#bar-2').jqbar({ label: 'C#', value: 99, barColor: '#FF681F' });
+		$('#bar-3').jqbar({ label: 'Javascript', value: 90, barColor: '#ea805c' });
+		$('#bar-4').jqbar({ label: 'HTML5', value: 50, barColor: '#88bbc8' });
+		$('#bar-5').jqbar({ label: 'CSS3', value: 60, barColor: '#939393' });
+		$('#bar-6').jqbar({ label: 'jQuery', value: 70, barColor: '#3a89c9' });
+		$('#bar-7').jqbar({ label: 'Wal', value: 90, barColor: '#D64747', orientation: 'v' });
+		$('#bar-8').jqbar({ label: 'Ohi', barColor: '#FF681F', value: 70, orientation: 'v' });
+		$('#bar-9').jqbar({ label: 'Song', barColor: '#ea805c', value: 50, orientation: 'v' });
+		$('#bar-10').jqbar({ label: 'Pisho', barColor: '#88bbc8', value: 90, orientation: 'v' });
+		$('#bar-11').jqbar({ label: 'Mara', barColor: '#939393', value: 70, orientation: 'v' });
+		$('#bar-12').jqbar({ label: 'Dagha', barColor: '#3a89c9', value: 50, orientation: 'v' });
+	});
+</script>
+
+
+
+
 <h3>신규 가입 회원</h3>	
 <h4><p style="color: red;">${map.newMemberCnt}명</p></h4>
 

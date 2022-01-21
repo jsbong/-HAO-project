@@ -36,7 +36,7 @@ public class PaymentController {
 		
 		@RequestMapping("/deliver")
 		public String getPatmentpage(@RequestParam(defaultValue = "1") int curPage,
-				@RequestParam(defaultValue = "") String sPrd,PaymentVO vo, Model model) { 
+				@RequestParam(defaultValue = "") String sPrd , Model model) { 
 			int count = paymentService.getCountOrderAll(sPrd);
 			Pager pager = new Pager(count, curPage); // (레코드 개수, 현재 페이지 번호(default = 1) )
 			int start = pager.getPageBegin(); //  
@@ -59,8 +59,8 @@ public class PaymentController {
 		}
 
 		@RequestMapping(value="/payment", method=RequestMethod.POST)
-		public String payment(@RequestParam(value="hiddenbtn") String hidden, PaymentVO vo, HttpSession session, Model model) {
-			System.out.println(hidden);
+		public String payment(@RequestParam(value="hiddenbtn") String hidden,
+				@RequestParam(value="c_no0[]") int[] c_no0, PaymentVO vo, HttpSession session, Model model) {
 			if (hidden.equals("prdpage")) {
 				List<PaymentVO> list = paymentService.getPaymentProduct(vo);
 				HashMap<String, Object> map = new HashMap<String, Object>();
@@ -71,7 +71,13 @@ public class PaymentController {
 //				model.addAttribute("map", map);
 				session.setAttribute("map", map);
 			} else if (hidden.equals("cartpage")) {
+				vo.setC_no(c_no0[0]);
 				List<PaymentVO> list = paymentService.cartPaymentProduct(vo);
+				for(int k = 1; k<c_no0.length; k++) {
+					System.out.println(c_no0[k]);
+					vo.setC_no(c_no0[k]);
+					list.add(paymentService.cartPaymentProduct(vo).get(0));
+				}
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("list", list);
 				map.put("hidden", hidden);

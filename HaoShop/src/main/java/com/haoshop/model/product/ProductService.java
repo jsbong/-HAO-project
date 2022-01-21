@@ -20,13 +20,13 @@ public interface ProductService {
 	
 	List<ProductVO> getProductListAll(int start, int end, ProductVO vo);
 
-	List<ProductVO> getAdminProductList(int start, int end, ProductVO vo);
+	List<ProductVO> getAdminProductList(int start, int end, String pCnt);
 
 	int getCountProduct(ProductVO vo);
 	
 	int getCountProductAll(ProductVO vo);
 
-	int getAdminCountProduct(ProductVO vo);
+	int getAdminCountProduct(String pCnt);
 
 	ProductVO productDetail(ProductVO vo);
 	

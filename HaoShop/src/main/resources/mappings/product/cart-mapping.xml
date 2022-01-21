@@ -42,7 +42,7 @@
 	<select id="productCart" resultMap="productcart">
 		<![CDATA[
 			SELECT 
-				P_NAME, CART.P_NO, P_PRICE, 
+				P_NAME, CART.P_NO, P_PRICE, C_NO,
 				P_IMG, P_DISCOUNT,CART.P_SIZE,
 				PAY_QUANTITY, (P_PRICE * PAY_QUANTITY) AS P_SUM
 			FROM CART , PRODUCT

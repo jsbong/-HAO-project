@@ -9,12 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.haoshop.model.board.BoardVO;
+import com.haoshop.model.board.Board_CommentVO;
 
 @Repository
 public class BoardDAO {
+	
 	@Autowired
 	private SqlSessionTemplate mybatis;
-
 	
 	// 게시글 쓰기
 	public void createBoard(BoardVO vo) {
@@ -73,5 +74,12 @@ public class BoardDAO {
 		map.put("keyword", keyword);
 		return mybatis.selectOne("BoardDAO.getCountBoard", map);
 	}
+	
+	// 댓글
+	// 게시글 쓰기
+	public void createCommentBoard(Board_CommentVO vo) {
+		mybatis.insert("BoardDAO.createCommentBoard", vo);
+	}
+
 
 }

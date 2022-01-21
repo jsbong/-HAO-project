@@ -1,6 +1,7 @@
 package com.haoshop.model.payment;
 
 import java.sql.Date;
+import java.util.List;
 
 public class PaymentVO {
 	private int pay_no;
@@ -21,6 +22,9 @@ public class PaymentVO {
 	private String p_name;
 	private int p_discount;
 	private int p_sum;
+	private int c_no;
+
+	private List<Integer> pay_m;
 
 	public int getPay_no() {
 		return pay_no;
@@ -158,4 +162,20 @@ public class PaymentVO {
 		this.p_sum = p_sum;
 	}
 
+	public List<Integer> getPay_m() {
+		return pay_m;
+	}
+
+	public void setPay_m(List<Integer> pay_m) {
+		this.pay_m = pay_m;
+	}
+
+	public int getC_no() {
+		return c_no;
+	}
+
+	public void setC_no(int c_no) {
+		this.c_no = c_no;
+	}
+	
 }

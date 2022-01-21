@@ -22,8 +22,29 @@
 		<result property="p_name" column="P_NAME" />
 		<result property="prd_sum" column="PRD_SUM" />
 		<result property="p_sum" column="P_SUM" />
-		
+		<result property="c_no" column="C_NO" />
 	</resultMap>
+	
+	<select id="paymentMonth" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT 
+			    count(*) as MON
+			    ,count(case when TO_CHAR(PAY_REGDATE, 'MM') = '01' then 1 end) as MON_1
+			    ,count(case when TO_CHAR(PAY_REGDATE, 'MM') = '02' then 1 end) as MON_2
+			    ,count(case when TO_CHAR(PAY_REGDATE, 'MM') = '03' then 1 end) as MON_3
+			    ,count(case when TO_CHAR(PAY_REGDATE, 'MM') = '04' then 1 end) as MON_4
+			    ,count(case when TO_CHAR(PAY_REGDATE, 'MM') = '05' then 1 end) as MON_5
+			    ,count(case when TO_CHAR(PAY_REGDATE, 'MM') = '06' then 1 end) as MON_6
+			    ,count(case when TO_CHAR(PAY_REGDATE, 'MM') = '07' then 1 end) as MON_7
+			    ,count(case when TO_CHAR(PAY_REGDATE, 'MM') = '08' then 1 end) as MON_8
+			    ,count(case when TO_CHAR(PAY_REGDATE, 'MM') = '09' then 1 end) as MON_9
+			    ,count(case when TO_CHAR(PAY_REGDATE, 'MM') = '10' then 1 end) as MON_10
+			    ,count(case when TO_CHAR(PAY_REGDATE, 'MM') = '11' then 1 end) as MON_11
+			    ,count(case when TO_CHAR(PAY_REGDATE, 'MM') = '12' then 1 end) as MON_12
+			FROM 
+			    PAYMENT
+		]]>
+	</select>
 	
 	<insert id="insertPayment">
 		<![CDATA[
@@ -52,7 +73,7 @@
 		<![CDATA[
 			SELECT * 
 			FROM CART , PRODUCT
-			WHERE M_NO=#{payment.m_no} AND PRODUCT.P_NO = CART.P_NO
+			WHERE M_NO=#{payment.m_no} AND PRODUCT.P_NO = CART.P_NO AND C_NO=#{payment.c_no}
 		]]>
 	</select>
 	

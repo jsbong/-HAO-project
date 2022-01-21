@@ -96,9 +96,9 @@
 	<!-- 관리자 상품목록 뷰-->
 	<select id="getAdminProductList" resultMap="product">
 		<![CDATA[
-			SELECT CATE_NO, nvl(p_img, 'resource/img/product/') AS P_IMG, P_NAME, P_NO, P_PRICE, P_DISCOUNT, P_COLOR, P_EXPLAIN FROM (
+			SELECT CATE_NO, nvl(p_img, 'resource/img/product/') AS P_IMG, P_NAME, P_NO, P_PRICE, P_DISCOUNT, P_COLOR, P_AMOUNT, P_EXPLAIN FROM (
 				SELECT ROWNUM AS RN, A.* FROM (
-					SELECT * FROM PRODUCT ORDER BY P_NO DESC
+					SELECT * FROM PRODUCT WHERE P_AMOUNT < #{pCnt} ORDER BY P_NO DESC
 				) A
 			) WHERE RN BETWEEN #{start} AND #{end}
 		]]>
@@ -129,7 +129,7 @@
 	
 	<select id="getAdminCountProduct" resultType="java.lang.Integer">
 		<![CDATA[
-			SELECT COUNT(*) FROM PRODUCT
+			SELECT COUNT(*) FROM PRODUCT WHERE P_AMOUNT < #{pCnt}
 		]]>
 	</select>
 </mapper>

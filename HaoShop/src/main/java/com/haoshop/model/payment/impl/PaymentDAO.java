@@ -74,4 +74,8 @@ public class PaymentDAO {
 	public int getCountWait() {
 		return mybatis.selectOne("PaymentDAO.getCountWait");
 	}
+
+	public List<Integer> paymentMonth() {
+		return mybatis.selectList("PaymentDAO.paymentMonth");
+	}
 }

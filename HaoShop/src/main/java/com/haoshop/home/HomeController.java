@@ -23,6 +23,7 @@ import com.haoshop.model.member.MemberService;
 import com.haoshop.model.member.MemberVO;
 import com.haoshop.model.payment.PaymentService;
 import com.haoshop.model.payment.PaymentVO;
+import com.haoshop.model.product.ProductService;
 
 @Controller
 public class HomeController {
@@ -33,6 +34,8 @@ public class HomeController {
 	private PaymentService paymentService;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private ProductService productService;
 
 	@RequestMapping(value = {"/","/main"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) {
@@ -69,23 +72,26 @@ public class HomeController {
 	
 	//관리자 페이지
 	@RequestMapping(value = "/adminpage", method = RequestMethod.GET)
-	public String adminpage(@RequestParam(defaultValue = "1") int curPage, PaymentVO vo, Model model) {
+	public String adminpage(@RequestParam(defaultValue = "1") int curPage,@RequestParam(defaultValue = "30") String pCnt, PaymentVO vo, Model model) {
 		int count = paymentService.getCountOrderNow();
 		int newMemberCnt = memberService.getCountMemberNow();
 		int waitDelCnt = paymentService.getCountWait();
+		int p_Cnt = productService.getAdminCountProduct(pCnt);
 		Pager pager = new Pager(count, curPage);
 		int start = pager.getPageBegin(); 
 		int end = pager.getPageEnd();
-		
+		List<Integer> pay_M = paymentService.paymentMonth();
 		List<MemberVO> m_list = memberService.getMemberNow();
 		
 		List<PaymentVO> list = paymentService.getOrderListNow(vo, start, end);
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("pay_M", pay_M);
 		map.put("list", list);
 		map.put("m_list", m_list);
 		map.put("count", count);
 		map.put("newMemberCnt", newMemberCnt);
 		map.put("waitDelCnt", waitDelCnt);
+		map.put("p_Cnt", p_Cnt);
 		map.put("cntToday", cntToday);
 		map.put("pager", pager);
 		model.addAttribute("map", map);

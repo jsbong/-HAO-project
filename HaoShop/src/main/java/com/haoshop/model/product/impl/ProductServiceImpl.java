@@ -43,8 +43,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	// 관리자 품목 리스트
-	public List<ProductVO> getAdminProductList(int start, int end, ProductVO vo) {
-		return productDAO.getAdminProductList(start, end, vo);
+	public List<ProductVO> getAdminProductList(int start, int end, String pCnt) {
+		return productDAO.getAdminProductList(start, end, pCnt);
 	}
 	
 	// 관리자 상품 변경
@@ -67,8 +67,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	// 관리자 품목 갯수 카운트
-	public int getAdminCountProduct(ProductVO vo) {
-		return productDAO.getAdminCountProduct(vo);
+	public int getAdminCountProduct(String pCnt) {
+		return productDAO.getAdminCountProduct(pCnt);
 	}
 
 	// 품목 상세보기

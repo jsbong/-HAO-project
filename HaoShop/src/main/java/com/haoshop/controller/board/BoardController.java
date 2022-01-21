@@ -11,12 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.haoshop.home.Pager;
 import com.haoshop.model.board.BoardService;
 import com.haoshop.model.board.BoardVO;
+import com.haoshop.model.board.Board_CommentVO;
 
 @Controller
 @SessionAttributes("board")
@@ -135,5 +135,13 @@ public class BoardController {
 		model.addAttribute("map", map);
 
 		return "board/view";
+		
+	}
+		// 댓글 작성
+		@RequestMapping(value = "/createCommentBoard", method = RequestMethod.POST)
+		public String createCommentBoard(Board_CommentVO vo) throws Exception {
+			boardService.createCommentBoard(vo);
+			
+			return "board/list";
 	}
 }

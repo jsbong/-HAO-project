@@ -11,8 +11,8 @@
 		<link rel="stylesheet" href="resources/css/productList.css">
         <link rel="stylesheet" href="resources/css/admin_bar.css">
 		<script>
-			function list(page) {
-				location.href="productList?curPage="+page;
+			function list(pCnt, page) {
+				location.href="productList?pCnt="+pCnt + "&curPage=" + page;
 			}
 		</script>
 	</head>
@@ -30,6 +30,7 @@
             			<th>가격</th>
             			<th>할인가</th>
             			<th>색상</th>
+            			<th>재고</th>
             			<th>상품설명</th>
 					</tr>
 					<c:forEach begin="0" end="${(fn:length(map.list))}" var="i">
@@ -45,6 +46,7 @@
 								<td>${product.p_price}</td>
 								<td>${product.p_discount}</td>
 								<td>${product.p_color}</td>
+								<td>${product.p_amount}</td>
 								<td>${product.p_explain}</td>
 							</tr>
 						</c:if>
@@ -52,10 +54,10 @@
 				<tr class="">
 					<td colspan="7" align="center">
 						<c:if test="${map.pager.curBlock >= 1}">
-							<a href="#" onclick="list('1')">[처음]</a>
+							<a href="#" onclick="list('${map.pCnt}', '1')">[처음]</a>
 						</c:if>
 						<c:if test="${map.pager.curBlock >= 1}">
-							<a href="#" onclick="list('${map.pager.prevPage}')">[이전]</a>
+							<a href="#" onClick="list('${map.pCnt}', '${map.pager.prevPage}')">[이전]</a>
 						</c:if>
 						<c:forEach var="num" begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}">
 							<c:choose>
@@ -63,15 +65,15 @@
 									<span style="color:red;">${num}</span>
 								</c:when>
 								<c:otherwise>
-									<a href="#" onclick="list('${num}')">${num}</a>
+									<a href="#" onclick="list('${map.pCnt}', '${num}')">${num}</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${map.pager.curBlock <= map.pager.totBlock}">
-							<a href="#" onclick="list('${map.pager.nextPage}')">[다음]</a>
+							<a href="#" onclick="list('${map.pCnt}', '${map.pager.nextPage}')">[다음]</a>
 						</c:if>
 						<c:if test="${map.pager.curBlock <= map.pager.totPage}">
-							<a href="#" onclick="list('${map.pager.totPage}')">[끝]</a>
+							<a href="#" onclick="list('${map.pCnt}', '${map.pager.totPage}')">[끝]</a>
 						</c:if>
 					</td>
 				</tr>

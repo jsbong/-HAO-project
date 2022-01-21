@@ -98,6 +98,33 @@ function calCart() {
 	document.getElementById("total").innerHTML = numberWithCommas(p_sum);
 }
 
+function payCart() {
+	var m_no = $("#m_no").val();
+	let c_no0 = [];
+	for(i = 0; i < $("input[name=chk]").length; i++){
+		if ($("input[name=chk]")[i].checked == true) {
+			c_no0.push($("input[name=c_no]")[i].value);
+		}
+	}
+	var hiddenbtn = $("#hiddenbtn").val();
+	if ($("input[name=chk]:checkbox:checked").length == 0) {
+		swal("", "결제할 상품을 선택해주세요.", "warning");
+	} else {
+		$.ajax({
+			type : "POST",
+			url : "payment",
+			data : {
+				"m_no" : m_no,
+				"c_no0" : c_no0,
+				"hiddenbtn" : hiddenbtn
+			}, success : function(data) {
+				console.log(data);
+				window.location.href="payment";
+			}
+		});
+	}
+}
+
 function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

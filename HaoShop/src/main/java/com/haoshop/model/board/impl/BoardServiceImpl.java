@@ -1,6 +1,7 @@
 package com.haoshop.model.board.impl;
 
 import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.haoshop.model.board.BoardService;
 import com.haoshop.model.board.BoardVO;
+import com.haoshop.model.board.Board_CommentVO;
 
 @Service("BoardService")
 public class BoardServiceImpl implements BoardService {
@@ -80,6 +82,12 @@ public class BoardServiceImpl implements BoardService {
 	// 게시글 갯수
 	public int getCountBoard(String searchOption, String keyword) throws Exception {
 		return boardDAO.getCountBoard(searchOption, keyword);
+	}
+
+	// 댓글
+	// 게시글 쓰기
+	public void createCommentBoard(Board_CommentVO vo) throws Exception {
+		boardDAO.createCommentBoard(vo);
 	}
 
 }

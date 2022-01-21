@@ -69,4 +69,8 @@ public class PaymentServiceImpl implements PaymentService {
 		return paymentDAO.getCountWait();
 	}
 
+	public List<Integer> paymentMonth() {
+		return paymentDAO.paymentMonth();
+	}
+
 }
