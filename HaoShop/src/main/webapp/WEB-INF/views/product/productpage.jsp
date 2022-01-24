@@ -169,7 +169,7 @@
 								<li class="select_quantity_detail">
 									<span id="decreaseQuantity" style="cursor:pointer">-</span> 
 									<input type="text" id="pay_quantity" min="1" max="99" value="1" />
-									<span type="button" id="increaseQuantity" style="cursor:pointer">+</span>
+									<span id="increaseQuantity" style="cursor:pointer">+</span>
 								</li>
 							</ul>
 						</li>

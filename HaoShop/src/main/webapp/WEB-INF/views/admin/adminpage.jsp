@@ -13,11 +13,18 @@
 <script src="resources/js/jqbar.js" charset="UTF-8"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="resources/css/graph.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
+<style>
+@media (min-width: 768px)
+.col-md-4 {
+    -ms-flex: 0 0 34%;
+    flex: 0 0 56%;
+    max-width: 100%;
+}
+</style>
 <%@ include file="/WEB-INF/views/admin/admin_bar.jsp" %>
 
 
@@ -31,35 +38,43 @@
 <a href="productList?pCnt=30"><h3>재고 부족 상품 (30개 이하)</h3></a>
 <h4><p style="color: red;">${map.p_Cnt}개</p></h4><br>
 
-<div class="bars">
-	<div id="bar-1"></div>
-	<div id="bar-2"></div>
-	<div id="bar-3"></div>
-	<div id="bar-4"></div>
-	<div id="bar-5"></div>
-	<div id="bar-6"></div>
-	<div id="bar-7"></div>
-	<div id="bar-8"></div>
-	<div id="bar-9"></div>
-	<div id="bar-10"></div>
-	<div id="bar-11"></div>
-	<div id="bar-12"></div>
-	${map.pay_M_P[0]} ${map.pay_M_P[1]}
-	<div class="container">
-	    <div class="row my-3">
-	        <div class="col">
-	            <h4>분기별 판매 현황</h4>
-	        </div>
-	    </div>
-	    <div class="row py-2" >
-	        <div class="col-md-4 py-1">
-	            <div class="card">
-	                <div class="card-body"> <canvas id="chDonut3"></canvas> </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
+<div class="bars" style="float: left;">
+	
 </div>
+<div class="container">
+        <div class="row my-3">
+            <div class="col">
+                <h4>분기별 판매 현황</h4>
+            </div>
+        </div>
+        <div class="row py-2">
+            <div class="col-md-4 py-1" style="width: 200px">
+                <div class="card">
+                    <div class="card-body"> 
+                    <div>
+						<div id="bar-1"></div>
+						<div id="bar-2"></div>
+						<div id="bar-3"></div>
+						<div id="bar-4"></div>
+						<div id="bar-5"></div>
+						<div id="bar-6"></div>
+						<div id="bar-7"></div>
+						<div id="bar-8"></div>
+						<div id="bar-9"></div>
+						<div id="bar-10"></div>
+						<div id="bar-11"></div>
+						<div id="bar-12"></div>
+					</div>
+				 	</div>
+                </div>
+            </div>
+            <div class="col-md-4 py-1">
+                <div class="card">
+                    <div class="card-body"> <canvas id="chDonut3"></canvas> </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <script src="http://code.jquery.com/jquery-latest.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

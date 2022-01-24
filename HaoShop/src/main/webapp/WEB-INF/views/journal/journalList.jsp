@@ -7,7 +7,7 @@
 	<head>
 		<title>HAOSHOP-JOURNAL_LIST</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="resources/css/product/product.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/journal/journalList.css">
 		<script>
 			$(document).ready(function() {
 				$(".product_page li").click(function() {
@@ -33,16 +33,8 @@
 							<c:if test="${not empty item}">
 							<a href="displayJour?jour_no=${item.jour_no}" class="product">
 								<img src="${item.jour_img}">
-								<span style="font-size:20px; font-weight: 800;">${item.jour_name}</span><br>
-								<%-- <c:choose>
-									<c:when test="${ item.p_discount == 0 }">
-										<span><fmt:formatNumber value="${item.p_price}" pattern="\#,###,###" /></span>
-									</c:when>
-									<c:otherwise>
-										<span style="color:darkgray; text-decoration:line-through; font-size:14px"><fmt:formatNumber value="${item.p_price}" pattern="\#,###,###" /></span>
-										<span><fmt:formatNumber value="${item.p_price - item.p_discount}" pattern="\#,###,###"/></span>
-									</c:otherwise>
-								</c:choose> --%>
+								<span style="font-weight: 800;">${item.jour_name}</span>
+								<span>${item.jour_regdate}</span>
 							</a>
 							</c:if>
 						</c:forEach>
@@ -51,16 +43,15 @@
 			</ul>
 			<ul class="product_page">
 				<c:if test="${(fn:length(map.list)) ne 0}">
-					<%-- <input type="hidden" value="${map.cate_no}" class="s_number"> --%>
+					<input type="hidden" value="${map.cate_no}" class="s_number">
 					<!-- 페이징 처리 -->
-						<li data-tab="1">&lt;</li>
 						<c:if test="${map.pager.curBlock > 1}">
 							<li data-tab="${map.pager.prevPage}">[이전]</li>
 						</c:if>
 						<c:forEach var="num" begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}">
 							<c:choose>
 								<c:when test="${num == map.pager.curPage}">
-									<li><span style="color:red;">${num}</span></li>
+									<li data-tab="${num}"><span style="color:red;">${num}</span></li>
 								</c:when>
 								<c:otherwise>
 									<li data-tab="${num}">${num}</li>
@@ -69,9 +60,6 @@
 						</c:forEach>
 						<c:if test="${map.pager.curBlock < map.pager.totBlock}">
 							<li data-tab="${map.pager.nextPage}">[다음]</li>
-						</c:if>
-						<c:if test="${map.pager.curBlock < map.pager.totPage}">
-							<li data-tab="${map.pager.totPage}">&gt;</li>
 						</c:if>
 				</c:if>
 			</ul>
