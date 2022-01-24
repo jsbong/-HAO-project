@@ -7,7 +7,7 @@
 	<head>
 		<title>HAOSHOP-PRODUCT</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="resources/css/product.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/product/product.css">
 		<script>
 			$(document).ready(function() {
 				var cate_number = $(".cate_number").val();
@@ -35,7 +35,7 @@
 							<c:if test="${not empty item}">
 							<a href="productpage?p_no=${item.p_no}" class="product">
 								<img src="${fn:split(item.p_img, '*')[0]}">
-								<span style="font-size:20px; font-weight: 800;">${item.p_name}</span><br>
+								<span style="font-size:14px; font-weight: 800;">${item.p_name}</span> / <span style="font-size:14px; text-transform: lowercase;">${item.p_color }</span><br>
 								<c:choose>
 									<c:when test="${ item.p_discount == 0 }">
 										<span><fmt:formatNumber value="${item.p_price}" pattern="\#,###,###" /></span>
@@ -55,7 +55,7 @@
 				<c:if test="${(fn:length(map.list)) ne 0}">
 					<input type="hidden" value="${map.cate_no}" class="cate_number">
 					<!-- 페이징 처리 -->
-						<li data-tab="1"><</li>
+						<li data-tab="1">&lt;</li>
 						<c:if test="${map.pager.curBlock > 1}">
 							<li data-tab="${map.pager.prevPage}">[이전]</li>
 						</c:if>
@@ -73,7 +73,7 @@
 							<li data-tab="${map.pager.nextPage}">[다음]</li>
 						</c:if>
 						<c:if test="${map.pager.curBlock < map.pager.totPage}">
-							<li data-tab="${map.pager.totPage}">></li>
+							<li data-tab="${map.pager.totPage}">&gt;</li>
 						</c:if>
 				</c:if>
 			</ul>

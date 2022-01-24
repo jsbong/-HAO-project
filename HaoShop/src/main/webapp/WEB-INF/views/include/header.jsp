@@ -38,7 +38,7 @@
         <nav>
             <ul class="menu_left">
                 <li><a href="about">HAO</a></li>
-                <li><a href="#">ALL</a></li>
+                <li><a href="searchPrd?sPrd=">ALL</a></li>
                 <li>
                     <a href="category?cate_no=100000">OUTER</a>
                     <div class="menu_sub-content">

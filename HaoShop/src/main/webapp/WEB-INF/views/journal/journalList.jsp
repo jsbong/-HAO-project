@@ -53,7 +53,7 @@
 				<c:if test="${(fn:length(map.list)) ne 0}">
 					<%-- <input type="hidden" value="${map.cate_no}" class="s_number"> --%>
 					<!-- 페이징 처리 -->
-						<li data-tab="1"><</li>
+						<li data-tab="1">&lt;</li>
 						<c:if test="${map.pager.curBlock > 1}">
 							<li data-tab="${map.pager.prevPage}">[이전]</li>
 						</c:if>
@@ -71,7 +71,7 @@
 							<li data-tab="${map.pager.nextPage}">[다음]</li>
 						</c:if>
 						<c:if test="${map.pager.curBlock < map.pager.totPage}">
-							<li data-tab="${map.pager.totPage}">></li>
+							<li data-tab="${map.pager.totPage}">&gt;</li>
 						</c:if>
 				</c:if>
 			</ul>

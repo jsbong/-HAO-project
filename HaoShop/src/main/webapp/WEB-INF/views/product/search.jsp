@@ -36,7 +36,7 @@
 						<c:if test="${not empty item}">
 						<a href="productpage?p_no=${item.p_no}" class="product">
 							<img src="${fn:split(item.p_img, '*')[0]}">
-							<span style="font-size:20px; font-weight: 800;">${item.p_name}</span><br>
+							<span style="font-size:14px; font-weight: 800;">${item.p_name}</span> / <span style="font-size:14px; text-transform: lowercase;">${item.p_color }</span><br>
 							<c:choose>
 								<c:when test="${ item.p_discount == 0 }">
 									<span><fmt:formatNumber value="${item.p_price}" pattern="\#,###,###" /></span>
