@@ -7,9 +7,7 @@ dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thea
     margin:0;
     padding:0;
 }
-body {
-    font-family: 'Nanum Gothic', sans-serif;
-}
+
 a {
     color: inherit; text-decoration: inherit;
 }
@@ -20,6 +18,7 @@ li {
 footer {
     width: 100%;
     border-top: 1px solid darkgray;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 /* footer 안에 하위 요소들을 감싸고 있는 .footer_inner */

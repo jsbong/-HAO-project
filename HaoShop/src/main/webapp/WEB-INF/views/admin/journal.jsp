@@ -4,8 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title>collection</title>
-	<link rel="stylesheet" href="resources/css/collection.css">
 	<link rel="stylesheet" href="resources/css/admin_bar.css">
+	<link rel="stylesheet" href="resources/css/insertProduct.css">
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="resources/ckeditor/ckeditor.js"></script>
     <script>
@@ -36,25 +36,25 @@
 	<%@ include file="../admin/admin_bar.jsp" %>
 	
 	<!-- collection section -->
-	<section class="coll_section">
-		<div class="coll_content">
+	<section class="insert_section">
+		<div class="insert_div">
 			<h2 align="center">COLLECTION REGISTRATION</h2>
 			<form id="fileForm" name="form1" method="post" enctype="multipart/form-data">
-				<table>
+				<table class="insert_table">
 					<tr>
-						<td>관리자번호</td>
+						<th>관리자번호</th>
 						<td><input type="text" id="m_no" name="m_no" value="${member.m_no}">
 					</tr>
 					<tr>
-						<td>컬렉션명</td>
+						<th>컬렉션명</th>
 						<td><input type="text" id="jour_name" name="jour_name"></td>
 					</tr>
 					<tr>
-						<td>메인이미지</td>
+						<th>메인이미지</th>
 						<td><input type="file" id="file1" name="file1">
 					</tr>
 					<tr>
-						<td>컬렉션설명</td>
+						<th>컬렉션설명</th>
 						<td>
                         <textarea name="jour_explain" id="jour_explain" cols="88" rows="80"></textarea>
                         <script>

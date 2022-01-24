@@ -178,7 +178,7 @@ nav .menu_right li {
     height: 40px;
     line-height: 40px;
     position: absolute;
-    top: 16%;
+    top: 50px;
     display: none;
     border-radius: 4px;
 }
@@ -187,7 +187,7 @@ nav .menu_right li {
     background: transparent;
     border: 0;
     border-bottom: 1px solid #000;
-    width: 230px;
+    width: 250px;
     margin-right: 5px;
     padding-bottom: 3px;
 }

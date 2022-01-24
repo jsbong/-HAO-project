@@ -1,0 +1,39 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* layout */
+/* journal_section */
+.journal_section {
+	width: 100%;
+	padding: 100px 0 120px;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+.journal_section .journal-content {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.journal_section .journal-content .journal_detail {
+	width: 100%;
+	text-align: center;
+}
+
+.journal_section .journal-content .journal_detail .jour_name {
+	font-size: 28px;
+	line-height: 1.7;	
+}
+
+.journal_section .journal-content .journal_detail .jour_date {
+	font-size: 18px;
+}
+
+.journal_section .journal-content .journal_detail .jour_explain {
+	margin-top: 70px;
+}
+
+.journal_section .journal-content .journal_detail .jour_explain p {
+	width: 100%;
+	line-height: 2;
+	font-weight: bold;
+}

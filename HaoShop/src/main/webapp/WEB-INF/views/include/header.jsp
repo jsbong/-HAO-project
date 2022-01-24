@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>Header</title>
     <script src="resources/js/login.js" charset="UTF-8"></script>
-    <link rel="stylesheet" href="resources/css/header.css">
+    <link rel="stylesheet" href="resources/css/include/header.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(function() {

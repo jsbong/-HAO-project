@@ -66,14 +66,14 @@ public class JournalController {
 		map.put("count", count);
 		map.put("pager", pager);
 		model.addAttribute("map", map);
-		return "common/journalList";
+		return "journal/journalList";
 	} //헤더에서
 	
 	//저널 내용 보기
 	@RequestMapping("/displayJour")
 	public String displayJour(JournalVO vo, Model model) {
 		model.addAttribute("journal", journalService.journalDetail(vo));
-		return "common/displayJour";
+		return "journal/displayJour";
 	} //이미지 클릭시
 
 	@RequestMapping("/imageUpload.do")
@@ -88,7 +88,7 @@ public class JournalController {
 		byte[] bytes=upload.getBytes();
 		//이미지를 업로드할 디렉토리(배포 디렉토리로 설정)
 		String uploadPath=
-				"C:\\Users\\GKL\\git\\HAO-project\\HaoShop\\src\\main\\webapp\\WEB-INF\\views\\collection\\";
+				"C:/Users/mrhi04-18/git/HAO-project/HaoShop/src/main/webapp/WEB-INF/views/images/";
 		OutputStream out=new FileOutputStream(
 				new File(uploadPath+fileName));
 		//서버로 업로드
