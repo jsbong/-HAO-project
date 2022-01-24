@@ -80,6 +80,12 @@ public class BoardDAO {
 	public void createCommentBoard(Board_CommentVO vo) {
 		mybatis.insert("BoardDAO.createCommentBoard", vo);
 	}
-
+	
+	public List<Board_CommentVO> readComment(int b_no){
+		mybatis.selectList("BoardDAO.readComment", b_no);
+		
+		return mybatis.selectList("BoardDAO.readComment", b_no);
+	}
+	
 
 }

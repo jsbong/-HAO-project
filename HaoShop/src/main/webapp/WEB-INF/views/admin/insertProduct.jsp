@@ -18,6 +18,7 @@
          <div class="insert_div">
             <h2 align="center">PRODUCT REGISTRATION</h2>
             <form id="fileForm" action="insertProduct" method="POST" enctype="multipart/form-data">
+				<input type="hidden" id="cate_no" name="cate_no">
                <table class="insert_table">
                   <tr>
                      <th>메인카테고리</th>
@@ -75,10 +76,6 @@
                      </td>
                   </tr>
                   <tr>
-                     <th>카테고리번호</th>
-                     <td><input type="text" id="cate_no" name="cate_no"></td><br>
-                  </tr>
-                  <tr>
                      <th>상품명</th>
                      <td>
                         <input type="text" name="p_name" id="p_name" />
@@ -125,7 +122,9 @@
                      <td>
                         <textarea name="p_explain" id="p_explain" cols="88" rows="80"></textarea>
                         <script>
-							CKEDITOR.replace( 'p_explain', {} );
+							CKEDITOR.replace( 'p_explain', {
+								filebrowserUploadUrl : "imageUpload.do"
+							});
 						</script>
                      </td>
                   </tr>

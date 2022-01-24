@@ -1,0 +1,72 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* layout */
+/* section 설정 */
+.memberInfo {
+	font-family: 'Nanum Gothic', sans-serif;
+	width: 100%;
+	padding: 100px 0 130px;
+}
+
+.memberInfo-content {
+	width: 40%;
+	border: 1px solid #ddd;
+	margin: 0 auto;
+}
+
+.memberInfo-content > h2 {
+	text-align: center;
+	padding: 20px;
+}
+
+.memberInfo-content .memberInfo_detail {
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+.memberInfo-content .memberInfo_detail tr {
+	border-bottom: 1px solid #ddd;
+}
+
+.memberInfo-content .memberInfo_detail th {
+	padding: 15px;
+}
+
+.memberInfo-content .memberInfo_detail td {
+	padding: 15px;
+}
+.memberInfo_detail td input[type=button] {
+	padding: 7px;
+	border: 0;
+	background: #8aa1a1;
+	font-family: 'Nanum Gothic', sans-serif;
+	transition: all 0.7s ease-out;
+}
+
+.memberInfo_detail td input[type=button]:hover {
+	background: #6f8181;	
+}
+
+.memberInfo_detail td > select, .memberInfo_detail td input[type=text], .memberInfo_detail td input[type=password] {
+	height: 30px;
+	border: 1px solid #ddd;
+},
+
+/* 버튼 블록 설정 */
+.memberInfo-content .changeBtn {
+	padding: 20px 0;
+	text-align: center;
+}
+
+.memberInfo-content .changeBtn input[type=button]{
+	padding: 10px 30px;
+	border: 0;
+	background: #8aa1a1;
+	cursor: pointer;
+	transition: all 0.7s ease-out;	
+}
+
+.memberInfo-content .changeBtn input[type=button]:hover {
+	background: #6f8181;
+}

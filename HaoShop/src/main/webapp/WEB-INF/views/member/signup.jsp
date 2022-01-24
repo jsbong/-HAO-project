@@ -3,15 +3,14 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 	<head>
+		<meta charset="UTF-8">
+		<title>Decorating's</title>
+		<link rel="stylesheet" type="text/css" href="resources/css/member/signup.css">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">		
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="resources/js/signup.js" charset="UTF-8"></script>
 		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="resources/css/signup.css">
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<title>Decorating's</title>
 	</head>
 	<body>
 		<%@ include file="../include/header.jsp" %>
@@ -22,72 +21,108 @@
 				</div>
 				<form name="f1rm" id="f1rm" class="signup_firm">
 					<table>
-						<tr><th>아이디</th></tr>
-						<tr><td>
-							<input type="text" id="m_id" class="input rel" onFocus="" />
-							<label id="idchk"></label>
-						</td></tr>
-						<tr><th>비밀번호</th></tr>
-						<tr><td>
-							<input type="password" id="m_pwd" class="input rel" maxlength="20" />
-						</td></tr>
-						<tr><th>비밀번호 확인</th></tr>
-						<tr><td>
-							<input type="password" id="chk_m_pwd" class="input rel" maxlength="20" />
-							<label id="checkPasswd"></label>
-						</td></tr>
-						<tr><th>이름</th></tr>
-						<tr><td>
-							<input type="text" id="m_name" class="input rel"><br>
-							<label id="chkname"></label>
-						</td></tr>
-						<tr><th>생년월일</th></tr>
-						<tr><td>
-							<select id="birth_year" class="input birth">
-								<option value="">년</option>
-								<c:forEach var="i" begin="0" end="${2019-1900}">
-									<c:set var="yearOption" value="${2019-i}" />
-									<option value="${yearOption}">${yearOption}</option>
-								</c:forEach>
-							</select>
-							<select id="birth_month" class="input birth">
-								<option value="">월</option>
-								<c:forEach var="j" begin="0" end="${12-1}">
-									<c:set var="monthOption" value="${12-j}" />
-									<option value="${monthOption}">${monthOption}</option>
-								</c:forEach>
-							</select> 
-							<input type="text" id="birth_day" size="3" class="input birth" maxlength="2" placeholder="일"/><br>
-							<label id="birchk"></label>
-						</td></tr>
-						<tr><th>이메일</th></tr>
-						<tr><td>
-							<input type="text" size="15" id="email_id" class="input email" > @ 
-							<input type="text" size="15" id="email_addr" class="input email" disabled>
-							<select id="email_select">
-								<option value="" selected>::선택하세요::</option>
-								<option value="naver.com">naver.com</option>
-								<option value="gmail.com">gmail.com</option>
-								<option value="hanmail.net">hanmail.net</option>
-								<option value="nate.com">nate.com</option>
-								<option value="1">직접입력</option>
-							</select>
-							<input type="button" onclick="emailChk()" value="인증번호 발송" /><br>
-							<input type="text" name="authkey" id="authkey" class="input rel" size="60" placeholder="인증번호를 입력하세요" >
-							<label id="mailChk"></label><br>
-							<input type="button" onclick="matchCode()" value="확인" /><br>
-						</td></tr>
-						<tr><th>연락처</th></tr>
-						<tr><td>
-							<select id="NUMst" class="input tel">
-								<option value="" selected>::선택::</option>
-								<option value="010">010</option>
-								<option value="011">011</option>
-								<option value="016">016</option>
-							</select> - 
-							<input type="text" id="NUMnd" class="input tel" maxlength="4" size="4" /> - 
-							<input type="text" id="NUMrd" class="input tel" maxlength="4" size="4" />
-						</td></tr>
+						<tr>
+							<th>아이디</th>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" id="m_id" class="input rel" onFocus="" />
+								<label id="idchk"></label>
+							</td>
+						</tr>
+						<tr>
+							<th>비밀번호</th>
+						</tr>
+						<tr>
+							<td>
+								<input type="password" id="m_pwd" class="input rel" maxlength="20" />
+							</td>
+						</tr>
+						<tr>
+							<th>비밀번호 확인</th>
+						</tr>
+						<tr>
+							<td>
+								<input type="password" id="chk_m_pwd" class="input rel" maxlength="20" />
+								<label id="checkPasswd"></label>
+							</td>
+						</tr>
+						<tr>
+							<th>이름</th>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" id="m_name" class="input rel"><br>
+								<label id="chkname"></label>
+							</td>
+						</tr>
+						<tr>
+							<th>생년월일</th>
+						</tr>
+						<tr>
+							<td>
+								<select id="birth_year" class="input birth">
+									<option value="">년</option>
+									<c:forEach var="i" begin="0" end="${2019-1900}">
+										<c:set var="yearOption" value="${2019-i}" />
+										<option value="${yearOption}">${yearOption}</option>
+									</c:forEach>
+								</select>
+								<select id="birth_month" class="input birth">
+									<option value="">월</option>
+									<c:forEach var="j" begin="0" end="${12-1}">
+										<c:set var="monthOption" value="${12-j}" />
+										<option value="${monthOption}">${monthOption}</option>
+									</c:forEach>
+								</select> 
+								<input type="text" id="birth_day" size="3" class="input birth" maxlength="2" placeholder="일"/><br>
+								<label id="birchk"></label>
+							</td>
+						</tr>
+						<tr>
+							<th>이메일</th>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" size="15" id="email_id" class="input email" > @ 
+								<input type="text" size="15" id="email_addr" class="input email" disabled>
+								<select id="email_select">
+									<option value="" selected>::선택하세요::</option>
+									<option value="naver.com">naver.com</option>
+									<option value="gmail.com">gmail.com</option>
+									<option value="hanmail.net">hanmail.net</option>
+									<option value="nate.com">nate.com</option>
+									<option value="1">직접입력</option>
+								</select>
+								<input type="button" onclick="emailChk()" value="인증번호 발송" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" name="authkey" id="authkey" class="input" size="60" placeholder="인증번호를 입력하세요" >
+								<input type="button" onclick="matchCode()" value="확인" >
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label id="mailChk"></label>
+							</td>
+						</tr>
+						<tr>
+							<th>연락처</th>
+						</tr>
+						<tr>
+							<td>
+								<select id="NUMst" class="input tel">
+									<option value="" selected>::선택::</option>
+									<option value="010">010</option>
+									<option value="011">011</option>
+									<option value="016">016</option>
+								</select> - 
+								<input type="text" id="NUMnd" class="input tel" maxlength="4" size="4" /> - 
+								<input type="text" id="NUMrd" class="input tel" maxlength="4" size="4" />
+							</td>
+						</tr>
 						<tr><th>주소</th></tr>
 						<tr><td>
 							<input type="text" name="m_zipcode" id="m_zipcode" class="input" readonly size="10">

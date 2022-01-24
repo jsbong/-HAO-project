@@ -1,0 +1,152 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, 
+strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, 
+tbody, tfoot, thead, tr, th, td{
+    margin:0;padding:0;
+}
+a {
+    color: inherit; text-decoration: inherit;
+}
+img {
+    vertical-align: middle;
+}
+a img {
+    border: none;
+}
+li {
+    list-style: none;
+}
+address, em, i {
+    font-style: normal;
+}
+a:focus {
+    outline: none
+}
+button:focus {
+    outline: none
+}
+
+/* layout */
+.shop_cate-content {
+    width: 87%;
+    margin: 200px auto 100px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.shop_cate-content.fadeinleft {
+	opacity: 0;
+	margin-left: 300px;	
+}
+
+.shop_cate-content h2 {
+    font-size: 30px;
+    line-height: 1.7;
+    margin-bottom: 15px
+}
+
+/* 탭 메뉴 설정 */
+ul.shop_tabs{
+    margin: 0px;
+    padding: 0px;
+}
+
+ul.shop_tabs li{
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+  
+ul.shop_tabs li.current{
+    font-weight: bold;
+}
+  
+.tab-content{
+    display: none;  
+    padding: 15px 0;
+    border-top: 2px solid #eee;
+    height: 600px;
+    width: 100%;
+}
+  
+.tab-content.current{
+    display: inherit;
+}
+
+/* 탭 메뉴 하위 div 설정 */
+.shop_cate-content .tab-content .shop_cate-detail {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.shop_cate-content .tab-content .shop_cate-detail li {
+    float: left;
+    width: 23.5%;
+    margin-right: 2%;
+}
+
+.shop_cate-content .tab-content .shop_cate-detail li:last-child {
+    margin-right: 0;
+}
+
+.shop_cate-content .tab-content .shop_cate-detail li p.img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.shop_cate-content .tab-content .shop_cate-detail li p.img {
+    width: 100%;
+    height: 100%;
+    block-size: block;
+    overflow: hidden;
+}
+
+.shop_cate-content .tab-content .shop_cate-detail li p.img a img {
+    width: 100%;
+    height: 400px;
+    transition: all 0.3s;
+}
+
+.shop_cate-content .tab-content .shop_cate-detail li p.img a:hover img {
+    transform: scale(1.2);
+    transition: all 0.5s;
+}
+
+.shop_cate-content .tab-content .shop_cate-detail li h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.shop_cate-content .tab-content .shop_cate-detail li > a {
+    display: inline-block;
+    font-size: 15px;
+    color: #a68164;
+    position: relative;
+    padding: 5px 0;
+}
+
+.shop_cate-content .tab-content .shop_cate-detail li > a:after {
+    content: '';
+    width: 0;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #a68164;
+    transition: all 0.5s;
+}
+
+.shop_cate-content .tab-content .shop_cate-detail li > a:hover:after {
+    width: 100%;
+}
+

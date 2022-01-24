@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -9,6 +10,8 @@
    <link rel="stylesheet" type="text/css" href="resources/css/board/view.css">
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    <script src="http://code.jquery.com/jquery-latest.js"></script>
+   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
+         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
    <script>
       // 게시물 삭제 확인
       function deleteB() {
@@ -62,6 +65,8 @@
 								"bc_content" : bc_content
 							}, success : function(data) {
 								location.href = "view?b_no=" + b_no;
+							}, error : function(data) {
+								alert("안되네요");
 							}
 						});
 					});
@@ -80,10 +85,10 @@
       <input type="hidden" name="b_no" id="b_no" value="${board.b_no}">
       <c:choose>
 	      <c:when test="${member.m_id eq null}">
-	      	<input type="text" id="m_id" value="비회원">
+	      	<input type="hidden" id="m_id" value="비회원">
 	      </c:when>
 	      <c:otherwise>
-	      	<input type="text" id="m_id" value="${member.m_id}">
+	      	<input type="hidden" id="m_id" value="${member.m_id}">
 	      </c:otherwise>
       </c:choose>     
       <div class="board-content">
@@ -108,19 +113,31 @@
                   </li>
                   <li>내용</li>
                   <li class="user_content">${board.b_content}</li>
+                  <li>댓글</li>   
                   <!-- 댓글 작성 -->
                   <li>
-                  	<span>댓글</span>
-                  	<input type="text" id="bc_content">
-                  	<input type="button" value="작성" onclick="createC()">	
-                  	
+                  	<div class="comment_insert">
+                  		<span><i class="fas fa-comments"></i></span>
+                  		<input type="text" id="bc_content" placeholder="댓글 입력">
+                  		<input type="button" value="등록" onclick="createC()">
+                  	</div>	
                   </li>
-                  <!-- 댓글 작성 후 -->
-                  <%-- <li>
-                  	<input type="text" value=""> 
-                  </li>
-				</c:forEach> --%>
-                  <!--  -->
+                  <!-- 댓글 -->
+                  <c:if test="${fn:length(map.clist) ne 0 }">
+	              	<c:forEach begin="0" end="${(fn:length(map.clist))-1}" var="i">
+						<c:set var="row" value="${map.clist[i]}" />
+						<c:set var="m_id" value="${row.m_id}" />
+						<li class="comment_content" style="padding-bottom: 5px;">
+							<input type="hidden" id="b_no" name="b_no" value="${row.b_no}"/>
+							<h4>${row.m_id}</h4>
+							<span>${row.bc_content}</span>
+							<span>${row.bc_regdate}</span>
+							<c:if test="${member.m_id == m_id }">
+								<span class="deleteComment">삭제</span>
+							</c:if>
+						</li>
+					</c:forEach>           
+				</c:if>
                </ul>
             </li>
             <li>      

@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>HAOSHOP</title>
-    <link rel="stylesheet" href="resources/css/main.css">
-    <link rel="stylesheet" href="resources/css/catebanner.css">
-    <link rel="stylesheet" href="resources/css/collectionsection.css">
+    <link rel="stylesheet" href="resources/css/main/main.css">
+    <link rel="stylesheet" href="resources/css/main/catebanner.css">
+    <link rel="stylesheet" href="resources/css/main/collectionsection.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -31,7 +31,7 @@
                     var bottom_of_window = $(window).scrollTop() + $(window).height();
                     
                     if( bottom_of_window > bottom_of_element/2){
-                        $(this).animate({'opacity':'1','margin-left':'6.5%'},1500);
+                        $(this).animate({'opacity':'1','margin-left':'6.5%'},1000);
                     }
                     
                 }); 

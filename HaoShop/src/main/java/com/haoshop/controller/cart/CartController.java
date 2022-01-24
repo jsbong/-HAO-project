@@ -1,21 +1,14 @@
 package com.haoshop.controller.cart;
 
-import java.util.HashMap;
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.haoshop.model.cart.CartService;
 import com.haoshop.model.cart.CartVO;
 import com.haoshop.model.payment.PaymentService;
 import com.haoshop.model.payment.PaymentVO;
-import com.haoshop.model.cart.CartService;
 
 @Controller
 public class CartController {
@@ -36,8 +29,10 @@ public class CartController {
 	public String insertPayment(String[] prd_list, PaymentVO vo) {
 		for(int i = 0; i < prd_list.length; i += 3) {
 			vo.setP_no(Integer.parseInt(prd_list[i]));
-			vo.setP_size(prd_list[i+1]);
+			String pay_price = prd_list[i+1].replace(",", "");
+			vo.setPay_price(Integer.parseInt(pay_price));
 			vo.setPay_quantity(Integer.parseInt(prd_list[i+2]));
+			
 			paymentService.insertPayment(vo);
 			paymentService.deleteCartPayment(vo);
 		}

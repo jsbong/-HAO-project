@@ -90,4 +90,10 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.createCommentBoard(vo);
 	}
 
+	@Override
+	public List<Board_CommentVO> readComment(int b_no) {
+		return boardDAO.readComment(b_no);
+	}
+	
+
 }

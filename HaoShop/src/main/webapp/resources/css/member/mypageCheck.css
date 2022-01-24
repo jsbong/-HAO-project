@@ -1,0 +1,62 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* layout */
+.section_my {
+	width: 100%;
+	height: 700px;
+	font-family: 'Nanum Gothic', sans-serif;
+	position: relative;
+}
+
+.section_my .myInfo_check {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.pwcheck {
+	border-collapse: collapse;
+	width: 400px;
+	height: 220px;
+	text-align: center;
+}
+
+.pwcheck th{
+	height: 30px;
+	padding-bottom: 10px;
+	background: #ddd;
+}
+
+.pwcheck td{
+	width: 250px;
+	height: 30px;
+}
+
+.pwcheck tr:first-child {
+	height: 50px;
+}
+
+.pwcheck td input[type=password], .pwcheck td input[type=text] {
+	height: 30px;
+	border: 1px solid #ddd;
+}
+
+.checkbtn {
+	margin-top: 30px;
+	width: 400px;
+	text-align: center;
+}
+
+.checkbtn input[type=button] {
+	border: 0;
+	padding: 10px 30px;
+	background: #8aa1a1;
+	cursor: pointer;
+}
+
+.checkbtn input[type=button]:hover {
+	background: #6f8181;
+	transition: all 0.7s ease-out;
+}

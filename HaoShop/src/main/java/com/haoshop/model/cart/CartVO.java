@@ -11,6 +11,7 @@ public class CartVO {
 
 	private String p_name;
 	private int p_price;
+	private int p_discount;
 	private String p_img;
 	private String p_color;
 	private String p_size;
@@ -103,5 +104,12 @@ public class CartVO {
 	public void setP_size(String p_size) {
 		this.p_size = p_size;
 	}
-
+	
+	public int getP_discount() {
+		return p_discount;
+	}
+	
+	public void setP_discount(int p_discount) {
+		this.p_discount = p_discount;
+	}
 }

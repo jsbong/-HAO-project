@@ -12,6 +12,12 @@ public class BoardVO {
 	private int b_viewcnt;				// (추가)조회수
 	private String name;				// (추가)작성자 이름
 	private int cnt;					// (추가)댓글 갯수
+	
+	// board_comment
+	private int bc_no; 
+	private String bc_content;
+	private Date bc_regdate;
+
 	public int getB_no() {
 		return b_no;
 	}
@@ -67,11 +73,26 @@ public class BoardVO {
 		this.cnt = cnt;
 	}
 	
-	@Override
-	public String toString() {
-		return "BoardVO [b_no=" + b_no + ", m_no=" + m_no + ", b_title=" + b_title + ", b_content=" + b_content
-				+ ", m_id=" + m_id + ", b_regdate=" + b_regdate + ", b_viewcnt=" + b_viewcnt + ", name=" + name
-				+ ", cnt=" + cnt + "]";
+	
+	// Board_comment
+	public int getBc_no() {
+		return bc_no;
 	}
+	public void setBc_no(int bc_no) {
+		this.bc_no = bc_no;
+	}
+	public String getBc_content() {
+		return bc_content;
+	}
+	public void setBc_content(String bc_content) {
+		this.bc_content = bc_content;
+	}
+	public Date getBc_regdate() {
+		return bc_regdate;
+	}
+	public void setBc_regdate(Date bc_regdate) {
+		this.bc_regdate = bc_regdate;
+	}
+		
 
 }

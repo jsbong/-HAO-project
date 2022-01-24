@@ -55,13 +55,13 @@
 					</tr>
 					<tr>
 						<td>컬렉션설명</td>
-						<td><textarea rows="15" cols="100" name="jour_explain" id="jour_explain"></textarea>
-							<script>
-								// CKEDITER 적용시키기
-								CKEDITOR.replace("jour_explain", {
-									filebrowerUploadUrl : "/imageUpload.do"
-								});
-							</script>
+						<td>
+                        <textarea name="jour_explain" id="jour_explain" cols="88" rows="80"></textarea>
+                        <script>
+							CKEDITOR.replace( 'jour_explain', {
+								filebrowserUploadUrl : "imageUpload.do"
+							});
+						</script>
 						</td>
 					</tr>
 					<tr>

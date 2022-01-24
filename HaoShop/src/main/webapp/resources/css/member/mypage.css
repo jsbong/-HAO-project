@@ -54,7 +54,7 @@
 
 /* 회원정보 설정 */
 .member_info {
-   padding: 20px 0 10px;
+   padding: 30px 0 10px;
    border-bottom: 1px solid #ddd;
    position: relative;
 }
@@ -138,15 +138,6 @@
 	display: block;
 }
 
-.member_order_detail li .payment_info .payment_explain span:nth-child(4) {
-	color:#8aa1a1;
-}
-
-.member_order_detail li .payment_info .payment_explain span:nth-child(4):hover {
-	font-weight: bold;
-	cursor: pointer;
-}
-
 /* 상세보기 설정 */
 /* popup 설정 */
 .background {
@@ -176,7 +167,7 @@
 	transform: translate(-50%, -40%); /* 처음에 약간 아래에서 시작 */
 	background: #fff;
 	box-shadow: 0 2px 7px rgba(0, 0, 0, 0.5);
-	overflow: hidden;
+	overflow: auto;
 }
 
 .show {
@@ -188,4 +179,10 @@
 .show .popup {
 	transform: translate(-50%, -50%);
 	transition: all 0.5s;
+}
+
+/* 결제 상세페이지 설정 */
+.pay_product{
+	width: 100%;
+	background: skyblue;
 }

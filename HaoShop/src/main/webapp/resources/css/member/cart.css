@@ -7,7 +7,7 @@
 .cart_section {
 	width: 100%;
 	font-family: 'Nanum Gothic', sans-serif;
-	margin : 60px 0;
+	margin : 60px 0 90px;
 	font-size: 14px;
 }
 
@@ -41,35 +41,42 @@
 .cart-content .cart_product .cart_product_name {
 	padding : 0;
 	font-weight: bold;
-	background: yellow;
 }
 
 .cart-content .cart_product .cart_product_info {
 	position: relative;
-	background: pink;
 }
 
-/* 살 정보(product_info_buy)에 대한 블록 설정 */
-.cart-content .cart_product .cart_product_info .product_info_buy {
-	color: #8aa1a1;
-	font-weight: bold;
-	padding: 
-	background: lightcoral; 
-}
-
-.cart-content .cart_product .cart_product_info .product_info_buy > p {
-	display: inline-block;
+/* 카트 상품정보(product_info_buy)에 대한 블록 설정 */
+.cart-content .cart_product .cart_product_info .product_info_buy .img {
+	display: inline-block;;
+	width: 60px;
+	height: 70px;
 	margin-right: 10px;
-	backgorund: black;
 }
 
+.cart-content .cart_product .cart_product_info .product_info_buy .img img {
+	width: 100%;
+	height: 100%;
+}
+
+.cart-content .cart_product .cart_product_info .product_info_buy .buy_detail {
+	width: 20%;
+	height: 30px;
+	display: inline-block;
+}
+
+.cart-content .cart_product .cart_product_info .product_info_buy span {
+	display: block;
+}
+
+/* 수정, 합계 블록 설정 */
 .cart-content .cart_product .cart_product_info .product_info_change {
 	position: absolute;
 	top: 50%;
 	right: 3%;
 	transform: translateY(-50%);
 	text-align: right;
-	background: lightgray;
 }
 
 .cart-content .cart_product .cart_product_info .product_info_change span {
@@ -81,8 +88,64 @@
 	border: 0;
 	background: #ddd;
 	font-family: 'Nanum Gothic', sans-serif;
+	cursor: pointer;
 }
 
 #delCart:hover {
 	background: #8aa1a1;	
+}
+
+/* 총계 설정 */
+.sum_detail {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.sum_detail span:last-child {
+	float: right;
+	margin-right: 10px;
+}
+
+/* 비우기 버튼 설정 */
+#cartClear {
+	padding: 5px;
+	border: 1px solid darkgray;
+	background: #fff;
+	color: darkgray;
+	float: right;
+	cursor: pointer;
+}
+
+/* 결제, 쇼핑 버튼 블록 설정 */
+.cart_section .cart-content .pay_detail {
+	margin-top: 50px;
+	clear: both;
+}
+
+.cart_section .cart-content .pay_detail .payCart {
+	width: 71%;
+	border: 0;
+	padding: 10px 0;
+	color: #fff;
+	background: darkgray;
+	cursor: pointer;
+	transition: all 0.7s ease-out;
+}
+
+.cart_section .cart-content .pay_detail .payCart:hover {
+	background: #000;
+}
+
+.cart_section .cart-content .pay_detail .goshopping {
+	width: 28%;
+	border: 0;
+	padding: 10px 0;
+	background: #8aa1a1;
+	color: #fff;
+	cursor: pointer;
+	transition: all 0.7s ease-out;
+}
+
+.cart_section .cart-content .pay_detail .goshopping:hover {
+	background: #6f8181;
 }

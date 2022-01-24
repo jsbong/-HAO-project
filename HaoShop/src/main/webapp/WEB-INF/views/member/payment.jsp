@@ -2,330 +2,302 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="resources/css/payment.css">
-		<title>payment</title>
-		<script>
-			$(document).ready(function() {	// 최상단 체크박스 클릭
-				$("#checkAll").click(function() {	// 클릭
-					if ($("#checkAll").prop("checked")) {	// input tag name="chk" checked=true
-						$("input[name=chk]").prop("checked", true);
-					} else {
-						$("input[name=chk]").prop("checked", false);
-					}
-				})
-				
-				$("input[name=chk]").click(function() {
-					if ($("input[name=chk]").length == $("input[name=chk]:checkbox:checked").length) {
-						$("#checkAll").prop("checked", true);
-					} else {
-						$("#checkAll").prop("checked", false);
-					}
-				})
-				
-				$("input[type=radio][name=choice]").change(function() {
-					if(this.value == "sameaddr") {
-						$("input[name=sn_m_name]").val($("#hidden_m_name").val());
-						$("input[name=sn_m_name]").attr("readonly", true);
-						$("input[name=sn_member_zipcode]").val($("#hidden_member_zipcode").val());
-						$("input[name=sn_member_zipcode]").attr("readonly", true);
-						$("input[name=sn_member_faddr]").val($("#hidden_member_faddr").val());
-						$("input[name=sn_member_faddr]").attr("readonly", true);
-						$("input[name=sn_member_laddr]").val($("#hidden_member_laddr").val());
-						$("input[name=sn_member_laddr]").attr("readonly", true);
-						$("input[name=sn_m_phone]").val($("#hidden_m_phone").val());
-						$("input[name=sn_m_phone]").attr("readonly", true);
-						$("input[name=nn_searchPost]").css("visibility", "hidden");
-					} else if (this.value == "newaddr") {
-						$("input[name=sn_m_name]").val("");
-						$("input[name=sn_m_name]").attr("readonly", false);
-						$("input[name=sn_member_zipcode]").val("");
-						$("input[name=sn_member_zipcode]").attr("readonly", true);
-						$("input[name=sn_member_faddr]").val("");
-						$("input[name=sn_member_faddr]").attr("readonly", true);
-						$("input[name=sn_member_laddr]").val("");
-						$("input[name=sn_member_laddr]").attr("readonly", false);
-						$("input[name=sn_m_phone]").val("");
-						$("input[name=sn_m_phone]").attr("readonly", false);
-						$("input[name=nn_searchPost]").css("visibility", "visible");
-					}
-				});
+<head>
+	<meta charset="UTF-8">
+	<title>payment | HaoSHop</title>
+	<link rel="stylesheet" type="text/css" href="resources/css/member/payment.css">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		$(document).ready(function() {	// 최상단 체크박스 클릭
+			$("#checkAll").click(function() {	// 클릭
+				if ($("#checkAll").prop("checked")) {	// input tag name="chk" checked=true
+					$("input[name=chk]").prop("checked", true);
+				} else {
+					$("input[name=chk]").prop("checked", false);
+				}
 			})
 			
-			function termChk() {
-				var chk1 = $("#chk1").is(":checked");
-				var chk2 = $("#chk2").is(":checked");
-				var m_no = $("#m_no").val();
-				var m_addr = $("input[name=sn_member_zipcode]").val()+"*"+$("input[name=sn_member_faddr]").val()+"*"+$("input[name=sn_member_laddr]").val();
-				var m_phone = $("input[name=sn_m_phone]").val();
-				var pay_price = $("#pay_price").val();
-				var pay_creditcard = $("#credit1").val()+"-"+$("#credit2").val()+"-"+$("#credit3").val()+"-"+$("#credit4").val();
-				var prd_list = new Array();
-				var chkbox = $("input[name=chkbox]");
-				jQuery.ajaxSettings.traditional = true;
-				
-				if (chk1 == true && chk2 == true && $("#credit1").val() != "" && $("#credit2").val() != "" && $("#credit3").val() != "" && $("#credit4").val() != "") {
- 					swal({
-						icon : "info", 
-						text : "결제를 진행 하시겠습니까?", 
-						closeOnClickOutside : false, 
-						closeOnEsc : false, 
-						buttons : [ "취소", "결제" ],
-					}).then(function(isConfirm) {
-						if (isConfirm) {
-							swal("결제 성공", "" , "success").then(function(isConfirm) {
-								chkbox.each(function(i) {
-									var tr = chkbox.parent().parent().eq(i).children();
-									var p_no = tr.eq(1).text();
-									var p_size = tr.eq(3).text();
-									var pay_quantity = tr.eq(5).text();
-									prd_list.push(p_no);
-									prd_list.push(p_size);
-									prd_list.push(pay_quantity);
-								});
-								$.ajax({
-									type : "POST", 
-									url : "decopay", 
-									data : {
-										"m_no" : m_no,
-										"prd_list" : prd_list,
-										"m_addr" : m_addr,
-										"m_phone" : m_phone,
-										"pay_price" : pay_price,
-										"pay_creditcard" : pay_creditcard
-									}, success : function(data) { window.location.href = "main"; }
-								});
-								console.log(prd_list);
-							});
-						}
-					});
-				} else if (chk1 == false || chk2 == false) {
-					swal("", "약관에 동의해야 합니다.", "info");
+			$("input[name=chk]").click(function() {
+				if ($("input[name=chk]").length == $("input[name=chk]:checkbox:checked").length) {
+					$("#checkAll").prop("checked", true);
 				} else {
-					swal("", "카드번호를 입력해주세요.", "info");
+					$("#checkAll").prop("checked", false);
 				}
-			}
+			})
 			
-			// 카드번호 숫자입력
-			function onlyNumber(){
-				if((event.keyCode<48)||(event.keyCode>57)) {
-					event.returnValue=false;
+			$("input[type=radio][name=choice]").change(function() {
+				if(this.value == "sameaddr") {
+					$("input[name=sn_m_name]").val($("#hidden_m_name").val());
+					$("input[name=sn_m_name]").attr("readonly", true);
+					$("input[name=sn_member_zipcode]").val($("#hidden_member_zipcode").val());
+					$("input[name=sn_member_zipcode]").attr("readonly", true);
+					$("input[name=sn_member_faddr]").val($("#hidden_member_faddr").val());
+					$("input[name=sn_member_faddr]").attr("readonly", true);
+					$("input[name=sn_member_laddr]").val($("#hidden_member_laddr").val());
+					$("input[name=sn_member_laddr]").attr("readonly", true);
+					$("input[name=sn_m_phone]").val($("#hidden_m_phone").val());
+					$("input[name=sn_m_phone]").attr("readonly", true);
+					$("input[name=nn_searchPost]").css("visibility", "hidden");
+				} else if (this.value == "newaddr") {
+					$("input[name=sn_m_name]").val("");
+					$("input[name=sn_m_name]").attr("readonly", false);
+					$("input[name=sn_member_zipcode]").val("");
+					$("input[name=sn_member_zipcode]").attr("readonly", true);
+					$("input[name=sn_member_faddr]").val("");
+					$("input[name=sn_member_faddr]").attr("readonly", true);
+					$("input[name=sn_member_laddr]").val("");
+					$("input[name=sn_member_laddr]").attr("readonly", false);
+					$("input[name=sn_m_phone]").val("");
+					$("input[name=sn_m_phone]").attr("readonly", false);
+					$("input[name=nn_searchPost]").css("visibility", "visible");
 				}
-			}
+			});
+		})
+		
+		function termChk() {
+			var chk1 = $("#chk1").is(":checked");
+			var chk2 = $("#chk2").is(":checked");
+			var m_no = $("#m_no").val();
+			var m_addr = $("input[name=sn_member_zipcode]").val()+"*"+$("input[name=sn_member_faddr]").val()+"*"+$("input[name=sn_member_laddr]").val();
+			var m_phone = $("input[name=sn_m_phone]").val();
+			var pay_creditcard = $("#credit1").val()+"-"+$("#credit2").val()+"-"+$("#credit3").val()+"-"+$("#credit4").val();
+			var prd_list = new Array();
+			var chkbox = $(".chkbox");
+			jQuery.ajaxSettings.traditional = true;
 			
-			function searchPost() {
-				new daum.Postcode({
-					oncomplete : function(data) {
-						var fullAddr = '';
-						var extraAddr = '';
-
-						if (data.userSelectedType == 'R') {
-							fullAddr = data.roadAddress;
-						} else {
-							fullAddr = data.jibunAddress;
-						}
-						if (data.userSelectedType == 'R') {
-							if (data.bname !== '') {
-								extraAddr += data.bname;
-							}
-							if (data.buildingName !== '') {
-								extraAddr += (extraAddr !== '' ? ', ' + data.buildingName
-										: data.buildingName);
-							}
-							fullAddr += (extraAddr !== '' ? '(' + extraAddr + ')' : '');
-						}
-						$("input[name=sn_member_zipcode]").val(data.zonecode);
-						console.log($("input[name=sn_member_zipcode]").val());
-						// document.getElementById('sn_member_zipcode').value = data.zonecode;
-						$("input[name=sn_member_faddr]").val(fullAddr);
-						// document.getElementById('sn_member_faddr').value = fullAddr;
-						$("input[name=sn_member_laddr]").focus();
-						// document.getElementById('sn_member_laddr').focus();
+			if (chk1 == true && chk2 == true && $("#credit1").val() != "" && $("#credit2").val() != "" && $("#credit3").val() != "" && $("#credit4").val() != "") {
+					swal({
+					icon : "info", 
+					text : "결제를 진행 하시겠습니까?", 
+					closeOnClickOutside : false, 
+					closeOnEsc : false, 
+					buttons : [ "취소", "결제" ],
+				}).then(function(isConfirm) {
+					if (isConfirm) {
+						swal("결제 성공", "" , "success").then(function(isConfirm) {
+							chkbox.each(function(i) {
+								var li = chkbox.eq(i);
+								var p_no = li.children().eq(0).val();
+								var pay_price = li.children().eq(1).val();
+								var pay_quantity = li.children().eq(2).val();
+								prd_list.push(p_no);
+								prd_list.push(pay_price);
+								prd_list.push(pay_quantity);
+							});
+							$.ajax({
+								type : "POST", 
+								url : "decopay", 
+								data : {
+									"m_no" : m_no,
+									"prd_list" : prd_list,
+									"m_addr" : m_addr,
+									"m_phone" : m_phone,
+									"pay_creditcard" : pay_creditcard
+								}, success : function(data) { window.location.href = "main"; }
+							});
+							console.log(prd_list);
+						});
 					}
-				}).open();
+				});
+			} else if (chk1 == false || chk2 == false) {
+				swal("", "약관에 동의해야 합니다.", "info");
+			} else {
+				swal("", "카드번호를 입력해주세요.", "info");
 			}
-		</script>
-	</head>
-	<body>
-		<%@ include file="../include/header.jsp"%>
-		<section class="section_container">
-		<div id="container">
-		<h3 class="h3_pay">주문서 작성</h3>
-		<table id="oSW">
-			<tr>
-				<th height="50">이미지</th>
-				<th width="300" colspan="2">상품정보</th>
-				<th width="100">사이즈</th>
-				<th width="100">판매가</th>
-				<th width="70">수량</th>
-				<th width="100">배송비</th>
-				<th width="100">합계</th>
-			</tr>
-			<c:set var="priceSum" value="0" />
-			<c:set var="deliverySum" value="0" />
-			<c:set var="discountSum" value="0" />
-			<c:choose>
-				<c:when test="${map.hidden eq 'cartpage'}">
-					<c:forEach items="${map.list}" var="pay">
-						<input type="hidden" id="p_no" value="${pay.p_no}"/>
-						<input type="hidden" id="pay_quantity" value="${pay.pay_quantity}"/>
-						<input type="hidden" id="p_size" value="${pay.p_size}" />
-						<input type="hidden" id="m_no" value="${member.m_no}" />
-						<tr>
-							<td>
-								<img src="${fn:split(pay.p_img, '*')[0]}" width="100px" height="100px">
-								<input type="hidden" name="chkbox">
-							</td>
-							<td class="tdright">${pay.p_no}</td>
-							<td class="tdleft">${pay.p_name}</td>
-							<td>${pay.p_size}</td>
-							<td><fmt:formatNumber value="${pay.p_price}" pattern="#,###"/></td>
-							<td>${pay.pay_quantity}</td>
-							<td>-</td>
-							<c:set var="paySum" value="${pay.p_price * pay.pay_quantity}"/>
-							<td><fmt:formatNumber value="${paySum}" pattern="#,###"/></td>
-						</tr>
-						<c:set var="discountSum" value="${discountSum + (pay.p_discount * pay.pay_quantity)}" />
-						<c:set var="priceSum" value="${priceSum + paySum}" />
-						<c:set var="partotal" value="${(pay.p_price - pay.p_discount)*pay.pay_quantity}" />
-						<c:set var="total" value="${priceSum}" />
-					</c:forEach>
-				</c:when>
-				<c:when test="${map.hidden eq 'prdpage'}">
-					<c:forEach items="${map.list}" var="pay">
-						<input type="hidden" id="p_no" value="${pay.p_no}"/>
-						<input type="hidden" id="pay_quantity" value="${map.pay_quantity}"/>
-						<input type="hidden" id="p_size" value="${map.p_size}" />
-						<tr id="tr">
-							<td>
-								<img src="${fn:split(pay.p_img, '*')[0]}" width="100px" height="100px">
-								<input type="hidden" name="chkbox">
-							</td>
-							<td class="tdright">${pay.p_no}</td>
-							<td class="tdleft">${pay.p_name}</td>
-							<td>${map.p_size}</td>
-							<td><fmt:formatNumber value="${pay.p_price}" pattern="#,###"/></td>
-							<td>${map.pay_quantity}</td>
-							<td><fmt:formatNumber value="${5000}" pattern="#,###"/></td>
-							<c:set var="paySum" value="${pay.p_price * map.pay_quantity + 5000}"/>
-							<td><fmt:formatNumber value="${paySum}" pattern="#,###"/></td>
-						</tr>
-						<c:set var="discountSum" value="${discountSum + (pay.p_discount * map.pay_quantity)}" />
-						<c:set var="partotal" value="${(pay.p_price - pay.p_discount)*pay.pay_quantity}" />
-						<c:set var="priceSum" value="${pay.p_price * map.pay_quantity}" />
-					</c:forEach>
-				</c:when>
-			</c:choose>
-			<tr>
-				<td colspan="8" align="left" id="ordersheet" height="30">
-					상품 구매금액: <fmt:formatNumber value="${priceSum}" pattern="#,###" />  + 배송비: <fmt:formatNumber value="${5000}" pattern="#,###" /> = 합계: <fmt:formatNumber value="${priceSum+5000}" pattern="#,###" /> 
-				</td>
-			</tr>
-		</table><br><br>
-		<h3 class="h3_pay">주문자 정보</h3>
-		<table id="oSI">
-			<tr>
-				<th width="150" height="50">주문자 명</th>
-				<td>
-					<label id="m_name" class="input" size="20">${member.m_name}</label>
-					<input type="hidden" id="hidden_m_name" value="${member.m_name}">
-				</td>
-			</tr>
-			<tr>
-				<th rowspan="2" width="150" height="50" bgcolor="#CCE1FF">주소</th>
-				<td>
-					<label id="m_addr" class="input" size="60">${fn:split(member.m_addr,'*')[0]}</label>
-					<input type="hidden" id="hidden_member_zipcode" value="${fn:split(member.m_addr,'*')[0]}">
-					<label id="m_addr" class="input" size="60">${fn:split(member.m_addr,'*')[1]}</label>
-					<input type="hidden" id="hidden_member_faddr" value="${fn:split(member.m_addr,'*')[1]}">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label id="m_addr" class="input" size="60">${fn:split(member.m_addr,'*')[2]}</label>
-					<input type="hidden" id="hidden_m_addr" value="${fn:split(member.m_addr,'*')[2]}">
-				</td>
-			</tr>
-			<tr>
-				<th height="50" bgcolor="#CCE1FF">핸드폰 번호</th>
-				<td>
-					<label id="m_phone" class="input" size="16">${member.m_phone}</label>
-					<input type="hidden" id="hidden_m_phone" value="${member.m_phone}">
-				</td>
-			</tr>
-			<tr>
-				<th height="50" bgcolor="#CCE1FF">이메일</th>
-				<td>
-					<label id="m_email" class="input" size="30">${member.m_email}</label>
-					<input type="hidden" id="hidden_m_email" value="${member.m_email}">
-				</td>
-			</tr>
-		</table><br><br><br>
-		<h3 class="h3_pay">배송 정보</h3>
-		<table id="oSD">
-			<tr>
-				<th width="150" height="50" bgcolor="#CCE1FF">배송지 선택</th>
-				<td>
-					<input type="radio" name="choice" id="sameaddr" value="sameaddr" checked />주문자 정보 동일
-					<input type="radio" name="choice" id="newaddr" value="newaddr" />새로운 배송지
-				</td>
-			</tr>
-			<tr>
-				<th height="50" bgcolor="#CCE1FF">받으시는 분</th>
-				<td>
-					<input type="text" name="sn_m_name" class="input" size="20" placeholder="받는사람" value="${member.m_name}" readonly />
-				</td>
-			</tr>
-			<tr>
-				<th rowspan="2" width="150" height="50" bgcolor="#CCE1FF">주소</th>
-				<td>
-					<input type="text" name="sn_member_zipcode" class="input" size="10" placeholder="우편번호" value="${fn:split(member.m_addr,'*')[0]}" readonly>
-					<input type="button" name="nn_searchPost" onclick="searchPost()" value="우편번호 찾기" style="visibility: hidden"><br>
-					<input type="text" name="sn_member_faddr" class="input" size="60" placeholder="우편주소" value="${fn:split(member.m_addr,'*')[1]}" readonly>
-				</td>
-			</tr>
-			<tr>
-				<td><input type="text" name="sn_member_laddr" id="member_laddr" class="input" size="60" placeholder="상세주소" value="${fn:split(member.m_addr,'*')[2]}" readonly></td>
-			</tr>
-			<tr>
-				<th height="50" bgcolor="#CCE1FF">핸드폰 번호</th>
-				<td><input type="text" name="sn_m_phone" class="input" size="16" placeholder="전화번호" value="${member.m_phone}" readonly/></td>
-			</tr>
-			<tr>
-				<th height="70" bgcolor="#CCE1FF">배송 메세지</th>
-				<td>
-					<textarea id="texta" rows="3" cols="60" maxlength="10" placeholder="배송시 요청메시지 입력(10자 내)"></textarea>
-				</td>
-			</tr>
-		</table>
-		<br><br><br>
-		<h3 class="h3_pay">결제 예정 금액</h3>
-		<table id="oSP">
-			<tr>
-				<th height="50" bgcolor="#CCE1FF" align="center">총 주문 금액</th>
-				<th height="50" bgcolor="#CCE1FF" align="center">총 할인 금액</th>
-				<th height="50" bgcolor="#CCE1FF" align="center">배송비</th>
-				<th height="50" bgcolor="#CCE1FF" align="center">총 결제예정 금액</th>
-			</tr>
-			<tr>
-				<td height="50" align="center"><fmt:formatNumber value="${priceSum}" pattern="#,###" />원</td>
-				<td height="50" align="center"><fmt:formatNumber value="${discountSum}" pattern="#,###" />원</td>
-				<td height="50" align="center"><fmt:formatNumber value="${5000}" pattern="#,###" />원</td>
-				<td height="50" align="center"><fmt:formatNumber value="${priceSum - discountSum + 5000}" pattern="#,###" />원</td>
-			</tr>
-		</table>
-		<br><br><br><br><br>
-		<script>
-		</script>
-		<table id="oST">
-			<tr>
+		}
+		
+		// 카드번호 숫자입력
+		function onlyNumber(){
+			if((event.keyCode<48)||(event.keyCode>57)) {
+				event.returnValue=false;
+			}
+		}
+		
+		function searchPost() {
+			new daum.Postcode({
+				oncomplete : function(data) {
+					var fullAddr = '';
+					var extraAddr = '';
+
+					if (data.userSelectedType == 'R') {
+						fullAddr = data.roadAddress;
+					} else {
+						fullAddr = data.jibunAddress;
+					}
+					if (data.userSelectedType == 'R') {
+						if (data.bname !== '') {
+							extraAddr += data.bname;
+						}
+						if (data.buildingName !== '') {
+							extraAddr += (extraAddr !== '' ? ', ' + data.buildingName
+									: data.buildingName);
+						}
+						fullAddr += (extraAddr !== '' ? '(' + extraAddr + ')' : '');
+					}
+					$("input[name=sn_member_zipcode]").val(data.zonecode);
+					console.log($("input[name=sn_member_zipcode]").val());
+					// document.getElementById('sn_member_zipcode').value = data.zonecode;
+					$("input[name=sn_member_faddr]").val(fullAddr);
+					// document.getElementById('sn_member_faddr').value = fullAddr;
+					$("input[name=sn_member_laddr]").focus();
+					// document.getElementById('sn_member_laddr').focus();
+				}
+			}).open();
+		}
+	</script>
+</head>
+<body>
+	<!-- header -->
+	<%@ include file="../include/header.jsp"%>
+	<!-- 결제 section -->
+	<section class="payment_section">
+		<div class="payment-content">
+			<div class="payment_product">
+				<c:set var="priceSum" value="0" />
+				<h2>CHECK OUT</h2>
+				<ul class="product_detail">
+					<c:choose>
+						<c:when test="${map.hidden eq 'cartpage'}">
+							<c:forEach items="${map.list}" var="pay">
+								<li class="chkbox">
+									<input type="hidden" id="p_no" value="${pay.p_no}"/>
+									<input type="hidden" id="pay_price" value="${(pay.p_price - pay.p_discount) * pay.pay_quantity}" />
+									<input type="hidden" id="pay_quantity" value="${pay.pay_quantity}"/>
+									<input type="hidden" id="m_no" value="${member.m_no}" />
+									<ul>
+										<li class="product_name"><h3>${pay.p_name}</h3></li>
+										<li class="product_info">
+											<div class="img">
+												<img src="${fn:split(pay.p_img, '*')[0]}">
+											</div>
+											<div class="size">
+												<span>SIZE : ${pay.p_size} X ${pay.pay_quantity}</span>											
+											</div>
+											<div class="price">
+												<c:set var="paySum" value="${(pay.p_price - pay.p_discount)*pay.pay_quantity}"/>
+												<fmt:formatNumber value="${paySum}" pattern="\#,###"/>
+											</div>
+										</li>
+									</ul>
+								</li>
+								<c:set var="priceSum" value="${priceSum + paySum}" />
+							</c:forEach>
+						</c:when>
+						<c:when test="${map.hidden eq 'prdpage'}">
+							<c:forEach items="${map.list}" var="pay">
+								<li class="chkbox">
+									<input type="hidden" id="p_no" value="${pay.p_no}"/>
+									<input type="hidden" id="pay_price" value="${(pay.p_price - pay.p_discount) * pay.pay_quantity}" />
+									<input type="hidden" id="pay_quantity" value="${pay.pay_quantity}"/>
+									<ul>
+										<li class="product_name"><h4>${pay.p_name}</h4></li>
+										<li>
+											<div>
+												<a href="#"><img src="${fn:split(pay.p_img, '*')[0]}" width="100px" height="100px"></a>
+											</div>
+											<div>
+												<span>SIZE : ${pay.p_size} X ${pay.pay_quantity}</span>											
+											</div>
+											<div>
+												<c:set var="paySum" value="${(pay.p_price - pay.p_discount)*pay.pay_quantity}"/>
+												<fmt:formatNumber value="${paySum}" pattern="#,###"/>
+											</div>
+										</li>
+									</ul>																
+								</li>
+								<c:set var="priceSum" value="${priceSum + paySum}" />
+							</c:forEach>						
+						</c:when>
+					</c:choose>	
+					<li class="sum_detail">
+						<span>총계</span>
+						<span><fmt:formatNumber value="${priceSum}" pattern="\#,###" /></span>  
+					</li>
+				</ul>
+			</div>
+			<div class="payment_buyer">
+				<h3>주문자 정보</h3>
+				<table class="buyer_info">
+					<tr>
+						<th>주문자 명</th>
+						<td>
+							<label id="m_name">${member.m_name}</label>
+							<input type="hidden" id="hidden_m_name" value="${member.m_name}">
+						</td>
+					</tr>
+					<tr>
+						<th>주소</th>
+						<td>
+							<label id="m_addr">${fn:split(member.m_addr,'*')[0]}</label>
+							<input type="hidden" id="hidden_member_zipcode" value="${fn:split(member.m_addr,'*')[0]}">
+							<label id="m_addr">${fn:split(member.m_addr,'*')[1]}</label>
+							<input type="hidden" id="hidden_member_faddr" value="${fn:split(member.m_addr,'*')[1]}">
+							<label id="m_addr">${fn:split(member.m_addr,'*')[2]}</label>
+							<input type="hidden" id="hidden_m_addr" value="${fn:split(member.m_addr,'*')[2]}">
+						</td>
+					</tr>
+					<tr>
+						<th>핸드폰 번호</th>
+						<td>
+							<label id="m_phone">${member.m_phone}</label>
+							<input type="hidden" id="hidden_m_phone" value="${member.m_phone}">
+						</td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td>
+							<label id="m_email">${member.m_email}</label>
+							<input type="hidden" id="hidden_m_email" value="${member.m_email}">
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="payment_buyer">
+				<h3>배송 정보</h3>
+				<table class="shipping_info">
+					<tr>
+						<th>배송지 선택</th>
+						<td>
+							<input type="radio" name="choice" id="sameaddr" value="sameaddr" checked />주문자 정보 동일
+							<input type="radio" name="choice" id="newaddr" value="newaddr" />새로운 배송지
+						</td>
+					</tr>
+					<tr>
+						<th>받으시는 분</th>
+						<td>
+							<input type="text" name="sn_m_name" class="input" size="20" placeholder="받는사람" value="${member.m_name}" readonly />
+						</td>
+					</tr>
+					<tr>
+						<th>주소</th>
+						<td class="shipping_address">
+							<input type="text" name="sn_member_zipcode" class="input" size="10" placeholder="우편번호" value="${fn:split(member.m_addr,'*')[0]}" readonly>
+							<input type="button" name="nn_searchPost" onclick="searchPost()" value="우편번호 찾기" style="visibility: hidden"><br>
+							<input type="text" name="sn_member_faddr" class="input" size="60" placeholder="우편주소" value="${fn:split(member.m_addr,'*')[1]}" readonly>
+							<input type="text" name="sn_member_laddr" id="member_laddr" class="input" size="60" placeholder="상세주소" value="${fn:split(member.m_addr,'*')[2]}" readonly>
+						</td>
+					</tr>
+					<tr>
+						<th>핸드폰 번호</th>
+						<td>
+							<input type="text" name="sn_m_phone" class="input" size="16" placeholder="전화번호" value="${member.m_phone}" readonly/>
+						</td>
+					</tr>
+					<tr>
+						<th>배송 메세지</th>
+						<td>
+							<textarea id="texta" rows="3" cols="60" maxlength="10" placeholder="배송시 요청메시지 입력(10자 내)"></textarea>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!-- 약관 동의 -->
+			<div class="termCheck">
+				<table>
+					<tr>
 				<td>
 					<input type="checkbox" id="checkAll" />
 					쇼핑몰 이용약관, 비회원 구매시 개인정보수집이용 동의에 모두 동의합니다.
@@ -333,12 +305,13 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="checkbox" name="chk" id="chk1" />쇼핑몰 이용약관
+					<input type="checkbox" name="chk" id="chk1" />
+					쇼핑몰 이용약관
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<textarea id="texta" rows="10" cols="120" readonly>
+					<textarea id="texta" rows="10" cols="105" readonly>
 인터넷 쇼핑몰 『 사이버 몰』회원 약관
 제1조(목적)
 이 약관은  회사(전자상거래 사업자)가 운영하는  사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.
@@ -556,12 +529,13 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="checkbox" name="chk" id="chk2"/>구매시 개인정보수집이용 동의
+					<input type="checkbox" name="chk" id="chk2"/>
+					구매시 개인정보수집이용 동의
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<textarea id="texta" rows="10" cols="120" readonly>
+					<textarea id="texta" rows="10" cols="105" readonly>
 1. 개인정보 수집목적 및 이용목적 : 비회원 구매 서비스 제공
 2. 수집하는 개인정보 항목- 주문 시, 성명, 주소, 전화번호, 이메일, 결제정보, 비회원 결제 비밀번호- 취소/교환/반품 신청 시, 환불계좌정보(은행명, 계좌번호, 예금주)
 3. 개인정보의 보유기간 및 이용기간원칙적으로, 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.
@@ -584,34 +558,33 @@
 				</td>
 			</tr>
 		</table>
-		<br><br><br>
-		<h3>결제 수단</h3>
-		<div id="pay">
-			<input type="radio" name="chk_info" value="card" checked />카드 결제
-			<input type="radio" name="chk_info" value="transfer" disabled />계좌 이체
-			<input type="radio" name="chk_info" value="deposit" disabled />무통장 입금
-			<div id="creditPay">
-				카드번호: 
-				<input type="text" id="credit1" maxlength="4" size="4" onkeypress="onlyNumber()"/> - 
-				<input type="password" id="credit2" maxlength="4" size="4" onkeypress="onlyNumber()"/> - 
-				<input type="text" id="credit3" maxlength="4" size="4" onkeypress="onlyNumber()"/> - 
-				<input type="password" id="credit4" maxlength="4" size="4" onkeypress="onlyNumber()"/>
+		</div>
+		<!-- 결제 정보 -->
+		<div class="cash_info">
+			<h3>결제 정보</h3>
+			<ul>
+				<li>
+					<div class="pay">
+						<input type="radio" name="chk_info" value="card" checked /> 카드 결제
+						<input type="radio" name="chk_info" value="transfer" disabled /> 계좌 이체
+						<input type="radio" name="chk_info" value="deposit" disabled /> 무통장 입금
+					</div>
+					<div class="creditPay">
+						<span>카드번호: </span> 
+						<input type="text" id="credit1" maxlength="4" size="8" onkeypress="onlyNumber()"/> - 
+						<input type="password" id="credit2" maxlength="4" size="8" onkeypress="onlyNumber()"/> - 
+						<input type="text" id="credit3" maxlength="4" size="8" onkeypress="onlyNumber()"/> - 
+						<input type="password" id="credit4" maxlength="4" size="8" onkeypress="onlyNumber()"/>
+					</div>
+				</li>
+				<li>
+					<input type="button" onClick="termChk()" value="결제 하기" />
+				</li>	
+			</ul>
 			</div>
 		</div>
-		<h3>최종 결제 금액</h3>
-		<table id="paymoney">
-			<tr>
-				<td>결제금액: <fmt:formatNumber value="${priceSum - discountSum + 5000}" pattern="#,###" /></td>
-				<td></td>
-			</tr>
-			<tr>
-				<input type="hidden" id="m_no" value="${member.m_no}" />
-				<input type="hidden" id="pay_price" value="${partotal}" />
-				<th align="center" colspan="2"><input type="button" onClick="termChk()" value="결제 하기" /></th>
-			</tr>
-		</table>	
-		</div>
-		</section>
-		<%@ include file="../include/footer.jsp"%>
+	</section>
+	<!-- footer -->
+	<%@ include file="../include/footer.jsp"%>
 	</body>
 </html>

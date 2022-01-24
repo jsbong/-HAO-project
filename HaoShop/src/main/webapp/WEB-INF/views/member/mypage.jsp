@@ -6,8 +6,10 @@
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
-	<title>mypage</title>
+	<title>mypage | HaoSHop</title>
 	<link rel="stylesheet" type="text/css" href="resources/css/member/mypage.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
 		$(document).ready(function() {
@@ -42,9 +44,9 @@
 			<!-- 회원정보 -->
 			<div class="member_info">
 				<h4>회원정보</h4>
-				<span>회원 가입일: ${member.m_regdate}</span>
-				<span>회원 주소 : ${member.m_addr}</span>
-				<span>회원 전화번호: ${member.m_phone}</span>
+				<span>가입일(${member.m_regdate})</span>
+				<span>주소 : ${fn:split(member.m_addr,'*')[1]} ${fn:split(member.m_addr,'*')[2]}</span>
+				<span><i class="fas fa-phone-alt"></i> ${member.m_phone}</span>
 				<div>
 					<input type="button" value="수정" onClick="location.href='mypage2'">
 					<input type="button" value="탈퇴" onClick="location.href='mypage5'">
@@ -66,10 +68,10 @@
 											<a href="productpage?p_no=${row.p_no}"><img src="${fn:split(row.p_img, '*')[0]}"></a>
 										</div>
 										<div class="payment_explain">
-											<span>${row.pay_regdate}</span>
+											<span style="color: darkgray">${row.pay_regdate} ORDER</span>
 											<span>${row.p_name}</span>
 											<span><fmt:formatNumber value="${row.p_sum}" pattern="\#,###"/></span>
-											<span id="paymentDetail_button">상세보기 &#62;</span>
+											<span>(${fn:split(member.m_addr,'*')[0]}) ${fn:split(member.m_addr,'*')[1]} ${fn:split(member.m_addr,'*')[2]}</span>
 										</div>
 									</div>
 								</li>
@@ -110,13 +112,6 @@
 			</div>
 		</div>
 	</section>
-	<div class="background">
-		<div class="window">
-			<div class="popup">
-				
-			</div>
-		</div>
-	</div>
 	<!-- footer -->
 	<%@ include file="../include/footer.jsp"%>
    </body>

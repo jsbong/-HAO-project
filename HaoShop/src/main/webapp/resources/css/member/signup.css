@@ -67,10 +67,6 @@ section table th {
 	width: 32.7%;
 }
 
-.input.email {
-	width: 32%;
-}
-
 .input.tel {
 	width: 31%;
 }
@@ -92,10 +88,6 @@ input[type=button] {
 input[type=button]:hover {	
 	border: 0;
 	background-color: #8aa1a1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-	outline: none !important;
 }
 
 .input.sign {

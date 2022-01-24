@@ -134,4 +134,9 @@
 		)
 	</insert>
 	
+	<!--  댓글 조회  -->
+	<select id="readComment" resultType="board">
+	SELECT BC_NO, BC_CONTENT, M_ID, BC_REGDATE FROM BOARD_COMMENT WHERE B_NO = #{b_no}
+	</select>
+	
 </mapper>

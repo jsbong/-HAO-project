@@ -103,7 +103,7 @@ function myinfoUp() {
 						success : function(data) {
 							console.log(m_id);
 							console.log(myp);
-							window.location.href = "mypage?m_no=" + m_no + "&myp=" + myp;
+							window.location.href = "mypage?m_no=" + m_no;
 						},
 						error : function(data) {
 							console.log(m_id);

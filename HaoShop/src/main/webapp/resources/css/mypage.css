@@ -34,16 +34,16 @@ button:focus {
     outline: none
 }
 /* layout */
-section.section_my {
+.section_my {
 	width: 95%;
-	height: auto;
+	height: 800px;
 	position: relative;
 }
-section.section_cen {
+.section_cen {
 	width: 92%;
-	height: auto;
+	height: 550px;
 	position: relative;
-	margin: 160px 0 140px 90px;
+	margin: 160px 0 0 90px;
 }
 .order .orderlist {
 	width: 950px;
@@ -109,7 +109,7 @@ section.section_cen {
 	margin: -190px 0 0 -150px;
 }
 .checkbtn2{
-	width: 320px;
+	width: 320px;`
 	height: 300px;
 	position: absolute;
 	left: 52%;

@@ -55,8 +55,11 @@
 					</li>
 					<li class="cart_product_info">
 						<div class="product_info_buy">
-							<p><a href="productpage?p_no=${cartprd.p_no}"><img src="${fn:split(cartprd.p_img, '*')[0]}" style="width:75px; height: 80px"></a></p>
-							<span>SIZE : ${cartprd.p_size} X <fmt:formatNumber value="${cartprd.pay_quantity}" pattern="#,###"/></span>
+							<div class="img"><a href="productpage?p_no=${cartprd.p_no}"><img src="${fn:split(cartprd.p_img, '*')[0]}"></a></div>
+							<div class="buy_detail">
+								<span>SIZE : ${cartprd.p_size} X <fmt:formatNumber value="${cartprd.pay_quantity}" pattern="#,###"/></span>
+								<span><fmt:formatNumber value="${cartprd.p_price - cartprd.p_discount}" pattern="\#,###"/></span>
+							</div>
 						</div>
 						<div class="product_info_change">
 							<span>합계</span>
@@ -67,9 +70,9 @@
 						<c:set var="priceSum" value="${priceSum + cartprd.p_sum}" />
 					</li>
 				</c:forEach>
-				<li>
+				<li class="sum_detail">
 					<span>총계</span>
-					<span id="p_sum"><fmt:formatNumber value="${priceSum}" pattern="#,###" /></span>
+					<span><fmt:formatNumber value="${priceSum}" pattern="\#,###" /></span>
 				</li>
 				<li>
 					<input type="hidden" name = "m_no" id="m_no" value="${member.m_no}"/>
@@ -77,9 +80,10 @@
 					<input type="button" name="cartClear" id="cartClear" onclick="cartClear()" value="상품 비우기" />
 				</li>
 			</ul>
-			<div>
-				<input type="button" id="payCart" onclick="payCart()" value="결제하기" />
+			<div class="pay_detail">
+				<input type="button" onclick="payCart()" class="payCart" value="주문하기">
 				<input type="hidden" name="hiddenbtn" id="hiddenbtn" value="cartpage" />
+				<input type="button" class="goshopping" onclick="location.href='main'" value="쇼핑 계속하기">
 			</div>
 		</div>
 	</section>

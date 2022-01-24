@@ -1,0 +1,187 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* layout */
+.payment_section {
+	width: 100%;
+	font-family: 'Nanum Gothic', sans-serif;
+	padding : 60px 0 90px;
+	font-size: 14px;
+}
+
+.payment_section .payment-content {
+	width: 40%;
+	margin: 0 auto;
+}
+
+.payment-content .payment_product {
+	width: 100%;
+}
+
+.payment-content .payment_product > h2 {
+	margin-bottom: 15px;
+}
+.payment-content .payment_product .product_detail {
+	border-top: 1px solid #ddd;
+	padding-left:0;
+	margin-left:0;
+}
+
+.payment-content .payment_product .product_detail li {
+	padding: 10px;
+}
+
+/* chkbox 설정 */
+.product_detail .chkbox ul > li {
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	position: relative;
+}
+.product_detail .chkbox ul .product_name {
+	border-bottom: 0;
+}
+
+.product_detail .chkbox ul .product_info .img {
+	display: inline-block;;
+	width: 60px;
+	height: 70px;
+	margin-right: 10px;
+}
+
+.product_detail .chkbox ul .product_info .img img {
+	width: 100%;
+	height: 100%;	
+}
+
+.product_detail .chkbox ul .product_info .size {
+	display: inline-block;
+}
+
+.product_detail .chkbox ul .product_info .price {
+	position: absolute;
+	top: 50%;
+	right: 3%;
+	transform: translateY(-50%);
+	text-align: right;	
+}
+
+/* 총계 설정 */
+.payment-content .payment_product .product_detail > .sum_detail {
+	font-size: 20px;
+	font-weight: bold;
+	padding: 15px;
+	margin: 0 auto;
+	background: rgb(247, 247, 247);
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+.sum_detail span:last-child {
+	float: right;
+	margin-right: 10px;
+}
+
+/* 주문자 정보 설정 */
+.payment_buyer {
+	margin-top: 10px;
+}
+
+.payment_buyer > h3 {
+	display: block;
+	padding: 10px;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+.payment_buyer .buyer_info {
+	border-collapse: collapse;
+}
+
+.payment_buyer .buyer_info tr th {
+	width: 30%;
+	padding: 15px 20px;
+	text-align: center;
+}
+
+.payment_buyer .buyer_info tr td {
+	width: 70%;
+	padding: 15px;
+}
+
+/* 배송 정보 설정 */
+.payment_buyer .shipping_info tr th{
+	width: 18%;
+	padding: 15px;
+	text-align: center;	
+}
+
+.payment_buyer .shipping_info tr td .input {
+	height: 30px;
+	border: 1px solid #ddd;
+}
+
+.payment_buyer .shipping_info tr .shipping_address input[type=text] {
+	margin-bottom: 4px;
+}
+
+.payment_buyer .shipping_info tr .shipping_address input[type=button] {
+	padding: 7px;
+	border: 0;
+	background: #8aa1a1;
+	font-family: 'Nanum Gothic', sans-serif;
+	transition: all 0.7s ease-out;
+	cursor: pointer;
+}
+
+.payment_buyer .shipping_info tr .shipping_address input[type=button]:hover {
+	background: #6f8181;	
+}
+
+/* 약관 동의 설정 */
+.termCheck {
+	margin-top: 20px;	
+}
+
+/* 결제 정보 설정 */
+.cash_info {
+	margin-top: 20px;
+	font-size: 16px;
+}
+
+.cash_info > h3 {
+	display: block;
+	padding: 10px;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+.cash_info ul li {
+	padding: 10px;
+	bottom: 1px solid #ddd;	
+}
+
+.cash_info ul li .creditPay {
+	margin-top: 5px;
+}
+
+.cash_info ul li .creditPay input[type=text], .cash_info ul li .creditPay input[type=password] {
+	height: 30px;
+	border: 1px solid #ddd;
+}
+
+.cash_info ul li:last-child {
+	margin-top: 30px;
+	text-align: center;
+}
+
+.cash_info ul li input[type=button] {
+	padding: 10px 150px;
+	border: 0;
+	background: #8aa1a1;
+	cursor: pointer;
+	transition: all 0.7s ease-out;	
+}
+
+.cash_info ul li input[type=button]:hover {
+	background: #6f8181;
+}

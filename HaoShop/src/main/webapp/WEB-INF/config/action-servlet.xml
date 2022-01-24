@@ -25,6 +25,9 @@
 	<!-- 이미지들 저장하거난 css 등 만드는? 잘은 모르겠음 -->
 	<resources mapping="/resources/**" location="/resources/" />
 	
+	<!-- 리소스 매핑 -->
+	<resources location="/WEB-INF/views/images/" mapping="/images/**"></resources>
+	
 	<!-- 스프링에서 지원하는 ViewResolver bean 등록 -->
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

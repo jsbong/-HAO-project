@@ -86,6 +86,7 @@ public class BoardController {
 		int end = pager.getPageEnd();
 
 		List<BoardVO> list = boardService.listAllBoard(searchOption, keyword, start, end); // 게시글 목록
+		
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list); // map에 자료 저장
@@ -128,20 +129,23 @@ public class BoardController {
 
 		BoardVO plist = boardService.previousB(b_no);
 		BoardVO nlist = boardService.nextB(b_no);
+		List<Board_CommentVO> clist = boardService.readComment(b_no);
+		
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("previousB", plist);
 		map.put("nextB", nlist);
+		map.put("clist", clist);
 		model.addAttribute("map", map);
 
 		return "board/view";
 		
 	}
 		// 댓글 작성
-		@RequestMapping(value = "/createCommentBoard", method = RequestMethod.POST)
-		public String createCommentBoard(Board_CommentVO vo) throws Exception {
-			boardService.createCommentBoard(vo);
-			
-			return "board/list";
+	@RequestMapping(value = "/createCommentBoard", method = RequestMethod.POST)
+	public String createCommentBoard(Board_CommentVO vo) throws Exception {
+		boardService.createCommentBoard(vo);
+		
+		return "board/list";
 	}
 }

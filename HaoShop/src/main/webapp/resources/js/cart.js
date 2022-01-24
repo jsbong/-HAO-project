@@ -100,7 +100,7 @@ function calCart() {
 
 function payCart() {
 	var m_no = $("#m_no").val();
-	let c_no0 = [];
+	var c_no0 = [];
 	for(i = 0; i < $("input[name=chk]").length; i++){
 		if ($("input[name=chk]")[i].checked == true) {
 			c_no0.push($("input[name=c_no]")[i].value);

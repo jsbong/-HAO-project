@@ -4,6 +4,7 @@ function buyProduct() {
    var pay_quantity = $("#pay_quantity").val();
    var p_size = $("#p_size").val();
    var hiddenbtn = $("#hiddenbtn").val();
+   var c_no0 = [0];
    if (m_no == "Administrator") {
       swal("", "관리자 권한으로는 이용하실 수 없습니다.", "warning");
    } else if (!m_no) {
@@ -21,6 +22,7 @@ function buyProduct() {
             "p_no" : p_no,
             "pay_quantity" : pay_quantity,
             "p_size" : p_size,
+            "c_no0" : c_no0,
             "hiddenbtn" : hiddenbtn
          },
          success : function(data) {
