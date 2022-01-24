@@ -29,4 +29,6 @@ public interface PaymentService {
 
 	List<Integer> paymentMonth();
 
+	List<Long> paymentMonthPrice();
+
 }

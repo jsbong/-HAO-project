@@ -73,4 +73,8 @@ public class PaymentServiceImpl implements PaymentService {
 		return paymentDAO.paymentMonth();
 	}
 
+	public List<Long> paymentMonthPrice() {
+		return paymentDAO.paymentMonthPrice();
+	}
+
 }

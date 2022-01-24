@@ -33,6 +33,14 @@
 		]]>
 	</select>
 	
+	<select id="paymentMonthPrice" resultType="java.lang.Long">
+		<![CDATA[
+			SELECT sum(PAY_PRICE) as mon_price
+			FROM PAYMENT group by TO_CHAR(PAY_REGDATE, 'MM')
+			order by TO_CHAR(PAY_REGDATE, 'MM')
+		]]>
+	</select>
+	
 	<insert id="insertPayment">
 		<![CDATA[
 			INSERT INTO PAYMENT

@@ -81,11 +81,13 @@ public class HomeController {
 		int start = pager.getPageBegin(); 
 		int end = pager.getPageEnd();
 		List<Integer> pay_M = paymentService.paymentMonth();
+		List<Long> pay_M_P = paymentService.paymentMonthPrice();
 		List<MemberVO> m_list = memberService.getMemberNow();
 		
 		List<PaymentVO> list = paymentService.getOrderListNow(vo, start, end);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("pay_M", pay_M);
+		map.put("pay_M_P", pay_M_P);
 		map.put("list", list);
 		map.put("m_list", m_list);
 		map.put("count", count);

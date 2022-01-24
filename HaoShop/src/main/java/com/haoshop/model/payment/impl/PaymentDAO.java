@@ -77,7 +77,10 @@ public class PaymentDAO {
 	}
 
 	public List<Integer> paymentMonth() {
-		List<Integer> list = mybatis.selectList("PaymentDAO.paymentMonth");
-		return list;
+		return mybatis.selectList("PaymentDAO.paymentMonth");
+	}
+	
+	public List<Long> paymentMonthPrice() {
+		return mybatis.selectList("PaymentDAO.paymentMonthPrice");
 	}
 }

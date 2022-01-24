@@ -23,7 +23,7 @@
 
 <section class="member_section">
   <h1 align="center">관리자 페이지</h1>
-  <h3 align="center">ㅇㅁㄴㅇㅁㄴㅇㅁㅇ</h3>
+  <h3 align="center"></h3>
 <h3>일일 방문자 수</h3>
 <h4><p style="color: red;">${map.cntToday}명</p></h4><br>
 <a href="deliver?sPrd=배송대기중"><h3>배송 대기중인 주문</h3></a>
@@ -44,6 +44,7 @@
 	<div id="bar-10"></div>
 	<div id="bar-11"></div>
 	<div id="bar-12"></div>
+	${map.pay_M_P[0]} ${map.pay_M_P[1]}
 	<div class="container">
 	    <div class="row my-3">
 	        <div class="col">
