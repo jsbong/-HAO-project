@@ -84,16 +84,20 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.getCountBoard(searchOption, keyword);
 	}
 
-	// 댓글
-	// 게시글 쓰기
+	// 댓글 작성
 	public void createCommentBoard(Board_CommentVO vo) throws Exception {
 		boardDAO.createCommentBoard(vo);
 	}
-
+	
+	// 댓글 목록 조회
 	@Override
 	public List<Board_CommentVO> readComment(int b_no) {
 		return boardDAO.readComment(b_no);
 	}
 	
-
+	// 댓글 삭제
+	public void deleteComment(int bc_no) throws Exception{
+		boardDAO.deleteComment(bc_no);
+	}
+	
 }

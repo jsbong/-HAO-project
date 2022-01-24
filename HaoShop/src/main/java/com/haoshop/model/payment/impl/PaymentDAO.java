@@ -1,5 +1,6 @@
 package com.haoshop.model.payment.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,6 +77,7 @@ public class PaymentDAO {
 	}
 
 	public List<Integer> paymentMonth() {
-		return mybatis.selectList("PaymentDAO.paymentMonth");
+		List<Integer> list = mybatis.selectList("PaymentDAO.paymentMonth");
+		return list;
 	}
 }

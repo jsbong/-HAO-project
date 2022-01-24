@@ -75,16 +75,21 @@ public class BoardDAO {
 		return mybatis.selectOne("BoardDAO.getCountBoard", map);
 	}
 	
-	// 댓글
-	// 게시글 쓰기
+	// 댓글 쓰기
 	public void createCommentBoard(Board_CommentVO vo) {
 		mybatis.insert("BoardDAO.createCommentBoard", vo);
 	}
 	
+	// 댓글 목록
 	public List<Board_CommentVO> readComment(int b_no){
 		mybatis.selectList("BoardDAO.readComment", b_no);
 		
 		return mybatis.selectList("BoardDAO.readComment", b_no);
+	}
+	
+	// 댓글 삭제
+	public void deleteComment(int bc_no) {
+		mybatis.update("BoardDAO.deleteComment", bc_no);
 	}
 	
 

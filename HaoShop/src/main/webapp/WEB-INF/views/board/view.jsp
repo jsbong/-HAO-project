@@ -13,7 +13,7 @@
    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
    <script>
-      // 게시물 삭제 확인
+      // 게시물 삭제 확인 (uri타고 삭제)
       function deleteB() {
          swal({
              icon: "warning",
@@ -39,41 +39,57 @@
       
       // 댓글 작성
       function createC() {
-    	  	var b_no = $("#b_no").val();
-			var m_id=$("#m_id").val();
-			var bc_content=$("#bc_content").val();
-			
-			if(bc_content==""){ 
-		 		swal("", "글내용을 입력해 주세요!!.", "error");
-		 		return false; 
-			} else {
-				swal({
-					icon: "warning",
-					text: "댓글 등록을 하시겠습니까?",
-					closeOnClickOutside : false,
-					closeOnEsc : false, 
-					buttons: ["돌아가기", "작성 완료!"],
-					}).then(function(isConfirm) {
-					if (isConfirm) { 
-						swal('등록 완료!','댓글 등록을 완료했습니다.^^','success').then(function(isConfirm) {
-						$.ajax({
-							type : "POST",
-							url : "createCommentBoard",
-							data : {
-								"b_no" : b_no,
-								"m_id" : m_id,
-								"bc_content" : bc_content
-							}, success : function(data) {
-								location.href = "view?b_no=" + b_no;
-							}, error : function(data) {
-								alert("안되네요");
-							}
-						});
-					});
-				}
-			});
-		}
-	}
+         var b_no = $("#b_no").val();
+         var m_id=$("#m_id").val();
+         var bc_content=$("#bc_content").val();
+         if(bc_content==""){ 
+             swal("", "글내용을 입력해 주세요!!.", "error");
+             return false; 
+         } else {
+            swal({
+               icon: "warning",
+               text: "댓글 등록을 하시겠습니까?",
+               closeOnClickOutside : false,
+               closeOnEsc : false, 
+               buttons: ["돌아가기", "작성 완료!"],
+               }).then(function(isConfirm) {
+               if (isConfirm) { 
+                  swal('등록 완료!','댓글 등록을 완료했습니다.^^','success').then(function(isConfirm) {
+                  $.ajax({
+                     type : "POST",
+                     url : "createCommentBoard",
+                     data : {
+                        "b_no" : b_no,
+                        "m_id" : m_id,
+                        "bc_content" : bc_content
+                     }, success : function(data) {
+                        location.href = "view?b_no=" + b_no;
+                     }
+                  });
+               });
+            }
+         });
+      }
+   }
+  
+      
+  // 댓글 삭제 확인
+  function deleteC(bc_no) {
+	  var b_no = $("#b_no").val();
+	  var chking = confirm("정말 댓글을 삭제하시겠습니까?");
+	  if(chking) {
+      	 $.ajax({
+             type : "POST",
+             url : "deleteC",
+             data : {
+                "bc_no" : bc_no
+             }, success : function(data) {
+                location.href = "view?b_no=" + b_no;
+             }
+       	}); 
+	  }
+	  }
+
    </script>
 </head>
 <body>
@@ -83,13 +99,14 @@
    <section class="board_section">
       <!-- 수정,삭제에 필요한 글번호를 hidden 태그에 저장 -->
       <input type="hidden" name="b_no" id="b_no" value="${board.b_no}">
+      <input type="hidden" name="bc_no" id="bc_no" value="${board.bc_no}">
       <c:choose>
-	      <c:when test="${member.m_id eq null}">
-	      	<input type="hidden" id="m_id" value="비회원">
-	      </c:when>
-	      <c:otherwise>
-	      	<input type="hidden" id="m_id" value="${member.m_id}">
-	      </c:otherwise>
+         <c:when test="${member.m_id eq null}">
+            <input type="hidden" id="m_id" value="비회원">
+         </c:when>
+         <c:otherwise>
+            <input type="hidden" id="m_id" value="${member.m_id}">
+         </c:otherwise>
       </c:choose>     
       <div class="board-content">
          <ul class="board_detail">
@@ -116,28 +133,27 @@
                   <li>댓글</li>   
                   <!-- 댓글 작성 -->
                   <li>
-                  	<div class="comment_insert">
-                  		<span><i class="fas fa-comments"></i></span>
-                  		<input type="text" id="bc_content" placeholder="댓글 입력">
-                  		<input type="button" value="등록" onclick="createC()">
-                  	</div>	
+                     <div class="comment_insert">
+                        <span><i class="fas fa-comments"></i></span>
+                        <input type="text" id="bc_content" placeholder="댓글 입력">
+                        <input type="button" value="등록" onclick="createC()">
+                     </div>   
                   </li>
                   <!-- 댓글 -->
                   <c:if test="${fn:length(map.clist) ne 0 }">
-	              	<c:forEach begin="0" end="${(fn:length(map.clist))-1}" var="i">
-						<c:set var="row" value="${map.clist[i]}" />
-						<c:set var="m_id" value="${row.m_id}" />
-						<li class="comment_content" style="padding-bottom: 5px;">
-							<input type="hidden" id="b_no" name="b_no" value="${row.b_no}"/>
-							<h4>${row.m_id}</h4>
-							<span>${row.bc_content}</span>
-							<span>${row.bc_regdate}</span>
-							<c:if test="${member.m_id == m_id }">
-								<span class="deleteComment">삭제</span>
-							</c:if>
-						</li>
-					</c:forEach>           
-				</c:if>
+                    <c:forEach begin="0" end="${(fn:length(map.clist))-1}" var="i">
+                  <c:set var="row" value="${map.clist[i]}" />
+                  <c:set var="m_id" value="${row.m_id}" />
+                  <li class="comment_content" style="padding-bottom: 5;">
+                     <h4>${row.m_id}</h4>
+                     <span>${row.bc_content}</span>
+                     <span>${row.bc_regdate}</span>
+                     <c:if test="${member.m_id == m_id }">
+                        <a href="#" onclick="deleteC(${row.bc_no})"><span class="deleteComment">삭제</span></a>
+                     </c:if>
+                  </li>
+               </c:forEach>           
+            </c:if>
                </ul>
             </li>
             <li>      

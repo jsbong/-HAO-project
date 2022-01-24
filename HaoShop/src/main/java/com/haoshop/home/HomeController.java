@@ -97,5 +97,8 @@ public class HomeController {
 		model.addAttribute("map", map);
 		return "admin/adminpage";
 	}
-	
+	@RequestMapping(value = "/asd", method = RequestMethod.GET)
+	public String asd() {
+		return "admin/asd";
+	}
 }

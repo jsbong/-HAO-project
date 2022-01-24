@@ -41,7 +41,7 @@
 
 	<!-- 글 삭제 -->
 	<delete id="deleteBoard">
-		DELETE FROM BOARD WHERE B_NO = #{b_no} 
+		DELETE FROM BOARD WHERE B_NO = #{b_no}
 	</delete>
 
 	<!-- 글 삭제 체크 -->
@@ -134,9 +134,20 @@
 		)
 	</insert>
 	
-	<!--  댓글 조회  -->
+	<!--  댓글 목록 조회  -->
 	<select id="readComment" resultType="board">
-	SELECT BC_NO, BC_CONTENT, M_ID, BC_REGDATE FROM BOARD_COMMENT WHERE B_NO = #{b_no}
+		SELECT BC_NO, BC_CONTENT, M_ID, BC_REGDATE FROM BOARD_COMMENT WHERE B_NO = #{b_no}
 	</select>
+	
+	
+	<!-- 선택된 댓글 조회 -->
+	<select id="selectComment" resultType="board">
+		SELECT * FROM BOARD_COMMENT WHERE BC_NO = #{bc_no}
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteComment">
+		DELETE FROM BOARD_COMMENT WHERE BC_NO = #{bc_no}
+	</delete>
 	
 </mapper>

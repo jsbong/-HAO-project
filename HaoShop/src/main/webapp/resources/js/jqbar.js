@@ -1,11 +1,4 @@
-﻿/*********************************************
-
-Author : EGrappler.com
-URL    : http://www.egrappler.com
-License: http://www.egrappler.com/license.
-
-*********************************************/
-(function ($) {
+﻿(function ($) {
     $.fn.extend({
         jqbar: function (options) {
             var settings = $.extend({

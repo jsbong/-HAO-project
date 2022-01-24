@@ -11,11 +11,13 @@
 <link rel="stylesheet" href="resources/css/admin_bar.css">
 <link rel="stylesheet" href="resources/css/jqbar.css" />
 <script src="resources/js/jqbar.js" charset="UTF-8"></script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/admin/admin_bar.jsp" %>
+
+
 <section class="member_section">
   <h1 align="center">관리자 페이지</h1>
   <h3 align="center">ㅇㅁㄴㅇㅁㄴㅇㅁㅇ</h3>
@@ -25,7 +27,6 @@
 <h4><p style="color: red;">${map.waitDelCnt}개</p></h4><br>
 <a href="productList?pCnt=30"><h3>재고 부족 상품 (30개 이하)</h3></a>
 <h4><p style="color: red;">${map.p_Cnt}개</p></h4><br>
-${map.pay_M[0]}
 
 <div class="bars">
 	<div id="bar-7"></div>
@@ -36,24 +37,7 @@ ${map.pay_M[0]}
 	<div id="bar-12"></div>
 </div>
 
-<script type="text/javascript">
-
-	$(document).ready(function () {
-		$('#bar-1').jqbar({ label: 'ASP.NET', value: 99, barColor: '#D64747' });
-		$('#bar-2').jqbar({ label: 'C#', value: 99, barColor: '#FF681F' });
-		$('#bar-3').jqbar({ label: 'Javascript', value: 90, barColor: '#ea805c' });
-		$('#bar-4').jqbar({ label: 'HTML5', value: 50, barColor: '#88bbc8' });
-		$('#bar-5').jqbar({ label: 'CSS3', value: 60, barColor: '#939393' });
-		$('#bar-6').jqbar({ label: 'jQuery', value: 70, barColor: '#3a89c9' });
-		$('#bar-7').jqbar({ label: 'Wal', value: 90, barColor: '#D64747', orientation: 'v' });
-		$('#bar-8').jqbar({ label: 'Ohi', barColor: '#FF681F', value: 70, orientation: 'v' });
-		$('#bar-9').jqbar({ label: 'Song', barColor: '#ea805c', value: 50, orientation: 'v' });
-		$('#bar-10').jqbar({ label: 'Pisho', barColor: '#88bbc8', value: 90, orientation: 'v' });
-		$('#bar-11').jqbar({ label: 'Mara', barColor: '#939393', value: 70, orientation: 'v' });
-		$('#bar-12').jqbar({ label: 'Dagha', barColor: '#3a89c9', value: 50, orientation: 'v' });
-	});
-</script>
-
+<script src="resources/js/jqbar.js" type="text/javascript"></script>
 
 <h3>신규 가입 회원</h3>	
 <h4><p style="color: red;">${map.newMemberCnt}명</p></h4>
@@ -181,6 +165,21 @@ ${map.pay_M[0]}
 			</div>
 		</div>
 		<script>
+		
+			$(document).ready(function () {
+				$('#bar-1').jqbar({ label: 'ASP.NET', value: ${map.pay_M[0]}, barColor: '#D64747' });
+				$('#bar-2').jqbar({ label: 'C#', value: ${map.pay_M[1]}, barColor: '#FF681F' });
+				$('#bar-3').jqbar({ label: 'Javascript', value: ${map.pay_M[2]}, barColor: '#ea805c' });
+				$('#bar-4').jqbar({ label: 'HTML5', value: ${map.pay_M[3]}, barColor: '#88bbc8' });
+				$('#bar-5').jqbar({ label: 'CSS3', value: ${map.pay_M[4]}, barColor: '#939393' });
+				$('#bar-6').jqbar({ label: 'jQuery', value: ${map.pay_M[5]}, barColor: '#3a89c9' });
+				$('#bar-7').jqbar({ label: 'Wal', value: ${map.pay_M[6]}, barColor: '#D64747', orientation: 'v' });
+				$('#bar-8').jqbar({ label: 'Ohi', barColor: '#FF681F', value: ${map.pay_M[7]}, orientation: 'v' });
+				$('#bar-9').jqbar({ label: 'Song', barColor: '#ea805c', value: ${map.pay_M[8]}, orientation: 'v' });
+				$('#bar-10').jqbar({ label: 'Pisho', barColor: '#88bbc8', value: ${map.pay_M[9]}, orientation: 'v' });
+				$('#bar-11').jqbar({ label: 'Mara', barColor: '#939393', value: ${map.pay_M[10]}, orientation: 'v' });
+				$('#bar-12').jqbar({ label: 'Dagha', barColor: '#3a89c9', value: ${map.pay_M[11]}, orientation: 'v' });
+			});
 			function list(page) {
 				location.href="adminpage?curPage="+page;
 			}
@@ -201,5 +200,10 @@ ${map.pay_M[0]}
 
 
 </section>
+</body>
+<body>
+
+
+
 </body>
 </html>

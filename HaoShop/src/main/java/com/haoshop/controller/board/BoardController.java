@@ -123,7 +123,7 @@ public class BoardController {
 		search = (String) session.getAttribute("search");
 		session.setAttribute("search", search);
 
-//		curPage = (int) session.getAttribute("curPage");
+		// curPage = (int) session.getAttribute("curPage");
 		curPage = (Integer) session.getAttribute("curPage");
 		session.setAttribute("curPage", curPage);
 
@@ -141,11 +141,20 @@ public class BoardController {
 		return "board/view";
 		
 	}
-		// 댓글 작성
+	// 댓글 작성
 	@RequestMapping(value = "/createCommentBoard", method = RequestMethod.POST)
 	public String createCommentBoard(Board_CommentVO vo) throws Exception {
 		boardService.createCommentBoard(vo);
 		
 		return "board/list";
 	}
+	
+	// 댓글 삭제
+	@RequestMapping("/deleteC")
+	public String deleteComment(int bc_no) throws Exception {
+		boardService.deleteComment(bc_no); // 삭제 처리
+		return "board/view"; // 목록으로 이동 
+	}
+	
+
 }
