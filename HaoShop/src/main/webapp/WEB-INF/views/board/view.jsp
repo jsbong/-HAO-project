@@ -54,7 +54,7 @@
                buttons: ["돌아가기", "작성 완료!"],
                }).then(function(isConfirm) {
                if (isConfirm) { 
-                  swal('등록 완료!','댓글 등록을 완료했습니다.^^','success').then(function(isConfirm) {
+                  swal('등록 완료!','댓글 등록을 완료했습니다.','success').then(function(isConfirm) {
                   $.ajax({
                      type : "POST",
                      url : "createCommentBoard",
@@ -76,19 +76,27 @@
   // 댓글 삭제 확인
   function deleteC(bc_no) {
 	  var b_no = $("#b_no").val();
-	  var chking = confirm("정말 댓글을 삭제하시겠습니까?");
-	  if(chking) {
-      	 $.ajax({
-             type : "POST",
-             url : "deleteC",
-             data : {
-                "bc_no" : bc_no
-             }, success : function(data) {
-                location.href = "view?b_no=" + b_no;
-             }
-       	}); 
-	  }
-	  }
+	  swal({
+          icon: "warning",
+          text: "댓글을 삭제 하시겠습니까?",
+          closeOnClickOutside : false,
+          closeOnEsc : false, 
+          buttons: ["돌아가기", "작성 완료!"],
+          }).then(function(isConfirm) {
+          if (isConfirm) { 
+        	  $.ajax({
+                  type : "POST",
+                  url : "deleteC",
+                  data : {
+                     "bc_no" : bc_no
+                  }, success : function(data) {
+                	  swal('삭제 완료!','댓글 삭제를 완료했습니다!','success').then(function(isConfirm) {
+                     location.href = "view?b_no=" + b_no;});
+                  }
+         		}); 
+       		}
+    	});
+  }
 
    </script>
 </head>
