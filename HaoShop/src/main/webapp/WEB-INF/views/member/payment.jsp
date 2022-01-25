@@ -190,8 +190,8 @@
 							<c:forEach items="${map.list}" var="pay">
 								<li class="chkbox">
 									<input type="hidden" id="p_no" value="${pay.p_no}"/>
-									<input type="hidden" id="pay_price" value="${(pay.p_price - pay.p_discount) * pay.pay_quantity}" />
-									<input type="hidden" id="pay_quantity" value="${pay.pay_quantity}"/>
+									<input type="hidden" id="pay_price" value="${(pay.p_price - pay.p_discount) * map.pay_quantity}" />
+									<input type="hidden" id="pay_quantity" value="${map.pay_quantity}"/>
 									<input type="hidden" id="m_no" value="${member.m_no}" />
 									<ul>
 										<li class="product_name"><h4>${pay.p_name}</h4></li>
@@ -200,10 +200,10 @@
 												<img src="${fn:split(pay.p_img, '*')[0]}" width="100px" height="100px"></a>
 											</div>
 											<div class="size">
-												<span>SIZE : ${pay.p_size} X ${pay.pay_quantity}</span>											
+												<span>SIZE : ${map.p_size} X ${map.pay_quantity}</span>											
 											</div>
 											<div class="price">
-												<c:set var="paySum" value="${(pay.p_price - pay.p_discount)*pay.pay_quantity}"/>
+												<c:set var="paySum" value="${(pay.p_price - pay.p_discount)*map.pay_quantity}"/>
 												<fmt:formatNumber value="${paySum}" pattern="#,###"/>
 											</div>
 										</li>

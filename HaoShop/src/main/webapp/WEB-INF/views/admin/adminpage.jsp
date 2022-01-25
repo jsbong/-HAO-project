@@ -42,50 +42,18 @@
 	
 </div>
 <div class="container">
-        <div class="row my-3">
-            <div class="col">
-                <h4>분기별 판매 현황</h4>
-            </div>
-        </div>
-        <div class="row py-2">
-            <div class="col-md-4 py-1" style="width: 200px">
-                <div class="card">
-                    <div class="card-body"> 
-                    <div>
-						<div id="bar-1"></div>
-						<div id="bar-2"></div>
-						<div id="bar-3"></div>
-						<div id="bar-4"></div>
-						<div id="bar-5"></div>
-						<div id="bar-6"></div>
-						<div id="bar-7"></div>
-						<div id="bar-8"></div>
-						<div id="bar-9"></div>
-						<div id="bar-10"></div>
-						<div id="bar-11"></div>
-						<div id="bar-12"></div>
-					</div>
-				 	</div>
-                </div>
-            </div>
-            <div class="col-md-4 py-1">
-                <div class="card">
-                    <div class="card-body"> <canvas id="chDonut3"></canvas> </div>
-                </div>
-            </div>
-        </div>
+             <h4>분기별 판매 현황</h4>
+            <canvas id="chDonut3" ></canvas>
+            <h4>월별 판매 현황</h4>
+            <canvas id="myChart1"></canvas>
+            <h4>월별 매출액 현황</h4>
+            <canvas id="myChart"></canvas>
+
     </div>
 
-<script src="http://code.jquery.com/jquery-latest.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-<script src="resources/js/jqbar.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <h3>신규 가입 회원</h3>	
 <h4><p style="color: red;">${map.newMemberCnt}명</p></h4>
@@ -213,21 +181,6 @@
 			</div>
 		</div>
 		<script>
-		
-			$(document).ready(function () {
-				$('#bar-1').jqbar({ label: '1월', value: ${map.pay_M[0]}, barColor: '#D64747' , orientation: 'v'});
-				$('#bar-2').jqbar({ label: '2월', value: ${map.pay_M[1]}, barColor: '#FF681F' , orientation: 'v'});
-				$('#bar-3').jqbar({ label: '3월', value: ${map.pay_M[2]}, barColor: '#ea805c' , orientation: 'v'});
-				$('#bar-4').jqbar({ label: '4월', value: ${map.pay_M[3]}, barColor: '#88bbc8' , orientation: 'v'});
-				$('#bar-5').jqbar({ label: '5월', value: ${map.pay_M[4]}, barColor: '#939393' , orientation: 'v'});
-				$('#bar-6').jqbar({ label: '6월', value: ${map.pay_M[5]}, barColor: '#3a89c9' , orientation: 'v'});
-				$('#bar-7').jqbar({ label: '7월', value: ${map.pay_M[6]}, barColor: '#D64747', orientation: 'v' });
-				$('#bar-8').jqbar({ label: '8월', barColor: '#FF681F', value: ${map.pay_M[7]}, orientation: 'v' });
-				$('#bar-9').jqbar({ label: '9월', barColor: '#ea805c', value: ${map.pay_M[8]}, orientation: 'v' });
-				$('#bar-10').jqbar({ label: '10월', barColor: '#88bbc8', value: ${map.pay_M[9]}, orientation: 'v' });
-				$('#bar-11').jqbar({ label: '11월', barColor: '#939393', value: ${map.pay_M[10]}, orientation: 'v' });
-				$('#bar-12').jqbar({ label: '12월', barColor: '#3a89c9', value: ${map.pay_M[11]}, orientation: 'v' });
-			});
 			function list(page) {
 				location.href="adminpage?curPage="+page;
 			}
@@ -268,15 +221,76 @@
 	                options: donutOptions 
 	            }); 
 		    }
+	        
+	        var ctx = document.getElementById('myChart').getContext('2d'); 
+	    	var chart = new Chart(ctx, { // 챠트 종류를 선택 
+	    		type: 'line', // 챠트를 그릴 데이타 
+	    		data: { 
+	    			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], 
+	    			datasets: [
+	    				{ label: 'My First dataset', 
+	    				backgroundColor: 'transparent', 
+	    				borderColor: 'red', 
+	    				data: [${map.pay_M_P[0]},${map.pay_M_P[1]},${map.pay_M_P[2]},${map.pay_M_P[3]},${map.pay_M_P[4]},${map.pay_M_P[5]},
+	    					${map.pay_M_P[6]},${map.pay_M_P[7]},${map.pay_M_P[8]},${map.pay_M_P[9]},${map.pay_M_P[10]},${map.pay_M_P[11]},] }
+	    			] }, // 옵션 
+	    		options: { 
+	    			legend: { display: false },
+	    			title: { display : true, text: '월별 매출 현황' } 
+	    		}
+	    	}); 
+	    	
+	    	var ctx = document.getElementById('myChart1'); 
+			var myChart = new Chart(ctx, { 
+				type: 'bar', 
+				data: { 
+					labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange','Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'], 
+					datasets: [{ 
+						label: '# of Votes', 
+						data: [${map.pay_M[0]},${map.pay_M[1]},${map.pay_M[2]},${map.pay_M[3]},${map.pay_M[4]},${map.pay_M[5]},
+							${map.pay_M[6]},${map.pay_M[7]},${map.pay_M[8]},${map.pay_M[9]},${map.pay_M[10]},${map.pay_M[11]},], 
+						backgroundColor: [
+							'rgba(255, 99, 132, 1)', 
+							'rgba(54, 162, 235, 1)', 
+							'rgba(255, 206, 86, 1)', 
+							'rgba(75, 192, 192, 1)', 
+							'rgba(153, 102, 255, 1)', 
+							'rgba(255, 159, 64, 1)',
+							'rgba(255, 99, 132, 1)', 
+							'rgba(54, 162, 235, 1)', 
+							'rgba(255, 206, 86, 1)', 
+							'rgba(75, 192, 192, 1)', 
+							'rgba(153, 102, 255, 1)', 
+							'rgba(255, 159, 64, 1)'],  
+						borderColor: [
+							'rgba(255, 99, 132, 1)', 
+							'rgba(54, 162, 235, 1)', 
+							'rgba(255, 206, 86, 1)', 
+							'rgba(75, 192, 192, 1)', 
+							'rgba(153, 102, 255, 1)', 
+							'rgba(255, 159, 64, 1)',
+							'rgba(255, 99, 132, 1)', 
+							'rgba(54, 162, 235, 1)', 
+							'rgba(255, 206, 86, 1)', 
+							'rgba(75, 192, 192, 1)', 
+							'rgba(153, 102, 255, 1)', 
+							'rgba(255, 159, 64, 1)'], 
+						borderWidth: 1 }] 
+				}, 
+				options: { 
+					legend: { display: false },
+					title: { display : true, text: '월별 판매량' },
+					scales: { 
+						yAxes: [{ ticks: 
+						{ beginAtZero: true } 
+						}] 
+					} 
+				}
+			}); 
 		</script>
 		
 
 
 </section>
-</body>
-<body>
-
-
-
 </body>
 </html>

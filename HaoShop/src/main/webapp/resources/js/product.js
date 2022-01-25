@@ -5,7 +5,7 @@ function buyProduct() {
    var p_size = $("#p_size").val();
    var hiddenbtn = $("#hiddenbtn").val();
    var c_no0 = [0];
-   if (m_no == "Administrator") {
+   if (m_no == 1) {
       swal("", "관리자 권한으로는 이용하실 수 없습니다.", "warning");
    } else if (!m_no) {
       swal("", "비회원은 이용하실 수 없습니다.", "error");

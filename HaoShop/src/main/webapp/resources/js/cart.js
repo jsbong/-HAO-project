@@ -6,7 +6,7 @@ function insertCart() {
 	var p_no = $("#p_no").val();
 	var pay_quantity = $("#pay_quantity").val();
 	var p_size = $("#p_size").val();
-	if (m_no == "Administrator") {
+	if (m_no == 1) {
 		swal("", "관리자 권한으로는 이용하실 수 없습니다.", "warning");
 	} else if (!m_no) {
 		swal("", "비회원은 장바구니를 이용하실 수 없습니다.", "error");

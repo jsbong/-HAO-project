@@ -62,6 +62,7 @@ public class PaymentController {
 		public String payment(@RequestParam(value="hiddenbtn") String hidden,
 				@RequestParam(value="c_no0[]") int[] c_no0, PaymentVO vo, HttpSession session, Model model) {
 			if (hidden.equals("prdpage")) {
+				System.out.println(vo.getP_size());
 				List<PaymentVO> list = paymentService.getPaymentProduct(vo);
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("list", list);
