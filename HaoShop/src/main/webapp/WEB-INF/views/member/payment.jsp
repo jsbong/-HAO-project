@@ -192,16 +192,17 @@
 									<input type="hidden" id="p_no" value="${pay.p_no}"/>
 									<input type="hidden" id="pay_price" value="${(pay.p_price - pay.p_discount) * pay.pay_quantity}" />
 									<input type="hidden" id="pay_quantity" value="${pay.pay_quantity}"/>
+									<input type="hidden" id="m_no" value="${member.m_no}" />
 									<ul>
 										<li class="product_name"><h4>${pay.p_name}</h4></li>
-										<li>
-											<div>
-												<a href="#"><img src="${fn:split(pay.p_img, '*')[0]}" width="100px" height="100px"></a>
+										<li class="product_info">
+											<div class="img">
+												<img src="${fn:split(pay.p_img, '*')[0]}" width="100px" height="100px"></a>
 											</div>
-											<div>
+											<div class="size">
 												<span>SIZE : ${pay.p_size} X ${pay.pay_quantity}</span>											
 											</div>
-											<div>
+											<div class="price">
 												<c:set var="paySum" value="${(pay.p_price - pay.p_discount)*pay.pay_quantity}"/>
 												<fmt:formatNumber value="${paySum}" pattern="#,###"/>
 											</div>

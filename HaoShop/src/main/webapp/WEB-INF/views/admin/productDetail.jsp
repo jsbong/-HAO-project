@@ -5,13 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>productDetail</title>
-<link rel="stylesheet" href="resources/css/admin_bar.css">
-<link rel="stylesheet" href="resources/css/productDetail.css">
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="resources/ckeditor/ckeditor.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<meta charset="UTF-8">
+	<title>productDetail</title>
+	<link rel="stylesheet" href="resources/css/admin/productDetail.css">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="resources/ckeditor/ckeditor.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
 		// 상품정보 수정
 		function productUp() {
@@ -123,7 +122,7 @@
 	<%@ include file="../admin/admin_bar.jsp" %>
 	<section class="productdetail-content">
 		<div class="productdetail">
-		<h2>PRODUCT_DETAIL</h2>
+		<h2>${product.p_name} 상품정보</h2>
 		<form id="prdForm" action="updatePrd" method="POST" enctype="multipart/form-data">
 			<table class="product_table">
 				<tr>
@@ -162,7 +161,7 @@
 				<tr>
 					<th>상품설명</th>
 					<td>
-					    <textarea name="p_explain" id="p_explain" cols="88" rows="80"></textarea>
+					    <textarea name="p_explain" id="p_explain" cols="88" rows="80" value="${product.p_explain}"></textarea>
                         <script>
                            CKEDITOR.replace('p_explain', {});
                         </script>

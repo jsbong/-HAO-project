@@ -19,6 +19,7 @@ public class PaymentVO {
 
 	private String p_img;
 	private String p_size;
+	private String p_color;
 	private String p_name;
 	private int p_discount;
 	private int p_sum;
@@ -178,4 +179,11 @@ public class PaymentVO {
 		this.c_no = c_no;
 	}
 	
+	public String getP_color() {
+		return p_color;
+	}
+	
+	public void setP_color(String p_color) {
+		this.p_color = p_color;
+	}
 }

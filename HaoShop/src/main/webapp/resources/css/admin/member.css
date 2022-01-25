@@ -1,0 +1,80 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* section 위치 설정 */
+.member_section {
+	color: #000;
+	margin-left: 20%;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+.member_section .memberStatus-content {
+	width: 80%;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+
+.member_section .memberStatus-content > h1 {
+	display: block;
+	font-size: 30px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.member_section .memberStatus-content ul > .totalRight {
+	float: left;
+	margin-left: 5px;
+	margin-bottom: 10px;
+}
+
+.member_section .memberStatus-content ul > .deliveryStatus {
+	float: right;
+	margin-bottom: 10px;
+}
+
+.member_section .memberStatus-content ul > .deliveryStatus span {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.member_section .memberStatus-content ul > .deliveryStatus span.viewDelivery:hover {
+	font-weight: bold;
+}
+
+.member_section .memberStatus-content ul > .status_detail {
+	clear: both;
+}
+
+/* 테이블 설정*/
+.memberStatus_table {
+	width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    border-top: 3px solid #8aa1a1;
+}
+
+.memberStatus_table th{
+	text-align:center;
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    color: #8aa1a1;
+    border: 1px solid #ddd;
+}
+.memberStatus_table td{
+	text-align:center;
+	width: 150px;
+	height: 10px;
+	padding: 10px;  
+	border: 1px solid #ddd;  
+}
+
+.paging {
+	text-align: center;
+	margin-top: 30px;
+}
+
+/* memberList에서 사용하는 설정 */
+.memberNo:hover {
+	font-weight: bold;
+}

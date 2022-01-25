@@ -97,7 +97,7 @@
 					SELECT P_NO, PAY_NO, PAY_REGDATE, P_NAME, PAY_STATE, P_IMG,
 					((P_PRICE - P_DISCOUNT) * PAY_QUANTITY) AS P_SUM
 					FROM PAYMENT NATURAL JOIN PRODUCT WHERE M_NO = #{m_no}
-					<include refid="myp"></include>
+					<!-- <include refid="myp"></include> -->
 				) ORDER BY PAY_NO DESC
 			) A
 		) WHERE RN BETWEEN #{start} AND #{end}
@@ -135,7 +135,7 @@
 	
 	<select id="orderCount" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM PAYMENT WHERE M_NO = #{m_no}
-		<include refid="myp"></include>
+		<!-- <include refid="myp"></include> -->
 	</select>
 	
 	<!-- 비밀번호 찾기 시 회원 확인 -->

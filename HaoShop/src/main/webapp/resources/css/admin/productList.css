@@ -1,0 +1,65 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* section 위치 설정 */
+.productList_section {
+	width: 80%;
+	margin-left: 20%;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+
+.productList_section .productList-content {
+   width: 80%;
+   margin: 0 auto;
+   padding: 30px 0;
+}
+
+.productList_section .productList-content > h1 {
+	display: block;
+	font-size: 30px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+/* 테이블 설정*/
+.productList_section .productList-content .productList_table {
+	width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    border-top: 3px solid #8aa1a1;
+}
+
+.productList_section .productList-content .productList_table th {
+	text-align:center;
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    color: #8aa1a1;
+    border: 1px solid #ddd;
+}
+
+.productList_section .productList-content .productList_table td {
+	text-align:center;
+	width: 150px;
+	padding: 10px;  
+	border: 1px solid #ddd;
+}
+
+.productList_section .productList-content .productList_table td .productDetail:hover {
+	font-weight: bold;
+}
+
+.productList_section .productList-content .productList_table td:last-child {
+	text-align: left;
+	height: 100px;
+	display: block;
+	border: 0;
+	border-bottom: 1px solid #ccc;
+	overflow: auto;
+}
+
+.paging {
+	text-align: center;
+	margin-top: 30px;
+}

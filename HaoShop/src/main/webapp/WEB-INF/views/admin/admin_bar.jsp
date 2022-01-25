@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>admin_bar</title>
-    <link rel="stylesheet" href="resources/css/admin_bar.css">
+    <link rel="stylesheet" href="resources/css/admin/admin_bar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
 	$(document).ready(function() {
@@ -34,14 +34,14 @@
 <body>
     <nav class="admin_bar">
         <ul class="category_admin">
-            <li data-tab="adminpage"><a href="adminpage">ADMIN PAGE</a></li>
-            <li data-tab="journal"><a href="journal">COLLECTION</a></li>
-            <li class="product_list">PRODUCT <span>&#10094;</span>
-            <li class="sub" data-tab="prdinsert"><a href="prdinsert">&#187; PRODUCT REGISTER</a></li>
-            <li class="sub" data-tab="productList"><a href="productList">&#187; PRODUCT LIST</a></li>
-            <li data-tab="memberList">MEMBER</li>
-            <li data-tab="deliver">DELIVER</li>
-          	<li data-tab="main">MAIN PAGE</li>
+            <li data-tab="adminpage"><a href="adminpage">관리자 페이지</a></li>
+            <li data-tab="journal"><a href="journal">저널 등록</a></li>
+            <li class="product_list">상품 페이지<span>&#10094;</span>
+            <li class="sub" data-tab="prdinsert"><a href="prdinsert">&#187; 상품 등록</a></li>
+            <li class="sub" data-tab="productList"><a href="productList">&#187; 상품 리스트</a></li>
+            <li data-tab="memberList">회원 목록</li>
+            <li data-tab="deliver">배송 현황</li>
+          	<li data-tab="main">메인 이동</li>
         </ul>
     </nav>
 

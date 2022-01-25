@@ -2,10 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>collection</title>
-	<link rel="stylesheet" href="resources/css/admin_bar.css">
-	<link rel="stylesheet" href="resources/css/insertProduct.css">
+	<meta charset="UTF-8">
+	<title>collection</title>
+	<link rel="stylesheet" href="resources/css/admin/insertProduct.css">
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="resources/ckeditor/ckeditor.js"></script>
     <script>
@@ -33,12 +32,11 @@
 </head>
 <body>
 	<!-- navigation -->
-	<%@ include file="../admin/admin_bar.jsp" %>
-	
+	<%@ include file="../admin/admin_bar.jsp" %>	
 	<!-- collection section -->
 	<section class="insert_section">
 		<div class="insert_div">
-			<h2 align="center">COLLECTION REGISTRATION</h2>
+			<h1>저널 등록</h1>
 			<form id="fileForm" name="form1" method="post" enctype="multipart/form-data">
 				<table class="insert_table">
 					<tr>

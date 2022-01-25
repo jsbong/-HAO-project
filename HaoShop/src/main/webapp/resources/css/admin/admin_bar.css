@@ -1,0 +1,82 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, 
+strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, 
+tbody, tfoot, thead, tr, th, td{
+    margin:0;padding:0;
+}
+a {
+    color: inherit; text-decoration: inherit;
+}
+img {
+    vertical-align: middle;
+}
+a img {
+    border: none;
+}
+li {
+    list-style: none;
+}
+address, em, i {
+    font-style: normal;
+}
+a:focus {
+    outline: none
+}
+button:focus {
+    outline: none
+}
+
+/* layout */
+/* 관리자 메뉴목록(.admin_bar) 설정 */
+.admin_bar {
+    width: 20%;
+    height: 100vh;
+    position: fixed;
+    border-right: 1px solid #ddd;
+    background: #ddd;
+    overflow: hidden;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.admin_bar ul li{
+    display:  block;
+    text-transform: uppercase; /* 대문자 */
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 2px; /* 글자 사이 간격 */
+    color: #8aa1a1;
+    padding: 15px 15px;
+    transition: all 0.7s ease-out;
+    background: #ddd;
+    border-bottom: 1px solid #8aa1a1;
+    cursor: pointer;
+}
+
+.admin_bar li:hover {
+    background: #8aa1a1;
+    color: black;
+}
+  
+.admin_bar .category_admin  {
+    display:block;
+}
+
+/* PRODUCT 리스트 하단 설정 */
+.admin_bar .sub {
+    display: none;
+    padding-left: 30px;
+}
+
+.admin_bar .category_admin .product_list span {
+    float: right;
+    margin-right: 10px;
+}
+
