@@ -27,7 +27,7 @@
 							<select name="cate_main_name" id="cate_main_name" onchange="main_nameChange()">
 								<option value="" selected>::선택::</option>
 								<option value="100" data-tab="outer">OUTER</option>
-								<option value="200" data-tab="top">TOP</option>
+								<option value="200" data-tab="top" selected="selected">TOP</option>
 								<option value="300" data-tab="bottom">BOTTOM</option>
 								<option value="400" data-tab="etc">ETC</option>
 							</select>
@@ -85,13 +85,13 @@
                   	<tr>
                      	<th>상품가격</th>
                      	<td>
-                        	<input type="text" name="p_price" id="p_price" />
+                        	<input type="text" name="p_price" id="p_price" value="188000"/>
                      	</td>
                   	</tr>
                   	<tr>
                      	<th>할인가</th>
                      	<td>
-                        	<input type="text" name="p_discount" id="p_discount" />
+                        	<input type="text" name="p_discount" id="p_discount" value="0"/>
                      	</td>
                   	</tr>
                   	<tr>
@@ -103,13 +103,13 @@
                   	<tr>
                      	<th>상품사이즈</th>
                      	<td>
-                        	<input type="text" name="p_size" id="p_size" />
+                        	<input type="text" name="p_size" id="p_size" value="S,M,L,XL"/>
                      	</td>
                   	</tr>
                   	<tr>
                      	<th>상품재고</th>
                      	<td>
-                        	<input type="text" name="p_amount" id="p_amount" />
+                        	<input type="text" name="p_amount" id="p_amount" value="52"/>
                      	</td>
                   	</tr>
                   	<tr>

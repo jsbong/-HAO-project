@@ -98,5 +98,9 @@ public class MemberDAO {
 	public List<MemberVO> getMemberNow() {
 		return mybatis.selectList("MemberDAO.getMemberNow");
 	}
+
+	public void updateMem(MemberVO vo) {
+		mybatis.update("MemberDAO.updateMem", vo);
+	}
 }
 

@@ -47,4 +47,6 @@ public interface MemberService {
 	int getCountMemberNow();
 
 	List<MemberVO> getMemberNow();
+
+	void updateMem(MemberVO vo);
 }

@@ -66,6 +66,20 @@ public class MemberController {
 		session.setAttribute("map", map);
 		return "admin/memberDetail";
 	}
+	
+	//회원 수정(관리자)
+	@RequestMapping(value = "/updateMem", method = RequestMethod.POST)
+	public String updateMem(MemberVO vo) {
+		memberService.updateMem(vo);
+		return "admin/memberList";
+	}
+	
+	//회원 삭제(관리자)
+	@RequestMapping(value = "/deleteMem", method = RequestMethod.POST)
+	public String deleteMem(MemberVO vo) {
+		memberService.deleteMember(vo);
+		return "admin/memberList";
+	}
 
 	// 회원 주문내역 뷰 (페이징 처리)
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)

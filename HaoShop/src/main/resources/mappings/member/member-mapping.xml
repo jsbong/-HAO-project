@@ -63,6 +63,17 @@
 		M_ID = #{m_id}
 	</update>
 	
+	<!-- 회원 수정 관리자 -->
+	<update id="updateMem">
+		UPDATE MEMBER
+		SET
+		M_NAME = #{m_name},
+		M_EMAIL = #{m_email},
+		M_PHONE = #{m_phone},
+		WHERE
+		M_NO = #{m_no}
+	</update>
+	
 	<!-- 로그인 -->
 	<select id="login" resultMap="member">
 		<![CDATA[

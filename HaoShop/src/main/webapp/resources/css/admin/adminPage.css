@@ -1,0 +1,165 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* layout */
+/* adminpage_section */
+.adminpage_section {
+	width: 80%;
+	margin-left: 20%;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size: 14px;
+}
+
+.adminpage_section .adminpage-content {
+   width: 90%;
+   margin: 0 auto;
+   padding: 30px 0;
+}
+
+.adminpage_section .adminpage-content > h1 {
+	font-size: 30px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.adminpage_section .adminpage-content > h4 {
+	font-size: 18px;	
+}
+
+/* 그래프 블록 설정 */
+.graph_container {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+/* 월별 매출액 설정 */
+.graph_container .monthly_payment {
+	width: 100%;
+	padding: 20px;
+	margin: 0 auto;
+	background: rgba(247, 247, 247);
+	position: relative;
+}
+
+.graph_container .monthly_payment .monthly_payment_title {
+	display: inline-block;
+	font-size: 18px;
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-weight: bold;
+}
+
+/* 분기별 매출 건수 설정 */
+.graph_container .quarterly_amount {
+	margin-top: 20px;
+	display: inline-block;
+	width: 49.5%;
+	padding: 20px;
+	margin-right: 0.3%;
+	background: rgba(247, 247, 247);
+}
+
+.graph_container .quarterly_amount .quarterly_amount_title {
+	display: inline-block;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/* 월별 매출 건수 설정 */
+.graph_container .monthly_amount {
+	margin-top: 20px;
+	display: inline-block;
+	padding: 20px;
+	width: 49.5%;
+	background: rgba(247, 247, 247);
+}
+
+.graph_container .monthly_amount .monthly_amount_title {
+	display: inlin-block;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/* 신규 가입 회원 설정 */
+.todaySignup {
+	background: rgba(247, 247, 247);
+	padding: 20px;
+	margin-top: 10px;
+}
+
+.todaySignup > h4 {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.todaySignup ul {
+	padding: 10px;
+}
+
+.todaySignup ul .totalLeft {
+	margin-bottom: 5px;
+}
+
+.todaySignup ul .status_detail .Status_table {
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+	border-top: 3px solid #8aa1a1;
+	background: transparent;
+}
+
+.todaySignup ul .status_detail .Status_table th {
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+.todaySignup ul .status_detail .Status_table td {
+	padding: 10px;
+	border: 1px solid #ccc;	
+}
+
+/* 페이징 처리 */
+.paging {
+	text-align: center;
+	margin-top: 30px;
+}
+
+/* 배송 대기 및 재고 부족 상품 설정 */
+.haoshopStatus {
+	background: rgba(247, 247, 247);
+	padding: 20px;
+	margin-top: 10px;
+}
+
+.haoshopStatus h3 {
+	font-size: 18px;
+	background: #8aa1a1;
+	text-align: center;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.haoshopStatus h3 {
+	font-size: 16px;
+	color: #000;
+	font-weight: bold;
+}
+
+.haoshopStatus h3:hover .current {
+	display: none;
+}
+
+.haoshopStatus h3 .hide {
+	display: none;
+}
+
+.haoshopStatus h3:hover .hide {
+	display: inline-block;
+}

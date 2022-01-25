@@ -163,4 +163,8 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> getMemberNow() {
 		return memberDAO.getMemberNow();
 	}
+	
+	public void updateMem(MemberVO vo) {
+		memberDAO.updateMem(vo);
+	}
 }

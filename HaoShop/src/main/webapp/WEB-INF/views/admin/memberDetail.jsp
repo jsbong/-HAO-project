@@ -8,6 +8,7 @@
 	<meta charset="UTF-8">
 	<title>memberDetail</title>
 	<link rel="stylesheet" href="resources/css/admin/memberDetail.css">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 	<!-- admin_bar -->
@@ -20,22 +21,27 @@
 				<tr>
 					<th>회원 번호</th>
 					<td>${memberdetail.m_no}</td>
+					<input type="hidden" id="m_no" name="m_no" value="${memberdetail.m_name}">
 				</tr>
 				<tr>
 					<th>회원 이름</th>
-					<td>${memberdetail.m_name}</td>
+					<td><input type="text" id="m_name" name="m_name" value="${memberdetail.m_name}"></td>
 				</tr>
 				<tr>
 					<th>회원 생년월일</th>
-					<td>${memberdetail.m_birth}</td>
+					<td>
+						<fmt:parseDate var="parseRegDate" value="${memberdetail.m_birth}" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate var="resultRegDt" value="${parseRegDate}" pattern="yyyy-MM-dd"/>
+						${resultRegDt}
+					</td>	
 				</tr>
 				<tr>
 					<th>회원 이메일(ID)</th>
-					<td>${memberdetail.m_email}</td>
+					<td><input type="text" id="m_email" name="m_email" value="${memberdetail.m_email}"></td>
 				</tr>
 				<tr>
 					<th>회원 핸드폰 번호</th>
-					<td>${memberdetail.m_phone}</td>
+					<td><input type="text" id="m_phone" name="m_phone" value="${memberdetail.m_phone}"></td>
 				</tr>
 				<tr>
 					<th>회원 가입일</th>
@@ -110,8 +116,84 @@
 						</div>
 					</td>
 				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="button" value="회원 수정" onclick="updateMem()">
+						<input type="button" value="회원 삭제" onclick="deleteMem(${memberdetail.m_no})">
+					</td>
+				</tr>
 			</table>
 		</div>
 	</section>
+	<script>
+		function deleteMem(m_no) {
+		   if (m_no == 1) {
+		      swal("", "관리자는 삭제할 수 없습니다.", "warning");
+		   } else {
+	            swal({
+	                icon: "warning",
+	                text: "해당 회원을  삭제 하시겠습니까?",
+	                closeOnClickOutside : false,
+	                closeOnEsc : false, 
+	                buttons: ["돌아가기", "삭제"],
+	                }).then(function(isConfirm) {
+	                if (isConfirm) { 
+	                   swal('삭제 완료!','해당 회원이 삭제 되었습니다','success').then(function(isConfirm) {
+	                   $.ajax({
+	                      type : "POST",
+	                      url : "deleteMem",
+	                      data : {
+	                         "m_no" : m_no
+	                      }, success : function(data) {
+	                         location.href = "memberList";
+	                      }
+	                   });
+	                });
+	             }
+	          });
+	       }
+		}
+		
+		function updateMem() {
+		   var m_no = $("#m_no").val();
+		   var m_name = $("#m_name").val();
+		   var m_email = $("#m_email").val();
+		   var m_phone = $("#m_phone").val();
+		   if (!m_no) {
+		      swal("", "회원번호를 입력하세요", "warning");
+		   } else if (!m_name) {
+		      swal("", "이름를 입력하세요", "warning");
+		   } else if (!m_email) {
+		      swal("", "이메일을 입력하세요", "warning");
+		   } else if (!m_phone) {
+		      swal("", "번호를 입력하세요", "warning");
+		   } else {
+	            swal({
+	                icon: "warning",
+	                text: "해당 회원을  수정 하시겠습니까?",
+	                closeOnClickOutside : false,
+	                closeOnEsc : false, 
+	                buttons: ["돌아가기", "수정"],
+	                }).then(function(isConfirm) {
+	                if (isConfirm) { 
+	                   swal('수정 완료!','해당 회원이 수정 되었습니다','success').then(function(isConfirm) {
+	                   $.ajax({
+	                      type : "POST",
+	                      url : "updateMem",
+	                      data : {
+	                         "m_no" : m_no,
+	                         "m_name" : m_name,
+	                         "m_email" : m_email,
+	                         "m_phone" : m_phone
+	                      }, success : function(data) {
+	                         location.href = "memberDetail?m_no=" + m_no;
+	                      }
+	                   });
+	                });
+	             }
+	          });
+	       }
+		}
+	</script>
 </body>
 </html>
