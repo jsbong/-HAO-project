@@ -38,6 +38,7 @@ button:focus {
 .visual {
     color: #fff;
     background: none;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 /* .slide 설정 */

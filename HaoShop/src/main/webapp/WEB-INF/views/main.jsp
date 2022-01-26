@@ -131,7 +131,7 @@
             </div>
         </div>
         <div class="menu"> <!-- 고정된 슬라이드 -->
-            <a href="hao.jsp">About us</a>
+            <a href="about">About us</a>
         </div>
     </section>
     
@@ -148,37 +148,37 @@
             <ul class="shop_cate-detail">
                 <li>
                     <p class="img">
-                        <a href="#"><img src="resources/img/visual_01.jpg" alt=""></a>
+                        <a href="category?cate_no=100000"><img src="resources/img/product/100001/collarless cardigan-black-04.jpg" alt=""></a>
                     </p>
-                    <h3>JACKET</h3>
-                    <a href="#">View more</a>
+                    <h3>OUTER</h3>
+                    <a href="category?cate_no=100000">View more</a>
                 </li>
                 <li>
                     <p class="img">
-                        <a href="#">
-                            <img src="resources/img/visual_02.jpg" alt="">
+                        <a href="category?cate_no=100001">
+                            <img src="resources/img/product/100001/contrast panel leather jacket-black-04.jpg" alt="">
+                        </a>
+                    </p>
+                        <h3>JACKET</h3>
+                        <a href="category?cate_no=100001">View more</a>
+                </li>
+                <li>
+                    <p class="img">
+                        <a href="category?cate_no=100002">
+                            <img src="resources/img/product/100002/airforce mouton coat-black-04.jpg" alt="">
                         </a>
                     </p>
                         <h3>COAT</h3>
-                        <a href="#">View more</a>
+                        <a href="category?cate_no=100002">View more</a>
                 </li>
                 <li>
                     <p class="img">
-                        <a href="#">
-                            <img src="resources/img/visual_03.jpg" alt="">
+                        <a href="category?cate_no=100003">
+                            <img src="resources/img/product/100003/ferndail down parka-black-04.jpg" alt="">
                         </a>
                     </p>
                         <h3>DOWN JACKET</h3>
-                        <a href="#">View more</a>
-                </li>
-                <li>
-                    <p class="img">
-                        <a href="#">
-                            <img src="resources/img/visual_04.jpg" alt="">
-                        </a>
-                    </p>
-                        <h3>SHIRTS</h3>
-                        <a href="#">View more</a>
+                        <a href="category?cate_no=100003">View more</a>
                 </li>
             </ul>
         </div>
@@ -186,37 +186,37 @@
             <ul class="shop_cate-detail">
                 <li>
                     <p class="img">
-                        <a href="#"><img src="resources/img/visual_03.jpg" alt=""></a>
+                        <a href="category?cate_no=200001"><img src="resources/img/product/200001/dw long sleeves-grey-4.jpg" alt=""></a>
                     </p>
-                    <h3>JACKET</h3>
-                    <a href="#">View more</a>
+                    <h3>SWEAT</h3>
+                    <a href="category?cate_no=200001">View more</a>
                 </li>
                 <li>
                     <p class="img">
-                        <a href="#">
-                            <img src="resources/img/visual_04.jpg" alt="">
+                        <a href="category?cate_no=200002">
+                            <img src="resources/img/product/200002/oversized crewneck knit-oatmeal melange-4.jpg" alt="">
                         </a>
                     </p>
-                        <h3>COAT</h3>
-                        <a href="#">View more</a>
+                        <h3>KNITWEAT</h3>
+                        <a href="category?cate_no=200002">View more</a>
                 </li>
                 <li>
                     <p class="img">
-                        <a href="#">
-                            <img src="resources/img/visual_01.jpg" alt="">
+                        <a href="category?cate_no=200003">
+                            <img src="resources/img/product/200003/oversized shirt-beige (4).jpg" alt="">
                         </a>
                     </p>
-                        <h3>DOWN JACKET</h3>
-                        <a href="#">View more</a>
+                        <h3>SHIRT</h3>
+                        <a href="category?cate_no=200003">View more</a>
                 </li>
                 <li>
                     <p class="img">
-                        <a href="#">
-                            <img src="resources/img/visual_02.jpg" alt="">
+                        <a href="category?cate_no=200004">
+                            <img src="resources/img/product/200004/cba vest-black nylon washer (3).jpg" alt="">
                         </a>
                     </p>
-                        <h3>SHIRTS</h3>
-                        <a href="#">View more</a>
+                        <h3>VEST</h3>
+                        <a href="category?cate_no=200004">View more</a>
                 </li>
             </ul>
         </div>
@@ -224,37 +224,30 @@
             <ul class="shop_cate-detail">
                 <li>
                     <p class="img">
-                        <a href="#"><img src="resources/img/visual_04.jpg" alt=""></a>
+                        <a href="category?cate_no=300000">
+                        	<img src="resources/img/product/300001/one tuck wide denim  indigo (4).jpg" alt="">
+                        </a>
                     </p>
-                    <h3>JACKET</h3>
-                    <a href="#">View more</a>
+                    <h3>BOTTOM</h3>
+                    <a href="category?cate_no=300000">View more</a>
                 </li>
                 <li>
                     <p class="img">
-                        <a href="#">
-                            <img src="resources/img/visual_01.jpg" alt="">
+                        <a href="category?cate_no=300001">
+                            <img src="resources/img/product/300001/cargo pants  charcoal (4).jpg" alt="">
                         </a>
                     </p>
-                        <h3>COAT</h3>
-                        <a href="#">View more</a>
+                        <h3>TROUSER</h3>
+                        <a href="category?cate_no=300001">View more</a>
                 </li>
                 <li>
                     <p class="img">
-                        <a href="#">
-                            <img src="resources/img/visual_02.jpg" alt="">
+                        <a href="category?cate_no=300002">
+                            <img src="resources/img/product/300002/dw shorts  black (4).jpg" alt="">
                         </a>
                     </p>
-                        <h3>DOWN JACKET</h3>
-                        <a href="#">View more</a>
-                </li>
-                <li>
-                    <p class="img">
-                        <a href="#">
-                            <img src="resources/img/visual_03.jpg" alt="">
-                        </a>
-                    </p>
-                        <h3>SHIRTS</h3>
-                        <a href="#">View more</a>
+                        <h3>SHORT</h3>
+                        <a href="category?cate_no=300002">View more</a>
                 </li>
             </ul>
         </div>
@@ -262,58 +255,42 @@
             <ul class="shop_cate-detail">
                 <li>
                     <p class="img">
-                        <a href="#"><img src="resources/img/visual_04.jpg" alt=""></a>
+                        <a href="category?cate_no=400000">
+                        	<img src="resources/img/product/400001/original 2039-black (4).jpg" alt="">
+                        </a>
                     </p>
-                    <h3>JACKET</h3>
-                    <a href="#">View more</a>
+                    <h3>ETC</h3>
+                    <a href="category?cate_no=400000">View more</a>
                 </li>
                 <li>
                     <p class="img">
-                        <a href="#">
-                            <img src="resources/img/visual_03.jpg" alt="">
+                        <a href="category?cate_no=400001">
+                            <img src="resources/img/product/400001/chambord-lisse noir (1).jpg" alt="">
                         </a>
                     </p>
-                        <h3>COAT</h3>
-                        <a href="#">View more</a>
-                </li>
-                <li>
-                    <p class="img">
-                        <a href="#">
-                            <img src="resources/img/visual_02.jpg" alt="">
-                        </a>
-                    </p>
-                        <h3>DOWN JACKET</h3>
-                        <a href="#">View more</a>
-                </li>
-                <li>
-                    <p class="img">
-                        <a href="#">
-                            <img src="resources/img/visual_01.jpg" alt="">
-                        </a>
-                    </p>
-                        <h3>SHIRTS</h3>
-                        <a href="#">View more</a>
+                        <h3>SHOES</h3>
+                        <a href="category?cate_no=400001">View more</a>
                 </li>
             </ul>
         </div>
     </section>
     
-        <!-- collection section -->
+    <!-- collection section -->
     <section class="collection">
         <div class="collection_inner hideme">
             <div class="textBox">
-                <h3 class="title_s">COLLECTION</h3>
-                <p>21FW HAO SHOP</p>
-                <a href="#" class="title_btn">View more</a>
+                <h3 class="title_s">JOURNAL</h3>
+                <p>BY HOW ABOUT OOTD</p>
+                <a href="journalList" class="title_btn">View more</a>
                 <ul class="collection_list">
                     <li>
-                        <a href="#"><img src="resources/img/visual_01.jpg" alt=""></a>
+                        <a href="journalList"><img src="resources/img/collection/COAT STYLING (1).jpg" alt=""></a>
                     </li>
                     <li>
-                        <a href="#"><img src="resources/img/visual_02.jpg" alt=""></a>
+                        <a href="journalList"><img src="resources/img/collection/COAT STYLING (6).jpg" alt=""></a>
                     </li>
                     <li>
-                        <a href="#"><img src="resources/img/visual_03.jpg" alt=""></a>
+                        <a href="journalList"><img src="resources/img/collection/COAT STYLING (7).jpg" alt=""></a>
                     </li>
                 </ul>
             </div>
