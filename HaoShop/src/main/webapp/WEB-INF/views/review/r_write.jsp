@@ -33,7 +33,7 @@ function createR() {
 			 buttons: ["돌아가기", "작성 완료!"],
 			}).then(function(isConfirm) {
 			  if (isConfirm) { 
-			    swal('등록 완료!','게시글 등록을 완료했습니다.^^','success').then(function(isConfirm)
+			    swal('등록 완료!','게시글 등록을 완료했습니다.','success').then(function(isConfirm)
 			    	{
 			    		$.ajax({
 							type : "POST",

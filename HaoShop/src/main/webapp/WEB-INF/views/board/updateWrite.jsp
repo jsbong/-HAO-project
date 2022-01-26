@@ -33,7 +33,7 @@
 				 buttons: ["돌아가기", "수정 완료!"],
 				}).then(function(isConfirm) {
 				  if (isConfirm) {
-				    swal('수정 완료!','게시글 수정을 완료했습니다.^^','success').then(function(isConfirm)
+				    swal('수정 완료!','게시글 수정을 완료했습니다.','success').then(function(isConfirm)
 				    	{
 				    		$.ajax({
 								type : "POST",

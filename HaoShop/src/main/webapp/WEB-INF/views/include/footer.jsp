@@ -27,7 +27,7 @@
                 <li>
                     <p>HELP</p>
                     <p><a href="#">고객센터</a></p>
-                    <p><a href="#">PRICACY</a></p>
+                    <p><a href="#">PRIVACY</a></p>
                     <p><a href="#">교환 및 환불</a></p>
                 </li>
                 <li>

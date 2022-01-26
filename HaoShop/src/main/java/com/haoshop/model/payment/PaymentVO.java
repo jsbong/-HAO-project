@@ -8,6 +8,7 @@ public class PaymentVO {
 	private int m_no;
 	private int p_no;//
 	private int pay_quantity;
+	private String m_id;
 	private String m_addr;
 	private String m_phone;
 	private int p_price;
@@ -59,6 +60,14 @@ public class PaymentVO {
 		this.pay_quantity = pay_quantity;
 	}
 
+	public String getM_id() {
+		return m_id;
+	}
+	
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+	
 	public String getM_addr() {
 		return m_addr;
 	}
