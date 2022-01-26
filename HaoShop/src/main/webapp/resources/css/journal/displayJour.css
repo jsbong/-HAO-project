@@ -10,12 +10,12 @@
 }
 
 .journal_section .journal-content {
-	width: 70%;
+	width: 900px;
 	margin: 0 auto;
 }
 
 .journal_section .journal-content .journal_detail {
-	width: 100%;
+	width: 900px;
 	text-align: center;
 }
 
@@ -29,11 +29,14 @@
 }
 
 .journal_section .journal-content .journal_detail .jour_explain {
-	margin-top: 70px;
+	margin-top: 120px;
 }
 
 .journal_section .journal-content .journal_detail .jour_explain p {
-	width: 100%;
+	width: 900px;
 	line-height: 2;
-	font-weight: bold;
+}
+
+.journal_section .journal-content .journal_detail .jour_explain img {
+	width: 100%;
 }

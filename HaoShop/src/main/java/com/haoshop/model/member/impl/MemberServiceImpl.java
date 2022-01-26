@@ -69,7 +69,7 @@ public class MemberServiceImpl implements MemberService {
 			// mail 작성 관련 
 			MailUtils sendMail = new MailUtils(mailSender);
 
-			sendMail.setSubject("[HAP Shop] 임시 비밀번호 발급");
+			sendMail.setSubject("[HAO Shop] 임시 비밀번호 발급");
 			sendMail.setText(new StringBuffer().append("<h1>[임시 비밀번호 입니다]</h1><Strong>")
 					.append(authkey)
 					.append("</Strong><br>즉시 비밀번호를 변경해 주세요")

@@ -53,7 +53,7 @@ function doInsertProduct() {
                location.href="prdinsert";
             });
          }, error : function(error) {
-            swal("왜", cate_no, "error");
+            swal("X", "상품이 등록에 실패 했습니다.", "error");
          }
       });
    }

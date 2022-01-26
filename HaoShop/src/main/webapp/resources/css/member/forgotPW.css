@@ -1,0 +1,121 @@
+@CHARSET "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, 
+strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, 
+tbody, tfoot, thead, tr, th, td{
+    margin:0;padding:0;
+}
+a {
+    color: inherit; text-decoration: inherit;
+}
+img {
+    vertical-align: middle;
+}
+a img {
+    border: none;
+}
+li {
+    list-style: none;
+}
+address, em, i {
+    font-style: normal;
+}
+a:focus {
+    outline: none
+}
+button:focus {
+    outline: none
+}
+
+/* layout */
+section {
+	width: 100%;
+	font-family: 'Nanum Gothic', sans-serif;
+	padding: 80px 0;
+}
+
+section > div {
+	width: 60%;
+	margin: 0 auto;
+}
+
+section input {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	margin: 0;
+	outline: none;
+	-webkit-appearance: none;
+}
+
+#login-form {
+	width: 100%;
+}
+
+#login-form h1 {
+	background-color: #282830;
+	border-radius: 5px 5px 0 0;
+	color: #fff;
+	font-size: 14px;
+	margin: 0;
+	padding: 10px 0px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#login-form fieldset {
+	text-align: center;
+	position : relative;
+	background: #fff;
+	border: 1px solid black;
+	border-radius: 0 0 5px 5px;
+	margin: 0;
+	padding: 5px 10px;
+	position: relative;
+}
+
+#login-form input {
+	font-size: 14px;
+}
+
+#login-form P {
+	margin-left: 0;
+	margin-top: 15px;
+}
+
+#login-form label {
+	display: inline-block;
+	text-align: center;
+	width: 20%;
+}
+
+#login-form input[type="text"] {
+	border-radius: 3px 3px 0 0;
+	border: 1px solid #dcdcdc;
+	padding: 10px;
+	width: 70%;
+}
+
+#login-form input[type="button"] {
+	width: 70%;
+	background: #ccc;
+	border-radius: 3px;
+	color: #fff;
+	font-weight: bold;
+	margin-top: 15px;
+	margin-bottom: 5px;
+	padding: 10px;
+	cursor: pointer;
+	transition: all 0.7s ease-out;
+}
+
+#login-form input[type="button"]:hover {
+	background: #8aa1a1;
+}
