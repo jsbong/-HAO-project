@@ -567,16 +567,26 @@
 			<ul>
 				<li>
 					<div class="pay">
-						<input type="radio" name="chk_info" value="card" checked /> 카드 결제
-						<input type="radio" name="chk_info" value="transfer" disabled /> 계좌 이체
-						<input type="radio" name="chk_info" value="deposit" disabled /> 무통장 입금
+						<input type="radio" name="chk_info" value="card" checked  onchange="chdiv0()" /> 카드 결제
+						<input type="radio" name="chk_info" value="transfer" onchange="chdiv()" /> 계좌 이체
+						<input type="radio" name="chk_info" value="deposit"  onchange="chdiv2()" /> 무통장 입금
 					</div>
-					<div class="creditPay">
+					<div class="creditPay" id="card">
 						<span>카드번호: </span> 
 						<input type="text" id="credit1" maxlength="4" size="8" onkeypress="onlyNumber()"/> - 
 						<input type="password" id="credit2" maxlength="4" size="8" onkeypress="onlyNumber()"/> - 
 						<input type="text" id="credit3" maxlength="4" size="8" onkeypress="onlyNumber()"/> - 
 						<input type="password" id="credit4" maxlength="4" size="8" onkeypress="onlyNumber()"/>
+					</div>
+					<div class="creditPay" id="transfer" hidden="hidden">
+						<span>계좌번호: </span> 
+						<input type="text" id="credit1" maxlength="20" size="20" onkeypress="onlyNumber()"/>
+					</div>
+					<div class="creditPay" id="deposit" hidden="hidden">
+						<span>입금자 명: </span> 
+						<input type="text" id="credit1" maxlength="4" size="8"/>
+						<span>계좌번호: </span> 
+						<input type="text" id="credit1" maxlength="20" size="20" onkeypress="onlyNumber()"/>
 					</div>
 				</li>
 				<li>
@@ -588,5 +598,23 @@
 	</section>
 	<!-- footer -->
 	<%@ include file="../include/footer.jsp"%>
+	<script>
+		//결제수단 변경
+		function chdiv() {
+			$("#card").hide();
+			$("#deposit").hide();
+			$("#transfer").show();
+		}
+		function chdiv2() {
+			$("#card").hide();
+			$("#deposit").show();
+			$("#transfer").hide();
+		}
+		function chdiv0() {
+			$("#card").show();
+			$("#deposit").hide();
+			$("#transfer").hide();
+		}
+	</script>
 	</body>
 </html>

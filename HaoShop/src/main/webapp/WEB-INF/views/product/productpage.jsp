@@ -164,7 +164,7 @@
 						<li class="select_quantity">
 							<ul>
 								<li>
-									<span style="font-weight:bold">${product.p_name}</span> / ${product.p_price} - <input type="text" id="p_size" size="2" disabled>
+									<span style="font-weight:bold">${product.p_name}</span> / ${product.p_price-product.p_discount} - <input type="text" id="p_size" size="2" disabled>
 								</li>
 								<li class="select_quantity_detail">
 									<span id="decreaseQuantity" style="cursor:pointer">-</span> 
