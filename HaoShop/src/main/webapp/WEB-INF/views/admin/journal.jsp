@@ -10,7 +10,7 @@
     <script>
     	function doInsertJournal() {
     		var formData = new FormData($("#fileForm")[0]);
-    		formData.append('jour_explain', CKEDITOR.instances.jour_explain.getData());
+    		formData.set('jour_explain', CKEDITOR.instances.jour_explain.getData());
     		
     		$.ajax({
     			type: "POST",

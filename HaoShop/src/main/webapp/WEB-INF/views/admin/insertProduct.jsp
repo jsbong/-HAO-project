@@ -27,7 +27,7 @@
 							<select name="cate_main_name" id="cate_main_name" onchange="main_nameChange()">
 								<option value="" selected>::선택::</option>
 								<option value="100" data-tab="outer">OUTER</option>
-								<option value="200" data-tab="top" selected="selected">TOP</option>
+								<option value="200" data-tab="top">TOP</option>
 								<option value="300" data-tab="bottom">BOTTOM</option>
 								<option value="400" data-tab="etc">ETC</option>
 							</select>
@@ -85,7 +85,7 @@
                   	<tr>
                      	<th>상품가격</th>
                      	<td>
-                        	<input type="text" name="p_price" id="p_price" value="188000"/>
+                        	<input type="text" name="p_price" id="p_price" />
                      	</td>
                   	</tr>
                   	<tr>
@@ -109,7 +109,7 @@
                   	<tr>
                      	<th>상품재고</th>
                      	<td>
-                        	<input type="text" name="p_amount" id="p_amount" value="52"/>
+                        	<input type="text" name="p_amount" id="p_amount"/>
                      	</td>
                   	</tr>
                   	<tr>
@@ -130,7 +130,7 @@
                      	</td>
                   	</tr>
                   	<tr>
-                    	<td colspan="2">
+                    	<td colspan="2" style="text-align:center;">
                         	<input type="button" class="insertBtn" value="물품등록" onclick="doInsertProduct()" />
                      	</td>
                   	</tr>
