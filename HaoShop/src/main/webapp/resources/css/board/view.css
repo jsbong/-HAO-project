@@ -55,9 +55,9 @@
 }
 
 .board-content .board_detail .board_form li:nth-child(3) {
-   padding-top: 20px;
-   height: 200px;
-   	border-bottom: 0;
+	padding-top: 20px;
+	min-height: 250px;
+	border-bottom: 0;
 }
 
 .board-content .board_detail .board_form li:nth-child(4) {

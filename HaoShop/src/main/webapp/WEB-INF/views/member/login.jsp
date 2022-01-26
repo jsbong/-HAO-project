@@ -20,11 +20,13 @@
 					<h2>Login</h2>
 				</div>
 					<div class="login_box">
-						<input id="m_id" name="m_id" type="text" placeholder="아이디" required>
+						<input id="m_id" name="m_id" type="text" placeholder="아이디" 
+							onkeypress="if(event.keyCode == 13) {memberCheck(); return;}" required>
 						<label for="m_id">아이디</label>
 					</div>
 					<div class="login_box">
-						<input id="m_pwd" name="m_pwd" type="password" placeholder="비밀번호" required>
+						<input id="m_pwd" name="m_pwd" type="password" placeholder="비밀번호" 
+							onkeypress="if(event.keyCode == 13) {memberCheck(); return;}" required>
 						<label for="m_pwd">비밀번호</label>
 					</div>
 					<div class="forgot">

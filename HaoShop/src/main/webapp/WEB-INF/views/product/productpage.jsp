@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="resources/css/productpage.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/product/productpage.css">
 		<script type="text/javascript" src="resources/js/cart.js" charset="UTF-8"></script>
 		<script type="text/javascript" src="resources/js/product.js" charset="UTF-8"></script>
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

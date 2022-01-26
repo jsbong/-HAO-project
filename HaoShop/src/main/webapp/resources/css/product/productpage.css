@@ -48,27 +48,24 @@ button:focus {
 }
 
 /* layout */
+
 .product-content {
 	font-family: 'Nanum Gothic', sans-serif;
-	width: 1800px;
-	height: 800px;
+	width: 100%;
+	padding: 120px 0 120px;
 	position: relative;
 }
 
 .product-content .product_detail {
 	width: 80%;
-	height: 620px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-top: -310px;
-	margin-left: -40%;
+	min-height: 560px;
+	margin: 0 auto;
 }
 
 .product-content .product_detail .product_left_layout {
 	width: 860px;
 	margin-left: 40px;
-	height: 600px;
+	height: 580px;
 	position: relative;
 	margin-top: 20px;
 	float:left;

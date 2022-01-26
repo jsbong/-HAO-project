@@ -1,104 +1,136 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
-/*reset*/
-*, html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, 
-p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, 
-image, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, 
-dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{
-    margin:0;padding:0;
-}
-
-a {
-    color: inherit; text-decoration: inherit;
-}
-li {
-    list-style: none;
-}
-
 /* layout */
-section {
+.signup_section {
 	width: 100%;
-	height: 1000px;
-	position: relative;
-}
-
-section .section_signup {
-	width: 100%;
-	position: absolute;
-	font-size: 14px;
-	top: 12%;
-}
-
-/* SIGN UP 로고 설정 */
-section div.signup_logo {
-	width: 100%;
-	margin-bottom: 20px;
-	padding: 15px 0;
-	text-align: center;
-	font-size: 18px;
-}
-
-/* 회원가입 양식 설정 */
-section .signup_firm {
-	height: 600px;
-}
-
-section .signup_firm table {
-	margin: 10px auto;
-	height: 100%;
-}
-
-section table th {
-	text-align: left;
-}
-
-.input {
-	height: 23px;
-	border: 0;
-	border-bottom: solid 1px #ccc;
-}
-
-.input.rel {
-	width: 100%;
-}
-
-.input.birth {
-	width: 32.7%;
-}
-
-.input.tel {
-	width: 31%;
-}
-/* button, select css 설정 */
-select, input[type=button] {
-	height: 27px;
-	vertical-align: middle;
+	padding: 80px 0 120px;
 	font-family: 'Nanum Gothic', sans-serif;
 }
 
-/* button css 설정 */
-input[type=button] {
-	padding: 0 5px;
-	border: 0;
-	background-color: eee;
-	color: black;
+.signup_section .signup-content {
+	width: 40%;
+	margin: 0 auto;
 }
 
-input[type=button]:hover {	
-	border: 0;
-	background-color: #8aa1a1;
+.signup_section .signup-content > h2 {
+	text-align: center;
+	padding: 20px;
 }
 
-.input.sign {
-	margin-top: 10px;
-	width: 100%;
-	height: 50px;
+.signup_section .signup-content .signup_detail {
+	width: 70%;
+	margin: 0 auto;
+	padding: 10px;
 	font-size: 16px;
-	letter-spacing: 2px;
 }
 
-select:focus {
-	outline: none !important;
-	border: 1px solid #8aa1a1;
+/* li 공통 설정 */
+.signup_section .signup-content li {
+	padding: 5px;
+}
+
+/* 제목 li 설정 */
+.signup_section .signup-content .input_title {
+	font-weight: bold;
+}
+
+/* input 가진 li 설정 */
+.signup_section .input_content  {
+	margin-bottom: 15px;
+}
+
+.signup_section .input_content.except {
+	text-align: center;
+}
+
+.signup_section .signup-content .input_content .input {
+	height: 30px;
+	border: 1px solid #ddd;
+}
+
+/* 아이디 비밀번호 이름 기본주소 상세주소 설정 */
+.signup_section .signup-content .input_content .input.rel {
+	width: 100%;
+}
+
+/* 생년월일 설정 */
+.signup_section .signup-content .input_content .input.birth {
+	width: 32%;
+}
+
+#birchk {
+	display: block;
+	padding-left: 7px;
+	text-align: left;
+}
+
+/* 이메일 설정 */
+.signup_section .signup-content .input_content .input.email {
+	width: 33%;	
+}
+
+#email_select {
+	width: 25%;
+}
+
+#mailChk_btn {
+	width: 100%;
+	border: 0;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: bold;
+	background: #8aa1a1;
+	margin-top: 15px;
+	padding: 10px;
+	cursor: pointer;
+}
+
+/* 인증번호 설정 */
+.signup_section .signup-content .input_title.hideme {
+	display: none;	
+}
+
+.signup_section .signup-content .input_content.hideme {
+	display: none;
+}
+
+.signup_section .signup-content .input_content .input.authkey {
+	width: 78%;
+}
+
+.signup_section .signup-content .input_content .authkey_btn {
+	width: 20%;
+	border: 0;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: bold;
+	background: #8aa1a1;
+	padding: 8px;
+	cursor: pointer;	
+}
+
+/* 전화번호 설정 */
+.signup_section .signup-content .input_content .input.tel {
+	width: 31%;
+}
+
+/* 우편번호 찾기 버튼 설정 */
+#addr_btn {
+	width: 20%;
+	border: 0;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: bold;
+	background: #8aa1a1;
+	padding: 8px;
+	cursor: pointer;
+} 
+/* 회원가입 버튼 설정 */
+#signUp_btn {
+	width: 100%;
+	border: 0;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: bold;
+	background: #8aa1a1;
+	margin-top: 15px;
+	padding: 10px;
+	cursor: pointer;
 }

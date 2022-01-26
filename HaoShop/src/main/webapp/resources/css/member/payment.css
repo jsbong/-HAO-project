@@ -54,7 +54,16 @@
 }
 
 .product_detail .chkbox ul .product_info .size {
-	display: inline-block;
+	width: 20%;
+	position: absolute;
+	top: 50%;
+	left: 11%;
+	transform: translateY(-50%);
+}
+
+.product_detail .chkbox ul .product_info .size span {
+	display: block;
+	margin-bottom: 3px;
 }
 
 .product_detail .chkbox ul .product_info .price {

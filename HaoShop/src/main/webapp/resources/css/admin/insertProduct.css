@@ -6,6 +6,7 @@
 .insert_section {
    margin-left: 20%;
    font-family: 'Nanum Gothic', sans-serif;
+   font-size: 16px;
 }
 
 .insert_section .insert_div {
@@ -30,6 +31,10 @@
     margin : 0 auto;
 }
 
+.insert_table tr:last-child {
+	text-align: center;
+}
+
 .insert_table th {
    text-align:center;
     width: 50px;
@@ -43,6 +48,12 @@
    width: 300px;
    padding: 10px;
    border: 1px solid #ccc;
+}
+
+.insert_table td input[type=text] {
+	height: 25px;
+	border: 1px solid #ccc;
+	font-size: 16px;	
 }
 
 /* 상품등록 설정 */

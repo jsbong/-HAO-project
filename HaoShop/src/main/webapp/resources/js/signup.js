@@ -97,6 +97,7 @@ function doSignup() {
 	var m_phone = $("#NUMst").val() + "-" + $("#NUMnd").val() + "-" + $("#NUMrd").val();
 	var m_addr = $("#m_zipcode").val() + "*" + $("#m_faddr").val() + "*" + $("#m_laddr").val();
 	var authkey = $("#authkey").val();
+	var patt_pwd = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
 	if (checkID == false) { console.log("아이디 중복검사 안함"); }
 	if (checkPWD == false) { console.log("비밀번호 다름"); }
 	if (checkNAME == false) { console.log("이름이 비어있음"); }
@@ -105,33 +106,39 @@ function doSignup() {
 	if (!m_id || checkID == false || checkPWD == false || checkNAME == false || checkYEAR == false || checkEMAIL == false) {
 		swal("", "필수항목이 비어있습니다. 입력해주세요.", "warning");
 	} else {
-		$.ajax({
-			type : "POST",
-			url : "join",
-			data : {
-				"m_id" : m_id,
-				"m_pwd" : m_pwd,
-				"m_name" : m_name,
-				"m_email" : m_email,
-				"m_birth" : m_birth,
-				"m_phone" : m_phone,
-				"m_addr" : m_addr,
-				"authkey" : authkey
-			},
-			success : function(data) {
-				swal("", "회원가입을 축하합니다.", "success").then(function(isConfirm) {
-					window.location.href="main";
-				});
-			}
-		});
+		if(patt_pwd.test(m_pwd)) {
+			$.ajax({
+				type : "POST",
+				url : "join",
+				data : {
+					"m_id" : m_id,
+					"m_pwd" : m_pwd,
+					"m_name" : m_name,
+					"m_email" : m_email,
+					"m_birth" : m_birth,
+					"m_phone" : m_phone,
+					"m_addr" : m_addr,
+					"authkey" : authkey
+				},
+				success : function(data) {
+					swal("", "회원가입을 축하합니다.", "success").then(function(isConfirm) {
+						window.location.href="main";
+					});
+				}
+			});
+		} else {
+			swal("", "회원가입 양식에 맞춰 입력해주세요.", "warning");			
+		}
 	}
 }
 
 function emailChk() {
 	var m_email = $("#email_id").val() + "@" + $("#email_addr").val();
-	if (!m_email) {
+	if (m_email.length == 1) {
 		swal("", "이메일을 입력해주세요.", "error");
 	} else {
+		$(".input_title").removeClass("hideme");
+		$(".input_content").removeClass("hideme");
 		swal("", "이메일이 발송되었습니다", "success");
 		$.ajax({
 			type : "POST",

@@ -130,7 +130,7 @@
                      	</td>
                   	</tr>
                   	<tr>
-                    	<td colspan="2" style="text-align:center;">
+                    	<td colspan="2">
                         	<input type="button" class="insertBtn" value="물품등록" onclick="doInsertProduct()" />
                      	</td>
                   	</tr>

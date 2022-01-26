@@ -69,7 +69,7 @@
 										</div>
 										<div class="payment_explain">
 											<span style="color: darkgray">${row.pay_regdate} ORDER</span>
-											<span>${row.p_name}</span>
+											<span><strong>${row.p_name}</strong></span>
 											<span><fmt:formatNumber value="${row.p_sum}" pattern="\#,###"/></span>
 											<span>(${fn:split(member.m_addr,'*')[0]}) ${fn:split(member.m_addr,'*')[1]} ${fn:split(member.m_addr,'*')[2]}</span>
 										</div>

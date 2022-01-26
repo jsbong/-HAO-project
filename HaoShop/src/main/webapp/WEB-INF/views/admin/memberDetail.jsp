@@ -17,11 +17,11 @@
 	<section class="memberDetail_section">
 		<div class="memberDetail_div">
 			<h1>${memberdetail.m_name}님 회원 정보</h1>
+			<input type="hidden" id="m_no" name="m_no" value="${memberdetail.m_name}">
 			<table class="memberDetail_table">
 				<tr>
 					<th>회원 번호</th>
 					<td>${memberdetail.m_no}</td>
-					<input type="hidden" id="m_no" name="m_no" value="${memberdetail.m_name}">
 				</tr>
 				<tr>
 					<th>회원 이름</th>
@@ -118,8 +118,8 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="button" value="회원 수정" onclick="updateMem()">
-						<input type="button" value="회원 삭제" onclick="deleteMem(${memberdetail.m_no})">
+						<input type="button" class="changeBtn" value="회원 수정" onclick="updateMem()">
+						<input type="button" class="changeBtn" value="회원 삭제" onclick="deleteMem(${memberdetail.m_no})">
 					</td>
 				</tr>
 			</table>

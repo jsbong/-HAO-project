@@ -38,11 +38,8 @@
 		<div class="insert_div">
 			<h1>저널 등록</h1>
 			<form id="fileForm" name="form1" method="post" enctype="multipart/form-data">
+				<input type="hidden" id="m_no" name="m_no" value="${member.m_no}">
 				<table class="insert_table">
-					<tr>
-						<th>관리자번호</th>
-						<td><input type="text" id="m_no" name="m_no" value="${member.m_no}">
-					</tr>
 					<tr>
 						<th>컬렉션명</th>
 						<td><input type="text" id="jour_name" name="jour_name"></td>
@@ -63,8 +60,8 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center">
-							<input type="button" value="컬렉션 등록" onclick="doInsertJournal()">
+						<td colspan="2">
+							<input type="button" class="insertBtn" value="컬렉션 등록" onclick="doInsertJournal()">
 						</td>
 					</tr>
 				</table>

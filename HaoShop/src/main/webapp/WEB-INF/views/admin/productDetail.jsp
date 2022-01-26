@@ -23,7 +23,6 @@
 				closeOnEsc : false,
 				buttons : [ "취소", "확인" ],
 			}).then(function(isConfirm) {
-				alert(p_explain);
 				if (isConfirm) {
 					$.ajax({
 						type : "POST",

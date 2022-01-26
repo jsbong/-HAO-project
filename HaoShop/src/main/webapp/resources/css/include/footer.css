@@ -1,12 +1,39 @@
-/* footer */
-/*reset*/
-*, html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, 
-p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, 
-image, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, 
-dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{
-    margin:0;
-    padding:0;
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
 }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, 
+strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, 
+tbody, tfoot, thead, tr, th, td{
+    margin:0;padding:0;
+}
+a {
+    color: inherit; text-decoration: inherit;
+}
+img {
+    vertical-align: middle;
+}
+a img {
+    border: none;
+}
+li {
+    list-style: none;
+}
+address, em, i {
+    font-style: normal;
+}
+a:focus {
+    outline: none
+}
+button:focus {
+    outline: none
+}
+
 
 a {
     color: inherit; text-decoration: inherit;
@@ -15,15 +42,17 @@ li {
     list-style: none;
 }
 
+
+/* layout */
+/* footer 설정 */
 footer {
     width: 100%;
     border-top: 1px solid darkgray;
     font-family: 'Nanum Gothic', sans-serif;
 }
 
-/* footer 안에 하위 요소들을 감싸고 있는 .footer_inner */
 footer .footer_inner {
-    width: 95%;
+    width: 90%;
     margin: auto;
     padding: 60px 0;
     overflow: hidden;
@@ -32,26 +61,23 @@ footer .footer_inner {
 /* .footer_inner 자식요소인 .logo */
 footer .footer_inner .logo {
     float: left;
-    width: 14%;
+    width: 10%;
     text-align: center;
+    margin-left: 5%;
     margin-right: 20px;
 }
 
 /* .footer_inner 자식요소인 .logo */
 footer .footer_inner .contact_area {
     float: left;
-    width: 68%;
+    width: 66%;
     text-align: left;
 }
 
 footer .footer_inner .contact_area  li{
     float: left;
     padding-top: 0;
-    padding-right: 8%;
-}
-
-footer .footer_inner .contact_area  li:first-child{
-    padding-left: 3%;
+    margin-left: 10%;
 }
 
 footer .footer_inner .contact_area  li:hover{
@@ -92,7 +118,7 @@ footer .footer_inner .footer_right .icon li a{
 footer .footer_inner .copy {
     clear: both;
     font-size: 12px;
-    margin-left: 15px;
-    padding-top: 10px;
+    padding-top: 20px;
     color: darkgray;
+    text-align: center;
 }

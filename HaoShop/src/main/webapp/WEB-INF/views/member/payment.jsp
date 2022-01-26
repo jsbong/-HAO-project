@@ -174,7 +174,8 @@
 												<img src="${fn:split(pay.p_img, '*')[0]}">
 											</div>
 											<div class="size">
-												<span>SIZE : ${pay.p_size} X ${pay.pay_quantity}</span>											
+												<span>SIZE : ${pay.p_size} X ${pay.pay_quantity}</span>										
+												<span style="text-transform:uppercase">COLOR : ${pay.p_color}</span>
 											</div>
 											<div class="price">
 												<c:set var="paySum" value="${(pay.p_price - pay.p_discount)*pay.pay_quantity}"/>
@@ -200,7 +201,8 @@
 												<img src="${fn:split(pay.p_img, '*')[0]}" width="100px" height="100px"></a>
 											</div>
 											<div class="size">
-												<span>SIZE : ${map.p_size} X ${map.pay_quantity}</span>											
+												<span>SIZE : ${map.p_size} X ${map.pay_quantity}</span>
+												<span style="text-transform:uppercase">COLOR : ${pay.p_color}</span>											
 											</div>
 											<div class="price">
 												<c:set var="paySum" value="${(pay.p_price - pay.p_discount)*map.pay_quantity}"/>

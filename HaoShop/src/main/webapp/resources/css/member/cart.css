@@ -52,7 +52,6 @@
 	display: inline-block;;
 	width: 60px;
 	height: 70px;
-	margin-right: 10px;
 }
 
 .cart-content .cart_product .cart_product_info .product_info_buy .img img {
@@ -62,12 +61,16 @@
 
 .cart-content .cart_product .cart_product_info .product_info_buy .buy_detail {
 	width: 20%;
-	height: 30px;
+	position: absolute;
+	top: 50%;
+	left: 11%;
+	transform: translateY(-50%);
 	display: inline-block;
 }
 
 .cart-content .cart_product .cart_product_info .product_info_buy span {
 	display: block;
+	margin-bottom: 3px;
 }
 
 /* 수정, 합계 블록 설정 */
@@ -81,14 +84,16 @@
 
 .cart-content .cart_product .cart_product_info .product_info_change span {
 	display: block;
+	margin-bottom: 3px;
 }
 
 #delCart {
-	padding: 5px;
+	padding: 3px 6px;
 	border: 0;
 	background: #ddd;
 	font-family: 'Nanum Gothic', sans-serif;
 	cursor: pointer;
+	transition: all 0.7s ease-out;
 }
 
 #delCart:hover {

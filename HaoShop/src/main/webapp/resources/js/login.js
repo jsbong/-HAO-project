@@ -47,7 +47,7 @@ function productCart() {
 function forgotPWView() {
 	var popupX = (window.screen.width / 2) - 200;
 	var popupY = (window.screen.height / 2) - 125;
-	window.open("forgotPW", "비밀번호 찾기", "status = no, width = 400, height = 250, left = " + popupX + ", top = " + popupY);
+	window.open("forgotPW", "비밀번호 찾기", "status = no, width = 600, height = 400, left = " + popupX + ", top = " + popupY);
 }
 
 function forgotPW() {

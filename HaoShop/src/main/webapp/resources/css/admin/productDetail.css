@@ -50,6 +50,12 @@
 	padding: 10px;
 }
 
+.productdetail-content .productdetail .product_table td input[type=text] {
+	height: 25px;
+	border: 1px solid #ccc;
+	font-size: 16px;
+}
+
 /* 버튼 설정 */
 .productdetail-content .productdetail .product_table td input[type=button] {
 	margin: 10px auto;

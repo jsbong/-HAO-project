@@ -248,9 +248,7 @@
                 		<li><a href="login">LOGIN</a></li>
                 	</c:when>
                 	<c:when test="${member.m_id eq 'Administrator'}">
-                		<li><a href="mypage?m_no=${member.m_no}">MYPAGE</a></li>
-                		<li><a href="prdinsert">상품등록</a></li>
-                		<li><a href="deliver">주문 내역</a></li>
+                		<li><a href="adminpage">ADMINPAGE</a></li>
                 		<li><a href="logout">LOGOUT</a></li>
                 	</c:when>
                 	<c:otherwise>
@@ -261,14 +259,8 @@
 	                	<li><a href="#" onclick="productCart();">CART</a></li>
    					</c:otherwise>
    				</c:choose>
-   					<li><a href="board">FORUM</a></li>
+ 					<li><a href="board">FORUM</a></li>
    					<li><a href="journalList">JOURNAL</a>
-   					<!-- <div id="search" align="center">
-				         <input type="text" name="sPrd" id="sPrd" placeholder="검색어 입력" onkeypress="if(event.keyCode == 13) {searchPrd(); return;}">
-				         <button type="button" id="searchBtn" onclick="searchPrd()" style="cursor: pointer">
-				            <strong>SEARCH</strong>
-				         </button>
-	   				</div> -->
             </ul>
 		      <script>
 		         function searchPrd() {

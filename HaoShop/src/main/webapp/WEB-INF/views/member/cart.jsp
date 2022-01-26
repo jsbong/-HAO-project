@@ -59,6 +59,7 @@
 							<div class="buy_detail">
 								<span>SIZE : ${cartprd.p_size} X <fmt:formatNumber value="${cartprd.pay_quantity}" pattern="#,###"/></span>
 								<span><fmt:formatNumber value="${cartprd.p_price - cartprd.p_discount}" pattern="\#,###"/></span>
+								<span style="text-transform:uppercase;">COLOR : ${cartprd.p_color}</span>
 							</div>
 						</div>
 						<div class="product_info_change">

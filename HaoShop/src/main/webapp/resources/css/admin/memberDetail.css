@@ -6,6 +6,7 @@
 .memberDetail_section {
    margin-left: 20%;
    font-family: 'Nanum Gothic', sans-serif;
+   font-size: 16px;
 }
 
 .memberDetail_section .memberDetail_div {
@@ -28,6 +29,10 @@
     border-left: 3px solid #8aa1a1; 	
 }
 
+.memberDetail_section .memberDetail_div .memberDetail_table tr:last-child {
+	text-align: center;	
+}
+
 .memberDetail_section .memberDetail_div .memberDetail_table th {
 	text-align:center;
     width: 100px;
@@ -43,6 +48,32 @@
 	border: 1px solid #ccc;	
 }
 
+.memberDetail_section .memberDetail_div .memberDetail_table td input[type=text] {
+	height: 25px;
+	border: 1px solid #ccc;
+	font-size: 16px;
+}
+
+
+.memberDetail_section .memberDetail_div .memberDetail_table td .changeBtn {
+	margin: 10px auto;
+	padding: 20px 100px;
+	font-family: 'Nanum Gothic', sans-serif;
+	background: #ddd;
+	color: #8aa1a1;
+	border: 0;
+	font-weight: bold;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.memberDetail_section .memberDetail_div .memberDetail_table td .changeBtn:hover {
+   background: #8aa1a1;
+   color: #000;
+   font-weight: bold;	
+}
+
+/* 구매정보 설정 */
 .payment_detail {
 	width: 100%;
     border-collapse: collapse;

@@ -34,19 +34,24 @@
 					<c:forEach begin="0" end="3" var="col">
 						<c:set var="item" value="${map.list[row * 4 + col]}" />
 						<c:if test="${not empty item}">
-						<a href="productpage?p_no=${item.p_no}" class="product">
-							<img src="${fn:split(item.p_img, '*')[0]}">
-							<span style="font-size:14px; font-weight: 800;">${item.p_name}</span> / <span style="font-size:14px; text-transform: lowercase;">${item.p_color }</span><br>
-							<c:choose>
-								<c:when test="${ item.p_discount == 0 }">
-									<span><fmt:formatNumber value="${item.p_price}" pattern="\#,###,###" /></span>
-								</c:when>
-								<c:otherwise>
-									<span style="color:darkgray; text-decoration:line-through; font-size:14px"><fmt:formatNumber value="${item.p_price}" pattern="\#,###,###" /></span>
-									<span><fmt:formatNumber value="${item.p_price - item.p_discount}" pattern="\#,###,###"/></span>
-								</c:otherwise>
-							</c:choose>
-						</a>
+							<div class="product">
+								<p>
+									<a href="productpage?p_no=${item.p_no}">
+										<img src="${fn:split(item.p_img, '*')[0]}" class="firstImg">
+										<img src="${fn:split(item.p_img, '*')[1]}" class="secondImg">
+									</a>
+								</p>
+								<span style="font-size:14px; font-weight: 800;">${item.p_name}</span> / <span style="font-size:14px; text-transform: lowercase;">${item.p_color }</span><br>
+								<c:choose>
+									<c:when test="${ item.p_discount == 0 }">
+										<span><fmt:formatNumber value="${item.p_price}" pattern="\#,###,###" /></span>
+									</c:when>
+									<c:otherwise>
+										<span style="color:darkgray; text-decoration:line-through; font-size:14px"><fmt:formatNumber value="${item.p_price}" pattern="\#,###,###" /></span>
+										<span><fmt:formatNumber value="${item.p_price - item.p_discount}" pattern="\#,###,###"/></span>
+									</c:otherwise>
+								</c:choose>
+							</div>
 						</c:if>
 					</c:forEach>
 				</li>
@@ -56,7 +61,7 @@
 			<c:if test="${(fn:length(map.list)) ne 0}">
 				<input type="hidden" value="${map.sPrd}" class="sPrd">
 				<!-- 페이징 처리 -->
-					<li data-tab="1"><</li>
+					<li data-tab="1">&lt;</li>
 					<c:if test="${map.pager.curBlock > 1}">
 						<li data-tab="${map.pager.prevPage}">[이전]</li>
 					</c:if>
@@ -74,7 +79,7 @@
 						<li data-tab="${map.pager.nextPage}">[다음]</li>
 					</c:if>
 					<c:if test="${map.pager.curBlock < map.pager.totPage}">
-						<li data-tab="${map.pager.totPage}">></li>
+						<li data-tab="${map.pager.totPage}">&gt;</li>
 					</c:if>
 			</c:if>
 		</ul>

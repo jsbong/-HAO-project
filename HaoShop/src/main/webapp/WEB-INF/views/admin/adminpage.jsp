@@ -71,9 +71,13 @@
 	    				{ label: '월 매출', 
 	    				backgroundColor: 'transparent', 
 	    				borderColor: 'red', 
-	    				data: [${map.pay_M_P[0]},${map.pay_M_P[1]},${map.pay_M_P[2]},${map.pay_M_P[3]},${map.pay_M_P[4]},${map.pay_M_P[5]},
-	    					${map.pay_M_P[6]},${map.pay_M_P[7]},${map.pay_M_P[8]},${map.pay_M_P[9]},${map.pay_M_P[10]},${map.pay_M_P[11]},] }
-	    			] }, // 옵션 
+	    				data: [
+	    					${map.pay_M_P[0]},${map.pay_M_P[1]},${map.pay_M_P[2]},${map.pay_M_P[3]},${map.pay_M_P[4]},${map.pay_M_P[5]},
+	    					${map.pay_M_P[6]},${map.pay_M_P[7]},${map.pay_M_P[8]},${map.pay_M_P[9]},${map.pay_M_P[10]},${map.pay_M_P[11]},
+	    					] 
+	    				}
+	    			] 
+	    		}, // 옵션 
 	    		options: { 
 	    			legend: { display: false },
 	    			title: { display : true } 
@@ -87,8 +91,10 @@
 					labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], 
 					datasets: [{ 
 						label: '판매량', 
-						data: [${map.pay_M[0]},${map.pay_M[1]},${map.pay_M[2]},${map.pay_M[3]},${map.pay_M[4]},${map.pay_M[5]},
-							${map.pay_M[6]},${map.pay_M[7]},${map.pay_M[8]},${map.pay_M[9]},${map.pay_M[10]},${map.pay_M[11]},], 
+						data: [
+							${map.pay_M[0]},${map.pay_M[1]},${map.pay_M[2]},${map.pay_M[3]},${map.pay_M[4]},${map.pay_M[5]},
+							${map.pay_M[6]},${map.pay_M[7]},${map.pay_M[8]},${map.pay_M[9]},${map.pay_M[10]},${map.pay_M[11]},
+							], 
 						backgroundColor: [
 							'rgba(255, 99, 132, 1)', 
 							'rgba(54, 162, 235, 1)', 
