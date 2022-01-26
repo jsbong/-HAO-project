@@ -155,7 +155,7 @@
 					<ul>
 						<li><h2>${product.p_name}</h2></li>
 						<li style="text-transform: lowercase;">color  ${product.p_color}</li>
-						<li>price <fmt:formatNumber value="${product.p_price}" pattern="\#,###"/></li>
+						<li>price <fmt:formatNumber value="${product.p_price-product.p_discount}" pattern="\#,###"/></li>
 						<li> 
 							<c:forEach items="${fn:split(product.p_size, ',')}" var="opt">
 								<input type="button" id="p_select_size" class="p_select_size" value="${opt}">
