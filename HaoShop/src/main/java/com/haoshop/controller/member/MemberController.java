@@ -227,7 +227,6 @@ public class MemberController {
 	public String joinPost(@ModelAttribute("vo") MemberVO vo, HttpSession session) throws Exception {
 		String key = memberService.create(vo);
 		session.setAttribute("key", key);
-		System.out.println(key);
 		return "ok";
 	}
 	

@@ -131,14 +131,12 @@ nav .menu_left li > .menu_sub-content .sub_cate li a:hover:after {
 nav .menu_left li > .menu_sub-content .sub_img {
     width: 50%;
     height: 360px;
-    background: hotpink;
     position: absolute;
     left: 33%;
     margin-top: 30px;
 }
 
 nav .menu_left li > .menu_sub-content .sub_img li {
-    background:khaki;
     width: 21%;
     height: 330px;
 }
@@ -149,15 +147,10 @@ nav .menu_left li > .menu_sub-content .sub_img img {
 }
 
 nav .menu_left li > .menu_sub-content .sub_img div {
-    background:lightcoral;
     width: 100%;
     height: 70px;
     line-height:20px;
 } 
-
-nav .menu_left li > .menu_sub-content .sub_img span {
-    background: green;
-}
 
 /* .menu_right 설정 */
 nav .menu_right {

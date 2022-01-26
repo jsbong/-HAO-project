@@ -62,7 +62,6 @@ public class PaymentController {
 		public String payment(@RequestParam(value="hiddenbtn") String hidden,
 				@RequestParam(value="c_no0[]") int[] c_no0, PaymentVO vo, HttpSession session, Model model) {
 			if (hidden.equals("prdpage")) {
-				System.out.println(vo.getP_size());
 				List<PaymentVO> list = paymentService.getPaymentProduct(vo);
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("list", list);
@@ -75,7 +74,6 @@ public class PaymentController {
 				vo.setC_no(c_no0[0]);
 				List<PaymentVO> list = paymentService.cartPaymentProduct(vo);
 				for(int k = 1; k<c_no0.length; k++) {
-					System.out.println(c_no0[k]);
 					vo.setC_no(c_no0[k]);
 					list.add(paymentService.cartPaymentProduct(vo).get(0));
 				}

@@ -47,40 +47,40 @@
                             <li><a href="category?cate_no=100002">COAT</a></li>
                             <li><a href="category?cate_no=100003">DOWN JACKET</a></li>
                         </ul>
-                                               <ul class="sub_img">
+                        <ul class="sub_img">
                             <li>
-                                <a href="#">
-                                <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=148">
+                                <img src="resources/img/product/100001/trucker jacket-cloudy mint-01.jpg">
                                 <div>
-                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                    <span>컬러</span>
+                                    <span style="font-weight:bold">trucker jacket</span><br>
+                                    <span>cloudy mint</span>
                                 </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=169">
+                                <img src="resources/img/product/100002/airforce mouton coat-black-01.jpg">
                                 <div>
-                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                    <span>컬러</span>
+                                    <span style="font-weight:bold">airforce mouton coat</span><br>
+                                    <span>black</span>
                                 </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=158">
+                                    <img src="resources/img/product/100002/extream parka-black-01.jpg">
                                     <div>
-                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                        <span>컬러</span>
+                                        <span style="font-weight:bold">extream parka</span><br>
+                                        <span>black</span>
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=179">
+                                    <img src="resources/img/product/100003/arctic puffer down-beige-01.jpg">
                                     <div>
-                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                        <span>컬러</span>
+                                        <span style="font-weight:bold">arctic puffer down</span><br>
+                                        <span>beige</span>
                                     </div>
                                 </a>
                             </li>
@@ -96,40 +96,40 @@
                             <li><a href="category?cate_no=200003">SHIRT</a></li>
                             <li><a href="category?cate_no=200004">VEST</a></li>
                         </ul>
-                                               <ul class="sub_img">
+						<ul class="sub_img">
                             <li>
-                                <a href="#">
-                                <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=252">
+                                <img src="resources/img/product/200001/symbol embroidery sweatshirt-lime-01.jpg">
                                 <div>
-                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                    <span>컬러</span>
+                                    <span style="font-weight:bold">symbol embroidery sweatshirt</span><br>
+                                    <span>lime</span>
                                 </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=343">
+                                <img src="resources/img/product/200002/square neck knit-navy-1.jpg">
                                 <div>
-                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                    <span>컬러</span>
+                                    <span style="font-weight:bold">square neck knit</span><br>
+                                    <span>navy</span>
                                 </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=360">
+                                    <img src="resources/img/product/200003/daddy shirt-dust navy (1).jpg">
                                     <div>
-                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                        <span>컬러</span>
+                                        <span style="font-weight:bold">daddy shirt</span><br>
+                                        <span>navy</span>
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=383">
+                                    <img src="resources/img/product/200003/m-65 shirt jacket-beige glen check (1).jpg">
                                     <div>
-                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                        <span>컬러</span>
+                                        <span style="font-weight:bold">m-65 shirt jacket</span><br>
+                                        <span>beige glen check</span>
                                     </div>
                                 </a>
                             </li>
@@ -143,40 +143,40 @@
                             <li><a href="category?cate_no=300001">TROUSER</a></li>
                             <li><a href="category?cate_no=300002">SHORT</a></li>
                         </ul>
-                                               <ul class="sub_img">
+                        <ul class="sub_img">
                             <li>
-                                <a href="#">
-                                <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=122">
+                                <img src="resources/img/product/300001/utility easy pants  beige gunclub check (2).jpg">
                                 <div>
-                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                    <span>컬러</span>
+                                    <span style="font-weight:bold">utility easy pants</span><br>
+                                    <span>beige gunclub check</span>
                                 </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=120">
+                                <img src="resources/img/product/300001/one tuck wide denim  indigo (2).jpg">
                                 <div>
-                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                    <span>컬러</span>
+                                    <span style="font-weight:bold">one tuck wide denim</span><br>
+                                    <span>indigo</span>
                                 </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=116">
+                                    <img src="resources/img/product/300001/functional pants  dark beige (2).jpg">
                                     <div>
-                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                        <span>컬러</span>
+                                        <span style="font-weight:bold">functional pants</span><br>
+                                        <span>dark beige</span>
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=206">
+                                    <img src="resources/img/product/300002/gear shorts  black (3).jpg">
                                     <div>
-                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                        <span>컬러</span>
+                                        <span style="font-weight:bold">gear shorts</span><br>
+                                        <span>black</span>
                                     </div>
                                 </a>
                             </li>
@@ -190,40 +190,40 @@
                             <li><a href="category?cate_no=400001">SHOES</a></li>
                             <li><a href="category?cate_no=400002">LIFEGOODS</a></li>
                         </ul>
-                                               <ul class="sub_img">
+                        <ul class="sub_img">
                             <li>
-                                <a href="#">
-                                <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=401">
+                                <img src="resources/img/product/400001/monkey low cut-black (1).jpg">
                                 <div>
-                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                    <span>컬러</span>
+                                    <span style="font-weight:bold">monkey low cut</span><br>
+                                    <span>black</span>
                                 </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=396">
+                                <img src="resources/img/product/400001/michael tout poils -poils vache (1).jpg">
                                 <div>
-                                    <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                    <span>컬러</span>
+                                    <span style="font-weight:bold">michael tout poils</span><br>
+                                    <span>poils vache</span>
                                 </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <img src="resources/img/visual_01.jpg">
+							<li>
+                                <a href="productpage?p_no=398">
+                                    <img src="resources/img/product/400001/michael(ligne bbr) -lisse noir (1).jpg">
                                     <div>
-                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                        <span>컬러</span>
+                                        <span style="font-weight:bold">michael(ligne bbr)</span><br>
+                                        <span>lisse noir</span>
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <img src="resources/img/visual_01.jpg">
+                                <a href="productpage?p_no=399">
+                                    <img src="resources/img/product/400001/chambord-lisse noir (1).jpg">
                                     <div>
-                                        <span sytle="font-weight:bold">제품명입니다.</span><br>
-                                        <span>컬러</span>
+                                        <span style="font-weight:bold">chambord</span><br>
+                                        <span>lisse noir</span>
                                     </div>
                                 </a>
                             </li>

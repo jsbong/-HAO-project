@@ -27,7 +27,7 @@
 		SELECT * FROM (
 			SELECT ROWNUM AS RN, A.* FROM (
 				SELECT * FROM PRODUCT
-				WHERE UPPER(P_NAME) LIKE UPPER('%'||#{sPrd}||'%') OR LOWER(P_NAME) LIKE LOWER('%'||#{sPrd}||'%')
+				WHERE UPPER(P_NAME) LIKE UPPER('%'||#{sPrd}||'%') OR LOWER(P_NAME) LIKE LOWER('%'||#{sPrd}||'%') ORDER BY P_NO DESC
 			) A
 		) WHERE RN BETWEEN #{start} AND #{end}
 	</select>
