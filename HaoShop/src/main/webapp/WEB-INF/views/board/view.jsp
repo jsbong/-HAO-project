@@ -121,7 +121,7 @@
             <li>
                <ul class="board_form">
                   <li>
-                     <p><a href="board">목록보기 <span style="font-size:13px;">&gt;</span></a></p>
+                     <p class="boardList"><a href="board">목록보기 <span style="font-size:13px;">&gt;</span></a></p>
                      <div class="board_title">
                         <h3>${board.b_title}</h3>
                         <c:choose>

@@ -91,6 +91,9 @@ public class BoardDAO {
 	public void deleteComment(int bc_no) {
 		mybatis.update("BoardDAO.deleteComment", bc_no);
 	}
-	
+
+	public List<BoardVO> listAllBoardAdmin() {
+		return mybatis.selectList("BoardDAO.listAllBoardAdmin");
+	}
 
 }

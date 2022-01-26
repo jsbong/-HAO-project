@@ -70,11 +70,11 @@
    	border-bottom: 0;	
 }
 
-.board-content .board_detail .board_form p {
+.board-content .board_detail .board_form .boardList {
    color: #8aa1a1;
 }
 
-.board-content .board_detail .board_form p:hover {
+.board-content .board_detail .board_form .boardList:hover {
    font-weight: bold;
 }
 

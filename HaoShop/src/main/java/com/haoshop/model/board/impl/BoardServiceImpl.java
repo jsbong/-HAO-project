@@ -99,5 +99,9 @@ public class BoardServiceImpl implements BoardService {
 	public void deleteComment(int bc_no) throws Exception{
 		boardDAO.deleteComment(bc_no);
 	}
+
+	public List<BoardVO> listAllBoardAdmin() {
+		return boardDAO.listAllBoardAdmin();
+	}
 	
 }

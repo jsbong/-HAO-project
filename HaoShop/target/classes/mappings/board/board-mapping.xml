@@ -21,13 +21,6 @@
 			#{m_id}
 		)
 	</insert>
-	
-	<!-- <update id="join">
-		UPDATE BOARD 
-		SET M_NO = (SELECT M_NO
-					FROM MEMBER
-					WHERE BOARD.M_ID = MEMBER.M_ID)
-	</update> -->
 
 	<!-- 글 수정 -->
 	<update id="updateBoard">
@@ -91,6 +84,11 @@
 		SELECT * FROM BOARD <include refid="search"></include>
 		) ORDER BY B_NO DESC, B_REGDATE DESC) A ) 
 		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="listAllBoardAdmin" resultType="board">
+		SELECT * FROM  BOARD 
+		WHERE M_NO = 1
 	</select>
 	
 	<!-- 게시글 갯수 -->

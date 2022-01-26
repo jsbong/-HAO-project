@@ -42,22 +42,18 @@
 					<th class="list1" width="13%">작성일</th>
 					<th class="list1" width="8%">조회</th>
 				</tr>
-				<!-- 관리자 -->
-				<c:forEach begin="0" end="${(fn:length(map.list))}" var="i">
-					<c:set var="row" value="${map.list[i]}" />
-					<c:if test="${row.m_id eq 'Administrator' }">
-						<input type="hidden" id="b_no" name="b_no" value="${row.b_no}"/>
+				<c:forEach begin="0" end="${(fn:length(map.listAdmin))}" var="j">
+					<c:set var="adm" value="${map.listAdmin[j]}" />
 						<%-- 검색결과가 있을 때 --%>
-						<c:if test="${not empty row}">
+						<c:if test="${not empty adm}">
 						<tr>
-							<td class="list2 admin">${row.b_no}</td>
-							<td class="list2 admin"><a href="view?b_no=${row.b_no}">${row.b_title}</a>
+							<td class="list2 admin">${adm.b_no}</td>
+							<td class="list2 admin"><a href="view?b_no=${adm.b_no}">${adm.b_title}</a>
 							<td class="list2 admin">관리자</td>
-							<td class="list2 admin">${row.b_regdate}</td>
-							<td class="list2 admin">${row.b_viewcnt}</td>
+							<td class="list2 admin">${adm.b_regdate}</td>
+							<td class="list2 admin">${adm.b_viewcnt}</td>
 						</tr>
 						</c:if>
-					</c:if>
 				</c:forEach>
 				<!-- 사용자 -->
 				<c:forEach begin="0" end="${(fn:length(map.list))}" var="i">

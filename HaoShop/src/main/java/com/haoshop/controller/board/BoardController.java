@@ -84,11 +84,13 @@ public class BoardController {
 		Pager pager = new Pager(count, curPage);
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
-
+		
+		List<BoardVO> listAdmin = boardService.listAllBoardAdmin();
 		List<BoardVO> list = boardService.listAllBoard(searchOption, keyword, start, end); // 게시글 목록
 		
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("listAdmin", listAdmin); // map에 Admin 자료 저장
 		map.put("list", list); // map에 자료 저장
 		map.put("count", count);
 		map.put("pager", pager); // 페이지 네버게이션을 위한 변수

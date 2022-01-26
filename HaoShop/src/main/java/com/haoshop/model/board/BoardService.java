@@ -21,4 +21,5 @@ public interface BoardService {
 	void createCommentBoard(Board_CommentVO vo) throws Exception; // 댓글 쓰기
 	List<Board_CommentVO> readComment(int b_no); //댓글 보기
 	void deleteComment(int bc_no) throws Exception; //댓글 삭제
+	List<BoardVO> listAllBoardAdmin();
 }
