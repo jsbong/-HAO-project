@@ -67,7 +67,6 @@
 			var prd_list = new Array();
 			var chkbox = $(".chkbox");
 			jQuery.ajaxSettings.traditional = true;
-			
 			if (chk1 == true && chk2 == true && $("#credit1").val() != "" && $("#credit2").val() != "" && $("#credit3").val() != "" && $("#credit4").val() != "") {
 					swal({
 					icon : "info", 
