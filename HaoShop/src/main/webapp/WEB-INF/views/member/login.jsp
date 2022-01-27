@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>HAOSHOP - SIGNUP</title>
-		<link rel="stylesheet" href="resources/css/login.css">
+		<link rel="stylesheet" href="resources/css/member/login.css">
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script type="text/javascript" src="resources/js/login.js" charset="UTF-8"></script>
 	</head>
