@@ -69,7 +69,7 @@
 		SET
 		M_NAME = #{m_name},
 		M_EMAIL = #{m_email},
-		M_PHONE = #{m_phone},
+		M_PHONE = #{m_phone}
 		WHERE
 		M_NO = #{m_no}
 	</update>

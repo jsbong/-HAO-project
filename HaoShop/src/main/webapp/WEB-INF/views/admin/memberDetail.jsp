@@ -17,7 +17,7 @@
 	<section class="memberDetail_section">
 		<div class="memberDetail_div">
 			<h1>${memberdetail.m_name}님 회원 정보</h1>
-			<input type="hidden" id="m_no" name="m_no" value="${memberdetail.m_name}">
+			<input type="hidden" id="m_no" name="m_no" value="${memberdetail.m_no}">
 			<table class="memberDetail_table">
 				<tr>
 					<th>회원 번호</th>
@@ -186,7 +186,7 @@
 	                         "m_email" : m_email,
 	                         "m_phone" : m_phone
 	                      }, success : function(data) {
-	                         location.href = "memberDetail?m_no=" + m_no;
+	                         location.href = "memberList";
 	                      }
 	                   });
 	                });

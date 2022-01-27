@@ -259,7 +259,7 @@
 	                	<li><a href="#" onclick="productCart();">CART</a></li>
    					</c:otherwise>
    				</c:choose>
- 					<li><a href="board">FORUM</a></li>
+ 					<li><a href="board">BOARD</a></li>
    					<li><a href="journalList">JOURNAL</a>
             </ul>
 		      <script>

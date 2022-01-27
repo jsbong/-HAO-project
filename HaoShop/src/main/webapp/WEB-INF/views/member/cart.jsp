@@ -49,9 +49,9 @@
 					<li class="cart_product_name">
 						<input type="checkbox" name="chk" onclick="calCart()" value="${cartprd.p_no}" checked>
 						<span>${cartprd.p_name}</span>
-						<input type="hidden" name="p_sum" value="${cartprd.p_sum}"><br>
 						<input type="hidden" name = "m_no" id="m_no" value="${member.m_no}">
 						<input type="hidden" name = "c_no" id="c_no" value="${cartprd.c_no}"/>
+						<input type="hidden" name = "p_sum" id="p_sum" value="${cartprd.p_sum}"/>
 					</li>
 					<li class="cart_product_info">
 						<div class="product_info_buy">
@@ -68,12 +68,13 @@
 							<input type="button" id="delCart" onClick="delCart('${cartprd.p_no}', '${member.m_no}', '${cartprd.p_size}')" value="삭제" />
 							<input type="hidden" id="p_no" value="${cartprd.p_no}" />
 						</div>
+						
 						<c:set var="priceSum" value="${priceSum + cartprd.p_sum}" />
 					</li>
 				</c:forEach>
 				<li class="sum_detail">
 					<span>총계</span>
-					<span><fmt:formatNumber value="${priceSum}" pattern="\#,###" /></span>
+					<div><span>\</span><span id="total"><fmt:formatNumber value="${priceSum}" pattern="#,###" /></span></div>
 				</li>
 				<li>
 					<input type="hidden" name = "m_no" id="m_no" value="${member.m_no}"/>

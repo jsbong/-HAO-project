@@ -9,6 +9,7 @@
 	<title>payment | HaoSHop</title>
 	<link rel="stylesheet" type="text/css" href="resources/css/member/payment.css">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
 		$(document).ready(function() {	// 최상단 체크박스 클릭
@@ -590,7 +591,7 @@
 					</div>
 				</li>
 				<li>
-					<input type="button" onClick="termChk()" value="결제 하기" />
+					<input type="button" class="payBtn" onClick="termChk()" value="결제 하기" />
 				</li>	
 			</ul>
 			</div>

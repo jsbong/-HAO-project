@@ -106,8 +106,11 @@
 	font-weight: bold;
 }
 
-.sum_detail span:last-child {
+.sum_detail > div {
 	float: right;
+}
+
+.sum_detail span:last-child {
 	margin-right: 10px;
 }
 

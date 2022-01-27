@@ -138,8 +138,10 @@
 	border: 0;
 	background: #8aa1a1;
 	font-family: 'Nanum Gothic', sans-serif;
-	transition: all 0.7s ease-out;
 	cursor: pointer;
+}
+.payment_buyer .shipping_info tr .shipping_address .payBtn {
+	transition: all 0.7s ease-out;
 }
 
 .payment_buyer .shipping_info tr .shipping_address input[type=button]:hover {

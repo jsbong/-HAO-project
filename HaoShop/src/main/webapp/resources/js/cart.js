@@ -94,7 +94,6 @@ function calCart() {
 			p_sum += parseInt($("input[name=p_sum]")[i].value);
 		}
 	}
-	document.getElementById("p_sum").innerHTML = numberWithCommas(p_sum);
 	document.getElementById("total").innerHTML = numberWithCommas(p_sum);
 }
 
